@@ -12,4 +12,12 @@ class ConstantStrings {
   static String gender = 'Gender';
   static String age = 'Age';
   static String existingUser = 'An Existing User?';
+  static String english = 'English';
+  static String malay = 'Malay';
+  static String homePageText =
+      'Use the menu below to log your \n symptoms or view history';
+  static String card2Text = 'Record Your\n Symptoms';
+  static String card1Text = 'View Your\n History';
+  static String card3Text = 'Record Your\n Pain';
+  static String card4Text = 'Contact Your\n Doctor ';
 }

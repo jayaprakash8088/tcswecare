@@ -6,6 +6,7 @@ import 'package:tcswecare/mvc/utils/app_color.dart';
 import 'package:tcswecare/mvc/utils/app_config.dart';
 import 'package:tcswecare/mvc/utils/assets.dart';
 import 'package:tcswecare/mvc/utils/constant_strings.dart';
+import 'package:tcswecare/mvc/view/home_page.dart';
 
 class LoginScreen extends StatefulWidget {
   LoginScreen({Key key}) : super(key: key);
@@ -69,23 +70,30 @@ class _LoginScreenState extends StateMVC<LoginScreen> {
                 children: [
                   Center(child: SvgPicture.asset(Assets.logo)),
                   userDetailUI(_controller),
-                  Padding(
-                    padding: EdgeInsets.only(top: 50.0),
-                    child: Center(
-                      child: Container(
-                        height: 40.0,
-                        width: 160.0,
-                        decoration: BoxDecoration(
-                          gradient: AppConfig.gradient,
-                          borderRadius: BorderRadius.all(Radius.circular(20.0)),
-                        ),
-                        child: Center(
-                          child: Text(
-                            ConstantStrings.login,
-                            style: TextStyle(
-                                color: AppColor.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 14.0),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pushReplacement(context,
+                          MaterialPageRoute(builder: (context) => HomePage()));
+                    },
+                    child: Padding(
+                      padding: EdgeInsets.only(top: 50.0),
+                      child: Center(
+                        child: Container(
+                          height: 40.0,
+                          width: 160.0,
+                          decoration: BoxDecoration(
+                            gradient: AppConfig.gradient,
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(20.0)),
+                          ),
+                          child: Center(
+                            child: Text(
+                              ConstantStrings.login,
+                              style: TextStyle(
+                                  color: AppColor.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 14.0),
+                            ),
                           ),
                         ),
                       ),

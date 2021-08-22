@@ -34,6 +34,7 @@ dev_dependencies:
     sdk: flutter
   mvc_pattern: ^7.4.0
   flutter_svg: ^0.22.0
+  shared_preferences: ^2.0.6
 
 
 # For information on the generic Dart part of this file, see the
@@ -63,6 +64,8 @@ flutter:
      - images/sign_up.svg
      - images/login_bg.svg
      - images/login.svg
+     - images/malay_flag.png
+     - images/english_flag.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

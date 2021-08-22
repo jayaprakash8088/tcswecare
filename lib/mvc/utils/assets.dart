@@ -12,4 +12,6 @@ class Assets {
   static String signUp = 'images/login_bg.svg';
   static String loginBg = 'images/sign_up.svg';
   static String login = 'images/login.svg';
+  static String malayFlag = 'images/malay_flag.png';
+  static String englishFlag = 'images/english_flag.png';
 }
