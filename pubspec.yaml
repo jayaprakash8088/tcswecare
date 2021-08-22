@@ -35,7 +35,7 @@ dev_dependencies:
   mvc_pattern: ^7.4.0
   flutter_svg: ^0.22.0
   shared_preferences: ^2.0.6
-
+  flutter_staggered_grid_view: ^0.4.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -55,6 +55,7 @@ flutter:
      - images/small_rectangle.svg
      - images/contact_doctor.svg
      - images/frame.svg
+     - images/frame.png
      - images/frame_side.svg
      - images/graph.svg
      - images/logo.svg
@@ -66,6 +67,7 @@ flutter:
      - images/login.svg
      - images/malay_flag.png
      - images/english_flag.png
+     - images/hamburger.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
 import 'package:tcswecare/mvc/utils/app_color.dart';
@@ -21,6 +23,7 @@ class _HomePageState extends StateMVC<HomePage> {
     {'id': 1, 'image': Assets.malayFlag, 'name': ConstantStrings.malay}
   ];
   String selected;
+
   @override
   void initState() {
     super.initState();
@@ -48,6 +51,7 @@ class _HomePageState extends StateMVC<HomePage> {
         Scaffold(
           backgroundColor: AppColor.transparent,
           appBar: getAppBar(),
+          drawer: Drawer(),
           body: SingleChildScrollView(
               scrollDirection: Axis.vertical,
               physics: ScrollPhysics(parent: ScrollPhysics()),
@@ -62,6 +66,9 @@ class _HomePageState extends StateMVC<HomePage> {
       backgroundColor: AppColor.transparent,
       elevation: 0.0,
       actions: [getLanguageDropdown()],
+      leading: Image.asset(Assets.hamburgerIcon),
+      centerTitle: false,
+      leadingWidth: 30.0,
       title: SvgPicture.asset(
         Assets.logo,
         height: 22.0,
@@ -140,51 +147,97 @@ class _HomePageState extends StateMVC<HomePage> {
             child: Padding(
               padding:
                   const EdgeInsets.only(top: 15.0, left: 35.0, bottom: 15.0),
-              child: SvgPicture.asset(Assets.frame),
+              child: Image.asset(Assets.framePng),
             ),
           ),
           Text(
             ConstantStrings.homePageText,
+            textAlign: TextAlign.center,
             style: TextStyle(
                 fontSize: 15.0,
                 fontWeight: FontWeight.w500,
                 color: AppColor.black),
           ),
-          cardsUI()
+          Padding(
+            padding: EdgeInsets.only(top: 20.0),
+            child: cardsUI(),
+          )
         ],
       ),
     );
   }
 
   Widget cardsUI() {
-    return GridView.builder(
-        itemCount: 4,
-        physics: ScrollPhysics(parent: ScrollPhysics()),
-        shrinkWrap: true,
-        scrollDirection: Axis.vertical,
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            childAspectRatio: MediaQuery.of(context).size.width / 180),
-        itemBuilder: (context, index) {
-          return Container(
-            width: 100.0,
-            height: 100.0,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20.0),
-                color: getColor(index)),
-            child: Column(
-              children: [
-                Text(
-                  getCardsText(index),
-                  style: TextStyle(
-                      color: AppColor.white,
-                      fontWeight: FontWeight.w600,
-                      fontSize: 18.0),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 14),
+      child: StaggeredGridView.countBuilder(
+          shrinkWrap: true,
+          itemCount: 4,
+          crossAxisSpacing: 2,
+          mainAxisSpacing: 2,
+          crossAxisCount: 2,
+          itemBuilder: (context, index) {
+            return GestureDetector(
+                child: Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Container(
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                    color: getColor(index)),
+                height: 102.0,
+                width: 102.0,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(top: 15.0, left: 15.0),
+                      child: Text(
+                        getCardsText(index),
+                        style: TextStyle(
+                            color: AppColor.white,
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.w600),
+                      ),
+                    ),
+                    Expanded(
+                      child: Padding(
+                        padding:
+                            const EdgeInsets.only(right: 20.0, bottom: 20.0),
+                        child: Align(
+                            alignment: Alignment.bottomRight,
+                            child: SvgPicture.asset(getCardsImages(index))),
+                      ),
+                    )
+                  ],
                 ),
-              ],
-            ),
-          );
-        });
+              ),
+            ));
+          },
+          staggeredTileBuilder: (index) {
+            return StaggeredTile.count(1, 1);
+          }),
+    );
+    // return StaggeredGridView.countBuilder(
+    //   crossAxisCount: 2,
+    //   itemCount: 4,
+    //   itemBuilder: (BuildContext context, int index) => Container(
+    //       height: 102,
+    //       width: 102,
+    //       child: Column(
+    //         children: [
+    //           Text(getCardsText(index)),
+    //           SvgPicture.asset(
+    //             Assets.manFace,
+    //             height: 36.0,
+    //             width: 36.0,
+    //           )
+    //         ],
+    //       )),
+    //   staggeredTileBuilder: (int index) =>
+    //       StaggeredTile.count(2, index.isEven ? 2 : 1),
+    //   mainAxisSpacing: 4.0,
+    //   crossAxisSpacing: 4.0,
+    // );
   }
 
   Color getColor(int index) {
@@ -223,5 +276,24 @@ class _HomePageState extends StateMVC<HomePage> {
         break;
     }
     return text;
+  }
+
+  String getCardsImages(int index) {
+    String image;
+    switch (index) {
+      case 0:
+        image = Assets.graph;
+        break;
+      case 1:
+        image = Assets.notes;
+        break;
+      case 2:
+        image = Assets.manFace;
+        break;
+      case 3:
+        image = Assets.contactDoctor;
+        break;
+    }
+    return image;
   }
 }

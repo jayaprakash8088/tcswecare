@@ -4,8 +4,10 @@ class Assets {
   static String smallRectangle = 'images/small_rectangle.svg';
   static String logo = 'images/logo.svg';
   static String manFace = 'images/man_face.svg';
-  static String contactDoctor = 'images/contactDoctor.svg';
+  static String graph = 'images/graph.svg';
+  static String contactDoctor = 'images/contact_doctor.svg';
   static String frame = 'images/frame.svg';
+  static String framePng = 'images/frame.png';
   static String frameSide = 'images/frame_side.svg';
   static String notes = 'images/notes.svg';
   static String astronaut = 'images/astronaut.svg';
@@ -14,4 +16,5 @@ class Assets {
   static String login = 'images/login.svg';
   static String malayFlag = 'images/malay_flag.png';
   static String englishFlag = 'images/english_flag.png';
+  static String hamburgerIcon = 'images/hamburger.png';
 }

@@ -15,9 +15,9 @@ class ConstantStrings {
   static String english = 'English';
   static String malay = 'Malay';
   static String homePageText =
-      'Use the menu below to log your \n symptoms or view history';
-  static String card2Text = 'Record Your\n Symptoms';
-  static String card1Text = 'View Your\n History';
-  static String card3Text = 'Record Your\n Pain';
-  static String card4Text = 'Contact Your\n Doctor ';
+      'Use the menu below to log your \nsymptoms or view history';
+  static String card2Text = 'Record Your\nSymptoms';
+  static String card1Text = 'View Your\nHistory';
+  static String card3Text = 'Record Your\nPain';
+  static String card4Text = 'Contact Your\nDoctor ';
 }
