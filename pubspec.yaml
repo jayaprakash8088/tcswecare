@@ -68,6 +68,8 @@ flutter:
      - images/malay_flag.png
      - images/english_flag.png
      - images/hamburger.png
+     - images/medicine.svg
+     - images/sleep.svg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

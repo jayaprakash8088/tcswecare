@@ -5,6 +5,7 @@ import 'package:tcswecare/mvc/utils/app_color.dart';
 import 'package:tcswecare/mvc/utils/app_config.dart';
 import 'package:tcswecare/mvc/utils/assets.dart';
 import 'package:tcswecare/mvc/utils/constant_strings.dart';
+import 'package:tcswecare/mvc/utils/font_size.dart';
 import 'package:tcswecare/mvc/view/login_screen.dart';
 import 'package:tcswecare/mvc/view/sign_up_screen.dart';
 
@@ -85,22 +86,22 @@ class _InitialPageState extends State<InitialPage> {
                     moveToLogin();
                   },
                   child: Padding(
-                    padding: EdgeInsets.only(top: 20.0),
+                    padding: EdgeInsets.only(top: FontSize.size20),
                     child: Center(
                       child: Container(
-                        height: 40.0,
-                        width: 160.0,
+                        height: FontSize.size40,
+                        width: FontSize.size160,
                         decoration: BoxDecoration(
                             border: Border.all(color: AppColor.bg1),
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(20.0))),
+                            borderRadius: BorderRadius.all(
+                                Radius.circular(FontSize.size20))),
                         child: Center(
                           child: Text(
                             ConstantStrings.login,
                             style: TextStyle(
                                 color: AppColor.black,
                                 fontWeight: FontWeight.bold,
-                                fontSize: 14.0),
+                                fontSize: FontSize.size14),
                           ),
                         ),
                       ),

@@ -7,6 +7,7 @@ import 'package:tcswecare/mvc/utils/app_color.dart';
 import 'package:tcswecare/mvc/utils/app_config.dart';
 import 'package:tcswecare/mvc/utils/assets.dart';
 import 'package:tcswecare/mvc/utils/constant_strings.dart';
+import 'package:tcswecare/mvc/utils/font_size.dart';
 import 'package:tcswecare/mvc/view/login_screen.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -68,32 +69,34 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(top: 70.0),
+              padding: EdgeInsets.only(top: FontSize.size70),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Center(child: SvgPicture.asset(Assets.logo)),
                   Padding(
-                    padding: EdgeInsets.only(top: 30.0),
+                    padding: EdgeInsets.only(top: FontSize.size30),
                     child: Text(
                       ConstantStrings.startText,
                       textAlign: TextAlign.center,
                       style: TextStyle(
                           color: AppColor.black,
-                          fontSize: 18.0,
+                          fontSize: FontSize.size18,
                           fontWeight: FontWeight.w400),
                     ),
                   ),
                   buildUI(),
                   Padding(
-                    padding: EdgeInsets.only(top: 30.0, bottom: 20.0),
+                    padding: EdgeInsets.only(
+                        top: FontSize.size30, bottom: FontSize.size20),
                     child: Center(
                       child: Container(
-                        height: 40.0,
-                        width: 160.0,
+                        height: FontSize.size40,
+                        width: FontSize.size160,
                         decoration: BoxDecoration(
                           gradient: AppConfig.gradient,
-                          borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                          borderRadius: BorderRadius.all(
+                              Radius.circular(FontSize.size20)),
                         ),
                         child: Center(
                           child: Text(
@@ -101,7 +104,7 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
                             style: TextStyle(
                                 color: AppColor.white,
                                 fontWeight: FontWeight.bold,
-                                fontSize: 14.0),
+                                fontSize: FontSize.size14),
                           ),
                         ),
                       ),
@@ -112,12 +115,12 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
               ),
             ),
             Positioned(
-              top: 90.0,
-              right: 0.0,
+              top: FontSize.size90,
+              right: FontSize.size0,
               child: Align(
                 alignment: Alignment.centerRight,
                 child: Padding(
-                  padding: EdgeInsets.only(top: 50.0),
+                  padding: EdgeInsets.only(top: FontSize.size50),
                   child: SvgPicture.asset(
                     Assets.frameSide,
                   ),
@@ -133,28 +136,28 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
   Widget buildUI() {
     return Padding(
       padding: EdgeInsets.only(
-        left: 20.0,
-        right: 20.0,
-        top: 150.0,
+        left: FontSize.size20,
+        right: FontSize.size20,
+        top: FontSize.size150,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: EdgeInsets.only(bottom: 10.0),
+            padding: EdgeInsets.only(bottom: FontSize.size10),
             child: Text(
               ConstantStrings.patientId,
               style: TextStyle(
                   color: AppColor.black,
                   fontWeight: FontWeight.bold,
-                  fontSize: 16.0),
+                  fontSize: FontSize.size16),
             ),
           ),
           Container(
-            height: 40.0,
+            height: FontSize.size40,
             decoration: BoxDecoration(
               color: AppColor.bgText,
-              borderRadius: BorderRadius.all(Radius.circular(10.0)),
+              borderRadius: BorderRadius.all(Radius.circular(FontSize.size10)),
             ),
             child: TextField(
                 controller: _controller.patientIdController,
@@ -162,24 +165,26 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
                     fillColor: AppColor.black,
                     border: InputBorder.none,
                     focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                      borderRadius:
+                          BorderRadius.all(Radius.circular(FontSize.size10)),
                     ))),
           ),
           Padding(
-            padding: EdgeInsets.only(bottom: 10.0, top: 10.0),
+            padding:
+                EdgeInsets.only(bottom: FontSize.size10, top: FontSize.size10),
             child: Text(
               ConstantStrings.name,
               style: TextStyle(
                   color: AppColor.black,
                   fontWeight: FontWeight.bold,
-                  fontSize: 16.0),
+                  fontSize: FontSize.size16),
             ),
           ),
           Container(
-            height: 40.0,
+            height: FontSize.size40,
             decoration: BoxDecoration(
               color: AppColor.bgText,
-              borderRadius: BorderRadius.all(Radius.circular(10.0)),
+              borderRadius: BorderRadius.all(Radius.circular(FontSize.size10)),
             ),
             child: TextField(
                 controller: _controller.nameController,
@@ -187,25 +192,26 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
                     fillColor: AppColor.black,
                     border: InputBorder.none,
                     focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                      borderRadius:
+                          BorderRadius.all(Radius.circular(FontSize.size10)),
                     ))),
           ),
           ageGenderUI(),
           Padding(
-            padding: EdgeInsets.only(bottom: 10.0),
+            padding: EdgeInsets.only(bottom: FontSize.size10),
             child: Text(
               ConstantStrings.diagnosis,
               style: TextStyle(
                   color: AppColor.black,
                   fontWeight: FontWeight.bold,
-                  fontSize: 16.0),
+                  fontSize: FontSize.size16),
             ),
           ),
           Container(
-            height: 40.0,
+            height: FontSize.size40,
             decoration: BoxDecoration(
               color: AppColor.bgText,
-              borderRadius: BorderRadius.all(Radius.circular(10.0)),
+              borderRadius: BorderRadius.all(Radius.circular(FontSize.size10)),
             ),
             child: TextField(
                 controller: _controller.diagnosisController,
@@ -213,7 +219,8 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
                     fillColor: AppColor.black,
                     border: InputBorder.none,
                     focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                      borderRadius:
+                          BorderRadius.all(Radius.circular(FontSize.size10)),
                     ))),
           ),
         ],
@@ -230,26 +237,28 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: EdgeInsets.only(bottom: 10.0, top: 10.0),
+                padding: EdgeInsets.only(
+                    bottom: FontSize.size10, top: FontSize.size10),
                 child: Text(
                   ConstantStrings.age,
                   style: TextStyle(
                       color: AppColor.black,
                       fontWeight: FontWeight.bold,
-                      fontSize: 16.0),
+                      fontSize: FontSize.size16),
                 ),
               ),
               Container(
-                height: 40.0,
-                width: 106.0,
+                height: FontSize.size40,
+                width: FontSize.size106,
                 decoration: BoxDecoration(
                     color: AppColor.bgText,
-                    borderRadius: BorderRadius.all(Radius.circular(10.0))),
+                    borderRadius:
+                        BorderRadius.all(Radius.circular(FontSize.size10))),
                 child: DropdownButton(
                   underline: SizedBox(),
                   hint: Text(ageValue),
                   icon: Icon(Icons.arrow_drop_down),
-                  iconSize: 30.0,
+                  iconSize: FontSize.size30,
                   isExpanded: true,
                   value: ageValue,
                   onChanged: (newValue) {
@@ -269,26 +278,30 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
           Column(
             children: [
               Padding(
-                padding: EdgeInsets.only(bottom: 10.0, top: 10.0, right: 50.0),
+                padding: EdgeInsets.only(
+                    bottom: FontSize.size10,
+                    top: FontSize.size10,
+                    right: FontSize.size50),
                 child: Text(
                   ConstantStrings.gender,
                   style: TextStyle(
                       color: AppColor.black,
                       fontWeight: FontWeight.bold,
-                      fontSize: 16.0),
+                      fontSize: FontSize.size16),
                 ),
               ),
               Container(
-                height: 40.0,
-                width: 106.0,
+                height: FontSize.size40,
+                width: FontSize.size106,
                 decoration: BoxDecoration(
                     color: AppColor.bgText,
-                    borderRadius: BorderRadius.all(Radius.circular(10.0))),
+                    borderRadius:
+                        BorderRadius.all(Radius.circular(FontSize.size10))),
                 child: DropdownButton(
                   underline: SizedBox(),
                   hint: Text(genderValue),
                   icon: Icon(Icons.arrow_drop_down),
-                  iconSize: 30.0,
+                  iconSize: FontSize.size30,
                   isExpanded: true,
                   value: genderValue,
                   onChanged: (newValue) {
@@ -316,7 +329,7 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Padding(
-            padding: EdgeInsets.only(right: 8.0),
+            padding: EdgeInsets.only(right: FontSize.size8),
             child: Text(
               ConstantStrings.existingUser,
               style: TextStyle(color: AppColor.black),

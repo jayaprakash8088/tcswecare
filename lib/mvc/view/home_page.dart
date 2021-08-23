@@ -4,9 +4,13 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
+import 'package:tcswecare/mvc/controller/home_controller.dart';
 import 'package:tcswecare/mvc/utils/app_color.dart';
+import 'package:tcswecare/mvc/utils/app_config.dart';
 import 'package:tcswecare/mvc/utils/assets.dart';
 import 'package:tcswecare/mvc/utils/constant_strings.dart';
+import 'package:tcswecare/mvc/utils/font_size.dart';
+import 'package:tcswecare/mvc/view/contact_doctor.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key key}) : super(key: key);
@@ -18,11 +22,10 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends StateMVC<HomePage> {
-  List<Map> languageList = [
-    {"id": 0, 'image': Assets.englishFlag, 'name': ConstantStrings.english},
-    {'id': 1, 'image': Assets.malayFlag, 'name': ConstantStrings.malay}
-  ];
-  String selected;
+  _HomePageState() : super(HomePageController()) {
+    _controller = controller;
+  }
+  HomePageController _controller;
 
   @override
   void initState() {
@@ -64,15 +67,15 @@ class _HomePageState extends StateMVC<HomePage> {
   Widget getAppBar() {
     return AppBar(
       backgroundColor: AppColor.transparent,
-      elevation: 0.0,
+      elevation: FontSize.size0,
       actions: [getLanguageDropdown()],
       leading: Image.asset(Assets.hamburgerIcon),
       centerTitle: false,
-      leadingWidth: 30.0,
+      leadingWidth: FontSize.size30,
       title: SvgPicture.asset(
         Assets.logo,
-        height: 22.0,
-        width: 120.0,
+        height: FontSize.size22,
+        width: FontSize.size120,
       ),
     );
   }
@@ -84,13 +87,13 @@ class _HomePageState extends StateMVC<HomePage> {
         child: DropdownButton<String>(
           isDense: true,
           hint: getFlagAndCountryName(),
-          value: selected,
+          value: AppConfig.selected,
           onChanged: (String newValue) {
             setState(() {
-              selected = newValue;
+              AppConfig.selected = newValue;
             });
           },
-          items: languageList.map((Map map) {
+          items: AppConfig.languageList.map((Map map) {
             return new DropdownMenuItem<String>(
               value: map["id"].toString(),
               // value: _mySelection,
@@ -98,10 +101,10 @@ class _HomePageState extends StateMVC<HomePage> {
                 children: <Widget>[
                   Image.asset(
                     map["image"],
-                    width: 25,
+                    width: FontSize.size25,
                   ),
                   Container(
-                      margin: EdgeInsets.only(left: 10),
+                      margin: EdgeInsets.only(left: FontSize.size10),
                       child: Text(map["name"])),
                 ],
               ),
@@ -117,10 +120,10 @@ class _HomePageState extends StateMVC<HomePage> {
       children: <Widget>[
         Image.asset(
           Assets.englishFlag,
-          width: 25,
+          width: FontSize.size25,
         ),
         Container(
-            margin: EdgeInsets.only(left: 10),
+            margin: EdgeInsets.only(left: FontSize.size10),
             child: Text(
               ConstantStrings.english,
               style: TextStyle(color: AppColor.black),
@@ -131,22 +134,24 @@ class _HomePageState extends StateMVC<HomePage> {
 
   Widget buildUI() {
     return Padding(
-      padding: EdgeInsets.only(top: 35.0),
+      padding: EdgeInsets.only(top: FontSize.size35),
       child: Column(
         children: [
           Center(
             child: Text(
               'Good Morning !',
               style: TextStyle(
-                  fontSize: 25.0,
+                  fontSize: FontSize.size25,
                   color: AppColor.black,
                   fontWeight: FontWeight.w600),
             ),
           ),
           Center(
             child: Padding(
-              padding:
-                  const EdgeInsets.only(top: 15.0, left: 35.0, bottom: 15.0),
+              padding: EdgeInsets.only(
+                  top: FontSize.size15,
+                  left: FontSize.size35,
+                  bottom: FontSize.size15),
               child: Image.asset(Assets.framePng),
             ),
           ),
@@ -154,12 +159,12 @@ class _HomePageState extends StateMVC<HomePage> {
             ConstantStrings.homePageText,
             textAlign: TextAlign.center,
             style: TextStyle(
-                fontSize: 15.0,
+                fontSize: FontSize.size15,
                 fontWeight: FontWeight.w500,
                 color: AppColor.black),
           ),
           Padding(
-            padding: EdgeInsets.only(top: 20.0),
+            padding: EdgeInsets.only(top: FontSize.size20),
             child: cardsUI(),
           )
         ],
@@ -169,7 +174,7 @@ class _HomePageState extends StateMVC<HomePage> {
 
   Widget cardsUI() {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 14),
+      padding: EdgeInsets.symmetric(horizontal: FontSize.size14),
       child: StaggeredGridView.countBuilder(
           shrinkWrap: true,
           itemCount: 4,
@@ -178,66 +183,51 @@ class _HomePageState extends StateMVC<HomePage> {
           crossAxisCount: 2,
           itemBuilder: (context, index) {
             return GestureDetector(
+                onTap: () {
+                  moveToNextPage(index);
+                },
                 child: Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Container(
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(20.0)),
-                    color: getColor(index)),
-                height: 102.0,
-                width: 102.0,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 15.0, left: 15.0),
-                      child: Text(
-                        getCardsText(index),
-                        style: TextStyle(
-                            color: AppColor.white,
-                            fontSize: 18.0,
-                            fontWeight: FontWeight.w600),
-                      ),
+                  padding: EdgeInsets.all(FontSize.size8),
+                  child: Container(
+                    decoration: BoxDecoration(
+                        borderRadius:
+                            BorderRadius.all(Radius.circular(FontSize.size20)),
+                        color: getColor(index)),
+                    height: FontSize.size102,
+                    width: FontSize.size102,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.only(
+                              top: FontSize.size15, left: FontSize.size15),
+                          child: Text(
+                            getCardsText(index),
+                            style: TextStyle(
+                                color: AppColor.white,
+                                fontSize: FontSize.size18,
+                                fontWeight: FontWeight.w600),
+                          ),
+                        ),
+                        Expanded(
+                          child: Padding(
+                            padding: EdgeInsets.only(
+                                right: FontSize.size20,
+                                bottom: FontSize.size20),
+                            child: Align(
+                                alignment: Alignment.bottomRight,
+                                child: SvgPicture.asset(getCardsImages(index))),
+                          ),
+                        )
+                      ],
                     ),
-                    Expanded(
-                      child: Padding(
-                        padding:
-                            const EdgeInsets.only(right: 20.0, bottom: 20.0),
-                        child: Align(
-                            alignment: Alignment.bottomRight,
-                            child: SvgPicture.asset(getCardsImages(index))),
-                      ),
-                    )
-                  ],
-                ),
-              ),
-            ));
+                  ),
+                ));
           },
           staggeredTileBuilder: (index) {
             return StaggeredTile.count(1, 1);
           }),
     );
-    // return StaggeredGridView.countBuilder(
-    //   crossAxisCount: 2,
-    //   itemCount: 4,
-    //   itemBuilder: (BuildContext context, int index) => Container(
-    //       height: 102,
-    //       width: 102,
-    //       child: Column(
-    //         children: [
-    //           Text(getCardsText(index)),
-    //           SvgPicture.asset(
-    //             Assets.manFace,
-    //             height: 36.0,
-    //             width: 36.0,
-    //           )
-    //         ],
-    //       )),
-    //   staggeredTileBuilder: (int index) =>
-    //       StaggeredTile.count(2, index.isEven ? 2 : 1),
-    //   mainAxisSpacing: 4.0,
-    //   crossAxisSpacing: 4.0,
-    // );
   }
 
   Color getColor(int index) {
@@ -295,5 +285,24 @@ class _HomePageState extends StateMVC<HomePage> {
         break;
     }
     return image;
+  }
+
+  void moveToNextPage(int index) {
+    switch (index) {
+      case 0:
+        break;
+      case 1:
+        break;
+      case 2:
+        break;
+      case 3:
+        contactDoctor();
+        break;
+    }
+  }
+
+  void contactDoctor() {
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => ContactDoctor()));
   }
 }

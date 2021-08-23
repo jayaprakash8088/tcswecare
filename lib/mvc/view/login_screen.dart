@@ -6,6 +6,7 @@ import 'package:tcswecare/mvc/utils/app_color.dart';
 import 'package:tcswecare/mvc/utils/app_config.dart';
 import 'package:tcswecare/mvc/utils/assets.dart';
 import 'package:tcswecare/mvc/utils/constant_strings.dart';
+import 'package:tcswecare/mvc/utils/font_size.dart';
 import 'package:tcswecare/mvc/view/home_page.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -51,12 +52,12 @@ class _LoginScreenState extends StateMVC<LoginScreen> {
               ),
             ),
             Positioned(
-              top: 90.0,
-              right: 0.0,
+              top: FontSize.size90,
+              right: FontSize.size0,
               child: Align(
                 alignment: Alignment.centerRight,
                 child: Padding(
-                  padding: EdgeInsets.only(top: 50.0),
+                  padding: EdgeInsets.only(top: FontSize.size50),
                   child: SvgPicture.asset(
                     Assets.frameSide,
                   ),
@@ -64,7 +65,7 @@ class _LoginScreenState extends StateMVC<LoginScreen> {
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(top: 50.0),
+              padding: EdgeInsets.only(top: FontSize.size50),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
@@ -76,15 +77,15 @@ class _LoginScreenState extends StateMVC<LoginScreen> {
                           MaterialPageRoute(builder: (context) => HomePage()));
                     },
                     child: Padding(
-                      padding: EdgeInsets.only(top: 50.0),
+                      padding: EdgeInsets.only(top: FontSize.size50),
                       child: Center(
                         child: Container(
-                          height: 40.0,
-                          width: 160.0,
+                          height: FontSize.size40,
+                          width: FontSize.size160,
                           decoration: BoxDecoration(
                             gradient: AppConfig.gradient,
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(20.0)),
+                            borderRadius: BorderRadius.all(
+                                Radius.circular(FontSize.size20)),
                           ),
                           child: Center(
                             child: Text(
@@ -92,7 +93,7 @@ class _LoginScreenState extends StateMVC<LoginScreen> {
                               style: TextStyle(
                                   color: AppColor.white,
                                   fontWeight: FontWeight.bold,
-                                  fontSize: 14.0),
+                                  fontSize: FontSize.size14),
                             ),
                           ),
                         ),
@@ -110,25 +111,26 @@ class _LoginScreenState extends StateMVC<LoginScreen> {
 
   Widget userDetailUI(LoginController controller) {
     return Padding(
-      padding: EdgeInsets.only(right: 20.0, left: 20.0, top: 350.0),
+      padding: EdgeInsets.only(
+          right: FontSize.size20, left: FontSize.size20, top: FontSize.size350),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: EdgeInsets.only(bottom: 10.0),
+            padding: EdgeInsets.only(bottom: FontSize.size10),
             child: Text(
               ConstantStrings.userName,
               style: TextStyle(
                   color: AppColor.black,
                   fontWeight: FontWeight.bold,
-                  fontSize: 16.0),
+                  fontSize: FontSize.size16),
             ),
           ),
           Container(
-            height: 40.0,
+            height: FontSize.size40,
             decoration: BoxDecoration(
               color: AppColor.bgText,
-              borderRadius: BorderRadius.all(Radius.circular(10.0)),
+              borderRadius: BorderRadius.all(Radius.circular(FontSize.size10)),
             ),
             child: TextField(
                 controller: _controller.userNameController,
@@ -136,24 +138,26 @@ class _LoginScreenState extends StateMVC<LoginScreen> {
                     fillColor: AppColor.black,
                     border: InputBorder.none,
                     focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                      borderRadius:
+                          BorderRadius.all(Radius.circular(FontSize.size10)),
                     ))),
           ),
           Padding(
-            padding: EdgeInsets.only(bottom: 10.0, top: 10.0),
+            padding:
+                EdgeInsets.only(bottom: FontSize.size10, top: FontSize.size10),
             child: Text(
               ConstantStrings.password,
               style: TextStyle(
                   color: AppColor.black,
                   fontWeight: FontWeight.bold,
-                  fontSize: 16.0),
+                  fontSize: FontSize.size16),
             ),
           ),
           Container(
-            height: 40.0,
+            height: FontSize.size40,
             decoration: BoxDecoration(
               color: AppColor.bgText,
-              borderRadius: BorderRadius.all(Radius.circular(10.0)),
+              borderRadius: BorderRadius.all(Radius.circular(FontSize.size10)),
             ),
             child: TextField(
                 controller: _controller.passwordController,
@@ -163,7 +167,8 @@ class _LoginScreenState extends StateMVC<LoginScreen> {
                     fillColor: AppColor.black,
                     border: InputBorder.none,
                     focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                      borderRadius:
+                          BorderRadius.all(Radius.circular(FontSize.size10)),
                     ))),
           )
         ],

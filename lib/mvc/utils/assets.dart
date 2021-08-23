@@ -17,4 +17,6 @@ class Assets {
   static String malayFlag = 'images/malay_flag.png';
   static String englishFlag = 'images/english_flag.png';
   static String hamburgerIcon = 'images/hamburger.png';
+  static String sleep = 'images/sleep.svg';
+  static String medicine = 'images/medicine.svg';
 }

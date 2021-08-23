@@ -16,4 +16,7 @@ class AppColor {
   static Color blueCard = Color.fromRGBO(34, 167, 240, 1);
   static Color thickGrayCard = Color.fromRGBO(27, 102, 111, 1);
   static Color transparent = Colors.transparent;
+  static Color lightGreen = Color.fromRGBO(72, 207, 150, 1);
+  static Color purple = Color.fromRGBO(140, 70, 150, 1);
+  static Color lightBlue = Color.fromRGBO(51, 174, 241, 1);
 }
