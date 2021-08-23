@@ -1,11 +1,11 @@
 class Assets {
-  static String bigRectangle = 'images/big_rectangle.svg';
-  static String bigRectanglePng = 'images/big_rectangle.png';
-  static String smallRectangle = 'images/small_rectangle.svg';
+  static String bigRectangle = 'images/big_rectangle1.svg';
+  static String bigRectanglePng = 'images/big_rectangle1.png';
+  static String smallRectangle = 'images/small_rectangle1.svg';
   static String logo = 'images/logo.svg';
   static String manFace = 'images/man_face.svg';
   static String graph = 'images/graph.svg';
-  static String contactDoctor = 'images/contact_doctor.svg';
+  static String contactDoctor = 'images/stethoscope.svg';
   static String frame = 'images/frame.svg';
   static String framePng = 'images/frame.png';
   static String frameSide = 'images/frame_side.svg';
@@ -19,4 +19,5 @@ class Assets {
   static String hamburgerIcon = 'images/hamburger.png';
   static String sleep = 'images/sleep.svg';
   static String medicine = 'images/medicine.svg';
+  static String blueRectangle = 'images/blue_rect.svg';
 }

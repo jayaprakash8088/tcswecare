@@ -176,6 +176,8 @@ class _HomePageState extends StateMVC<HomePage> {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: FontSize.size14),
       child: StaggeredGridView.countBuilder(
+          scrollDirection: Axis.vertical,
+          physics: ScrollPhysics(parent: ScrollPhysics()),
           shrinkWrap: true,
           itemCount: 4,
           crossAxisSpacing: 2,

@@ -41,7 +41,7 @@ class _ContactDoctorState extends State<ContactDoctor> {
               color: AppColor.bgWhite,
               width: MediaQuery.of(context).size.width,
               child: SvgPicture.asset(
-                Assets.smallRectangle,
+                Assets.blueRectangle,
                 alignment: Alignment.topCenter,
                 fit: BoxFit.fitWidth,
               ),
@@ -139,42 +139,49 @@ class _ContactDoctorState extends State<ContactDoctor> {
             style: AppConfig.blackText,
           ),
         ),
-        Padding(
-          padding: EdgeInsets.only(
-              left: FontSize.size30,
-              right: FontSize.size30,
-              top: FontSize.size10),
-          child: Container(
-            height: FontSize.size75,
-            decoration: BoxDecoration(
-                borderRadius:
-                    BorderRadius.all(Radius.circular(FontSize.size15)),
-                color: AppColor.lightBlue),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Text(
-                  '+601234567',
-                  style: TextStyle(
-                      color: AppColor.white,
-                      fontSize: FontSize.size24,
-                      fontWeight: FontWeight.w600),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(bottom: FontSize.size20),
-                  child: Align(
-                      alignment: Alignment.bottomRight,
-                      child: SvgPicture.asset(Assets.contactDoctor)),
-                )
-              ],
+        GestureDetector(
+          onTap: () {
+            AppConfig.urlLauncher('+60 123456789');
+          },
+          child: Padding(
+            padding: EdgeInsets.only(
+                left: FontSize.size30,
+                right: FontSize.size30,
+                top: FontSize.size10),
+            child: Container(
+              height: FontSize.size75,
+              decoration: BoxDecoration(
+                  borderRadius:
+                      BorderRadius.all(Radius.circular(FontSize.size15)),
+                  color: AppColor.lightBlue),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Text(
+                    '+601234567',
+                    style: TextStyle(
+                        color: AppColor.white,
+                        fontSize: FontSize.size24,
+                        fontWeight: FontWeight.w600),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(bottom: FontSize.size20),
+                    child: Align(
+                        alignment: Alignment.bottomRight,
+                        child: SvgPicture.asset(Assets.contactDoctor)),
+                  )
+                ],
+              ),
             ),
           ),
         ),
         Center(
           child: GestureDetector(
             onTap: () {
-              Navigator.pushReplacement(
-                  context, MaterialPageRoute(builder: (context) => HomePage()));
+              Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(builder: (context) => HomePage()),
+                  (route) => false);
             },
             child: Padding(
               padding: EdgeInsets.only(top: FontSize.size25),

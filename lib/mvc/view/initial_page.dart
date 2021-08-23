@@ -36,13 +36,11 @@ class _InitialPageState extends State<InitialPage> {
         children: [
           Container(
             color: AppColor.white,
-            height: MediaQuery.of(context).size.height,
-            child: Image(
-              image: AssetImage(Assets.bigRectanglePng),
-              alignment: Alignment.topCenter,
-              fit: BoxFit.fitWidth,
-              height: MediaQuery.of(context).size.height * 0.5,
+            child: SvgPicture.asset(
+              Assets.bigRectangle,
+              width: MediaQuery.of(context).size.width,
             ),
+            alignment: Alignment.topCenter,
           ),
           Padding(
             padding: EdgeInsets.only(top: 50.0),

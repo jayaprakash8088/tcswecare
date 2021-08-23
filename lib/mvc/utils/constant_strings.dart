@@ -22,4 +22,5 @@ class ConstantStrings {
   static String card3Text = 'Record Your\nPain';
   static String card4Text = 'Contact Your\nDoctor ';
   static String contactDoctorText = 'If pain persists, try the below\nsteps: ';
+  static String tel = 'tel:';
 }

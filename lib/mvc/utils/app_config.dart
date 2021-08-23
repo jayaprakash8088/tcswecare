@@ -4,6 +4,7 @@ import 'package:tcswecare/mvc/utils/app_color.dart';
 import 'package:tcswecare/mvc/utils/assets.dart';
 import 'package:tcswecare/mvc/utils/constant_strings.dart';
 import 'package:tcswecare/mvc/utils/font_size.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class AppConfig {
   static LinearGradient gradient = LinearGradient(
@@ -19,4 +20,10 @@ class AppConfig {
       fontSize: FontSize.size16,
       fontWeight: FontWeight.w500,
       color: AppColor.black);
+  //call function
+  static Future<dynamic> urlLauncher(String url) async {
+    try {
+      await launch(ConstantStrings.tel + url);
+    } catch (e) {}
+  }
 }
