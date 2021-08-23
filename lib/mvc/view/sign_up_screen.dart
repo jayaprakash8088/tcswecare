@@ -81,6 +81,8 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
                       textAlign: TextAlign.center,
                       style: TextStyle(
                           color: AppColor.black,
+                          fontFamily: AppConfig.roboto,
+                          fontStyle: AppConfig.normal,
                           fontSize: FontSize.size18,
                           fontWeight: FontWeight.w400),
                     ),
@@ -150,6 +152,8 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
               style: TextStyle(
                   color: AppColor.black,
                   fontWeight: FontWeight.bold,
+                  fontFamily: AppConfig.montserrat,
+                  fontStyle: AppConfig.normal,
                   fontSize: FontSize.size16),
             ),
           ),
@@ -177,6 +181,8 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
               style: TextStyle(
                   color: AppColor.black,
                   fontWeight: FontWeight.bold,
+                  fontFamily: AppConfig.montserrat,
+                  fontStyle: AppConfig.normal,
                   fontSize: FontSize.size16),
             ),
           ),
@@ -204,6 +210,8 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
               style: TextStyle(
                   color: AppColor.black,
                   fontWeight: FontWeight.bold,
+                  fontFamily: AppConfig.montserrat,
+                  fontStyle: AppConfig.normal,
                   fontSize: FontSize.size16),
             ),
           ),
@@ -244,6 +252,8 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
                   style: TextStyle(
                       color: AppColor.black,
                       fontWeight: FontWeight.bold,
+                      fontFamily: AppConfig.montserrat,
+                      fontStyle: AppConfig.normal,
                       fontSize: FontSize.size16),
                 ),
               ),
@@ -287,6 +297,8 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
                   style: TextStyle(
                       color: AppColor.black,
                       fontWeight: FontWeight.bold,
+                      fontFamily: AppConfig.montserrat,
+                      fontStyle: AppConfig.normal,
                       fontSize: FontSize.size16),
                 ),
               ),
@@ -332,7 +344,11 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
             padding: EdgeInsets.only(right: FontSize.size8),
             child: Text(
               ConstantStrings.existingUser,
-              style: TextStyle(color: AppColor.black),
+              style: TextStyle(
+                color: AppColor.black,
+                fontFamily: AppConfig.montserrat,
+                fontStyle: AppConfig.normal,
+              ),
             ),
           ),
           GestureDetector(
@@ -344,6 +360,8 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
               ConstantStrings.login1,
               style: TextStyle(
                   color: AppColor.linkColor,
+                  fontFamily: AppConfig.montserrat,
+                  fontStyle: AppConfig.normal,
                   decoration: TextDecoration.underline),
             ),
           )

@@ -84,17 +84,41 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
-  #   - family: Trajan Pro
-  #     fonts:
-  #       - asset: fonts/TrajanPro.ttf
-  #       - asset: fonts/TrajanPro_Bold.ttf
-  #         weight: 700
-  #
+  fonts:
+     - family: Montserrat
+       fonts:
+         - asset: fonts/Montserrat-Regular.ttf
+         - asset: fonts/Montserrat-Black.ttf
+         - asset: fonts/Montserrat-BlackItalic.ttf
+         - asset: fonts/Montserrat-Bold.ttf
+         - asset: fonts/Montserrat-ExtraBold.ttf
+         - asset: fonts/Montserrat-ExtraBoldItalic.ttf
+         - asset: fonts/Montserrat-ExtraLight.ttf
+         - asset: fonts/Montserrat-ExtraLightItalic.ttf
+         - asset: fonts/Montserrat-Light.ttf
+         - asset: fonts/Montserrat-LightItalic.ttf
+         - asset: fonts/Montserrat-Medium.ttf
+         - asset: fonts/Montserrat-MediumItalic.ttf
+         - asset: fonts/Montserrat-Regular.ttf
+         - asset: fonts/Montserrat-SemiBold.ttf
+         - asset: fonts/Montserrat-SemiBoldItalic.ttf
+         - asset: fonts/Montserrat-Thin.ttf
+         - asset: fonts/Montserrat-ThinItalic.ttf
+           style: italic
+     - family: Roboto
+       fonts:
+         - asset: fonts/Roboto-Black.ttf
+         - asset: fonts/Roboto-BlackItalic.ttf
+         - asset: fonts/Roboto-Bold.ttf
+         - asset: fonts/Roboto-BoldItalic.ttf
+         - asset: fonts/Roboto-Italic.ttf
+         - asset: fonts/Roboto-Light.ttf
+         - asset: fonts/Roboto-LightItalic.ttf
+         - asset: fonts/Roboto-Medium.ttf
+         - asset: fonts/Roboto-MediumItalic.ttf
+         - asset: fonts/Roboto-Regular.ttf
+         - asset: fonts/Roboto-Thin.ttf
+         - asset: fonts/Roboto-ThinItalic.ttf
+
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

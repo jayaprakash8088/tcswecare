@@ -161,6 +161,8 @@ class _ContactDoctorState extends State<ContactDoctor> {
                     '+601234567',
                     style: TextStyle(
                         color: AppColor.white,
+                        fontFamily: AppConfig.montserrat,
+                        fontStyle: AppConfig.normal,
                         fontSize: FontSize.size24,
                         fontWeight: FontWeight.w600),
                   ),
@@ -198,6 +200,8 @@ class _ContactDoctorState extends State<ContactDoctor> {
                       ConstantStrings.home,
                       style: TextStyle(
                           color: AppColor.white,
+                          fontFamily: AppConfig.roboto,
+                          fontStyle: AppConfig.normal,
                           fontWeight: FontWeight.bold,
                           fontSize: 14.0),
                     ),

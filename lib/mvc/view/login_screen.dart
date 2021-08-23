@@ -123,6 +123,8 @@ class _LoginScreenState extends StateMVC<LoginScreen> {
               style: TextStyle(
                   color: AppColor.black,
                   fontWeight: FontWeight.bold,
+                  fontFamily: AppConfig.montserrat,
+                  fontStyle: AppConfig.normal,
                   fontSize: FontSize.size16),
             ),
           ),
@@ -150,6 +152,8 @@ class _LoginScreenState extends StateMVC<LoginScreen> {
               style: TextStyle(
                   color: AppColor.black,
                   fontWeight: FontWeight.bold,
+                  fontFamily: AppConfig.montserrat,
+                  fontStyle: AppConfig.normal,
                   fontSize: FontSize.size16),
             ),
           ),

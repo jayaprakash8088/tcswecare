@@ -143,6 +143,8 @@ class _HomePageState extends StateMVC<HomePage> {
               style: TextStyle(
                   fontSize: FontSize.size25,
                   color: AppColor.black,
+                  fontFamily: AppConfig.montserrat,
+                  fontStyle: AppConfig.normal,
                   fontWeight: FontWeight.w600),
             ),
           ),
@@ -161,6 +163,8 @@ class _HomePageState extends StateMVC<HomePage> {
             style: TextStyle(
                 fontSize: FontSize.size15,
                 fontWeight: FontWeight.w500,
+                fontStyle: AppConfig.normal,
+                fontFamily: AppConfig.montserrat,
                 color: AppColor.black),
           ),
           Padding(
@@ -208,6 +212,8 @@ class _HomePageState extends StateMVC<HomePage> {
                             style: TextStyle(
                                 color: AppColor.white,
                                 fontSize: FontSize.size18,
+                                fontFamily: AppConfig.montserrat,
+                                fontStyle: AppConfig.normal,
                                 fontWeight: FontWeight.w600),
                           ),
                         ),
