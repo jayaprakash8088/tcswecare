@@ -12,6 +12,7 @@ import 'package:tcswecare/mvc/utils/constant_strings.dart';
 import 'package:tcswecare/mvc/utils/font_size.dart';
 import 'package:tcswecare/mvc/view/contact_doctor.dart';
 import 'package:tcswecare/mvc/view/pain_indicator_screen.dart';
+import 'package:tcswecare/mvc/view/tracker.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key key}) : super(key: key);
@@ -301,6 +302,7 @@ class _HomePageState extends StateMVC<HomePage> {
       case 0:
         break;
       case 1:
+        recordSymptom();
         break;
       case 2:
         recordPain();
@@ -319,5 +321,10 @@ class _HomePageState extends StateMVC<HomePage> {
   void recordPain() {
     Navigator.push(context,
         MaterialPageRoute(builder: (context) => PainIndicatorScreen()));
+  }
+
+  void recordSymptom() {
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => SymptomTrackerPage()));
   }
 }

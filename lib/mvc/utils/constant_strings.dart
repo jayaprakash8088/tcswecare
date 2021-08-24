@@ -28,4 +28,6 @@ class ConstantStrings {
   static String tooPain = 'Too Painful';
   static String symptoms = 'When did this symptom happen?';
   static String submit = 'SUBMIT';
+  static String symptomDiary = 'Symptom Diary';
+  static String trackDiary = 'Use this to keep track of the\nsymptoms daily';
 }

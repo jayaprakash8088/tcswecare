@@ -76,6 +76,7 @@ flutter:
      - images/blue_rect.svg
      - images/clock.svg
      - images/calendar.svg
+     - images/blue_small_rect.svg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
