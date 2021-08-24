@@ -2,11 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
-import 'package:tcswecare/mvc/controller/symptom_tracker_controller.dart';
+import 'package:tcswecare/mvc/controller/pain_indicator_controller.dart';
 import 'package:tcswecare/mvc/utils/app_color.dart';
 import 'package:tcswecare/mvc/utils/app_config.dart';
 import 'package:tcswecare/mvc/utils/assets.dart';
 import 'package:tcswecare/mvc/utils/constant_strings.dart';
+import 'package:tcswecare/mvc/utils/date_time_ui.dart';
 import 'package:tcswecare/mvc/utils/font_size.dart';
 
 class SymptomTrackerPage extends StatefulWidget {
@@ -19,13 +20,19 @@ class SymptomTrackerPage extends StatefulWidget {
 }
 
 class _SymptomTrackerPageState extends StateMVC<SymptomTrackerPage> {
-  _SymptomTrackerPageState() : super(SymptomTrackerController()) {
+  _SymptomTrackerPageState() : super(PainIndicatorController()) {
     _controller = controller;
   }
-  SymptomTrackerController _controller;
+  PainIndicatorController _controller;
   @override
   void initState() {
     super.initState();
+    _controller.date1 = null;
+    _controller.time1 = null;
+    _controller.time = null;
+    _controller.dateTime = null;
+    _controller.selectedTime = null;
+    _controller.selectedDate = null;
   }
 
   @override
@@ -97,18 +104,7 @@ class _SymptomTrackerPageState extends StateMVC<SymptomTrackerPage> {
         ),
         Padding(
           padding: EdgeInsets.only(top: FontSize.size100),
-          child: Center(
-            child: Text(
-              ConstantStrings.symptoms,
-              textAlign: TextAlign.center,
-              style: AppConfig.blackText,
-            ),
-          ),
-        ),
-        Padding(
-          padding:
-              EdgeInsets.only(top: FontSize.size20, bottom: FontSize.size20),
-          child: dateAndTime(),
+          child: Container(height: 100.0, child: DateTimeUI(context)),
         ),
       ],
     );

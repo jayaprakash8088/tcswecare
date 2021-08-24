@@ -8,6 +8,7 @@ import 'package:tcswecare/mvc/utils/app_color.dart';
 import 'package:tcswecare/mvc/utils/app_config.dart';
 import 'package:tcswecare/mvc/utils/assets.dart';
 import 'package:tcswecare/mvc/utils/constant_strings.dart';
+import 'package:tcswecare/mvc/utils/date_time_ui.dart';
 import 'package:tcswecare/mvc/utils/font_size.dart';
 
 class PainIndicatorScreen extends StatefulWidget {
@@ -163,19 +164,9 @@ class _PainIndicatorScreenState extends StateMVC<PainIndicatorScreen> {
           ),
         ),
         Padding(
-          padding: EdgeInsets.only(top: FontSize.size10),
-          child: Center(
-            child: Text(
-              ConstantStrings.symptoms,
-              textAlign: TextAlign.center,
-              style: AppConfig.blackText,
-            ),
-          ),
-        ),
-        Padding(
           padding:
               EdgeInsets.only(top: FontSize.size20, bottom: FontSize.size20),
-          child: dateAndTime(),
+          child: Container(height: 100.0, child: DateTimeUI(context)),
         ),
         submitBtn()
       ],
@@ -203,63 +194,6 @@ class _PainIndicatorScreenState extends StateMVC<PainIndicatorScreen> {
     },
     onChangeEnd: (double endValue) {},
   );
-
-  Widget dateAndTime() {
-    return Container(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          GestureDetector(
-            onTap: () {
-              _controller.date1 = getDate();
-              callDatePicker();
-            },
-            child: Row(
-              children: [
-                Padding(
-                  padding: EdgeInsets.only(right: FontSize.size5),
-                  child: SvgPicture.asset(Assets.calendar),
-                ),
-                Text(
-                  AppConfig.dateFormat.format(getDate()),
-                  style: TextStyle(
-                      color: AppColor.black,
-                      decoration: TextDecoration.underline,
-                      fontWeight: FontWeight.w600,
-                      fontSize: FontSize.size16,
-                      fontFamily: AppConfig.montserrat),
-                )
-              ],
-            ),
-          ),
-          GestureDetector(
-            onTap: () {
-              _controller.time1 = getTime();
-              callTimePicker();
-            },
-            child: Row(
-              children: [
-                Padding(
-                  padding: EdgeInsets.only(right: FontSize.size5),
-                  child: SvgPicture.asset(Assets.clock),
-                ),
-                Text(
-                  AppConfig.timeFormat.format(getTime()),
-                  style: TextStyle(
-                      color: AppColor.black,
-                      fontWeight: FontWeight.w600,
-                      fontSize: FontSize.size16,
-                      decoration: TextDecoration.underline,
-                      fontFamily: AppConfig.montserrat),
-                )
-              ],
-            ),
-          )
-        ],
-      ),
-    );
-  }
-
   Widget submitBtn() {
     return Center(
       child: Container(
@@ -277,133 +211,6 @@ class _PainIndicatorScreenState extends StateMVC<PainIndicatorScreen> {
                 fontWeight: FontWeight.bold,
                 fontSize: FontSize.size14),
           ),
-        ),
-      ),
-    );
-  }
-
-  void callDatePicker() {
-    showModalBottomSheet(
-        context: context,
-        builder: (context) {
-          return Container(
-            height: MediaQuery.of(context).size.height * 0.35,
-            child: Column(
-              children: [
-                okCancelUI(1),
-                Container(
-                  height: MediaQuery.of(context).size.height * 0.3,
-                  child: CupertinoDatePicker(
-                      initialDateTime: getDate(),
-                      maximumDate: DateTime(2050, 12, 31),
-                      mode: CupertinoDatePickerMode.date,
-                      onDateTimeChanged: _dateChanged),
-                ),
-              ],
-            ),
-          );
-        });
-  }
-
-  void callTimePicker() {
-    showModalBottomSheet(
-        context: context,
-        builder: (context) {
-          return Container(
-            height: MediaQuery.of(context).size.height * 0.35,
-            child: Column(
-              children: [
-                okCancelUI(2),
-                Container(
-                  height: MediaQuery.of(context).size.height * 0.3,
-                  child: CupertinoDatePicker(
-                      initialDateTime: getTime(),
-                      maximumDate: DateTime(2050, 12, 31),
-                      mode: CupertinoDatePickerMode.time,
-                      onDateTimeChanged: _timeChanged),
-                ),
-              ],
-            ),
-          );
-        });
-  }
-
-  void _dateChanged(DateTime value) {
-    _controller.selectedDate = value;
-  }
-
-  void _timeChanged(DateTime value) {
-    _controller.selectedTime = value;
-  }
-
-  void changeDate() {
-    setState(() {
-      _controller.dateTime = _controller.selectedDate;
-    });
-  }
-
-  void changeTime() {
-    setState(() {
-      _controller.time = _controller.selectedTime;
-    });
-    Navigator.pop(context);
-  }
-
-  cancelClicked() {
-    setState(() {
-      _controller.time = _controller.time1;
-      _controller.dateTime = _controller.date1;
-    });
-    Navigator.pop(context);
-  }
-
-  DateTime getDate() {
-    var date;
-    if (_controller.dateTime != null) {
-      date = _controller.dateTime;
-    } else {
-      date = AppConfig.now;
-    }
-    return date;
-  }
-
-  DateTime getTime() {
-    var time;
-    if (_controller.time != null) {
-      time = _controller.time;
-    } else {
-      time = AppConfig.now;
-    }
-    return time;
-  }
-
-  okCancelUI(int i) {
-    return Container(
-      child: Expanded(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            GestureDetector(
-                onTap: () {
-                  cancelClicked();
-                },
-                child: Text(
-                  ConstantStrings.cancel,
-                  style: AppConfig.blackText,
-                )),
-            GestureDetector(
-                onTap: () {
-                  if (i == 1) {
-                    changeDate();
-                  } else {
-                    changeTime();
-                  }
-                },
-                child: Text(
-                  ConstantStrings.ok,
-                  style: AppConfig.blackText,
-                )),
-          ],
         ),
       ),
     );
