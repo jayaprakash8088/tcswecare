@@ -211,6 +211,7 @@ class _PainIndicatorScreenState extends StateMVC<PainIndicatorScreen> {
         children: [
           GestureDetector(
             onTap: () {
+              _controller.date1 = getDate();
               callDatePicker();
             },
             child: Row(
@@ -233,6 +234,7 @@ class _PainIndicatorScreenState extends StateMVC<PainIndicatorScreen> {
           ),
           GestureDetector(
             onTap: () {
+              _controller.time1 = getTime();
               callTimePicker();
             },
             child: Row(
@@ -285,12 +287,20 @@ class _PainIndicatorScreenState extends StateMVC<PainIndicatorScreen> {
         context: context,
         builder: (context) {
           return Container(
-            height: MediaQuery.of(context).copyWith().size.height / 3,
-            child: CupertinoDatePicker(
-                initialDateTime: getDate(),
-                maximumDate: DateTime(2050, 12, 31),
-                mode: CupertinoDatePickerMode.date,
-                onDateTimeChanged: _dateChanged),
+            height: MediaQuery.of(context).size.height * 0.35,
+            child: Column(
+              children: [
+                okCancelUI(1),
+                Container(
+                  height: MediaQuery.of(context).size.height * 0.3,
+                  child: CupertinoDatePicker(
+                      initialDateTime: getDate(),
+                      maximumDate: DateTime(2050, 12, 31),
+                      mode: CupertinoDatePickerMode.date,
+                      onDateTimeChanged: _dateChanged),
+                ),
+              ],
+            ),
           );
         });
   }
@@ -300,26 +310,51 @@ class _PainIndicatorScreenState extends StateMVC<PainIndicatorScreen> {
         context: context,
         builder: (context) {
           return Container(
-            height: MediaQuery.of(context).copyWith().size.height / 3,
-            child: CupertinoDatePicker(
-                initialDateTime: getTime(),
-                maximumDate: DateTime(2050, 12, 31),
-                mode: CupertinoDatePickerMode.time,
-                onDateTimeChanged: _timeChanged),
+            height: MediaQuery.of(context).size.height * 0.35,
+            child: Column(
+              children: [
+                okCancelUI(2),
+                Container(
+                  height: MediaQuery.of(context).size.height * 0.3,
+                  child: CupertinoDatePicker(
+                      initialDateTime: getTime(),
+                      maximumDate: DateTime(2050, 12, 31),
+                      mode: CupertinoDatePickerMode.time,
+                      onDateTimeChanged: _timeChanged),
+                ),
+              ],
+            ),
           );
         });
   }
 
   void _dateChanged(DateTime value) {
-    setState(() {
-      _controller.dateTime = value;
-    });
+    _controller.selectedDate = value;
   }
 
   void _timeChanged(DateTime value) {
+    _controller.selectedTime = value;
+  }
+
+  void changeDate() {
     setState(() {
-      _controller.time = value;
+      _controller.dateTime = _controller.selectedDate;
     });
+  }
+
+  void changeTime() {
+    setState(() {
+      _controller.time = _controller.selectedTime;
+    });
+    Navigator.pop(context);
+  }
+
+  cancelClicked() {
+    setState(() {
+      _controller.time = _controller.time1;
+      _controller.dateTime = _controller.date1;
+    });
+    Navigator.pop(context);
   }
 
   DateTime getDate() {
@@ -340,5 +375,37 @@ class _PainIndicatorScreenState extends StateMVC<PainIndicatorScreen> {
       time = AppConfig.now;
     }
     return time;
+  }
+
+  okCancelUI(int i) {
+    return Container(
+      child: Expanded(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            GestureDetector(
+                onTap: () {
+                  cancelClicked();
+                },
+                child: Text(
+                  ConstantStrings.cancel,
+                  style: AppConfig.blackText,
+                )),
+            GestureDetector(
+                onTap: () {
+                  if (i == 1) {
+                    changeDate();
+                  } else {
+                    changeTime();
+                  }
+                },
+                child: Text(
+                  ConstantStrings.ok,
+                  style: AppConfig.blackText,
+                )),
+          ],
+        ),
+      ),
+    );
   }
 }

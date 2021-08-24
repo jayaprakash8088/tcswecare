@@ -11,5 +11,9 @@ class PainIndicatorController extends ControllerMVC {
   double spinnerValue;
   //date value
   DateTime dateTime;
+  DateTime selectedDate;
   DateTime time;
+  DateTime selectedTime;
+  DateTime date1;
+  DateTime time1;
 }
