@@ -23,4 +23,9 @@ class ConstantStrings {
   static String card4Text = 'Contact Your\nDoctor ';
   static String contactDoctorText = 'If pain persists, try the below\nsteps: ';
   static String tel = 'tel:';
+  static String feeling = 'How are you feeling\ntoday?';
+  static String noPain = 'No Pain';
+  static String tooPain = 'Too Painful';
+  static String symptoms = 'When did this symptom happen?';
+  static String submit = 'SUBMIT';
 }

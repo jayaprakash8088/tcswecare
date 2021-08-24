@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:tcswecare/mvc/utils/app_color.dart';
 import 'package:tcswecare/mvc/utils/assets.dart';
 import 'package:tcswecare/mvc/utils/constant_strings.dart';
@@ -26,6 +27,13 @@ class AppConfig {
   static String selected;
   static TextStyle blackText = TextStyle(
       fontSize: FontSize.size16,
+      fontWeight: FontWeight.w600,
+      fontFamily: AppConfig.montserrat,
+      fontStyle: AppConfig.normal,
+      color: AppColor.black);
+  //center text
+  static TextStyle centerText = TextStyle(
+      fontSize: FontSize.size22,
       fontWeight: FontWeight.w500,
       fontFamily: AppConfig.montserrat,
       fontStyle: AppConfig.normal,
@@ -36,4 +44,7 @@ class AppConfig {
       await launch(ConstantStrings.tel + url);
     } catch (e) {}
   }
+
+  static var dateFormat = DateFormat('dd/mmm/yyyy');
+  static var timeFormat = DateFormat().add_jm();
 }

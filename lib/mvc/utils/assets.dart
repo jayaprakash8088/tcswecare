@@ -20,4 +20,6 @@ class Assets {
   static String sleep = 'images/sleep.svg';
   static String medicine = 'images/medicine.svg';
   static String blueRectangle = 'images/blue_rect.svg';
+  static String clock = 'images/clock.svg';
+  static String calendar = 'images/calendar.svg';
 }

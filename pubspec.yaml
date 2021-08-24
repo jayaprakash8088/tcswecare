@@ -37,6 +37,8 @@ dev_dependencies:
   shared_preferences: ^2.0.6
   flutter_staggered_grid_view: ^0.4.0
   url_launcher: ^6.0.9
+  sleek_circular_slider: ^2.0.1
+  intl: ^0.17.0
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
@@ -72,6 +74,8 @@ flutter:
      - images/sleep.svg
      - images/stethoscope.svg
      - images/blue_rect.svg
+     - images/clock.svg
+     - images/calendar.svg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
