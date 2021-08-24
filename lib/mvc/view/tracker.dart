@@ -106,6 +106,7 @@ class _SymptomTrackerPageState extends StateMVC<SymptomTrackerPage> {
           padding: EdgeInsets.only(top: FontSize.size100),
           child: Container(height: 100.0, child: DateTimeUI(context)),
         ),
+        symptomsList()
       ],
     );
   }
@@ -162,119 +163,16 @@ class _SymptomTrackerPageState extends StateMVC<SymptomTrackerPage> {
     );
   }
 
-  Widget dateAndTime() {
+  Widget symptomsList() {
     return Container(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          GestureDetector(
-            onTap: () {
-              callDatePicker();
-            },
-            child: Row(
-              children: [
-                Padding(
-                  padding: EdgeInsets.only(right: FontSize.size5),
-                  child: SvgPicture.asset(Assets.calendar),
-                ),
-                Text(
-                  AppConfig.dateFormat.format(getDate()),
-                  style: TextStyle(
-                      color: AppColor.black,
-                      decoration: TextDecoration.underline,
-                      fontWeight: FontWeight.w600,
-                      fontSize: FontSize.size16,
-                      fontFamily: AppConfig.montserrat),
-                )
-              ],
-            ),
-          ),
-          GestureDetector(
-            onTap: () {
-              callTimePicker();
-            },
-            child: Row(
-              children: [
-                Padding(
-                  padding: EdgeInsets.only(right: FontSize.size5),
-                  child: SvgPicture.asset(Assets.clock),
-                ),
-                Text(
-                  AppConfig.timeFormat.format(getTime()),
-                  style: TextStyle(
-                      color: AppColor.black,
-                      fontWeight: FontWeight.w600,
-                      fontSize: FontSize.size16,
-                      decoration: TextDecoration.underline,
-                      fontFamily: AppConfig.montserrat),
-                )
-              ],
-            ),
-          )
-        ],
-      ),
+      child: ListView.builder(
+          physics: ScrollPhysics(parent: ScrollPhysics()),
+          scrollDirection: Axis.horizontal,
+          itemCount: AppConfig.symptomLevels.length,
+          shrinkWrap: true,
+          itemBuilder: (context, index) {
+            return Text(AppConfig.symptomLevels[index]);
+          }),
     );
-  }
-
-  void callDatePicker() {
-    showModalBottomSheet(
-        context: context,
-        builder: (context) {
-          return Container(
-            height: MediaQuery.of(context).copyWith().size.height / 3,
-            child: CupertinoDatePicker(
-                initialDateTime: getDate(),
-                maximumDate: DateTime(2050, 12, 31),
-                mode: CupertinoDatePickerMode.date,
-                onDateTimeChanged: _dateChanged),
-          );
-        });
-  }
-
-  void callTimePicker() {
-    showModalBottomSheet(
-        context: context,
-        builder: (context) {
-          return Container(
-            height: MediaQuery.of(context).copyWith().size.height / 3,
-            child: CupertinoDatePicker(
-                initialDateTime: getTime(),
-                maximumDate: DateTime(2050, 12, 31),
-                mode: CupertinoDatePickerMode.time,
-                onDateTimeChanged: _timeChanged),
-          );
-        });
-  }
-
-  void _dateChanged(DateTime value) {
-    setState(() {
-      _controller.dateTime = value;
-    });
-  }
-
-  void _timeChanged(DateTime value) {
-    setState(() {
-      _controller.time = value;
-    });
-  }
-
-  DateTime getDate() {
-    var date;
-    if (_controller.dateTime != null) {
-      date = _controller.dateTime;
-    } else {
-      date = AppConfig.now;
-    }
-    return date;
-  }
-
-  DateTime getTime() {
-    var time;
-    if (_controller.time != null) {
-      time = _controller.time;
-    } else {
-      time = AppConfig.now;
-    }
-    return time;
   }
 }

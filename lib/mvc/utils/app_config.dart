@@ -24,6 +24,13 @@ class AppConfig {
     {"id": 0, 'image': Assets.englishFlag, 'name': ConstantStrings.english},
     {'id': 1, 'image': Assets.malayFlag, 'name': ConstantStrings.malay}
   ];
+  static List symptomLevels = [
+    'None',
+    'Mild',
+    'Moderate',
+    'Severe',
+    'Unbearable'
+  ];
   static String selected;
   static TextStyle blackText = TextStyle(
       fontSize: FontSize.size16,
