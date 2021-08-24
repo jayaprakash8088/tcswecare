@@ -6,7 +6,10 @@ class PainIndicatorController extends ControllerMVC {
   }
   static PainIndicatorController _this;
   PainIndicatorController._();
-
+  static PainIndicatorController get con => _this;
   // spinner value
   double spinnerValue;
+  //date value
+  DateTime dateTime;
+  DateTime time;
 }

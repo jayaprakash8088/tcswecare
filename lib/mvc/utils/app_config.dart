@@ -45,6 +45,7 @@ class AppConfig {
     } catch (e) {}
   }
 
-  static var dateFormat = DateFormat('dd/mmm/yyyy');
+  static var dateFormat = DateFormat('dd/MM/yyyy');
   static var timeFormat = DateFormat().add_jm();
+  static DateTime now = DateTime.now();
 }
