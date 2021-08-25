@@ -32,4 +32,10 @@ class ConstantStrings {
   static String trackDiary = 'Use this to keep track of the\nsymptoms daily';
   static String ok = 'OK';
   static String cancel = 'Cancel';
+  static String positive = 'Positive';
+  static String negative = 'Negative';
+  static String neutral = 'Neutral';
+  static String mood = 'Mood';
+  static String otherComments = 'Other Comments';
+  static String typeHere = 'Type Here';
 }

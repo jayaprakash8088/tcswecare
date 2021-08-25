@@ -168,7 +168,7 @@ class _PainIndicatorScreenState extends StateMVC<PainIndicatorScreen> {
               EdgeInsets.only(top: FontSize.size20, bottom: FontSize.size20),
           child: Container(height: 100.0, child: DateTimeUI(context)),
         ),
-        submitBtn()
+        AppConfig.submitBtn()
       ],
     );
   }
@@ -184,7 +184,7 @@ class _PainIndicatorScreenState extends StateMVC<PainIndicatorScreen> {
             trackWidth: FontSize.size10),
         customColors: CustomSliderColors(
             dotColor: AppColor.white,
-            trackColor: AppColor.grey,
+            trackColor: AppColor.unSelectedColor,
             dynamicGradient: true,
             progressBarColors: [AppColor.bg1, AppColor.bg2])),
     min: FontSize.size0,
@@ -194,25 +194,4 @@ class _PainIndicatorScreenState extends StateMVC<PainIndicatorScreen> {
     },
     onChangeEnd: (double endValue) {},
   );
-  Widget submitBtn() {
-    return Center(
-      child: Container(
-        height: FontSize.size40,
-        width: FontSize.size250,
-        decoration: BoxDecoration(
-          gradient: AppConfig.gradient,
-          borderRadius: BorderRadius.all(Radius.circular(FontSize.size20)),
-        ),
-        child: Center(
-          child: Text(
-            ConstantStrings.submit,
-            style: TextStyle(
-                color: AppColor.white,
-                fontWeight: FontWeight.bold,
-                fontSize: FontSize.size14),
-          ),
-        ),
-      ),
-    );
-  }
 }

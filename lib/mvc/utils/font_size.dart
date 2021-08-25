@@ -1,6 +1,7 @@
 class FontSize {
   static double size0 = 0.0;
   static double size2 = 2.0;
+  static double size3 = 3.0;
   static double size4 = 4.0;
   static double size5 = 5.0;
   static double size6 = 6.0;
