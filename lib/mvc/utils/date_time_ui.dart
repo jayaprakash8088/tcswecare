@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -147,7 +148,7 @@ class _DateTimeUIState extends StateMVC<DateTimeUI> {
               children: [
                 okCancelUI(1),
                 Container(
-                  height: MediaQuery.of(widget.context).size.height * 0.2,
+                  height: MediaQuery.of(widget.context).size.height * 0.3,
                   child: CupertinoDatePicker(
                       initialDateTime: getDate(),
                       maximumDate: DateTime(2050, 12, 31),
@@ -165,12 +166,12 @@ class _DateTimeUIState extends StateMVC<DateTimeUI> {
         context: widget.context,
         builder: (context) {
           return Container(
-            // height: MediaQuery.of(context).size.height * 0.35,
+            height: MediaQuery.of(context).size.height * 0.35,
             child: Column(
               children: [
-                // okCancelUI(2),
+                okCancelUI(2),
                 Container(
-                  // height: MediaQuery.of(context).size.height * 0.3,
+                  height: MediaQuery.of(context).size.height * 0.3,
                   child: CupertinoDatePicker(
                       initialDateTime: getTime(),
                       maximumDate: DateTime(2050, 12, 31),
@@ -248,7 +249,7 @@ class _DateTimeUIState extends StateMVC<DateTimeUI> {
                   width: FontSize.size100,
                   child: Center(
                     child: Text(
-                      ConstantStrings.cancel,
+                      'cancel'.tr(),
                       style: AppConfig.blackText,
                     ),
                   ),
@@ -266,7 +267,7 @@ class _DateTimeUIState extends StateMVC<DateTimeUI> {
                   width: FontSize.size100,
                   child: Center(
                     child: Text(
-                      ConstantStrings.ok,
+                      'ok'.tr(),
                       style: AppConfig.blackText,
                     ),
                   ),

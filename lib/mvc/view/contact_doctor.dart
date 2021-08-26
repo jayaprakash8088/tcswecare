@@ -5,6 +5,7 @@ import 'package:tcswecare/mvc/utils/app_config.dart';
 import 'package:tcswecare/mvc/utils/assets.dart';
 import 'package:tcswecare/mvc/utils/constant_strings.dart';
 import 'package:tcswecare/mvc/utils/font_size.dart';
+import 'package:tcswecare/mvc/utils/locale_drop_down.dart';
 import 'package:tcswecare/mvc/view/home_page.dart';
 
 class ContactDoctor extends StatefulWidget {
@@ -47,9 +48,12 @@ class _ContactDoctorState extends State<ContactDoctor> {
               ),
             ),
             Positioned(
-                top: FontSize.size50,
+                top: FontSize.size10,
                 right: FontSize.size20,
-                child: getLanguageDropdown()),
+                child: Container(
+                    height: FontSize.size100,
+                    width: FontSize.size140,
+                    child: Center(child: LocaleDropDown()))),
             Padding(
               padding: EdgeInsets.only(
                   top: FontSize.size100, bottom: FontSize.size20),
@@ -58,58 +62,6 @@ class _ContactDoctorState extends State<ContactDoctor> {
           ],
         ),
       ),
-    );
-  }
-
-  Widget getLanguageDropdown() {
-    return DropdownButtonHideUnderline(
-      child: ButtonTheme(
-        alignedDropdown: true,
-        child: DropdownButton<String>(
-          isDense: true,
-          hint: getFlagAndCountryName(),
-          value: AppConfig.selected,
-          onChanged: (String newValue) {
-            setState(() {
-              AppConfig.selected = newValue;
-            });
-          },
-          items: AppConfig.languageList.map((Map map) {
-            return new DropdownMenuItem<String>(
-              value: map["id"].toString(),
-              // value: _mySelection,
-              child: Row(
-                children: <Widget>[
-                  Image.asset(
-                    map["image"],
-                    width: FontSize.size25,
-                  ),
-                  Container(
-                      margin: EdgeInsets.only(left: FontSize.size10),
-                      child: Text(map["name"])),
-                ],
-              ),
-            );
-          }).toList(),
-        ),
-      ),
-    );
-  }
-
-  Widget getFlagAndCountryName() {
-    return Row(
-      children: <Widget>[
-        Image.asset(
-          Assets.englishFlag,
-          width: FontSize.size25,
-        ),
-        Container(
-            margin: EdgeInsets.only(left: FontSize.size10),
-            child: Text(
-              ConstantStrings.english,
-              style: TextStyle(color: AppColor.black),
-            )),
-      ],
     );
   }
 

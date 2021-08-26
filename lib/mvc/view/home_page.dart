@@ -11,6 +11,7 @@ import 'package:tcswecare/mvc/utils/app_config.dart';
 import 'package:tcswecare/mvc/utils/assets.dart';
 import 'package:tcswecare/mvc/utils/constant_strings.dart';
 import 'package:tcswecare/mvc/utils/font_size.dart';
+import 'package:tcswecare/mvc/utils/locale_drop_down.dart';
 import 'package:tcswecare/mvc/view/contact_doctor.dart';
 import 'package:tcswecare/mvc/view/pain_indicator_screen.dart';
 import 'package:tcswecare/mvc/view/tracker.dart';
@@ -71,7 +72,7 @@ class _HomePageState extends StateMVC<HomePage> {
     return AppBar(
       backgroundColor: AppColor.transparent,
       elevation: FontSize.size0,
-      actions: [getLanguageDropdown()],
+      actions: [Container(width: 150, child: Center(child: LocaleDropDown()))],
       leading: Image.asset(Assets.hamburgerIcon),
       centerTitle: false,
       leadingWidth: FontSize.size30,
@@ -94,7 +95,7 @@ class _HomePageState extends StateMVC<HomePage> {
           onChanged: (String newValue) {
             setState(() {
               AppConfig.selected = newValue;
-              if (newValue == ConstantStrings.english) {
+              if (newValue == '0') {
                 context.setLocale(Locale('en', 'US'));
               } else {
                 context.setLocale(Locale('ms', 'MYS'));
@@ -144,17 +145,17 @@ class _HomePageState extends StateMVC<HomePage> {
     return Padding(
       padding: EdgeInsets.only(top: FontSize.size35),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Center(
-            child: Text(
-              'gm'.tr(),
-              style: TextStyle(
-                  fontSize: FontSize.size25,
-                  color: AppColor.black,
-                  fontFamily: AppConfig.montserrat,
-                  fontStyle: AppConfig.normal,
-                  fontWeight: FontWeight.w600),
-            ),
+          Text(
+            'gm'.tr(),
+            textAlign: TextAlign.center,
+            style: TextStyle(
+                fontSize: FontSize.size25,
+                color: AppColor.black,
+                fontFamily: AppConfig.montserrat,
+                fontStyle: AppConfig.normal,
+                fontWeight: FontWeight.w600),
           ),
           Center(
             child: Padding(
