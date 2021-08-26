@@ -1,4 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
 import 'package:tcswecare/mvc/view/contact_doctor.dart';
 import 'package:tcswecare/mvc/view/home_page.dart';
@@ -12,6 +14,13 @@ class WeCareApp extends AppMVC {
   Widget build(BuildContext context) {
     _app = MaterialApp(
       debugShowCheckedModeBanner: false,
+      localizationsDelegates: [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        EasyLocalization.of(context).delegate,
+      ],
+      supportedLocales: EasyLocalization.of(context).supportedLocales,
+      locale: EasyLocalization.of(context).locale,
       title: 'TCS We Care',
       initialRoute: '/',
       routes: {

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -93,6 +94,11 @@ class _HomePageState extends StateMVC<HomePage> {
           onChanged: (String newValue) {
             setState(() {
               AppConfig.selected = newValue;
+              if (newValue == ConstantStrings.english) {
+                context.setLocale(Locale('en', 'US'));
+              } else {
+                context.setLocale(Locale('ms', 'MYS'));
+              }
             });
           },
           items: AppConfig.languageList.map((Map map) {
@@ -141,7 +147,7 @@ class _HomePageState extends StateMVC<HomePage> {
         children: [
           Center(
             child: Text(
-              'Good Morning !',
+              'gm'.tr(),
               style: TextStyle(
                   fontSize: FontSize.size25,
                   color: AppColor.black,

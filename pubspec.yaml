@@ -39,6 +39,7 @@ dev_dependencies:
   url_launcher: ^6.0.9
   sleek_circular_slider: ^2.0.1
   intl: ^0.17.0
+  easy_localization: ^3.0.0
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
@@ -52,6 +53,10 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
+     - assets/
+     - assets/translations/
+     - assets/translations/en-US.json
+     - assets/translations/ms-MYS.json
      - images/big_rectangle1.svg
      - images/big_rectangle1.png
      - images/small_rectangle1.svg
