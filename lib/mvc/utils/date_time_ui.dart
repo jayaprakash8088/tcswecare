@@ -139,15 +139,15 @@ class _DateTimeUIState extends StateMVC<DateTimeUI> {
 
   void callDatePicker() {
     showModalBottomSheet(
-        context: context,
-        builder: (context) {
+        context: widget.context,
+        builder: (BuildContext context) {
           return Container(
-            height: MediaQuery.of(context).size.height * 0.35,
+            height: MediaQuery.of(widget.context).size.height * 0.35,
             child: Column(
               children: [
                 okCancelUI(1),
                 Container(
-                  height: MediaQuery.of(context).size.height * 0.3,
+                  height: MediaQuery.of(widget.context).size.height * 0.2,
                   child: CupertinoDatePicker(
                       initialDateTime: getDate(),
                       maximumDate: DateTime(2050, 12, 31),
@@ -162,15 +162,15 @@ class _DateTimeUIState extends StateMVC<DateTimeUI> {
 
   void callTimePicker() {
     showModalBottomSheet(
-        context: context,
+        context: widget.context,
         builder: (context) {
           return Container(
-            height: MediaQuery.of(context).size.height * 0.35,
+            // height: MediaQuery.of(context).size.height * 0.35,
             child: Column(
               children: [
-                okCancelUI(2),
+                // okCancelUI(2),
                 Container(
-                  height: MediaQuery.of(context).size.height * 0.3,
+                  // height: MediaQuery.of(context).size.height * 0.3,
                   child: CupertinoDatePicker(
                       initialDateTime: getTime(),
                       maximumDate: DateTime(2050, 12, 31),
