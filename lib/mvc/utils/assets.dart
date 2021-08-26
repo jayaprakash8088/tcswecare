@@ -23,4 +23,5 @@ class Assets {
   static String clock = 'images/clock.svg';
   static String calendar = 'images/calendar.svg';
   static String smallBlueRect = 'images/blue_small_rect.svg';
+  static String splashBg = 'images/splash_bg.svg';
 }

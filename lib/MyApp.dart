@@ -9,6 +9,7 @@ import 'package:tcswecare/mvc/view/initial_page.dart';
 import 'package:tcswecare/mvc/view/login_screen.dart';
 import 'package:tcswecare/mvc/view/pain_indicator_screen.dart';
 import 'package:tcswecare/mvc/view/sign_up_screen.dart';
+import 'package:tcswecare/mvc/view/splash_screen.dart';
 import 'package:tcswecare/mvc/view/tracker.dart';
 
 class WeCareApp extends AppMVC {
@@ -29,7 +30,8 @@ class WeCareApp extends AppMVC {
       title: 'TCS We Care',
       initialRoute: '/',
       routes: {
-        '/': (context) => InitialPage(),
+        '/': (context) => SplashScreen(),
+        '/initialPage': (context) => InitialPage(),
         '/login': (context) => LoginScreen(),
         '/signUp': (context) => SignUpScreen(),
         '/homePage': (context) => HomePage(),
