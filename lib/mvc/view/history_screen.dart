@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:syncfusion_flutter_charts/sparkcharts.dart';
 import 'package:tcswecare/mvc/utils/app_color.dart';
 import 'package:tcswecare/mvc/utils/app_config.dart';
 import 'package:tcswecare/mvc/utils/assets.dart';
@@ -85,7 +86,8 @@ class _HistoryScreenState extends State<HistoryScreen> {
             style: AppConfig.blackText,
           ),
         ),
-        dropDownBox()
+        dropDownBox(),
+        graph()
       ],
     );
   }
@@ -166,6 +168,16 @@ class _HistoryScreenState extends State<HistoryScreen> {
           ),
         ),
       ),
+    );
+  }
+
+  Widget graph() {
+    return SfSparkLineChart(
+      width: MediaQuery.of(context).size.width * 0.7,
+      marker: SparkChartMarker(
+          borderColor: Colors.orange,
+          borderWidth: 2,
+          displayMode: SparkChartMarkerDisplayMode.all),
     );
   }
 }
