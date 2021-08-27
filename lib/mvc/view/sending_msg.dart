@@ -1,12 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:mvc_pattern/mvc_pattern.dart';
+import 'package:tcswecare/mvc/controller/pain_indicator_controller.dart';
 import 'package:tcswecare/mvc/utils/app_color.dart';
 import 'package:tcswecare/mvc/utils/app_config.dart';
 import 'package:tcswecare/mvc/utils/assets.dart';
 import 'package:tcswecare/mvc/utils/constant_strings.dart';
 import 'package:tcswecare/mvc/utils/font_size.dart';
 import 'package:tcswecare/mvc/utils/locale_drop_down.dart';
+import 'package:tcswecare/mvc/view/message_received.dart';
 
 class TransmittingMessage extends StatefulWidget {
   TransmittingMessage({Key key}) : super(key: key);
@@ -17,7 +20,11 @@ class TransmittingMessage extends StatefulWidget {
   }
 }
 
-class _TransmittingMessageState extends State<TransmittingMessage> {
+class _TransmittingMessageState extends StateMVC<TransmittingMessage> {
+  PainIndicatorController _painIndicatorController;
+  _TransmittingMessageState() : super(PainIndicatorController()) {
+    _painIndicatorController = controller;
+  }
   @override
   void initState() {
     super.initState();
@@ -126,10 +133,14 @@ class _TransmittingMessageState extends State<TransmittingMessage> {
   }
 
   void _move() {
-    Future.delayed(Duration(seconds: 5), () {
+    Future.delayed(Duration(seconds: 2), () {
       setState(() {
         i = 1;
       });
+      Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(builder: (context) => MessageReceived()),
+          (route) => false);
     });
   }
 }

@@ -21,6 +21,7 @@ class ConstantStrings {
   static String card1Text = 'View Your\nHistory';
   static String card3Text = 'Record Your\nPain';
   static String card4Text = 'Contact Your\nDoctor ';
+  static String contactDoctor = 'Contact\nDoctor ';
   static String contactDoctorText = 'If pain persists, try the below\nsteps: ';
   static String tel = 'tel:';
   static String feeling = 'How are you feeling\ntoday?';
@@ -42,4 +43,7 @@ class ConstantStrings {
   static String collectingInfo = 'Collecting\nInformation';
   static String sendingMsg = 'Sending\nMessage';
   static String msgSent = 'Message\nSent';
+  static String painPersists = 'If pain persists, try the\nbelow steps: ';
+  static String takeExtraDose = 'Take an\nextra dose';
+  static String restWell = 'Rest Well';
 }

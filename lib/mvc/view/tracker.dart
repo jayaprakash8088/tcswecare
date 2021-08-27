@@ -13,6 +13,7 @@ import 'package:tcswecare/mvc/utils/date_time_ui.dart';
 import 'package:tcswecare/mvc/utils/font_size.dart';
 import 'package:tcswecare/mvc/utils/locale_drop_down.dart';
 import 'package:tcswecare/mvc/utils/slider_shape.dart';
+import 'package:tcswecare/mvc/view/sending_msg.dart';
 
 class SymptomTrackerPage extends StatefulWidget {
   SymptomTrackerPage({Key key}) : super(key: key);
@@ -121,7 +122,15 @@ class _SymptomTrackerPageState extends StateMVC<SymptomTrackerPage> {
         commentsSection(),
         Padding(
           padding: EdgeInsets.only(top: FontSize.size20),
-          child: AppConfig.submitBtn(),
+          child: GestureDetector(
+              onTap: () {
+                Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => TransmittingMessage()),
+                    (route) => false);
+              },
+              child: AppConfig.submitBtn()),
         )
       ],
     );

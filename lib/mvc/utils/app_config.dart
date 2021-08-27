@@ -20,6 +20,14 @@ class AppConfig {
       begin: Alignment.centerLeft,
       end: Alignment.centerRight,
       colors: <Color>[AppColor.bg1, AppColor.bg2]);
+  static LinearGradient blueGradient = LinearGradient(
+      begin: Alignment.topLeft,
+      end: Alignment.bottomRight,
+      colors: <Color>[AppColor.blurGradient1, AppColor.blurGradient2]);
+  static LinearGradient redGradient = LinearGradient(
+      begin: Alignment.topLeft,
+      end: Alignment.centerRight,
+      colors: <Color>[AppColor.gr1, AppColor.gr2]);
   static List<Map> languageList = [
     {"id": 0, 'image': Assets.englishFlag, 'name': ConstantStrings.english},
     {'id': 1, 'image': Assets.malayFlag, 'name': ConstantStrings.malay}

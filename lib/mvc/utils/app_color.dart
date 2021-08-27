@@ -9,6 +9,8 @@ class AppColor {
   static Color linkColor = Color.fromRGBO(3, 124, 179, 1);
   static Color bg1 = Color.fromRGBO(229, 60, 132, 1);
   static Color bg2 = Color.fromRGBO(157, 12, 252, 1);
+  static Color gr1 = Color.fromRGBO(223, 61, 134, 1);
+  static Color gr2 = Color.fromRGBO(140, 70, 150, 1);
   static Color unSelectedColor = Color.fromRGBO(196, 196, 196, 1);
   static Color grey = Colors.grey;
   static Color hintText = Color.fromRGBO(0, 0, 0, 0.5);
@@ -22,4 +24,6 @@ class AppColor {
   static Color purple = Color.fromRGBO(140, 70, 150, 1);
   static Color lightBlue = Color.fromRGBO(51, 174, 241, 1);
   static Color bgBlue = Color.fromRGBO(34, 167, 240, 1);
+  static Color blurGradient1 = Color.fromRGBO(51, 174, 241, 1);
+  static Color blurGradient2 = Color.fromRGBO(169, 193, 229, 1);
 }

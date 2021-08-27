@@ -26,5 +26,8 @@ class Assets {
   static String splashBg = 'images/splash_bg.svg';
   static String frameWorld = 'images/frame_world.svg';
   static String loading = 'images/loading.svg';
+  static String tablet = 'images/tablet.png';
+  static String restWell = 'images/rest.png';
+  static String telephone = 'images/telephone.png';
   static String loadingCompleted = 'images/loading_completed.svg';
 }

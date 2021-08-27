@@ -190,7 +190,7 @@ class _ContactDoctorState extends State<ContactDoctor> {
                         padding: EdgeInsets.only(
                             top: FontSize.size15, left: FontSize.size15),
                         child: Text(
-                          'Take an\nextra dose',
+                          ConstantStrings.takeExtraDose,
                           style: TextStyle(
                               color: AppColor.white,
                               fontSize: FontSize.size18,
@@ -224,7 +224,7 @@ class _ContactDoctorState extends State<ContactDoctor> {
                         padding: EdgeInsets.only(
                             top: FontSize.size15, left: FontSize.size15),
                         child: Text(
-                          'Rest Well',
+                          ConstantStrings.restWell,
                           style: TextStyle(
                               color: AppColor.white,
                               fontSize: FontSize.size18,
