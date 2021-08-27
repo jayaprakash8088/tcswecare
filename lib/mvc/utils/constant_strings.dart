@@ -38,4 +38,8 @@ class ConstantStrings {
   static String mood = 'Mood';
   static String otherComments = 'Other Comments';
   static String typeHere = 'Type Here';
+  static String msgTransmitted = 'Your message is being\ntransmitted...';
+  static String collectingInfo = 'Collecting\nInformation';
+  static String sendingMsg = 'Sending\nMessage';
+  static String msgSent = 'Message\nSent';
 }

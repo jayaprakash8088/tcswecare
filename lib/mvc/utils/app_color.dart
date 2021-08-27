@@ -21,4 +21,5 @@ class AppColor {
   static Color lightGreen = Color.fromRGBO(72, 207, 150, 1);
   static Color purple = Color.fromRGBO(140, 70, 150, 1);
   static Color lightBlue = Color.fromRGBO(51, 174, 241, 1);
+  static Color bgBlue = Color.fromRGBO(34, 167, 240, 1);
 }

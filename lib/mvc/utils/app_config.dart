@@ -46,6 +46,12 @@ class AppConfig {
       fontFamily: AppConfig.montserrat,
       fontStyle: AppConfig.normal,
       color: AppColor.black);
+  static TextStyle normalText = TextStyle(
+      fontSize: FontSize.size12,
+      fontWeight: FontWeight.w500,
+      fontFamily: AppConfig.montserrat,
+      fontStyle: AppConfig.normal,
+      color: AppColor.black);
   //center text
   static TextStyle centerText = TextStyle(
       fontSize: FontSize.size22,

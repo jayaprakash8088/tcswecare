@@ -24,4 +24,7 @@ class Assets {
   static String calendar = 'images/calendar.svg';
   static String smallBlueRect = 'images/blue_small_rect.svg';
   static String splashBg = 'images/splash_bg.svg';
+  static String frameWorld = 'images/frame_world.svg';
+  static String loading = 'images/loading.svg';
+  static String loadingCompleted = 'images/loading_completed.svg';
 }
