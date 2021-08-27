@@ -108,12 +108,7 @@ class _MessageReceivedState extends State<MessageReceived> {
                   child: Center(
                     child: Text(
                       ConstantStrings.home,
-                      style: TextStyle(
-                          color: AppColor.white,
-                          fontFamily: AppConfig.roboto,
-                          fontStyle: AppConfig.normal,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 14.0),
+                      style: AppConfig.robotoText,
                     ),
                   ),
                 ),

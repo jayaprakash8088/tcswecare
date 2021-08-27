@@ -32,6 +32,20 @@ class AppConfig {
     {"id": 0, 'image': Assets.englishFlag, 'name': ConstantStrings.english},
     {'id': 1, 'image': Assets.malayFlag, 'name': ConstantStrings.malay}
   ];
+  static List<Map> monthList = [
+    {'id': 0, 'month': 'January'},
+    {'id': 1, 'month': 'February'},
+    {'id': 2, 'month': 'March'},
+    {'id': 3, 'month': 'April'},
+    {'id': 4, 'month': 'May'},
+    {'id': 5, 'month': 'June'},
+    {'id': 6, 'month': 'Jule'},
+    {'id': 7, 'month': 'August'},
+    {'id': 8, 'month': 'September'},
+    {'id': 9, 'month': 'October'},
+    {'id': 10, 'month': 'November'},
+    {'id': 11, 'month': 'December'},
+  ];
   static List symptomLevels = [
     'None',
     'Mild',
@@ -46,8 +60,16 @@ class AppConfig {
     'Constipation',
     'Nausea'
   ];
-  static List moodList = ['Positive', 'Neutral', 'Negative'];
+  static List<Map> diagnosisMap = [
+    {'id': 0, 'name': 'Anxiety'},
+    {'id': 1, 'name': 'Constipation'},
+    {'id': 2, 'name': 'Nausea'},
+    {'id': 3, 'name': 'Itchy/Dry Skin'},
+    {'id': 4, 'name': 'Shortness of Breath'}
+  ];
   static String selected;
+  static String monthSelected;
+  static String diagnosisSelected;
   static TextStyle blackText = TextStyle(
       fontSize: FontSize.size16,
       fontWeight: FontWeight.w600,
@@ -62,8 +84,8 @@ class AppConfig {
       color: AppColor.black);
   //center text
   static TextStyle centerText = TextStyle(
-      fontSize: FontSize.size22,
-      fontWeight: FontWeight.w500,
+      fontSize: FontSize.size25,
+      fontWeight: FontWeight.w600,
       fontFamily: AppConfig.montserrat,
       fontStyle: AppConfig.normal,
       color: AppColor.black);
@@ -98,4 +120,17 @@ class AppConfig {
       ),
     );
   }
+
+  //roboto text
+  static TextStyle robotoText = TextStyle(
+      color: AppColor.white,
+      fontFamily: AppConfig.roboto,
+      fontStyle: AppConfig.normal,
+      fontWeight: FontWeight.bold,
+      fontSize: FontSize.size14);
+  static TextStyle robotoTextBlack = TextStyle(
+      color: AppColor.black,
+      fontFamily: AppConfig.roboto,
+      fontStyle: AppConfig.normal,
+      fontSize: FontSize.size14);
 }

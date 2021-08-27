@@ -13,6 +13,7 @@ import 'package:tcswecare/mvc/utils/constant_strings.dart';
 import 'package:tcswecare/mvc/utils/font_size.dart';
 import 'package:tcswecare/mvc/utils/locale_drop_down.dart';
 import 'package:tcswecare/mvc/view/contact_doctor.dart';
+import 'package:tcswecare/mvc/view/history_screen.dart';
 import 'package:tcswecare/mvc/view/pain_indicator_screen.dart';
 import 'package:tcswecare/mvc/view/tracker.dart';
 
@@ -81,63 +82,6 @@ class _HomePageState extends StateMVC<HomePage> {
         height: FontSize.size22,
         width: FontSize.size120,
       ),
-    );
-  }
-
-  Widget getLanguageDropdown() {
-    return DropdownButtonHideUnderline(
-      child: ButtonTheme(
-        alignedDropdown: true,
-        child: DropdownButton<String>(
-          isDense: true,
-          hint: getFlagAndCountryName(),
-          value: AppConfig.selected,
-          onChanged: (String newValue) {
-            setState(() {
-              AppConfig.selected = newValue;
-              if (newValue == '0') {
-                context.setLocale(Locale('en', 'US'));
-              } else {
-                context.setLocale(Locale('ms', 'MYS'));
-              }
-            });
-          },
-          items: AppConfig.languageList.map((Map map) {
-            return new DropdownMenuItem<String>(
-              value: map["id"].toString(),
-              // value: _mySelection,
-              child: Row(
-                children: <Widget>[
-                  Image.asset(
-                    map["image"],
-                    width: FontSize.size25,
-                  ),
-                  Container(
-                      margin: EdgeInsets.only(left: FontSize.size10),
-                      child: Text(map["name"])),
-                ],
-              ),
-            );
-          }).toList(),
-        ),
-      ),
-    );
-  }
-
-  Widget getFlagAndCountryName() {
-    return Row(
-      children: <Widget>[
-        Image.asset(
-          Assets.englishFlag,
-          width: FontSize.size25,
-        ),
-        Container(
-            margin: EdgeInsets.only(left: FontSize.size10),
-            child: Text(
-              ConstantStrings.english,
-              style: TextStyle(color: AppColor.black),
-            )),
-      ],
     );
   }
 
@@ -307,6 +251,7 @@ class _HomePageState extends StateMVC<HomePage> {
   void moveToNextPage(int index) {
     switch (index) {
       case 0:
+        history();
         break;
       case 1:
         recordSymptom();
@@ -333,5 +278,10 @@ class _HomePageState extends StateMVC<HomePage> {
   void recordSymptom() {
     Navigator.push(
         context, MaterialPageRoute(builder: (context) => SymptomTrackerPage()));
+  }
+
+  void history() {
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => HistoryScreen()));
   }
 }

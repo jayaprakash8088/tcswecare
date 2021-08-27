@@ -46,4 +46,8 @@ class ConstantStrings {
   static String painPersists = 'If pain persists, try the\nbelow steps: ';
   static String takeExtraDose = 'Take an\nextra dose';
   static String restWell = 'Rest Well';
+  static String symptomsOverTime = 'Symptoms over time';
+  static String history = 'History';
+  static String anxiety = 'Anxiety';
+  static String january = 'January';
 }

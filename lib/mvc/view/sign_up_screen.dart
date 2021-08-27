@@ -79,12 +79,7 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
                     child: Text(
                       ConstantStrings.startText,
                       textAlign: TextAlign.center,
-                      style: TextStyle(
-                          color: AppColor.black,
-                          fontFamily: AppConfig.roboto,
-                          fontStyle: AppConfig.normal,
-                          fontSize: FontSize.size18,
-                          fontWeight: FontWeight.w400),
+                      style: AppConfig.robotoText,
                     ),
                   ),
                   buildUI(),
