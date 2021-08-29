@@ -1,5 +1,3 @@
-import 'package:charts_flutter/flutter.dart' as charts;
-import 'package:draw_graph/models/feature.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tcswecare/mvc/utils/app_color.dart';
@@ -19,24 +17,11 @@ class HistoryScreen extends StatefulWidget {
 }
 
 class _HistoryScreenState extends State<HistoryScreen> {
-  List<charts.Series<Sales, int>> _seriesLineData;
-
   @override
   void initState() {
     super.initState();
-    _seriesLineData = <charts.Series<Sales, int>>[];
   }
 
-  final List<Feature> features = [
-    Feature(
-      color: Colors.blue,
-      data: [0.3, 0.6, 0.8, 0.9, 1, 1.2],
-    ),
-    Feature(
-      color: Colors.black,
-      data: [1, 0.8, 0.6, 0.7, 0.3, 0.1],
-    ),
-  ];
   @override
   void dispose() {
     super.dispose();
@@ -101,14 +86,14 @@ class _HistoryScreenState extends State<HistoryScreen> {
           ),
         ),
         dropDownBox(),
-        Padding(
-            padding: EdgeInsets.only(top: FontSize.size20),
-            // child: areaGraph(),
-            child: Container(
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height * 0.4,
-              child: areaChart(),
-            ))
+        // Padding(
+        //     padding: EdgeInsets.only(top: FontSize.size20),
+        //     // child: areaGraph(),
+        //     child: Container(
+        //       width: MediaQuery.of(context).size.width,
+        //       height: MediaQuery.of(context).size.height * 0.4,
+        //       child: areaChart(),
+        //     ))
       ],
     );
   }
@@ -188,16 +173,6 @@ class _HistoryScreenState extends State<HistoryScreen> {
           ),
         ),
       ),
-    );
-  }
-
-  Widget areaChart() {
-    return charts.LineChart(
-      _seriesLineData,
-      defaultRenderer:
-          new charts.LineRendererConfig(includeArea: true, stacked: true),
-      animate: true,
-      animationDuration: Duration(seconds: 5),
     );
   }
 }
