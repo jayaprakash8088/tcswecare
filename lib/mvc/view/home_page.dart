@@ -251,10 +251,10 @@ class _HomePageState extends StateMVC<HomePage> {
   void moveToNextPage(int index) {
     switch (index) {
       case 0:
-        history();
+        // history();
         break;
       case 1:
-        recordSymptom();
+        // recordSymptom();
         break;
       case 2:
         recordPain();

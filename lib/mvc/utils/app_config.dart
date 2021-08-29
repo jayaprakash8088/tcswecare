@@ -67,6 +67,27 @@ class AppConfig {
     {'id': 3, 'name': 'Itchy/Dry Skin'},
     {'id': 4, 'name': 'Shortness of Breath'}
   ];
+  static List<String> yValue = [
+    'None',
+    'Mild',
+    'Moderate',
+    'Severe',
+    'Unbearable'
+  ];
+  static List<String> xValue = [
+    '1',
+    '3',
+    '6',
+    '9',
+    '12',
+    '15',
+    '18',
+    '21',
+    '24',
+    '27',
+    '30'
+  ];
+
   static String selected;
   static String monthSelected;
   static String diagnosisSelected;

@@ -11,7 +11,6 @@ import 'package:tcswecare/mvc/utils/constant_strings.dart';
 import 'package:tcswecare/mvc/utils/date_time_ui.dart';
 import 'package:tcswecare/mvc/utils/font_size.dart';
 import 'package:tcswecare/mvc/utils/locale_drop_down.dart';
-import 'package:tcswecare/mvc/view/sending_msg.dart';
 
 class PainIndicatorScreen extends StatefulWidget {
   PainIndicatorScreen({Key key}) : super(key: key);
@@ -123,11 +122,11 @@ class _PainIndicatorScreenState extends StateMVC<PainIndicatorScreen> {
         ),
         GestureDetector(
             onTap: () {
-              Navigator.pushAndRemoveUntil(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => TransmittingMessage()),
-                  (route) => false);
+              // Navigator.pushAndRemoveUntil(
+              //     context,
+              //     MaterialPageRoute(
+              //         builder: (context) => TransmittingMessage()),
+              //     (route) => false);
             },
             child: AppConfig.submitBtn())
       ],
