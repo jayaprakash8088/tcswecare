@@ -121,10 +121,16 @@ class _HistoryScreenState extends StateMVC<HistoryScreen> {
     Data('Unbearable', '29'),
     Data('Unbearable', '30'),
   ];
+  ZoomPanBehavior _zoomPanBehavior;
 
   @override
   void initState() {
     super.initState();
+    _zoomPanBehavior = ZoomPanBehavior(
+        enablePinching: true,
+        enablePanning: true,
+        enableDoubleTapZooming: true,
+        enableSelectionZooming: true);
   }
 
   @override
@@ -196,28 +202,33 @@ class _HistoryScreenState extends StateMVC<HistoryScreen> {
             child: Container(
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height * 0.4,
-              // child: graph(),
               child: Row(
                 children: [
-                  Container(
-                    height: MediaQuery.of(context).size.height * 0.4,
-                    width: MediaQuery.of(context).size.width * 0.2,
-                    child: ListView.builder(
-                        physics: ScrollPhysics(parent: ScrollPhysics()),
-                        scrollDirection: Axis.vertical,
-                        itemCount: 5,
-                        shrinkWrap: true,
-                        reverse: true,
-                        itemBuilder: (context, index) {
-                          return Padding(
-                            padding: EdgeInsets.only(
-                                top: 20.0, bottom: 25.0, left: 5.0),
-                            child: Text(
-                              AppConfig.symptomLevels[index],
-                              style: AppConfig.normalText,
-                            ),
-                          );
-                        }),
+                  Padding(
+                    padding: EdgeInsets.only(
+                        top: FontSize.size20, bottom: FontSize.size20),
+                    child: Container(
+                      height: MediaQuery.of(context).size.height * 0.4,
+                      width: MediaQuery.of(context).size.width * 0.2,
+                      child: ListView.builder(
+                          physics: NeverScrollableScrollPhysics(),
+                          scrollDirection: Axis.vertical,
+                          itemCount: 5,
+                          shrinkWrap: true,
+                          reverse: true,
+                          itemBuilder: (context, index) {
+                            return Padding(
+                              padding: EdgeInsets.only(
+                                  top: FontSize.size20,
+                                  bottom: FontSize.size18,
+                                  left: FontSize.size5),
+                              child: Text(
+                                AppConfig.symptomLevels[index],
+                                style: AppConfig.normalText,
+                              ),
+                            );
+                          }),
+                    ),
                   ),
                   graph(),
                 ],
@@ -239,7 +250,8 @@ class _HistoryScreenState extends StateMVC<HistoryScreen> {
                   width: FontSize.size200,
                   decoration: BoxDecoration(
                     gradient: AppConfig.gradient,
-                    borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                    borderRadius:
+                        BorderRadius.all(Radius.circular(FontSize.size20)),
                   ),
                   child: Center(
                     child: Text(
@@ -337,24 +349,15 @@ class _HistoryScreenState extends StateMVC<HistoryScreen> {
   Widget graph() {
     return SfCartesianChart(
         enableMultiSelection: true,
-        primaryXAxis: CategoryAxis(maximum: 30.0),
-        primaryYAxis: CategoryAxis(),
+        zoomPanBehavior: _zoomPanBehavior,
+        primaryXAxis: CategoryAxis(maximum: FontSize.size30),
+        primaryYAxis: CategoryAxis(maximum: 5.8, minimum: 1),
         series: <ChartSeries>[
-          // SplineAreaSeries<Data, String>(
-          //     gradient: AppConfig.anxietyGradient,
-          //     dataSource: data,
-          //     xValueMapper: (Data sales, _) => sales.date,
-          //     yValueMapper: (Data sales, _) => getYValue(sales.pain)),
           SplineAreaSeries<Data, String>(
               gradient: AppConfig.nauseaGradient,
               dataSource: data3,
               xValueMapper: (Data sales, _) => sales.date,
               yValueMapper: (Data sales, _) => getYValue(sales.pain)),
-          // SplineAreaSeries<Data, String>(
-          //     gradient: AppConfig.constipationGradient,
-          //     dataSource: data1,
-          //     xValueMapper: (Data sales, _) => sales.date,
-          //     yValueMapper: (Data sales, _) => getYValue(sales.pain)),
         ]);
   }
 
@@ -362,7 +365,7 @@ class _HistoryScreenState extends StateMVC<HistoryScreen> {
     int range = 0;
     switch (pain) {
       case 'None':
-        range = 1;
+        range = 0;
         break;
       case 'Mild':
         range = 2;
