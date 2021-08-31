@@ -28,6 +28,18 @@ class AppConfig {
       begin: Alignment.topLeft,
       end: Alignment.centerRight,
       colors: <Color>[AppColor.gr1, AppColor.gr2]);
+  static LinearGradient anxietyGradient = LinearGradient(
+      begin: Alignment.topCenter,
+      end: Alignment.bottomCenter,
+      colors: <Color>[AppColor.anxiety1, AppColor.white]);
+  static LinearGradient nauseaGradient = LinearGradient(
+      begin: Alignment.topCenter,
+      end: Alignment.bottomCenter,
+      colors: <Color>[AppColor.nausea, AppColor.white]);
+  static LinearGradient constipationGradient = LinearGradient(
+      begin: Alignment.topCenter,
+      end: Alignment.bottomCenter,
+      colors: <Color>[AppColor.constipation, AppColor.white]);
   static List<Map> languageList = [
     {"id": 0, 'image': Assets.englishFlag, 'name': ConstantStrings.english},
     {'id': 1, 'image': Assets.malayFlag, 'name': ConstantStrings.malay}

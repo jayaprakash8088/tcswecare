@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:mvc_pattern/mvc_pattern.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
+import 'package:tcswecare/mvc/controller/history_controller.dart';
 import 'package:tcswecare/mvc/utils/app_color.dart';
 import 'package:tcswecare/mvc/utils/app_config.dart';
 import 'package:tcswecare/mvc/utils/assets.dart';
 import 'package:tcswecare/mvc/utils/constant_strings.dart';
 import 'package:tcswecare/mvc/utils/font_size.dart';
 import 'package:tcswecare/mvc/utils/locale_drop_down.dart';
+import 'package:tcswecare/mvc/view/home_page.dart';
 
 class HistoryScreen extends StatefulWidget {
   HistoryScreen({Key key}) : super(key: key);
@@ -17,21 +20,108 @@ class HistoryScreen extends StatefulWidget {
   }
 }
 
-class _HistoryScreenState extends State<HistoryScreen> {
-  List<SalesData> data = [
-    SalesData('None', '1'),
-    SalesData('Mild', '2'),
-    SalesData('Moderate', '3'),
-    SalesData('Severe', '3'),
-    SalesData('Unbearable', '4')
+class _HistoryScreenState extends StateMVC<HistoryScreen> {
+  _HistoryScreenState() : super(HisToryController()) {
+    _controller = controller;
+  }
+  HisToryController _controller;
+  List<Data> data = [
+    Data('Severe', '1'),
+    Data('Severe', '2'),
+    Data('Moderate', '3'),
+    Data('Severe', '4'),
+    Data('Unbearable', '5'),
+    Data('Mild', '6'),
+    Data('Mild', '7'),
+    Data('Moderate', '8'),
+    Data('None', '9'),
+    Data('None', '10'),
+    Data('None', '11'),
+    Data('Moderate', '12'),
+    Data('Moderate', '13'),
+    Data('Severe', '14'),
+    Data('Severe', '15'),
+    Data('Unbearable', '16'),
+    Data('None', '17'),
+    Data('None', '18'),
+    Data('Mild', '19'),
+    Data('Mild', '20'),
+    Data('Severe', '21'),
+    Data('Severe', '22'),
+    Data('None', '23'),
+    Data('None', '24'),
+    Data('Mild', '25'),
+    Data('Mild', '26'),
+    Data('Unbearable', '27'),
+    Data('Unbearable', '28'),
+    Data('Mild', '29'),
+    Data('Severe', '30')
   ];
-  List<SalesData> data1 = [
-    SalesData('None', '10'),
-    SalesData('Mild', '21'),
-    SalesData('Moderate', '23'),
-    SalesData('Severe', '30'),
-    SalesData('Unbearable', '24')
+  List<Data> data1 = [
+    Data('None', '1'),
+    Data('Mild', '2'),
+    Data('Moderate', '3'),
+    Data('Severe', '4'),
+    Data('Unbearable', '5'),
+    Data('Unbearable', '6'),
+    Data('Unbearable', '7'),
+    Data('Unbearable', '8'),
+    Data('Unbearable', '9'),
+    Data('None', '10'),
+    Data('None', '11'),
+    Data('None', '12'),
+    Data('None', '13'),
+    Data('None', '14'),
+    Data('None', '15'),
+    Data('None', '16'),
+    Data('None', '17'),
+    Data('None', '18'),
+    Data('None', '19'),
+    Data('None', '20'),
+    Data('Mild', '21'),
+    Data('Mild', '22'),
+    Data('Moderate', '23'),
+    Data('Unbearable', '24'),
+    Data('Unbearable', '25'),
+    Data('Unbearable', '26'),
+    Data('Unbearable', '27'),
+    Data('Unbearable', '28'),
+    Data('Unbearable', '29'),
+    Data('Mild', '30')
   ];
+  List<Data> data3 = [
+    Data('None', '1'),
+    Data('None', '2'),
+    Data('Mild', '3'),
+    Data('Severe', '4'),
+    Data('Moderate', '5'),
+    Data('Severe', '6'),
+    Data('Mild', '7'),
+    Data('None', '8'),
+    Data('None', '9'),
+    Data('None', '10'),
+    Data('Mild', '11'),
+    Data('Mild', '12'),
+    Data('Mild', '13'),
+    Data('Moderate', '14'),
+    Data('Moderate', '15'),
+    Data('Moderate', '16'),
+    Data('Severe', '17'),
+    Data('Severe', '18'),
+    Data('Severe', '19'),
+    Data('Severe', '20'),
+    Data('Unbearable', '21'),
+    Data('Unbearable', '22'),
+    Data('Unbearable', '23'),
+    Data('None', '24'),
+    Data('None', '25'),
+    Data('None', '26'),
+    Data('None', '27'),
+    Data('None', '28'),
+    Data('Unbearable', '29'),
+    Data('Unbearable', '30'),
+  ];
+
   @override
   void initState() {
     super.initState();
@@ -106,8 +196,62 @@ class _HistoryScreenState extends State<HistoryScreen> {
             child: Container(
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height * 0.4,
-              child: graph(),
-            ))
+              // child: graph(),
+              child: Row(
+                children: [
+                  Container(
+                    height: MediaQuery.of(context).size.height * 0.4,
+                    width: MediaQuery.of(context).size.width * 0.2,
+                    child: ListView.builder(
+                        physics: ScrollPhysics(parent: ScrollPhysics()),
+                        scrollDirection: Axis.vertical,
+                        itemCount: 5,
+                        shrinkWrap: true,
+                        reverse: true,
+                        itemBuilder: (context, index) {
+                          return Padding(
+                            padding: EdgeInsets.only(
+                                top: 20.0, bottom: 25.0, left: 5.0),
+                            child: Text(
+                              AppConfig.symptomLevels[index],
+                              style: AppConfig.normalText,
+                            ),
+                          );
+                        }),
+                  ),
+                  graph(),
+                ],
+              ),
+            )),
+        Center(
+          child: GestureDetector(
+            onTap: () {
+              Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(builder: (context) => HomePage()),
+                  (route) => false);
+            },
+            child: Padding(
+              padding: EdgeInsets.only(top: FontSize.size25),
+              child: Center(
+                child: Container(
+                  height: FontSize.size40,
+                  width: FontSize.size200,
+                  decoration: BoxDecoration(
+                    gradient: AppConfig.gradient,
+                    borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                  ),
+                  child: Center(
+                    child: Text(
+                      ConstantStrings.home,
+                      style: AppConfig.robotoText,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+        )
       ],
     );
   }
@@ -166,7 +310,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
             isDense: true,
             value: AppConfig.diagnosisSelected,
             hint: Text(
-              ConstantStrings.diagnosis,
+              ConstantStrings.anxiety,
               style: AppConfig.robotoTextBlack,
             ),
             onChanged: (String newValue) {
@@ -192,24 +336,53 @@ class _HistoryScreenState extends State<HistoryScreen> {
 
   Widget graph() {
     return SfCartesianChart(
-        primaryXAxis: CategoryAxis(),
+        enableMultiSelection: true,
+        primaryXAxis: CategoryAxis(maximum: 30.0),
         primaryYAxis: CategoryAxis(),
-        series: <ChartSeries<SalesData, String>>[
-          SplineAreaSeries<SalesData, String>(
-              dataSource: data,
-              xValueMapper: (SalesData sales, _) => sales.date,
-              yValueMapper: (SalesData sales, _) => 1),
-          SplineAreaSeries<SalesData, String>(
-              dataSource: data1,
-              color: AppColor.red,
-              xValueMapper: (SalesData sales, _) => sales.date,
-              yValueMapper: (SalesData sales, _) => 2),
+        series: <ChartSeries>[
+          // SplineAreaSeries<Data, String>(
+          //     gradient: AppConfig.anxietyGradient,
+          //     dataSource: data,
+          //     xValueMapper: (Data sales, _) => sales.date,
+          //     yValueMapper: (Data sales, _) => getYValue(sales.pain)),
+          SplineAreaSeries<Data, String>(
+              gradient: AppConfig.nauseaGradient,
+              dataSource: data3,
+              xValueMapper: (Data sales, _) => sales.date,
+              yValueMapper: (Data sales, _) => getYValue(sales.pain)),
+          // SplineAreaSeries<Data, String>(
+          //     gradient: AppConfig.constipationGradient,
+          //     dataSource: data1,
+          //     xValueMapper: (Data sales, _) => sales.date,
+          //     yValueMapper: (Data sales, _) => getYValue(sales.pain)),
         ]);
+  }
+
+  num getYValue(String pain) {
+    int range = 0;
+    switch (pain) {
+      case 'None':
+        range = 1;
+        break;
+      case 'Mild':
+        range = 2;
+        break;
+      case 'Moderate':
+        range = 3;
+        break;
+      case 'Severe':
+        range = 4;
+        break;
+      case 'Unbearable':
+        range = 5;
+        break;
+    }
+    return range;
   }
 }
 
-class SalesData {
+class Data {
   final String pain;
   final String date;
-  SalesData(this.pain, this.date);
+  Data(this.pain, this.date);
 }

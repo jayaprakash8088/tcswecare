@@ -11,10 +11,14 @@ class AppColor {
   static Color bg2 = Color.fromRGBO(157, 12, 252, 1);
   static Color gr1 = Color.fromRGBO(223, 61, 134, 1);
   static Color gr2 = Color.fromRGBO(140, 70, 150, 1);
+  static Color anxiety1 = Color.fromRGBO(72, 201, 150, 1);
+  static Color constipation = Color.fromRGBO(169, 193, 229, 1);
+  static Color nausea = Color.fromRGBO(51, 174, 241, 1);
   static Color unSelectedColor = Color.fromRGBO(196, 196, 196, 1);
   static Color grey = Colors.grey;
   static Color hintText = Color.fromRGBO(0, 0, 0, 0.5);
-  static Color bgWhite = Color.fromRGBO(255, 255, 255, 1);
+  // static Color bgWhite = Color.fromRGBO(255, 255, 255, 1);
+  static Color bgWhite = Color.fromRGBO(250, 240, 240, 1);
   static Color greenCard = Color.fromRGBO(19, 194, 121, 1);
   static Color grayCard = Color.fromRGBO(76, 134, 165, 1);
   static Color blueCard = Color.fromRGBO(34, 167, 240, 1);

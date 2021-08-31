@@ -37,7 +37,7 @@ class _DateTimeUIState extends StateMVC<DateTimeUI> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColor.bgWhite,
+      backgroundColor: AppColor.transparent,
       body: Column(
         children: [
           Padding(

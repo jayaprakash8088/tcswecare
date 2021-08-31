@@ -36,7 +36,7 @@ class _LoginScreenState extends StateMVC<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColor.white,
+      backgroundColor: AppColor.bgWhite,
       body: SingleChildScrollView(
         physics: ScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
         scrollDirection: Axis.vertical,
