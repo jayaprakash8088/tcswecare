@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:tcswecare/mvc/utils/app_color.dart';
 import 'package:tcswecare/mvc/utils/app_config.dart';
 import 'package:tcswecare/mvc/utils/assets.dart';
@@ -17,6 +18,20 @@ class HistoryScreen extends StatefulWidget {
 }
 
 class _HistoryScreenState extends State<HistoryScreen> {
+  List<SalesData> data = [
+    SalesData('None', '1'),
+    SalesData('Mild', '2'),
+    SalesData('Moderate', '3'),
+    SalesData('Severe', '3'),
+    SalesData('Unbearable', '4')
+  ];
+  List<SalesData> data1 = [
+    SalesData('None', '10'),
+    SalesData('Mild', '21'),
+    SalesData('Moderate', '23'),
+    SalesData('Severe', '30'),
+    SalesData('Unbearable', '24')
+  ];
   @override
   void initState() {
     super.initState();
@@ -86,14 +101,13 @@ class _HistoryScreenState extends State<HistoryScreen> {
           ),
         ),
         dropDownBox(),
-        // Padding(
-        //     padding: EdgeInsets.only(top: FontSize.size20),
-        //     // child: areaGraph(),
-        //     child: Container(
-        //       width: MediaQuery.of(context).size.width,
-        //       height: MediaQuery.of(context).size.height * 0.4,
-        //       child: areaChart(),
-        //     ))
+        Padding(
+            padding: EdgeInsets.only(top: FontSize.size20),
+            child: Container(
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height * 0.4,
+              child: graph(),
+            ))
       ],
     );
   }
@@ -175,11 +189,27 @@ class _HistoryScreenState extends State<HistoryScreen> {
       ),
     );
   }
+
+  Widget graph() {
+    return SfCartesianChart(
+        primaryXAxis: CategoryAxis(),
+        primaryYAxis: CategoryAxis(),
+        series: <ChartSeries<SalesData, String>>[
+          SplineAreaSeries<SalesData, String>(
+              dataSource: data,
+              xValueMapper: (SalesData sales, _) => sales.date,
+              yValueMapper: (SalesData sales, _) => 1),
+          SplineAreaSeries<SalesData, String>(
+              dataSource: data1,
+              color: AppColor.red,
+              xValueMapper: (SalesData sales, _) => sales.date,
+              yValueMapper: (SalesData sales, _) => 2),
+        ]);
+  }
 }
 
-class Sales {
-  int date;
-  String diagnosis;
-
-  Sales(this.date, this.diagnosis);
+class SalesData {
+  final String pain;
+  final String date;
+  SalesData(this.pain, this.date);
 }
