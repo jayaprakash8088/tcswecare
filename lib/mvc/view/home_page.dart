@@ -73,7 +73,10 @@ class _HomePageState extends StateMVC<HomePage> {
     return AppBar(
       backgroundColor: AppColor.transparent,
       elevation: FontSize.size0,
-      actions: [Container(width: 150, child: Center(child: LocaleDropDown()))],
+      actions: [
+        Container(
+            width: FontSize.size150, child: Center(child: LocaleDropDown()))
+      ],
       leading: Image.asset(Assets.hamburgerIcon),
       centerTitle: false,
       leadingWidth: FontSize.size30,

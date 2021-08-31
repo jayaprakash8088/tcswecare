@@ -103,7 +103,8 @@ class _MessageReceivedState extends State<MessageReceived> {
                   width: FontSize.size200,
                   decoration: BoxDecoration(
                     gradient: AppConfig.gradient,
-                    borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                    borderRadius:
+                        BorderRadius.all(Radius.circular(FontSize.size20)),
                   ),
                   child: Center(
                     child: Text(
