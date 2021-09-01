@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:mvc_pattern/mvc_pattern.dart';
+import 'package:tcswecare/mvc/controller/pain_indicator_controller.dart';
 import 'package:tcswecare/mvc/utils/app_color.dart';
 import 'package:tcswecare/mvc/utils/app_config.dart';
 import 'package:tcswecare/mvc/utils/assets.dart';
@@ -19,7 +21,12 @@ class MessageReceived extends StatefulWidget {
   }
 }
 
-class _MessageReceivedState extends State<MessageReceived> {
+class _MessageReceivedState extends StateMVC<MessageReceived> {
+  PainIndicatorController _painIndicatorController;
+  _MessageReceivedState() : super(PainIndicatorController()) {
+    _painIndicatorController = controller;
+  }
+
   @override
   void initState() {
     super.initState();
@@ -155,7 +162,7 @@ class _MessageReceivedState extends State<MessageReceived> {
                           padding: EdgeInsets.only(
                               top: FontSize.size15, left: FontSize.size15),
                           child: Text(
-                            getCardsText(index),
+                            _painIndicatorController.getCardsText(index),
                             style: TextStyle(
                                 color: AppColor.white,
                                 fontSize: FontSize.size18,
@@ -171,7 +178,8 @@ class _MessageReceivedState extends State<MessageReceived> {
                                 bottom: FontSize.size20),
                             child: Align(
                                 alignment: Alignment.bottomRight,
-                                child: Image.asset(getCardsImages(index))),
+                                child: Image.asset(_painIndicatorController
+                                    .getCardsImages(index))),
                           ),
                         )
                       ],
@@ -183,38 +191,6 @@ class _MessageReceivedState extends State<MessageReceived> {
             return StaggeredTile.count(1, 1);
           }),
     );
-  }
-
-  String getCardsText(int index) {
-    String text = '';
-    switch (index) {
-      case 0:
-        text = ConstantStrings.takeExtraDose;
-        break;
-      case 1:
-        text = ConstantStrings.contactDoctor;
-        break;
-      case 2:
-        text = ConstantStrings.restWell;
-        break;
-    }
-    return text;
-  }
-
-  String getCardsImages(int index) {
-    String image;
-    switch (index) {
-      case 0:
-        image = Assets.tablet;
-        break;
-      case 1:
-        image = Assets.telephone;
-        break;
-      case 2:
-        image = Assets.restWell;
-        break;
-    }
-    return image;
   }
 
   void moveToNextPage(int index) {

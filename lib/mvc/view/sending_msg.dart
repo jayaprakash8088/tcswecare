@@ -77,7 +77,7 @@ class _TransmittingMessageState extends StateMVC<TransmittingMessage> {
           child: SvgPicture.asset(Assets.frameWorld),
         ),
         SvgPicture.asset(
-          getImage(i),
+          _painIndicatorController.getImage(i),
         ),
         Padding(
           padding: EdgeInsets.only(
@@ -100,7 +100,7 @@ class _TransmittingMessageState extends StateMVC<TransmittingMessage> {
                 Text(
                   ConstantStrings.msgSent,
                   textAlign: TextAlign.center,
-                  style: getStyle(i),
+                  style: _painIndicatorController.getStyle(i),
                 )
               ],
             ),
@@ -108,28 +108,6 @@ class _TransmittingMessageState extends StateMVC<TransmittingMessage> {
         )
       ],
     );
-  }
-
-  TextStyle getStyle(int i) {
-    TextStyle style;
-    if (i == 1) {
-      style = AppConfig.normalText;
-    } else {
-      style = TextStyle(
-          fontSize: FontSize.size12,
-          fontWeight: FontWeight.w500,
-          fontFamily: AppConfig.montserrat,
-          fontStyle: AppConfig.normal,
-          color: AppColor.hintText);
-    }
-    return style;
-  }
-
-  String getImage(int i) {
-    if (i == 1) {
-      return Assets.loadingCompleted;
-    } else
-      return Assets.loading;
   }
 
   void _move() {

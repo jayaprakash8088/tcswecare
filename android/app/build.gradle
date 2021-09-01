@@ -44,12 +44,12 @@ android {
     buildTypes {
         release {
             release {
-                minifyEnabled false
-                //useProguard true
-                shrinkResources false
+                minifyEnabled true
+                useProguard true
+                shrinkResources true
                 proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-//            signingConfig signingConfigs.release
-                signingConfig signingConfigs.debug
+            signingConfig signingConfigs.release
+//                signingConfig signingConfigs.debug
             }
         }
     }
