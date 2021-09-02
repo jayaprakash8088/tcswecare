@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:tcswecare/MyApp.dart';
+import 'package:tcswecare/mvc/utils/font_size.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -11,7 +12,7 @@ void main() async {
             "Something went wrong",
             style: TextStyle(
               color: Colors.black,
-              fontSize: 16.0,
+              fontSize: FontSize.size16,
             ),
           ),
         ),
