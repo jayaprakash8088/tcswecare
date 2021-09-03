@@ -38,7 +38,7 @@ dependencies:
   easy_localization: ^3.0.0
   syncfusion_flutter_charts: ^19.2.57
   fl_chart: ^0.40.0
-
+  dio: ^4.0.0
 dev_dependencies:
   flutter_test:
      sdk: flutter

@@ -113,6 +113,7 @@ class AppConfig {
     '11',
     '12'
   ];
+  static bool isShowingDialog = false;
   static String selected;
   static String monthSelected;
   static String diagnosisSelected;
@@ -179,4 +180,48 @@ class AppConfig {
       fontFamily: AppConfig.roboto,
       fontStyle: AppConfig.normal,
       fontSize: FontSize.size14);
+  //no internet pop up
+  static dynamic noInternetPopUp(BuildContext context) {
+    showDialog(
+        context: context,
+        barrierDismissible: true,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text(
+              ConstantStrings.weCare,
+              style: TextStyle(color: AppColor.bgBlue),
+            ),
+            content: getContent(context),
+          );
+        });
+  }
+
+  static getContent(BuildContext context) {
+    isShowingDialog = true;
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Text(ConstantStrings.noInternet),
+        InkWell(
+          onTap: () {
+            isShowingDialog = false;
+            Navigator.pop(context);
+          },
+          child: Padding(
+            padding: const EdgeInsets.only(top: 15.0),
+            child: Container(
+              height: FontSize.size50,
+              width: double.infinity,
+              child: Center(
+                  child: Text(ConstantStrings.ok,
+                      style: TextStyle(color: Colors.blueAccent))),
+              decoration: BoxDecoration(
+                  shape: BoxShape.rectangle,
+                  border: Border.all(color: Colors.blueAccent)),
+            ),
+          ),
+        )
+      ],
+    );
+  }
 }
