@@ -25,20 +25,6 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
   }
   LoginController _controller;
   String ageValue = '1', genderValue = 'M';
-  List ageList = [
-    '1',
-    '2',
-    '3',
-    '4',
-    '5',
-    '6',
-    '7',
-    '8',
-    '9',
-    '10',
-    '11',
-    '12'
-  ];
   List genderList = ['M', 'F'];
   @override
   void initState() {
@@ -300,7 +286,7 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
                       ageValue = newValue;
                     });
                   },
-                  items: ageList.map((valueItem) {
+                  items: AppConfig.ageList.map((valueItem) {
                     return DropdownMenuItem(
                         value: valueItem,
                         child: Center(child: Text(valueItem)));

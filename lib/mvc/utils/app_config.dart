@@ -99,7 +99,20 @@ class AppConfig {
     '27',
     '30'
   ];
-
+  static List ageList = [
+    '1',
+    '2',
+    '3',
+    '4',
+    '5',
+    '6',
+    '7',
+    '8',
+    '9',
+    '10',
+    '11',
+    '12'
+  ];
   static String selected;
   static String monthSelected;
   static String diagnosisSelected;
