@@ -19,6 +19,8 @@ class LoginController extends ControllerMVC {
   TextEditingController nameController = TextEditingController();
   //patient id controller
   TextEditingController patientIdController = TextEditingController();
+  // email
+  TextEditingController eMailController = TextEditingController();
   // diagnosis controller
   TextEditingController diagnosisController = TextEditingController();
 }

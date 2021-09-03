@@ -8,6 +8,7 @@ class ConstantStrings {
   static String startText =
       "Hey there! Let’s \n Get You Registered \n and Started!";
   static String patientId = 'Patient ID*';
+  static String eMail = 'Email*';
   static String diagnosis = 'Diagnosis';
   static String name = 'Name';
   static String gender = 'Gender';
@@ -50,4 +51,5 @@ class ConstantStrings {
   static String history = 'History';
   static String anxiety = 'Anxiety';
   static String january = 'January';
+  static String somethingWrong = 'Something went wrong';
 }

@@ -47,13 +47,13 @@ class _InitialPageState extends State<InitialPage> {
             alignment: Alignment.topCenter,
           ),
           Padding(
-            padding: EdgeInsets.only(top: 50.0),
+            padding: EdgeInsets.only(top: FontSize.size50),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Center(child: SvgPicture.asset(Assets.logo)),
                 Padding(
-                  padding: EdgeInsets.only(top: 100.0),
+                  padding: EdgeInsets.only(top: FontSize.size100),
                   child: Center(child: SvgPicture.asset(Assets.astronaut)),
                 ),
                 GestureDetector(
@@ -61,14 +61,15 @@ class _InitialPageState extends State<InitialPage> {
                     moveToSignUp();
                   },
                   child: Padding(
-                    padding: EdgeInsets.only(top: 180.0),
+                    padding: EdgeInsets.only(top: FontSize.size180),
                     child: Center(
                       child: Container(
-                        height: 40.0,
-                        width: 160.0,
+                        height: FontSize.size40,
+                        width: FontSize.size160,
                         decoration: BoxDecoration(
                           gradient: AppConfig.gradient,
-                          borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                          borderRadius: BorderRadius.all(
+                              Radius.circular(FontSize.size20)),
                         ),
                         child: Center(
                           child: Text(
@@ -76,7 +77,7 @@ class _InitialPageState extends State<InitialPage> {
                             style: TextStyle(
                                 color: AppColor.white,
                                 fontWeight: FontWeight.bold,
-                                fontSize: 14.0),
+                                fontSize: FontSize.size14),
                           ),
                         ),
                       ),

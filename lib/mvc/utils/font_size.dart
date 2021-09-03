@@ -35,6 +35,7 @@ class FontSize {
   static double size163 = 163.0;
   static double size170 = 170.0;
   static double size175 = 175.0;
+  static double size180 = 180.0;
   static double size187 = 187.0;
   static double size200 = 200.0;
   static double size250 = 250.0;

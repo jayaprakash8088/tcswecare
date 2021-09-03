@@ -172,6 +172,35 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
             padding:
                 EdgeInsets.only(bottom: FontSize.size10, top: FontSize.size10),
             child: Text(
+              ConstantStrings.eMail,
+              style: TextStyle(
+                  color: AppColor.black,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: AppConfig.montserrat,
+                  fontStyle: AppConfig.normal,
+                  fontSize: FontSize.size16),
+            ),
+          ),
+          Container(
+            height: FontSize.size40,
+            decoration: BoxDecoration(
+              color: AppColor.bgText,
+              borderRadius: BorderRadius.all(Radius.circular(FontSize.size10)),
+            ),
+            child: TextField(
+                controller: _controller.eMailController,
+                decoration: InputDecoration(
+                    fillColor: AppColor.black,
+                    border: InputBorder.none,
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius:
+                          BorderRadius.all(Radius.circular(FontSize.size10)),
+                    ))),
+          ),
+          Padding(
+            padding:
+                EdgeInsets.only(bottom: FontSize.size10, top: FontSize.size10),
+            child: Text(
               ConstantStrings.name,
               style: TextStyle(
                   color: AppColor.black,
