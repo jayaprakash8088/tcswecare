@@ -9,15 +9,17 @@ class AppSharedPreferences {
   }
   String accessToken = ConstantStrings.accessToken;
   String loggedUser = ConstantStrings.loggedUser;
+  String userId = ConstantStrings.userId;
   Future _init() async {
     _sharedPreferences = await SharedPreferences.getInstance();
   }
 
   //save access token
-  Future setAccessToken(String token) async {
+  Future setAccessToken(String token, String userID) async {
     _sharedPreferences = await SharedPreferences.getInstance();
     await _sharedPreferences.setString(accessToken, token);
     await _sharedPreferences.setBool(loggedUser, true);
+    await _sharedPreferences.setString(userId, userID);
   }
 
   //get token

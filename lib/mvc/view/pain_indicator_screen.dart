@@ -123,12 +123,15 @@ class _PainIndicatorScreenState extends StateMVC<PainIndicatorScreen> {
               Container(height: FontSize.size100, child: DateTimeUI(context)),
         ),
         GestureDetector(
-            onTap: () {
-              Navigator.pushAndRemoveUntil(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => TransmittingMessage()),
-                  (route) => false);
+            onTap: () async {
+              var response = await _controller.submit();
+              if (response != null && response.StatusCode == 200) {
+                Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => TransmittingMessage()),
+                    (route) => false);
+              }
             },
             child: AppConfig.submitBtn())
       ],

@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
+import 'package:tcswecare/mvc/api_utils/repository.dart';
+import 'package:tcswecare/mvc/model/pain_level_model.dart';
 import 'package:tcswecare/mvc/model/pain_tracker_model.dart';
 import 'package:tcswecare/mvc/utils/app_color.dart';
 import 'package:tcswecare/mvc/utils/app_config.dart';
@@ -16,6 +18,7 @@ class PainIndicatorController extends ControllerMVC {
   static PainIndicatorController get con => _this;
 
   PainTrackerModel _model = PainTrackerModel();
+  Repository repository = Repository();
   // spinner value
   double spinnerValue;
   //date value
@@ -86,5 +89,15 @@ class PainIndicatorController extends ControllerMVC {
       return Assets.loadingCompleted;
     } else
       return Assets.loading;
+  }
+
+  dynamic submit() async {
+    PainLevelModel painLevelModel = PainLevelModel(
+        painDate: date1.toString(),
+        painTime: time.toString(),
+        painLevel: spinnerValue.toString(),
+        userID: 'ad24ed76-4eac-4095-98b2-8bf45b94fb7d');
+    dynamic response = await repository.savePatientPainInfo(painLevelModel);
+    return response;
   }
 }

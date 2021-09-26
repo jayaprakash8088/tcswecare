@@ -35,8 +35,9 @@ class LoginController extends ControllerMVC {
     };
     dynamic response = await repository.callLogin(body);
     if (response != null && response.statusCode == 200) {
-      await sharedPreferences
-          .setAccessToken(response.data['access_token'].toString());
+      await sharedPreferences.setAccessToken(
+          response.data['access_token'].toString(),
+          'ad24ed76-4eac-4095-98b2-8bf45b94fb7d');
       return true;
     } else {
       return false;

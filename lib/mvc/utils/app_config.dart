@@ -21,6 +21,7 @@ class AppConfig {
   ///api///////////////
   static String baseUrl = 'http://34.126.104.146/';
   static String token = 'token';
+  static String savePatientPainInfo = 'savePatientPainInfo';
 
   static LinearGradient gradient = LinearGradient(
       begin: Alignment.centerLeft,

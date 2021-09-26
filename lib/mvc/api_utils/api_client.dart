@@ -19,7 +19,6 @@ class ApiClient {
   Future<dynamic> dioPost(String url, dynamic formData) async {
     _dio.options.baseUrl = AppConfig.baseUrl;
     try {
-      print('url---->${_dio.options.baseUrl + url}');
       dynamic response = await _dio.post(url, data: formData);
       if (response != null && response.statusCode == 200) {
         return response.data;
