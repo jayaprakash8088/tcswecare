@@ -54,4 +54,6 @@ class ConstantStrings {
   static String anxiety = 'Anxiety';
   static String january = 'January';
   static String somethingWrong = 'Something went wrong';
+  static String accessToken = 'ACCESS TOKEN';
+  static String loggedUser = 'LOGGED USER';
 }

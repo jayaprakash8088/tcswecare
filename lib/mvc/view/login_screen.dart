@@ -73,8 +73,7 @@ class _LoginScreenState extends StateMVC<LoginScreen> {
                   userDetailUI(_controller),
                   GestureDetector(
                     onTap: () {
-                      Navigator.pushReplacement(context,
-                          MaterialPageRoute(builder: (context) => HomePage()));
+                      loginClicked();
                     },
                     child: Padding(
                       padding: EdgeInsets.only(top: FontSize.size50),
@@ -178,5 +177,18 @@ class _LoginScreenState extends StateMVC<LoginScreen> {
         ],
       ),
     );
+  }
+
+  void loginClicked() async {
+    if (_controller.userNameController.text.trim().isNotEmpty &&
+        _controller.passwordController.text.trim().isNotEmpty) {
+      bool isSuccess = await _controller.loginClicked(
+          _controller.userNameController.text.trim(),
+          _controller.passwordController.text.trim());
+      if (isSuccess) {
+        Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (context) => HomePage()));
+      }
+    } else {}
   }
 }

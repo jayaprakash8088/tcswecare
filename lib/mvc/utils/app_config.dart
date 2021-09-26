@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl/intl.dart';
 import 'package:tcswecare/mvc/utils/app_color.dart';
 import 'package:tcswecare/mvc/utils/assets.dart';
@@ -16,6 +17,11 @@ class AppConfig {
   //font style
   static FontStyle normal = FontStyle.normal;
   static FontStyle italic = FontStyle.italic;
+
+  ///api///////////////
+  static String baseUrl = 'http://34.126.104.146/';
+  static String token = 'token';
+
   static LinearGradient gradient = LinearGradient(
       begin: Alignment.centerLeft,
       end: Alignment.centerRight,
@@ -223,5 +229,12 @@ class AppConfig {
         )
       ],
     );
+  }
+
+  static void showToast(BuildContext context, String text) {
+    Fluttertoast.showToast(
+        msg: text,
+        toastLength: Toast.LENGTH_LONG,
+        backgroundColor: AppColor.grey);
   }
 }

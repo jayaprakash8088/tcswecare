@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tcswecare/mvc/utils/app_color.dart';
+import 'package:tcswecare/mvc/utils/app_shared_preferences.dart';
 import 'package:tcswecare/mvc/utils/assets.dart';
+import 'package:tcswecare/mvc/view/home_page.dart';
 import 'package:tcswecare/mvc/view/initial_page.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -15,14 +17,20 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  AppSharedPreferences _sharedPreferences = AppSharedPreferences();
   @override
   void initState() {
     super.initState();
     // un visible status and nav buttons
     SystemChrome.setEnabledSystemUIOverlays([]);
-    Future.delayed(Duration(seconds: 3), () {
-      Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => InitialPage()));
+    Future.delayed(Duration(seconds: 3), () async {
+      var isLoggedUser = await _sharedPreferences.isLoggedUser();
+      if (isLoggedUser != null && isLoggedUser) {
+        Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (context) => HomePage()));
+      } else
+        Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (context) => InitialPage()));
     });
   }
 

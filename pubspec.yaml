@@ -39,6 +39,7 @@ dependencies:
   syncfusion_flutter_charts: ^19.2.57
   fl_chart: ^0.40.0
   dio: ^4.0.0
+  fluttertoast: ^8.0.8
 dev_dependencies:
   flutter_test:
      sdk: flutter

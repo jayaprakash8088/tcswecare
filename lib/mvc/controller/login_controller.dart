@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
+import 'package:tcswecare/mvc/api_utils/repository.dart';
+import 'package:tcswecare/mvc/utils/app_shared_preferences.dart';
 
 class LoginController extends ControllerMVC {
   factory LoginController() {
@@ -9,7 +11,8 @@ class LoginController extends ControllerMVC {
   static LoginController _this;
 
   LoginController._();
-
+  Repository repository = Repository();
+  AppSharedPreferences sharedPreferences = AppSharedPreferences();
   static LoginController get con => _this;
   //user name text controller
   TextEditingController userNameController = TextEditingController();
@@ -23,4 +26,20 @@ class LoginController extends ControllerMVC {
   TextEditingController eMailController = TextEditingController();
   // diagnosis controller
   TextEditingController diagnosisController = TextEditingController();
+
+  Future<dynamic> loginClicked(String userName, String password) async {
+    Map<String, String> body = {
+      'grant_type': 'password',
+      'username': userName,
+      'password': password,
+    };
+    dynamic response = await repository.callLogin(body);
+    if (response != null && response.statusCode == 200) {
+      await sharedPreferences
+          .setAccessToken(response.data['access_token'].toString());
+      return true;
+    } else {
+      return false;
+    }
+  }
 }
