@@ -9,7 +9,7 @@ import 'package:tcswecare/mvc/utils/assets.dart';
 import 'package:tcswecare/mvc/utils/constant_strings.dart';
 import 'package:tcswecare/mvc/utils/font_size.dart';
 import 'package:tcswecare/mvc/utils/locale_drop_down.dart';
-import 'package:tcswecare/mvc/view/message_received.dart';
+import 'package:tcswecare/mvc/view/home_page.dart';
 
 class TransmittingMessage extends StatefulWidget {
   TransmittingMessage({Key key}) : super(key: key);
@@ -105,7 +105,8 @@ class _TransmittingMessageState extends StateMVC<TransmittingMessage> {
               ],
             ),
           ),
-        )
+        ),
+        homeBtn()
       ],
     );
   }
@@ -115,10 +116,39 @@ class _TransmittingMessageState extends StateMVC<TransmittingMessage> {
       setState(() {
         i = 1;
       });
-      Navigator.pushAndRemoveUntil(
-          context,
-          MaterialPageRoute(builder: (context) => MessageReceived()),
-          (route) => false);
     });
+  }
+
+  Widget homeBtn() {
+    return Center(
+      child: GestureDetector(
+        onTap: () {
+          Navigator.pushAndRemoveUntil(
+              context,
+              MaterialPageRoute(builder: (context) => HomePage()),
+              (route) => false);
+        },
+        child: Padding(
+          padding: EdgeInsets.only(top: FontSize.size25),
+          child: Center(
+            child: Container(
+              height: FontSize.size40,
+              width: FontSize.size200,
+              decoration: BoxDecoration(
+                gradient: AppConfig.gradient,
+                borderRadius:
+                    BorderRadius.all(Radius.circular(FontSize.size20)),
+              ),
+              child: Center(
+                child: Text(
+                  ConstantStrings.home,
+                  style: AppConfig.robotoText,
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
   }
 }
