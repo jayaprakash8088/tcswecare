@@ -2,9 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
 import 'package:tcswecare/mvc/api_utils/repository.dart';
 import 'package:tcswecare/mvc/model/pain_level_model.dart';
-import 'package:tcswecare/mvc/model/pain_tracker_model.dart';
+import 'package:tcswecare/mvc/model/pain_record_model.dart';
 import 'package:tcswecare/mvc/utils/app_color.dart';
 import 'package:tcswecare/mvc/utils/app_config.dart';
+import 'package:tcswecare/mvc/utils/app_shared_preferences.dart';
 import 'package:tcswecare/mvc/utils/assets.dart';
 import 'package:tcswecare/mvc/utils/constant_strings.dart';
 import 'package:tcswecare/mvc/utils/font_size.dart';
@@ -16,11 +17,9 @@ class PainIndicatorController extends ControllerMVC {
   static PainIndicatorController _this;
   PainIndicatorController._();
   static PainIndicatorController get con => _this;
-
-  PainTrackerModel _model = PainTrackerModel();
+  AppSharedPreferences _sharedPreferences = AppSharedPreferences();
   Repository repository = Repository();
-  // spinner value
-  double spinnerValue;
+
   //date value
   DateTime dateTime;
   DateTime selectedDate;
@@ -28,12 +27,6 @@ class PainIndicatorController extends ControllerMVC {
   DateTime selectedTime;
   DateTime date1;
   DateTime time1;
-  double anxietyValue = 0.0;
-  double moodValue = 0.0;
-  double breathValue = 0.0;
-  double drySkinValue = 0.0;
-  double constipationValue = 0.0;
-  double nauseaValue = 0.0;
   TextEditingController comments = TextEditingController();
 
   ///ui related//
@@ -91,14 +84,35 @@ class PainIndicatorController extends ControllerMVC {
       return Assets.loading;
   }
 
-  dynamic submit(BuildContext context) async {
+  Future<PainRecordModel> submit(BuildContext context) async {
     PainLevelModel painLevelModel = PainLevelModel(
-        painDate: date1.toString(),
-        painTime: time.toString(),
-        painLevel: spinnerValue.toString(),
+        painDate: getDate().toString(),
+        painTime: getTime().toString(),
+        painLevel: AppConfig.spinnerValue.round().toString(),
         userID: 'ad24ed76-4eac-4095-98b2-8bf45b94fb7d');
-    dynamic response =
-        await repository.savePatientPainInfo(painLevelModel, context);
+    var token = await _sharedPreferences.getToken();
+    PainRecordModel response =
+        await repository.savePatientPainInfo(painLevelModel, context, token);
     return response;
+  }
+
+  DateTime getDate() {
+    var date;
+    if (dateTime != null) {
+      date = dateTime;
+    } else {
+      date = AppConfig.now;
+    }
+    return date;
+  }
+
+  DateTime getTime() {
+    var time;
+    if (time != null) {
+      time = time;
+    } else {
+      time = AppConfig.now;
+    }
+    return time;
   }
 }

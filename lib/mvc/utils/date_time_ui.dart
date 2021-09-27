@@ -67,7 +67,7 @@ class _DateTimeUIState extends StateMVC<DateTimeUI> {
         children: [
           GestureDetector(
             onTap: () {
-              _controller.date1 = getDate();
+              _controller.date1 = _controller.getDate();
               callDatePicker();
             },
             child: Row(
@@ -77,7 +77,7 @@ class _DateTimeUIState extends StateMVC<DateTimeUI> {
                   child: SvgPicture.asset(Assets.calendar),
                 ),
                 Text(
-                  AppConfig.dateFormat.format(getDate()),
+                  AppConfig.dateFormat.format(_controller.getDate()),
                   style: TextStyle(
                       color: AppColor.black,
                       decoration: TextDecoration.underline,
@@ -90,7 +90,7 @@ class _DateTimeUIState extends StateMVC<DateTimeUI> {
           ),
           GestureDetector(
             onTap: () {
-              _controller.time1 = getTime();
+              _controller.time1 = _controller.getTime();
               callTimePicker();
             },
             child: Row(
@@ -100,7 +100,7 @@ class _DateTimeUIState extends StateMVC<DateTimeUI> {
                   child: SvgPicture.asset(Assets.clock),
                 ),
                 Text(
-                  AppConfig.timeFormat.format(getTime()),
+                  AppConfig.timeFormat.format(_controller.getTime()),
                   style: TextStyle(
                       color: AppColor.black,
                       fontWeight: FontWeight.w600,
@@ -150,7 +150,7 @@ class _DateTimeUIState extends StateMVC<DateTimeUI> {
                 Container(
                   height: MediaQuery.of(widget.context).size.height * 0.3,
                   child: CupertinoDatePicker(
-                      initialDateTime: getDate(),
+                      initialDateTime: _controller.getDate(),
                       maximumDate: DateTime(2050, 12, 31),
                       mode: CupertinoDatePickerMode.date,
                       onDateTimeChanged: _dateChanged),
@@ -173,7 +173,7 @@ class _DateTimeUIState extends StateMVC<DateTimeUI> {
                 Container(
                   height: MediaQuery.of(context).size.height * 0.3,
                   child: CupertinoDatePicker(
-                      initialDateTime: getTime(),
+                      initialDateTime: _controller.getTime(),
                       maximumDate: DateTime(2050, 12, 31),
                       mode: CupertinoDatePickerMode.time,
                       onDateTimeChanged: _timeChanged),
@@ -212,26 +212,6 @@ class _DateTimeUIState extends StateMVC<DateTimeUI> {
       _controller.dateTime = _controller.date1;
     });
     Navigator.pop(widget.context);
-  }
-
-  DateTime getDate() {
-    var date;
-    if (_controller.dateTime != null) {
-      date = _controller.dateTime;
-    } else {
-      date = AppConfig.now;
-    }
-    return date;
-  }
-
-  DateTime getTime() {
-    var time;
-    if (_controller.time != null) {
-      time = _controller.time;
-    } else {
-      time = AppConfig.now;
-    }
-    return time;
   }
 
   okCancelUI(int i) {

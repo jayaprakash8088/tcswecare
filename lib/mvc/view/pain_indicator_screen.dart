@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
 import 'package:sleek_circular_slider/sleek_circular_slider.dart';
 import 'package:tcswecare/mvc/controller/pain_indicator_controller.dart';
+import 'package:tcswecare/mvc/model/pain_record_model.dart';
 import 'package:tcswecare/mvc/utils/app_color.dart';
 import 'package:tcswecare/mvc/utils/app_config.dart';
 import 'package:tcswecare/mvc/utils/assets.dart';
@@ -124,13 +125,17 @@ class _PainIndicatorScreenState extends StateMVC<PainIndicatorScreen> {
         ),
         GestureDetector(
             onTap: () async {
-              var response = await _controller.submit(context);
-              if (response != null && response.StatusCode == 200) {
+              AppConfig.pleaseWait(context);
+              PainRecordModel response = await _controller.submit(context);
+              if (response != null && response.statusCode == 200) {
+                Navigator.pop(context);
                 Navigator.pushAndRemoveUntil(
                     context,
                     MaterialPageRoute(
                         builder: (context) => TransmittingMessage()),
                     (route) => false);
+              } else {
+                Navigator.pop(context);
               }
             },
             child: AppConfig.submitBtn())
@@ -157,6 +162,8 @@ class _PainIndicatorScreenState extends StateMVC<PainIndicatorScreen> {
     innerWidget: (double value) {
       return Container();
     },
-    onChangeEnd: (double endValue) {},
+    onChangeEnd: (double endValue) {
+      AppConfig.spinnerValue = endValue;
+    },
   );
 }

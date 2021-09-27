@@ -27,20 +27,24 @@ class ApiClient {
 
   //post api
   Future<dynamic> dioPost(
-      String url, dynamic formData, BuildContext context) async {
+      String url, dynamic formData, BuildContext context, token) async {
     ConnectivityResult result;
     result = await Connectivity().checkConnectivity();
     if (result != null &&
         (result == ConnectivityResult.wifi ||
             result == ConnectivityResult.mobile)) {
       _dio.options.baseUrl = AppConfig.baseUrl;
+      _dio.options.headers["Content-Type"] = AppConfig.contentType;
+      _dio.options.headers["Authorization"] = AppConfig.bearer + token;
       try {
         dynamic response = await _dio.post(url, data: formData);
-        if (response != null && response.statusCode == 200) {
-          return response.data;
+        if (response != null) {
+          return response;
         } else
           return null;
-      } catch (e) {}
+      } catch (e) {
+        print(e.toString());
+      }
     } else if (!AppConfig.isShowingDialog) {
       AppConfig.noInternetPopUp(context);
     }

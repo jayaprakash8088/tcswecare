@@ -231,19 +231,19 @@ class _SymptomTrackerPageState extends StateMVC<SymptomTrackerPage> {
     double value;
     switch (index) {
       case 0:
-        value = _controller.anxietyValue;
+        value = AppConfig.anxietyValue;
         break;
       case 1:
-        value = _controller.breathValue;
+        value = AppConfig.breathValue;
         break;
       case 2:
-        value = _controller.drySkinValue;
+        value = AppConfig.drySkinValue;
         break;
       case 3:
-        value = _controller.constipationValue;
+        value = AppConfig.constipationValue;
         break;
       case 4:
-        value = _controller.nauseaValue;
+        value = AppConfig.nauseaValue;
         break;
     }
     return value;
@@ -252,27 +252,27 @@ class _SymptomTrackerPageState extends StateMVC<SymptomTrackerPage> {
   void setValue(int index, double selectedValue) {
     switch (index) {
       case 0:
-        _controller.anxietyValue = selectedValue;
+        AppConfig.anxietyValue = selectedValue;
         print('0' + selectedValue.toString());
         break;
       case 1:
-        _controller.breathValue = selectedValue;
+        AppConfig.breathValue = selectedValue;
         print('1' + selectedValue.toString());
         break;
       case 2:
-        _controller.drySkinValue = selectedValue;
+        AppConfig.drySkinValue = selectedValue;
         print('2' + selectedValue.toString());
         break;
       case 3:
-        _controller.constipationValue = selectedValue;
+        AppConfig.constipationValue = selectedValue;
         print('3' + selectedValue.toString());
         break;
       case 4:
-        _controller.nauseaValue = selectedValue;
+        AppConfig.nauseaValue = selectedValue;
         print('4' + selectedValue.toString());
         break;
       case 5:
-        _controller.moodValue = selectedValue;
+        AppConfig.moodValue = selectedValue;
         print('5' + selectedValue.toString());
         break;
     }
@@ -354,7 +354,7 @@ class _SymptomTrackerPageState extends StateMVC<SymptomTrackerPage> {
                       trackHeight: FontSize.size10),
                   child: Slider(
                       activeColor: AppColor.white,
-                      value: _controller.moodValue,
+                      value: AppConfig.moodValue,
                       min: FontSize.size0,
                       max: FontSize.size3,
                       onChanged: (values) {

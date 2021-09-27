@@ -17,9 +17,19 @@ class AppConfig {
   //font style
   static FontStyle normal = FontStyle.normal;
   static FontStyle italic = FontStyle.italic;
+  // spinner value
+  static double spinnerValue = 0.0;
+  static double anxietyValue = 0.0;
+  static double moodValue = 0.0;
+  static double breathValue = 0.0;
+  static double drySkinValue = 0.0;
+  static double constipationValue = 0.0;
+  static double nauseaValue = 0.0;
 
   ///api///////////////
   static String baseUrl = 'http://34.126.104.146/';
+  static String bearer = 'Bearer ';
+  static String contentType = 'application/json';
   static String token = 'token';
   static String savePatientPainInfo = 'savePatientPainInfo';
 
