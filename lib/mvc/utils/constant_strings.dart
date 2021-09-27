@@ -57,4 +57,5 @@ class ConstantStrings {
   static String accessToken = 'ACCESS TOKEN';
   static String loggedUser = 'LOGGED USER';
   static String userId = 'USER ID';
+  static String pleaseWait = 'Please wait a moment';
 }

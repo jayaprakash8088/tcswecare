@@ -91,13 +91,14 @@ class PainIndicatorController extends ControllerMVC {
       return Assets.loading;
   }
 
-  dynamic submit() async {
+  dynamic submit(BuildContext context) async {
     PainLevelModel painLevelModel = PainLevelModel(
         painDate: date1.toString(),
         painTime: time.toString(),
         painLevel: spinnerValue.toString(),
         userID: 'ad24ed76-4eac-4095-98b2-8bf45b94fb7d');
-    dynamic response = await repository.savePatientPainInfo(painLevelModel);
+    dynamic response =
+        await repository.savePatientPainInfo(painLevelModel, context);
     return response;
   }
 }

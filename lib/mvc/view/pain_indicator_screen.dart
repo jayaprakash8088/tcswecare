@@ -124,7 +124,7 @@ class _PainIndicatorScreenState extends StateMVC<PainIndicatorScreen> {
         ),
         GestureDetector(
             onTap: () async {
-              var response = await _controller.submit();
+              var response = await _controller.submit(context);
               if (response != null && response.StatusCode == 200) {
                 Navigator.pushAndRemoveUntil(
                     context,

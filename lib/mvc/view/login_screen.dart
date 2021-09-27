@@ -182,13 +182,19 @@ class _LoginScreenState extends StateMVC<LoginScreen> {
   void loginClicked() async {
     if (_controller.userNameController.text.trim().isNotEmpty &&
         _controller.passwordController.text.trim().isNotEmpty) {
+      AppConfig.pleaseWait(context);
       bool isSuccess = await _controller.loginClicked(
           _controller.userNameController.text.trim(),
-          _controller.passwordController.text.trim());
+          _controller.passwordController.text.trim(),
+          context);
       if (isSuccess) {
+        Navigator.pop(context);
         Navigator.pushReplacement(
             context, MaterialPageRoute(builder: (context) => HomePage()));
       }
-    } else {}
+    } else {
+      Navigator.pop(context);
+      AppConfig.showToast(context, ConstantStrings.somethingWrong);
+    }
   }
 }

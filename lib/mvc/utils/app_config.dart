@@ -175,6 +175,37 @@ class AppConfig {
     );
   }
 
+  //please wait
+  static dynamic pleaseWait(BuildContext context) {
+    showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (BuildContext context) {
+          return WillPopScope(
+            // ignore: missing_return
+            onWillPop: () {},
+            child: AlertDialog(
+              content: Container(
+                  child: Row(
+                children: <Widget>[
+                  CircularProgressIndicator(),
+                  Expanded(
+                    child: Padding(
+                      padding: EdgeInsets.only(
+                          left: FontSize.size15, right: FontSize.size15),
+                      child: Text(
+                        ConstantStrings.pleaseWait,
+                        overflow: TextOverflow.clip,
+                      ),
+                    ),
+                  ),
+                ],
+              )),
+            ),
+          );
+        });
+  }
+
   //roboto text
   static TextStyle robotoText = TextStyle(
       color: AppColor.white,
