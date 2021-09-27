@@ -126,12 +126,16 @@ class PainIndicatorController extends ControllerMVC {
   }
 
   DateTime getTime() {
-    var time;
+    var dateTime;
     if (time != null) {
-      time = time;
+      dateTime = time;
     } else {
-      time = AppConfig.now;
+      dateTime = AppConfig.now;
     }
-    return time;
+    return dateTime;
+  }
+
+  String getSymptom(double value) {
+    var number = value.toStringAsFixed(2);
   }
 }
