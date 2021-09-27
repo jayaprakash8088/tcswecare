@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:tcswecare/mvc/api_utils/api_client.dart';
 import 'package:tcswecare/mvc/model/pain_level_model.dart';
 import 'package:tcswecare/mvc/model/pain_record_model.dart';
+import 'package:tcswecare/mvc/model/symptom_record_model.dart';
 import 'package:tcswecare/mvc/utils/app_config.dart';
 
 class Repository {
@@ -17,10 +18,20 @@ class Repository {
   }
 
   //save pain info
-  Future<PainRecordModel> savePatientPainInfo(
-      PainLevelModel painLevel, BuildContext context, token) async {
+  Future<PainRecordModelResponse> savePatientPainInfo(
+      PainLevelModel painLevel, BuildContext context, String token) async {
     dynamic response = await _apiClient.dioPost(
         AppConfig.savePatientPainInfo, painLevel, context, token);
-    return PainRecordModel.fromJson(response.data);
+    return PainRecordModelResponse.fromJson(response.data);
+  }
+
+  //save symptoms
+  Future<PainRecordModelResponse> savePatientSymptoms(
+      SymptomRecordModel symptomRecordModel,
+      BuildContext context,
+      String token) async {
+    dynamic response = await _apiClient.dioPost(
+        AppConfig.savePatientSymptomInfo, symptomRecordModel, context, token);
+    return PainRecordModelResponse.fromJson(response.data);
   }
 }

@@ -32,6 +32,7 @@ class AppConfig {
   static String contentType = 'application/json';
   static String token = 'token';
   static String savePatientPainInfo = 'savePatientPainInfo';
+  static String savePatientSymptomInfo = 'savePatientSymptomInfo';
 
   static LinearGradient gradient = LinearGradient(
       begin: Alignment.centerLeft,

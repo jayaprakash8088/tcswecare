@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
 import 'package:tcswecare/mvc/controller/pain_indicator_controller.dart';
+import 'package:tcswecare/mvc/model/pain_record_model.dart';
 import 'package:tcswecare/mvc/utils/app_color.dart';
 import 'package:tcswecare/mvc/utils/app_config.dart';
 import 'package:tcswecare/mvc/utils/assets.dart';
@@ -28,7 +29,9 @@ class _SymptomTrackerPageState extends StateMVC<SymptomTrackerPage> {
   _SymptomTrackerPageState() : super(PainIndicatorController()) {
     _controller = controller;
   }
+
   PainIndicatorController _controller;
+
   @override
   void initState() {
     super.initState();
@@ -123,12 +126,21 @@ class _SymptomTrackerPageState extends StateMVC<SymptomTrackerPage> {
         Padding(
           padding: EdgeInsets.only(top: FontSize.size20),
           child: GestureDetector(
-              onTap: () {
-                Navigator.pushAndRemoveUntil(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => TransmittingMessage()),
-                    (route) => false);
+              onTap: () async {
+                AppConfig.pleaseWait(context);
+                PainRecordModelResponse response =
+                    await _controller.submitSymptoms(context);
+                if (response != null && response.statusCode == 200) {
+                  Navigator.pop(context);
+                  Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => TransmittingMessage()),
+                      (route) => false);
+                } else {
+                  Navigator.pop(context);
+                  AppConfig.showToast(context, ConstantStrings.somethingWrong);
+                }
               },
               child: AppConfig.submitBtn()),
         )
@@ -253,27 +265,21 @@ class _SymptomTrackerPageState extends StateMVC<SymptomTrackerPage> {
     switch (index) {
       case 0:
         AppConfig.anxietyValue = selectedValue;
-        print('0' + selectedValue.toString());
         break;
       case 1:
         AppConfig.breathValue = selectedValue;
-        print('1' + selectedValue.toString());
         break;
       case 2:
         AppConfig.drySkinValue = selectedValue;
-        print('2' + selectedValue.toString());
         break;
       case 3:
         AppConfig.constipationValue = selectedValue;
-        print('3' + selectedValue.toString());
         break;
       case 4:
         AppConfig.nauseaValue = selectedValue;
-        print('4' + selectedValue.toString());
         break;
       case 5:
         AppConfig.moodValue = selectedValue;
-        print('5' + selectedValue.toString());
         break;
     }
   }

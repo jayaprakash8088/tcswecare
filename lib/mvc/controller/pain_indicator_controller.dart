@@ -3,6 +3,7 @@ import 'package:mvc_pattern/mvc_pattern.dart';
 import 'package:tcswecare/mvc/api_utils/repository.dart';
 import 'package:tcswecare/mvc/model/pain_level_model.dart';
 import 'package:tcswecare/mvc/model/pain_record_model.dart';
+import 'package:tcswecare/mvc/model/symptom_record_model.dart';
 import 'package:tcswecare/mvc/utils/app_color.dart';
 import 'package:tcswecare/mvc/utils/app_config.dart';
 import 'package:tcswecare/mvc/utils/app_shared_preferences.dart';
@@ -84,15 +85,33 @@ class PainIndicatorController extends ControllerMVC {
       return Assets.loading;
   }
 
-  Future<PainRecordModel> submit(BuildContext context) async {
+  Future<PainRecordModelResponse> submit(BuildContext context) async {
     PainLevelModel painLevelModel = PainLevelModel(
         painDate: getDate().toString(),
         painTime: getTime().toString(),
-        painLevel: AppConfig.spinnerValue.round().toString(),
+        painLevel: AppConfig.spinnerValue.toStringAsFixed(2).toString(),
         userID: 'ad24ed76-4eac-4095-98b2-8bf45b94fb7d');
     var token = await _sharedPreferences.getToken();
-    PainRecordModel response =
+    PainRecordModelResponse response =
         await repository.savePatientPainInfo(painLevelModel, context, token);
+    return response;
+  }
+
+  Future<PainRecordModelResponse> submitSymptoms(BuildContext context) async {
+    SymptomRecordModel symptomRecordModel = SymptomRecordModel(
+        userID: 'ad24ed76-4eac-4095-98b2-8bf45b94fb7d',
+        anxiety: AppConfig.anxietyValue.toStringAsFixed(2).toString(),
+        constipation: AppConfig.constipationValue.toStringAsFixed(2).toString(),
+        itchyOrDrySkin: AppConfig.drySkinValue.toStringAsFixed(2).toString(),
+        mood: AppConfig.moodValue.toStringAsFixed(2).toString(),
+        nausea: AppConfig.nauseaValue.toStringAsFixed(2).toString(),
+        symptomDate: getTime().toString(),
+        symptomTime: getTime().toString(),
+        otherComments: comments.text.trim(),
+        shortnessOfBreath: AppConfig.breathValue.toStringAsFixed(2).toString());
+    var token = await _sharedPreferences.getToken();
+    PainRecordModelResponse response = await repository.savePatientSymptoms(
+        symptomRecordModel, context, token);
     return response;
   }
 

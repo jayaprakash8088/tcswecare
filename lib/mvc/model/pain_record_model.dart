@@ -1,12 +1,12 @@
-class PainRecordModel {
+class PainRecordModelResponse {
   String message;
   int statusCode;
   String version;
 
-  PainRecordModel({this.message, this.statusCode, this.version});
+  PainRecordModelResponse({this.message, this.statusCode, this.version});
 
-  factory PainRecordModel.fromJson(Map<String, dynamic> json) {
-    return PainRecordModel(
+  factory PainRecordModelResponse.fromJson(Map<String, dynamic> json) {
+    return PainRecordModelResponse(
       message: json['Message'],
       statusCode: json['StatusCode'],
       version: json['Version'],
