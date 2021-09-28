@@ -101,8 +101,23 @@ class _HistoryScreenState extends StateMVC<HistoryScreen> {
             style: AppConfig.blackText,
           ),
         ),
-        dropDownBox(),
-        graph(),
+        Padding(
+          padding: EdgeInsets.only(bottom: FontSize.size20),
+          child: dropDownBox(),
+        ),
+        Align(
+            alignment: Alignment.topLeft,
+            child: Padding(
+              padding: EdgeInsets.only(left: FontSize.size10),
+              child: Text(ConstantStrings.severity),
+            )),
+        Padding(
+          padding: EdgeInsets.only(top: FontSize.size20),
+          child: graph(),
+        ),
+        Center(
+          child: Text(ConstantStrings.days),
+        ),
         Center(
           child: GestureDetector(
             onTap: () {

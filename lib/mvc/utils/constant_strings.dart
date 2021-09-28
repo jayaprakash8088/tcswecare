@@ -58,4 +58,6 @@ class ConstantStrings {
   static String loggedUser = 'LOGGED USER';
   static String userId = 'USER ID';
   static String pleaseWait = 'Please wait a moment';
+  static String severity = 'Severity';
+  static String days = 'Days';
 }
