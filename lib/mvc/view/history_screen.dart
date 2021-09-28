@@ -234,7 +234,6 @@ class _HistoryScreenState extends StateMVC<HistoryScreen> {
     return SfCartesianChart(
         enableMultiSelection: true,
         zoomPanBehavior: _zoomPanBehavior,
-        primaryXAxis: CategoryAxis(maximum: FontSize.size30),
         primaryYAxis: NumericAxis(maximum: FontSize.size10),
         series: <ChartSeries>[
           SplineAreaSeries<Data, String>(
@@ -244,5 +243,10 @@ class _HistoryScreenState extends StateMVC<HistoryScreen> {
               yValueMapper: (Data sales, _) =>
                   _controller.getYValue(sales.pain)),
         ]);
+  }
+
+  DateTime getStartDate() {
+    return DateTime(
+        AppConfig.now.year, AppConfig.now.month, AppConfig.now.day - 30);
   }
 }

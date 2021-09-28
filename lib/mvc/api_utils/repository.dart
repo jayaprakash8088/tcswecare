@@ -4,6 +4,7 @@ import 'package:tcswecare/mvc/model/pain_level_model.dart';
 import 'package:tcswecare/mvc/model/pain_record_model.dart';
 import 'package:tcswecare/mvc/model/patient_info_response_model.dart';
 import 'package:tcswecare/mvc/model/symptom_record_model.dart';
+import 'package:tcswecare/mvc/model/symptoms_response_model.dart';
 import 'package:tcswecare/mvc/utils/app_config.dart';
 
 class Repository {
@@ -41,5 +42,12 @@ class Repository {
     dynamic response =
         await _apiClient.dioGet(AppConfig.getPatientInfo, context, token);
     return PatientInfoResponseModel.fromJson(response);
+  }
+
+  Future<SymptomsResponseModel> getSymptomsInfo(
+      BuildContext context, String token) async {
+    dynamic response = await _apiClient.dioGet(
+        AppConfig.getPatientSymptomInfo, context, token);
+    return SymptomsResponseModel.fromJson(response.data);
   }
 }

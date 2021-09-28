@@ -34,6 +34,7 @@ class AppConfig {
   static String savePatientPainInfo = 'savePatientPainInfo';
   static String savePatientSymptomInfo = 'savePatientSymptomInfo';
   static String getPatientInfo = 'getPatientInfo';
+  static String getPatientSymptomInfo = 'getPatientSymptomInfo';
 ////////////////////////////////////////////////////////////////////////
   static LinearGradient gradient = LinearGradient(
       begin: Alignment.centerLeft,
