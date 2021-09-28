@@ -102,43 +102,7 @@ class _HistoryScreenState extends StateMVC<HistoryScreen> {
           ),
         ),
         dropDownBox(),
-        Padding(
-            padding: EdgeInsets.only(top: FontSize.size20),
-            child: Container(
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height * 0.4,
-              child: Row(
-                children: [
-                  Padding(
-                    padding: EdgeInsets.only(
-                        top: FontSize.size20, bottom: FontSize.size20),
-                    child: Container(
-                      height: MediaQuery.of(context).size.height * 0.4,
-                      width: MediaQuery.of(context).size.width * 0.2,
-                      child: ListView.builder(
-                          physics: NeverScrollableScrollPhysics(),
-                          scrollDirection: Axis.vertical,
-                          itemCount: 5,
-                          shrinkWrap: true,
-                          reverse: true,
-                          itemBuilder: (context, index) {
-                            return Padding(
-                              padding: EdgeInsets.only(
-                                  top: FontSize.size20,
-                                  bottom: FontSize.size18,
-                                  left: FontSize.size5),
-                              child: Text(
-                                AppConfig.symptomLevels[index],
-                                style: AppConfig.normalText,
-                              ),
-                            );
-                          }),
-                    ),
-                  ),
-                  graph(),
-                ],
-              ),
-            )),
+        graph(),
         Center(
           child: GestureDetector(
             onTap: () {
@@ -256,7 +220,7 @@ class _HistoryScreenState extends StateMVC<HistoryScreen> {
         enableMultiSelection: true,
         zoomPanBehavior: _zoomPanBehavior,
         primaryXAxis: CategoryAxis(maximum: FontSize.size30),
-        primaryYAxis: CategoryAxis(maximum: 5.8, minimum: 1),
+        primaryYAxis: NumericAxis(maximum: FontSize.size10),
         series: <ChartSeries>[
           SplineAreaSeries<Data, String>(
               gradient: AppConfig.nauseaGradient,
