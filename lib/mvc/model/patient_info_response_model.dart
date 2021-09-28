@@ -9,20 +9,20 @@ class PatientInfoResponseModel {
 
   factory PatientInfoResponseModel.fromJson(Map<String, dynamic> json) {
     return PatientInfoResponseModel(
-      message: json['message'],
-      result: json['result'] != null ? Result.fromJson(json['result']) : null,
-      statusCode: json['statusCode'],
-      version: json['version'],
+      message: json['Message'],
+      result: json['Result'] != null ? Result.fromJson(json['Result']) : null,
+      statusCode: json['StatusCode'],
+      version: json['Version'],
     );
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['message'] = this.message;
-    data['statusCode'] = this.statusCode;
-    data['version'] = this.version;
+    data['Message'] = this.message;
+    data['StatusCode'] = this.statusCode;
+    data['Version'] = this.version;
     if (this.result != null) {
-      data['result'] = this.result.toJson();
+      data['Result'] = this.result.toJson();
     }
     return data;
   }
@@ -48,25 +48,25 @@ class Result {
 
   factory Result.fromJson(Map<String, dynamic> json) {
     return Result(
-      age: json['age'],
-      emailId: json['emailId'],
-      oTP: json['oTP'],
-      oTPVerified: json['oTPVerified'],
-      password: json['password'],
-      patientName: json['patientName'],
-      userId: json['userId'],
+      age: json['Age'],
+      emailId: json['EmailId'],
+      oTP: json['OTP'],
+      oTPVerified: json['OTPVerified'],
+      password: json['Password'],
+      patientName: json['PatientName'],
+      userId: json['UserId'],
     );
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['age'] = this.age;
-    data['emailId'] = this.emailId;
-    data['oTP'] = this.oTP;
-    data['oTPVerified'] = this.oTPVerified;
-    data['password'] = this.password;
-    data['patientName'] = this.patientName;
-    data['userId'] = this.userId;
+    data['Age'] = this.age;
+    data['EmailId'] = this.emailId;
+    data['OTP'] = this.oTP;
+    data['OTPVerified'] = this.oTPVerified;
+    data['Password'] = this.password;
+    data['PatientName'] = this.patientName;
+    data['UserId'] = this.userId;
     return data;
   }
 }

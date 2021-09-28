@@ -40,6 +40,6 @@ class Repository {
       BuildContext context, String token) async {
     dynamic response =
         await _apiClient.dioGet(AppConfig.getPatientInfo, context, token);
-    return PatientInfoResponseModel.fromJson(response.data);
+    return PatientInfoResponseModel.fromJson(response);
   }
 }

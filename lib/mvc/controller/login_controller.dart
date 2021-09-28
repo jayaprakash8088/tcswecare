@@ -45,12 +45,13 @@ class LoginController extends ControllerMVC {
     }
   }
 
-  void getPatientInfo(BuildContext context) async {
+  Future<PatientInfoResponseModel> getPatientInfo(BuildContext context) async {
     var token = await sharedPreferences.getToken();
     PatientInfoResponseModel response =
         await repository.getPatientInfo(context, token);
     if (response != null) {
       await sharedPreferences.setUserId(response?.result?.userId ?? '');
     }
+    return null;
   }
 }
