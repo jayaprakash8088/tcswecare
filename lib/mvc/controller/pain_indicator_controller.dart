@@ -86,11 +86,12 @@ class PainIndicatorController extends ControllerMVC {
   }
 
   Future<PainRecordModelResponse> submit(BuildContext context) async {
+    var userId = await _sharedPreferences.getUserId();
     PainLevelModel painLevelModel = PainLevelModel(
         painDate: getDate().toString(),
         painTime: getTime().toString(),
         painLevel: AppConfig.spinnerValue.toStringAsFixed(2).toString(),
-        userID: 'ad24ed76-4eac-4095-98b2-8bf45b94fb7d');
+        userID: userId);
     var token = await _sharedPreferences.getToken();
     PainRecordModelResponse response =
         await repository.savePatientPainInfo(painLevelModel, context, token);
@@ -98,8 +99,9 @@ class PainIndicatorController extends ControllerMVC {
   }
 
   Future<PainRecordModelResponse> submitSymptoms(BuildContext context) async {
+    var userId = await _sharedPreferences.getUserId();
     SymptomRecordModel symptomRecordModel = SymptomRecordModel(
-        userID: 'ad24ed76-4eac-4095-98b2-8bf45b94fb7d',
+        userID: userId,
         anxiety: AppConfig.anxietyValue.toStringAsFixed(2).toString(),
         constipation: AppConfig.constipationValue.toStringAsFixed(2).toString(),
         itchyOrDrySkin: AppConfig.drySkinValue.toStringAsFixed(2).toString(),
@@ -133,9 +135,5 @@ class PainIndicatorController extends ControllerMVC {
       dateTime = AppConfig.now;
     }
     return dateTime;
-  }
-
-  String getSymptom(double value) {
-    var number = value.toStringAsFixed(2);
   }
 }

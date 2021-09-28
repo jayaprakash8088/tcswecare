@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
 import 'package:tcswecare/mvc/api_utils/repository.dart';
+import 'package:tcswecare/mvc/model/patient_info_response_model.dart';
 import 'package:tcswecare/mvc/utils/app_shared_preferences.dart';
 
 class LoginController extends ControllerMVC {
@@ -36,12 +37,20 @@ class LoginController extends ControllerMVC {
     };
     dynamic response = await repository.callLogin(body, context);
     if (response != null && response.statusCode == 200) {
-      await sharedPreferences.setAccessToken(
-          response.data['access_token'].toString(),
-          'ad24ed76-4eac-4095-98b2-8bf45b94fb7d');
+      await sharedPreferences
+          .setAccessToken(response.data['access_token'].toString());
       return true;
     } else {
       return false;
+    }
+  }
+
+  void getPatientInfo(BuildContext context) async {
+    var token = await sharedPreferences.getToken();
+    PatientInfoResponseModel response =
+        await repository.getPatientInfo(context, token);
+    if (response != null) {
+      await sharedPreferences.setUserId(response?.result?.userId ?? '');
     }
   }
 }

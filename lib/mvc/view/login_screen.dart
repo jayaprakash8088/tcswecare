@@ -188,6 +188,7 @@ class _LoginScreenState extends StateMVC<LoginScreen> {
           _controller.passwordController.text.trim(),
           context);
       if (isSuccess) {
+        _controller.getPatientInfo(context);
         Navigator.pop(context);
         Navigator.pushReplacement(
             context, MaterialPageRoute(builder: (context) => HomePage()));

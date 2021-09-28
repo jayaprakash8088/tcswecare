@@ -6,13 +6,14 @@ import 'package:tcswecare/mvc/utils/app_config.dart';
 class ApiClient {
   Dio _dio = Dio();
   //get Api
-  Future<dynamic> dioGet(String url, BuildContext context) async {
+  Future<dynamic> dioGet(String url, BuildContext context, String token) async {
     ConnectivityResult result;
     result = await Connectivity().checkConnectivity();
     if (result != null &&
         (result == ConnectivityResult.wifi ||
             result == ConnectivityResult.mobile)) {
       _dio.options.baseUrl = AppConfig.baseUrl;
+      _dio.options.headers["Authorization"] = AppConfig.bearer + token;
       try {
         dynamic response = await _dio.get(url);
         if (response != null && response.statusCode == 200) {

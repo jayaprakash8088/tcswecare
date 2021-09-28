@@ -33,7 +33,8 @@ class AppConfig {
   static String token = 'token';
   static String savePatientPainInfo = 'savePatientPainInfo';
   static String savePatientSymptomInfo = 'savePatientSymptomInfo';
-
+  static String getPatientInfo = 'getPatientInfo';
+////////////////////////////////////////////////////////////////////////
   static LinearGradient gradient = LinearGradient(
       begin: Alignment.centerLeft,
       end: Alignment.centerRight,
