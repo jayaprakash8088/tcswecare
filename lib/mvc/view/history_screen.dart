@@ -31,6 +31,7 @@ class _HistoryScreenState extends StateMVC<HistoryScreen> {
   @override
   void initState() {
     super.initState();
+    callApi();
     _zoomPanBehavior = ZoomPanBehavior(
         enablePinching: true,
         enablePanning: true,
@@ -249,4 +250,6 @@ class _HistoryScreenState extends StateMVC<HistoryScreen> {
     return DateTime(
         AppConfig.now.year, AppConfig.now.month, AppConfig.now.day - 30);
   }
+
+  void callApi() {}
 }

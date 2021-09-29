@@ -1,5 +1,10 @@
+import 'package:flutter/cupertino.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
+import 'package:tcswecare/mvc/api_utils/repository.dart';
 import 'package:tcswecare/mvc/model/history_model.dart';
+import 'package:tcswecare/mvc/model/symptoms_response_model.dart';
+import 'package:tcswecare/mvc/utils/app_config.dart';
+import 'package:tcswecare/mvc/utils/app_shared_preferences.dart';
 
 class HisToryController extends ControllerMVC {
   factory HisToryController() {
@@ -10,6 +15,8 @@ class HisToryController extends ControllerMVC {
   static HisToryController get con => _this;
   HistoryModel _historyModel = HistoryModel();
   List<Data> get data => _historyModel.data3;
+  AppSharedPreferences _sharedPreferences = AppSharedPreferences();
+  Repository repository = Repository();
   //set value
   num getYValue(String pain) {
     int range = 0;
@@ -31,5 +38,17 @@ class HisToryController extends ControllerMVC {
         break;
     }
     return range;
+  }
+
+  // get symptoms////
+  Future<SymptomsResponseModel> getSymptomsInfo(BuildContext context) async {
+    SymptomsResponseModel response;
+    AppConfig.pleaseWait(context);
+    try {
+      var token = await _sharedPreferences.getToken();
+      response = await repository.getSymptomsInfo(context, token);
+      Navigator.pop(context);
+    } catch (e) {}
+    return response;
   }
 }

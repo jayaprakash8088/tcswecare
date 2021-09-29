@@ -219,7 +219,7 @@ class _SymptomTrackerPageState extends StateMVC<SymptomTrackerPage> {
                             activeColor: AppColor.white,
                             value: getValue(index),
                             min: FontSize.size0,
-                            max: FontSize.size5,
+                            max: FontSize.size10,
                             onChanged: (values) {
                               _onChanged(values, index);
                             }),

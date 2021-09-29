@@ -4,7 +4,6 @@ import 'package:tcswecare/mvc/api_utils/repository.dart';
 import 'package:tcswecare/mvc/model/pain_level_model.dart';
 import 'package:tcswecare/mvc/model/pain_record_model.dart';
 import 'package:tcswecare/mvc/model/symptom_record_model.dart';
-import 'package:tcswecare/mvc/model/symptoms_response_model.dart';
 import 'package:tcswecare/mvc/utils/app_color.dart';
 import 'package:tcswecare/mvc/utils/app_config.dart';
 import 'package:tcswecare/mvc/utils/app_shared_preferences.dart';
@@ -115,14 +114,6 @@ class PainIndicatorController extends ControllerMVC {
     var token = await _sharedPreferences.getToken();
     PainRecordModelResponse response = await repository.savePatientSymptoms(
         symptomRecordModel, context, token);
-    return response;
-  }
-
-  // get symptoms////
-  Future<SymptomsResponseModel> getSymptomsInfo(BuildContext context) async {
-    var token = await _sharedPreferences.getToken();
-    SymptomsResponseModel response =
-        await repository.getSymptomsInfo(context, token);
     return response;
   }
 

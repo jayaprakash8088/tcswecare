@@ -60,4 +60,6 @@ class ConstantStrings {
   static String pleaseWait = 'Please wait a moment';
   static String severity = 'Severity';
   static String days = 'Days';
+  static String authorization = 'Authorization';
+  static String contentType = 'Content-Type';
 }

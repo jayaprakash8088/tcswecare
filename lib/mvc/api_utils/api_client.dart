@@ -2,6 +2,7 @@ import 'package:connectivity/connectivity.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:tcswecare/mvc/utils/app_config.dart';
+import 'package:tcswecare/mvc/utils/constant_strings.dart';
 
 class ApiClient {
   Dio _dio = Dio();
@@ -13,7 +14,8 @@ class ApiClient {
         (result == ConnectivityResult.wifi ||
             result == ConnectivityResult.mobile)) {
       _dio.options.baseUrl = AppConfig.baseUrl;
-      _dio.options.headers["Authorization"] = AppConfig.bearer + token;
+      _dio.options.headers[ConstantStrings.authorization] =
+          AppConfig.bearer + token;
       try {
         dynamic response = await _dio.get(url);
         if (response != null && response.statusCode == 200) {
@@ -35,8 +37,9 @@ class ApiClient {
         (result == ConnectivityResult.wifi ||
             result == ConnectivityResult.mobile)) {
       _dio.options.baseUrl = AppConfig.baseUrl;
-      _dio.options.headers["Content-Type"] = AppConfig.contentType;
-      _dio.options.headers["Authorization"] = AppConfig.bearer + token;
+      _dio.options.headers[ConstantStrings.contentType] = AppConfig.contentType;
+      _dio.options.headers[ConstantStrings.authorization] =
+          AppConfig.bearer + token;
       try {
         dynamic response = await _dio.post(url, data: formData);
         if (response != null) {
