@@ -63,7 +63,6 @@ class _HomePageState extends StateMVC<HomePage> {
         Scaffold(
           backgroundColor: AppColor.transparent,
           appBar: getAppBar(),
-          drawer: Drawer(),
           body: SingleChildScrollView(
               scrollDirection: Axis.vertical,
               physics: ScrollPhysics(parent: ScrollPhysics()),
