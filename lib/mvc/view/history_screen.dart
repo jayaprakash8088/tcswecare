@@ -4,12 +4,14 @@ import 'package:mvc_pattern/mvc_pattern.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:tcswecare/mvc/controller/history_controller.dart';
 import 'package:tcswecare/mvc/model/history_model.dart';
+import 'package:tcswecare/mvc/model/symptoms_response_model.dart';
 import 'package:tcswecare/mvc/utils/app_color.dart';
 import 'package:tcswecare/mvc/utils/app_config.dart';
 import 'package:tcswecare/mvc/utils/assets.dart';
 import 'package:tcswecare/mvc/utils/constant_strings.dart';
 import 'package:tcswecare/mvc/utils/font_size.dart';
 import 'package:tcswecare/mvc/utils/locale_drop_down.dart';
+import 'package:tcswecare/mvc/utils/shimmer.dart';
 import 'package:tcswecare/mvc/view/home_page.dart';
 
 class HistoryScreen extends StatefulWidget {
@@ -73,7 +75,22 @@ class _HistoryScreenState extends StateMVC<HistoryScreen> {
             Padding(
               padding: EdgeInsets.only(
                   top: FontSize.size100, bottom: FontSize.size20),
-              child: buildUI(),
+              child: StreamBuilder<Object>(
+                stream: _controller.getSymptomsCon.stream,
+                builder: (context, snapshot) {
+                  if (snapshot.hasData != null &&
+                      !snapshot.hasError &&
+                      snapshot.hasData) {
+                    return buildUI(snapshot.data);
+                  } else {
+                    return Padding(
+                      padding: EdgeInsets.only(
+                          top: MediaQuery.of(context).size.height * 0.4),
+                      child: GraphShimmer(),
+                    );
+                  }
+                },
+              ),
             )
           ],
         ),
@@ -81,7 +98,7 @@ class _HistoryScreenState extends StateMVC<HistoryScreen> {
     );
   }
 
-  Widget buildUI() {
+  Widget buildUI(SymptomsResponseModel data) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
@@ -103,7 +120,8 @@ class _HistoryScreenState extends StateMVC<HistoryScreen> {
           ),
         ),
         Padding(
-          padding: EdgeInsets.only(bottom: FontSize.size20),
+          padding:
+              EdgeInsets.only(bottom: FontSize.size20, right: FontSize.size20),
           child: dropDownBox(),
         ),
         Align(
@@ -156,8 +174,8 @@ class _HistoryScreenState extends StateMVC<HistoryScreen> {
   Widget dropDownBox() {
     return Container(
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [monthDropDown(), diagnosisDropDown()],
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [diagnosisDropDown()],
       ),
     );
   }
@@ -207,14 +225,12 @@ class _HistoryScreenState extends StateMVC<HistoryScreen> {
             isDense: true,
             value: AppConfig.diagnosisSelected,
             hint: Text(
-              ConstantStrings.anxiety,
+              ConstantStrings.all,
               style: AppConfig.robotoTextBlack,
             ),
             onChanged: (String newValue) {
               setState(() {
                 AppConfig.diagnosisSelected = newValue;
-                if (newValue == '0') {
-                } else {}
               });
             },
             items: AppConfig.diagnosisMap.map((Map map) {
@@ -232,18 +248,7 @@ class _HistoryScreenState extends StateMVC<HistoryScreen> {
   }
 
   Widget graph() {
-    return SfCartesianChart(
-        enableMultiSelection: true,
-        zoomPanBehavior: _zoomPanBehavior,
-        primaryYAxis: NumericAxis(maximum: FontSize.size10),
-        series: <ChartSeries>[
-          SplineAreaSeries<Data, String>(
-              gradient: AppConfig.nauseaGradient,
-              dataSource: _controller.data,
-              xValueMapper: (Data sales, _) => sales.date,
-              yValueMapper: (Data sales, _) =>
-                  _controller.getYValue(sales.pain)),
-        ]);
+    return getSelectedGraph();
   }
 
   DateTime getStartDate() {
@@ -251,5 +256,52 @@ class _HistoryScreenState extends StateMVC<HistoryScreen> {
         AppConfig.now.year, AppConfig.now.month, AppConfig.now.day - 30);
   }
 
-  void callApi() {}
+  Future callApi() async {
+    _controller.getSymptomsInfo(context);
+  }
+
+  Widget getSelectedGraph() {
+    if (AppConfig.diagnosisSelected != null &&
+        AppConfig.diagnosisSelected != '0') {
+      return SfCartesianChart(
+          enableMultiSelection: true,
+          zoomPanBehavior: _zoomPanBehavior,
+          primaryYAxis: NumericAxis(maximum: FontSize.size10),
+          primaryXAxis: CategoryAxis(),
+          series: <ChartSeries>[_controller.getSeries()]);
+    } else {
+      return SfCartesianChart(
+          enableMultiSelection: true,
+          zoomPanBehavior: _zoomPanBehavior,
+          primaryYAxis: NumericAxis(maximum: FontSize.size10),
+          primaryXAxis: CategoryAxis(),
+          series: <ChartSeries>[
+            SplineAreaSeries<Data, String>(
+                gradient: AppConfig.anxietyGradient,
+                dataSource: _controller.anxiety,
+                xValueMapper: (Data sales, _) => sales.date,
+                yValueMapper: (Data sales, _) => _controller.getY(sales.pain)),
+            SplineAreaSeries<Data, String>(
+                gradient: AppConfig.constipationGradient,
+                dataSource: _controller.constipation,
+                xValueMapper: (Data sales, _) => sales.date,
+                yValueMapper: (Data sales, _) => _controller.getY(sales.pain)),
+            SplineAreaSeries<Data, String>(
+                gradient: AppConfig.nauseaGradient,
+                dataSource: _controller.nausea,
+                xValueMapper: (Data sales, _) => sales.date,
+                yValueMapper: (Data sales, _) => _controller.getY(sales.pain)),
+            SplineAreaSeries<Data, String>(
+                gradient: AppConfig.drySkinGradient,
+                dataSource: _controller.drySkin,
+                xValueMapper: (Data sales, _) => sales.date,
+                yValueMapper: (Data sales, _) => _controller.getY(sales.pain)),
+            SplineAreaSeries<Data, String>(
+                gradient: AppConfig.shortnessOfBreathGradient,
+                dataSource: _controller.shortnessOfBreath,
+                xValueMapper: (Data sales, _) => sales.date,
+                yValueMapper: (Data sales, _) => _controller.getY(sales.pain))
+          ]);
+    }
+  }
 }

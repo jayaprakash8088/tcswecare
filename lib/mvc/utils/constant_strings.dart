@@ -62,4 +62,5 @@ class ConstantStrings {
   static String days = 'Days';
   static String authorization = 'Authorization';
   static String contentType = 'Content-Type';
+  static String all = 'All';
 }

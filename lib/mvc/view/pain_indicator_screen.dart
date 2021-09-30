@@ -137,6 +137,7 @@ class _PainIndicatorScreenState extends StateMVC<PainIndicatorScreen> {
                     (route) => false);
               } else {
                 Navigator.pop(context);
+                AppConfig.showToast(context, ConstantStrings.somethingWrong);
               }
             },
             child: AppConfig.submitBtn())

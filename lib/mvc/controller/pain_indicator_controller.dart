@@ -107,8 +107,8 @@ class PainIndicatorController extends ControllerMVC {
         itchyOrDrySkin: AppConfig.drySkinValue.toStringAsFixed(2).toString(),
         mood: AppConfig.moodValue.toStringAsFixed(2).toString(),
         nausea: AppConfig.nauseaValue.toStringAsFixed(2).toString(),
-        symptomDate: getTime().toString(),
-        symptomTime: getTime().toString(),
+        symptomDate: getDate().toString(),
+        symptomTime: AppConfig.timeFormat.format(getTime()),
         otherComments: comments.text.trim(),
         shortnessOfBreath: AppConfig.breathValue.toStringAsFixed(2).toString());
     var token = await _sharedPreferences.getToken();

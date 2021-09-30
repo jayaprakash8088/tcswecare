@@ -44,10 +44,10 @@ class Repository {
     return PatientInfoResponseModel.fromJson(response);
   }
 
-  Future<SymptomsResponseModel> getSymptomsInfo(
+  Future<SymptomsResponseModel> getSymptoms(
       BuildContext context, String token) async {
     dynamic response = await _apiClient.dioGet(
         AppConfig.getPatientSymptomInfo, context, token);
-    return SymptomsResponseModel.fromJson(response.data);
+    return SymptomsResponseModel.fromJson(response);
   }
 }

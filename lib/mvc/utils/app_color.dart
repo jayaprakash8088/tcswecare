@@ -30,4 +30,8 @@ class AppColor {
   static Color bgBlue = Color.fromRGBO(34, 167, 240, 1);
   static Color blurGradient1 = Color.fromRGBO(51, 174, 241, 1);
   static Color blurGradient2 = Color.fromRGBO(169, 193, 229, 1);
+  static Color redGradient1 = Color.fromRGBO(243, 195, 215, 1);
+  static Color redGradient2 = Color.fromRGBO(238, 42, 124, 1);
+  static Color blueGradient1 = Color.fromRGBO(180, 186, 234, 1);
+  static Color blueGradient2 = Color.fromRGBO(38, 59, 245, 1);
 }

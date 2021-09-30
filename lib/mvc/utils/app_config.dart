@@ -40,6 +40,7 @@ class AppConfig {
       begin: Alignment.centerLeft,
       end: Alignment.centerRight,
       colors: <Color>[AppColor.bg1, AppColor.bg2]);
+  static Color divider = Color.fromRGBO(231, 231, 231, 1);
   static LinearGradient blueGradient = LinearGradient(
       begin: Alignment.topLeft,
       end: Alignment.bottomRight,
@@ -60,6 +61,14 @@ class AppConfig {
       begin: Alignment.topCenter,
       end: Alignment.bottomCenter,
       colors: <Color>[AppColor.constipation, AppColor.white]);
+  static LinearGradient drySkinGradient = LinearGradient(
+      begin: Alignment.topCenter,
+      end: Alignment.bottomCenter,
+      colors: <Color>[AppColor.redGradient2, AppColor.white]);
+  static LinearGradient shortnessOfBreathGradient = LinearGradient(
+      begin: Alignment.topCenter,
+      end: Alignment.bottomCenter,
+      colors: <Color>[AppColor.blueGradient2, AppColor.white]);
   static List<Map> languageList = [
     {"id": 0, 'image': Assets.englishFlag, 'name': ConstantStrings.english},
     {'id': 1, 'image': Assets.malayFlag, 'name': ConstantStrings.malay}
@@ -93,11 +102,12 @@ class AppConfig {
     'Nausea'
   ];
   static List<Map> diagnosisMap = [
-    {'id': 0, 'name': 'Anxiety'},
-    {'id': 1, 'name': 'Constipation'},
-    {'id': 2, 'name': 'Nausea'},
-    {'id': 3, 'name': 'Itchy/Dry Skin'},
-    {'id': 4, 'name': 'Shortness of Breath'}
+    {'id': 0, 'name': 'All'},
+    {'id': 1, 'name': 'Anxiety'},
+    {'id': 2, 'name': 'Constipation'},
+    {'id': 3, 'name': 'Nausea'},
+    {'id': 4, 'name': 'Itchy/Dry Skin'},
+    {'id': 5, 'name': 'Shortness of Breath'}
   ];
   static List<String> yValue = [
     'None',
@@ -166,6 +176,7 @@ class AppConfig {
   static var dateFormat = DateFormat('dd/MM/yyyy');
   static var timeFormat = DateFormat().add_jm();
   static DateTime now = DateTime.now();
+  static var date = DateFormat.d();
   static Widget submitBtn() {
     return Center(
       child: Container(
