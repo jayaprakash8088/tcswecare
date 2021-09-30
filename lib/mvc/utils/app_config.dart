@@ -37,6 +37,9 @@ class AppConfig {
   static String getPatientSymptomInfo = 'getPatientSymptomInfo';
   static String signUp = 'api/Account/register';
   static String resendOtp = 'api/Account/resendOtp';
+  static String verifyOtp = 'api/Account/verifyOtp?otp=';
+  static String forgotPassword = 'api/Account/forgotPassword';
+  static String changePassword = 'api/Account/changePassword';
 
 ////////////////////////////////////////////////////////////////////////
   static LinearGradient gradient = LinearGradient(
