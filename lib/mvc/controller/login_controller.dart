@@ -1,7 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
 import 'package:tcswecare/mvc/api_utils/repository.dart';
+import 'package:tcswecare/mvc/model/pain_record_model.dart';
 import 'package:tcswecare/mvc/model/patient_info_response_model.dart';
+import 'package:tcswecare/mvc/model/sing_up_model.dart';
+import 'package:tcswecare/mvc/utils/app_config.dart';
 import 'package:tcswecare/mvc/utils/app_shared_preferences.dart';
 
 class LoginController extends ControllerMVC {
@@ -27,6 +30,9 @@ class LoginController extends ControllerMVC {
   TextEditingController eMailController = TextEditingController();
   // diagnosis controller
   TextEditingController diagnosisController = TextEditingController();
+  //age value
+  int ageValue;
+  String otp;
 
   Future<dynamic> loginClicked(
       String userName, String password, BuildContext context) async {
@@ -53,5 +59,29 @@ class LoginController extends ControllerMVC {
       await sharedPreferences.setUserId(response?.result?.userId ?? '');
     }
     return null;
+  }
+
+  Future<PainRecordModelResponse> signUp(BuildContext context) async {
+    SignUpModel model = SignUpModel(
+        age: ageValue,
+        emailId: eMailController.text.trim(),
+        password: passwordController.text.trim(),
+        patientName: nameController.text.trim());
+    AppConfig.pleaseWait(context);
+    PainRecordModelResponse response =
+        await repository.signUp(AppConfig.signUp, context, model);
+    return response;
+  }
+
+  Future<PainRecordModelResponse> resendOTP(BuildContext context) async {
+    SignUpModel model = SignUpModel(
+        age: ageValue,
+        emailId: eMailController.text.trim(),
+        password: passwordController.text.trim(),
+        patientName: nameController.text.trim());
+    AppConfig.pleaseWait(context);
+    PainRecordModelResponse response =
+        await repository.signUp(AppConfig.resendOtp, context, model);
+    return response;
   }
 }

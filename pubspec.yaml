@@ -42,6 +42,7 @@ dependencies:
   fluttertoast: ^8.0.8
   connectivity: ^3.0.6
   shimmer: ^0.0.1
+  otp_text_field: ^1.1.1
 dev_dependencies:
   flutter_test:
      sdk: flutter

@@ -63,4 +63,5 @@ class ConstantStrings {
   static String authorization = 'Authorization';
   static String contentType = 'Content-Type';
   static String all = 'All';
+  static String otpSent = 'OTP Sent to your Mail';
 }

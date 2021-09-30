@@ -9,6 +9,7 @@ import 'package:tcswecare/mvc/utils/assets.dart';
 import 'package:tcswecare/mvc/utils/constant_strings.dart';
 import 'package:tcswecare/mvc/utils/font_size.dart';
 import 'package:tcswecare/mvc/view/login_screen.dart';
+import 'package:tcswecare/mvc/view/otp_screen.dart';
 
 class SignUpScreen extends StatefulWidget {
   SignUpScreen({Key key}) : super(key: key);
@@ -69,30 +70,7 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
                     ),
                   ),
                   buildUI(),
-                  Padding(
-                    padding: EdgeInsets.only(
-                        top: FontSize.size30, bottom: FontSize.size20),
-                    child: Center(
-                      child: Container(
-                        height: FontSize.size40,
-                        width: FontSize.size160,
-                        decoration: BoxDecoration(
-                          gradient: AppConfig.gradient,
-                          borderRadius: BorderRadius.all(
-                              Radius.circular(FontSize.size20)),
-                        ),
-                        child: Center(
-                          child: Text(
-                            ConstantStrings.singUp,
-                            style: TextStyle(
-                                color: AppColor.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: FontSize.size14),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
+                  signUpBtn(),
                   existingUI()
                 ],
               ),
@@ -284,6 +262,7 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
                   onChanged: (newValue) {
                     setState(() {
                       ageValue = newValue;
+                      _controller.ageValue = num.parse(newValue);
                     });
                   },
                   items: AppConfig.ageList.map((valueItem) {
@@ -378,5 +357,51 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
         ],
       ),
     );
+  }
+
+  Widget signUpBtn() {
+    return GestureDetector(
+      onTap: () async {
+        otpPopUp();
+        // PainRecordModelResponse response = await _controller.signUp(context);
+        // if (response != null && response.statusCode == 200) {
+        //   Navigator.pop(context);
+        //   otpPopUp();
+        // } else if (response.statusCode == 204) {
+        //   Navigator.pop(context);
+        //   AppConfig.showToast(context, response.message);
+        // } else {
+        //   Navigator.pop(context);
+        //   AppConfig.showToast(context, ConstantStrings.somethingWrong);
+        // }
+      },
+      child: Padding(
+        padding: EdgeInsets.only(top: FontSize.size30, bottom: FontSize.size20),
+        child: Center(
+          child: Container(
+            height: FontSize.size40,
+            width: FontSize.size160,
+            decoration: BoxDecoration(
+              gradient: AppConfig.gradient,
+              borderRadius: BorderRadius.all(Radius.circular(FontSize.size20)),
+            ),
+            child: Center(
+              child: Text(
+                ConstantStrings.singUp,
+                style: TextStyle(
+                    color: AppColor.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: FontSize.size14),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  void otpPopUp() {
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => OtpScreen()));
   }
 }
