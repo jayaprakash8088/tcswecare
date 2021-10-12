@@ -95,6 +95,18 @@ flutter:
      - images/tablet.png
      - images/telephone.png
      - images/rest.png
+     - images/range0.svg
+     - images/range1.svg
+     - images/range2.svg
+     - images/range3.svg
+     - images/range4.svg
+     - images/range5.svg
+     - images/range0_selected.svg
+     - images/range1_selected.svg
+     - images/range2_selected.svg
+     - images/range3_selected.svg
+     - images/range4_selected.svg
+     - images/range5_selected.svg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

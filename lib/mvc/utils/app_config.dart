@@ -172,6 +172,12 @@ class AppConfig {
       fontFamily: AppConfig.montserrat,
       fontStyle: AppConfig.normal,
       color: AppColor.black);
+  static TextStyle text = TextStyle(
+      fontSize: FontSize.size22,
+      fontWeight: FontWeight.w500,
+      fontFamily: AppConfig.montserrat,
+      fontStyle: AppConfig.normal,
+      color: AppColor.black);
   //call function
   static Future<dynamic> urlLauncher(String url) async {
     try {
@@ -299,4 +305,26 @@ class AppConfig {
         toastLength: Toast.LENGTH_LONG,
         backgroundColor: AppColor.grey);
   }
+
+  static List rangeList = [
+    '0',
+    '1',
+    '2',
+    '3',
+    '4',
+    '5',
+    '6',
+    '7',
+    '8',
+    '9',
+    '10'
+  ];
+  static List hurtList = [
+    'No\nHurt',
+    'Hurts\nLittle Bit',
+    'Hurts\nLittle More',
+    'Hurts\nEven More',
+    'Hurts\nWhole Lots',
+    'Hurts\nWorst'
+  ];
 }

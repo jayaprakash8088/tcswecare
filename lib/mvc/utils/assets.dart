@@ -30,4 +30,16 @@ class Assets {
   static String restWell = 'images/rest.png';
   static String telephone = 'images/telephone.png';
   static String loadingCompleted = 'images/loading_completed.svg';
+  static String range0 = 'images/range0.svg';
+  static String range1 = 'images/range1.svg';
+  static String range2 = 'images/range2.svg';
+  static String range3 = 'images/range3.svg';
+  static String range4 = 'images/range4.svg';
+  static String range5 = 'images/range5.svg';
+  static String range0Selected = 'images/range0_selected.svg';
+  static String range1Selected = 'images/range1_selected.svg';
+  static String range2Selected = 'images/range2_selected.svg';
+  static String range3Selected = 'images/range3_selected.svg';
+  static String range4Selected = 'images/range4_selected.svg';
+  static String range5Selected = 'images/range5_selected.svg';
 }

@@ -136,4 +136,8 @@ class PainIndicatorController extends ControllerMVC {
     }
     return dateTime;
   }
+
+  void onChanges(double value) {
+    AppConfig.spinnerValue = value;
+  }
 }

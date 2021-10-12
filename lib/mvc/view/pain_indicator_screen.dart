@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
-import 'package:sleek_circular_slider/sleek_circular_slider.dart';
 import 'package:tcswecare/mvc/controller/pain_indicator_controller.dart';
 import 'package:tcswecare/mvc/model/pain_record_model.dart';
 import 'package:tcswecare/mvc/utils/app_color.dart';
@@ -12,6 +11,7 @@ import 'package:tcswecare/mvc/utils/constant_strings.dart';
 import 'package:tcswecare/mvc/utils/date_time_ui.dart';
 import 'package:tcswecare/mvc/utils/font_size.dart';
 import 'package:tcswecare/mvc/utils/locale_drop_down.dart';
+import 'package:tcswecare/mvc/utils/slider_shape.dart';
 import 'package:tcswecare/mvc/view/sending_msg.dart';
 
 class PainIndicatorScreen extends StatefulWidget {
@@ -93,33 +93,41 @@ class _PainIndicatorScreenState extends StateMVC<PainIndicatorScreen> {
           child: Text(
             ConstantStrings.feeling,
             textAlign: TextAlign.center,
-            style: AppConfig.centerText,
+            style: AppConfig.text,
           ),
         ),
         Padding(
-          padding: EdgeInsets.only(top: FontSize.size10),
-          child: Center(
-            child: slider,
-          ),
-        ),
-        Container(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Text(
-                ConstantStrings.noPain,
-                style: AppConfig.blackText,
-              ),
-              Text(
-                ConstantStrings.tooPain,
-                style: AppConfig.blackText,
-              )
-            ],
-          ),
+          padding: EdgeInsets.only(top: 10.0),
+          child: Container(height: FontSize.size80, child: imageList()),
         ),
         Padding(
           padding:
-              EdgeInsets.only(top: FontSize.size20, bottom: FontSize.size20),
+              EdgeInsets.only(top: FontSize.size10, bottom: FontSize.size10),
+          child: Center(
+            child: SliderTheme(
+              data: SliderTheme.of(context).copyWith(
+                  trackShape: GradientRectSliderTrackShape(
+                      gradient: AppConfig.gradient, darkenInactive: true),
+                  overlayShape:
+                      RoundSliderOverlayShape(overlayRadius: FontSize.size0),
+                  trackHeight: FontSize.size10),
+              child: Slider(
+                  activeColor: AppColor.white,
+                  value: AppConfig.spinnerValue,
+                  min: FontSize.size0,
+                  max: FontSize.size10,
+                  onChanged: (values) {
+                    setState(() {
+                      _controller.onChanges(values);
+                    });
+                  }),
+            ),
+          ),
+        ),
+        Container(height: FontSize.size30, child: rangeList()),
+        Padding(
+          padding:
+              EdgeInsets.only(top: FontSize.size10, bottom: FontSize.size20),
           child:
               Container(height: FontSize.size100, child: DateTimeUI(context)),
         ),
@@ -145,27 +153,113 @@ class _PainIndicatorScreenState extends StateMVC<PainIndicatorScreen> {
     );
   }
 
-  final slider = SleekCircularSlider(
-    initialValue: FontSize.size0,
-    appearance: CircularSliderAppearance(
-        size: FontSize.size200,
-        animationEnabled: true,
-        customWidths: CustomSliderWidths(
-            handlerSize: FontSize.size10,
-            progressBarWidth: FontSize.size10,
-            trackWidth: FontSize.size10),
-        customColors: CustomSliderColors(
-            dotColor: AppColor.white,
-            trackColor: AppColor.unSelectedColor,
-            dynamicGradient: true,
-            progressBarColors: [AppColor.bg1, AppColor.bg2])),
-    min: FontSize.size0,
-    max: FontSize.size4,
-    innerWidget: (double value) {
-      return Container();
-    },
-    onChangeEnd: (double endValue) {
-      AppConfig.spinnerValue = endValue;
-    },
-  );
+  Widget rangeList() {
+    return ListView.builder(
+        physics: AlwaysScrollableScrollPhysics(),
+        shrinkWrap: true,
+        itemCount: AppConfig.rangeList.length,
+        scrollDirection: Axis.horizontal,
+        itemBuilder: (context, index) {
+          return Padding(
+            padding: EdgeInsets.only(left: 10.0, right: 10.0),
+            child: Text(
+              AppConfig.rangeList[index],
+              textAlign: TextAlign.center,
+              style: AppConfig.text,
+            ),
+          );
+        });
+  }
+
+  Widget imageList() {
+    return ListView.builder(
+        scrollDirection: Axis.horizontal,
+        shrinkWrap: true,
+        physics: NeverScrollableScrollPhysics(),
+        itemCount: 6,
+        itemBuilder: (context, index) {
+          return Column(
+            children: [
+              Padding(
+                padding: EdgeInsets.only(
+                  left: 10.0,
+                  right: 10.0,
+                  bottom: 10.0,
+                ),
+                child: SvgPicture.asset(
+                  loadImages(index),
+                  width: FontSize.size35,
+                  height: FontSize.size35,
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(left: 10.0, right: 10.0),
+                child: hurtRange(index),
+              ),
+            ],
+          );
+        });
+  }
+
+  String loadImages(int index) {
+    var image;
+    switch (index) {
+      case 0:
+        if (AppConfig.spinnerValue <= 2) {
+          image = Assets.range0Selected;
+        } else {
+          image = Assets.range0;
+        }
+        break;
+      case 1:
+        if (AppConfig.spinnerValue > 2 && AppConfig.spinnerValue <= 4) {
+          image = Assets.range1Selected;
+        } else {
+          image = Assets.range1;
+        }
+        break;
+      case 2:
+        if (AppConfig.spinnerValue <= 6 && AppConfig.spinnerValue > 4) {
+          image = Assets.range2Selected;
+        } else {
+          image = Assets.range2;
+        }
+        break;
+      case 3:
+        if (AppConfig.spinnerValue <= 7.5 && AppConfig.spinnerValue > 6) {
+          image = Assets.range3Selected;
+        } else {
+          image = Assets.range3;
+        }
+        break;
+      case 4:
+        if (AppConfig.spinnerValue <= 9 && AppConfig.spinnerValue > 7.5) {
+          image = Assets.range4Selected;
+        } else {
+          image = Assets.range4;
+        }
+        break;
+      case 5:
+        if (AppConfig.spinnerValue <= 10 && AppConfig.spinnerValue > 9) {
+          image = Assets.range5Selected;
+        } else {
+          image = Assets.range5;
+        }
+        break;
+    }
+    return image;
+  }
+
+  Widget hurtRange(int index) {
+    return Text(
+      AppConfig.hurtList[index],
+      textAlign: TextAlign.center,
+      style: TextStyle(
+          fontSize: FontSize.size8,
+          fontWeight: FontWeight.w600,
+          fontFamily: AppConfig.montserrat,
+          fontStyle: AppConfig.normal,
+          color: AppColor.black),
+    );
+  }
 }
