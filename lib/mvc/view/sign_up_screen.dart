@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
 import 'package:tcswecare/mvc/controller/login_controller.dart';
+import 'package:tcswecare/mvc/model/pain_record_model.dart';
 import 'package:tcswecare/mvc/utils/app_color.dart';
 import 'package:tcswecare/mvc/utils/app_config.dart';
 import 'package:tcswecare/mvc/utils/assets.dart';
 import 'package:tcswecare/mvc/utils/constant_strings.dart';
 import 'package:tcswecare/mvc/utils/font_size.dart';
+import 'package:tcswecare/mvc/view/home_page.dart';
 import 'package:tcswecare/mvc/view/login_screen.dart';
 import 'package:tcswecare/mvc/view/otp_screen.dart';
 
@@ -105,34 +107,6 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: EdgeInsets.only(bottom: FontSize.size10),
-            child: Text(
-              ConstantStrings.patientId,
-              style: TextStyle(
-                  color: AppColor.black,
-                  fontWeight: FontWeight.bold,
-                  fontFamily: AppConfig.montserrat,
-                  fontStyle: AppConfig.normal,
-                  fontSize: FontSize.size16),
-            ),
-          ),
-          Container(
-            height: FontSize.size40,
-            decoration: BoxDecoration(
-              color: AppColor.bgText,
-              borderRadius: BorderRadius.all(Radius.circular(FontSize.size10)),
-            ),
-            child: TextField(
-                controller: _controller.patientIdController,
-                decoration: InputDecoration(
-                    fillColor: AppColor.black,
-                    border: InputBorder.none,
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius:
-                          BorderRadius.all(Radius.circular(FontSize.size10)),
-                    ))),
-          ),
-          Padding(
             padding:
                 EdgeInsets.only(bottom: FontSize.size10, top: FontSize.size10),
             child: Text(
@@ -159,6 +133,35 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
                     focusedBorder: OutlineInputBorder(
                       borderRadius:
                           BorderRadius.all(Radius.circular(FontSize.size10)),
+                    ))),
+          ),
+          Padding(
+            padding:
+            EdgeInsets.only(bottom: FontSize.size10, top: FontSize.size10),
+            child: Text(
+              ConstantStrings.password,
+              style: TextStyle(
+                  color: AppColor.black,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: AppConfig.montserrat,
+                  fontStyle: AppConfig.normal,
+                  fontSize: FontSize.size16),
+            ),
+          ),
+          Container(
+            height: FontSize.size40,
+            decoration: BoxDecoration(
+              color: AppColor.bgText,
+              borderRadius: BorderRadius.all(Radius.circular(FontSize.size10)),
+            ),
+            child: TextField(
+                controller: _controller.passwordController,
+                decoration: InputDecoration(
+                    fillColor: AppColor.black,
+                    border: InputBorder.none,
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius:
+                      BorderRadius.all(Radius.circular(FontSize.size10)),
                     ))),
           ),
           Padding(
@@ -362,18 +365,27 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
   Widget signUpBtn() {
     return GestureDetector(
       onTap: () async {
-        otpPopUp();
-        // PainRecordModelResponse response = await _controller.signUp(context);
-        // if (response != null && response.statusCode == 200) {
-        //   Navigator.pop(context);
-        //   otpPopUp();
-        // } else if (response.statusCode == 204) {
-        //   Navigator.pop(context);
-        //   AppConfig.showToast(context, response.message);
-        // } else {
-        //   Navigator.pop(context);
-        //   AppConfig.showToast(context, ConstantStrings.somethingWrong);
-        // }
+        PainRecordModelResponse response = await _controller.signUp(context);
+        if (response != null && response.statusCode == 200) {
+          bool isSuccess =await _controller.loginClicked(
+              _controller.eMailController.text.trim(),
+              _controller.passwordController.text.trim(), context);
+          if(isSuccess){
+          Navigator.pop(context);
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => HomePage()));}
+          else{
+            Navigator.pop(context);
+            AppConfig.showToast(context, response.message);
+          }
+          // otpPopUp();
+        } else if (response.statusCode == 204) {
+          Navigator.pop(context);
+          AppConfig.showToast(context, response.message);
+        } else {
+          Navigator.pop(context);
+          AppConfig.showToast(context, ConstantStrings.somethingWrong);
+        }
       },
       child: Padding(
         padding: EdgeInsets.only(top: FontSize.size30, bottom: FontSize.size20),

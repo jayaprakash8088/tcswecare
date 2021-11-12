@@ -9,8 +9,8 @@ class ConstantStrings {
   static String noInternet = 'No Internet';
   static String startText =
       "Hey there! Let’s \n Get You Registered \n and Started!";
-  static String patientId = 'Patient ID*';
   static String eMail = 'Email*';
+  static String pWord='Password*';
   static String diagnosis = 'Diagnosis';
   static String name = 'Name';
   static String gender = 'Gender';

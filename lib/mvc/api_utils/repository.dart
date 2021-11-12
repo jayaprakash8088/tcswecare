@@ -55,6 +55,7 @@ class Repository {
 
   Future<PainRecordModelResponse> signUp(
       String url, BuildContext context, SignUpModel signUpModel) async {
-    // dynamic response=await _apiClient.dioPost(url, formData, context, token)
+    dynamic response=await _apiClient.dioPost(url,signUpModel, context,'');
+    return PainRecordModelResponse.fromJson(response.data);
   }
 }

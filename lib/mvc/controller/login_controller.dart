@@ -66,11 +66,11 @@ class LoginController extends ControllerMVC {
         age: ageValue,
         emailId: eMailController.text.trim(),
         password: passwordController.text.trim(),
-        patientName: nameController.text.trim());
+        patientName: nameController.text.trim(), diagnosis:diagnosisController.text.trim());
     AppConfig.pleaseWait(context);
     PainRecordModelResponse response =
         await repository.signUp(AppConfig.signUp, context, model);
-    return response;
+   return response;
   }
 
   Future<PainRecordModelResponse> resendOTP(BuildContext context) async {
@@ -78,7 +78,8 @@ class LoginController extends ControllerMVC {
         age: ageValue,
         emailId: eMailController.text.trim(),
         password: passwordController.text.trim(),
-        patientName: nameController.text.trim());
+        patientName: nameController.text.trim(),
+    diagnosis:diagnosisController.text.trim());
     AppConfig.pleaseWait(context);
     PainRecordModelResponse response =
         await repository.signUp(AppConfig.resendOtp, context, model);

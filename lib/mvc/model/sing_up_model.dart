@@ -3,8 +3,9 @@ class SignUpModel {
   String emailId;
   String password;
   String patientName;
+  String diagnosis;
 
-  SignUpModel({this.age, this.emailId, this.password, this.patientName});
+  SignUpModel({this.age, this.emailId, this.password, this.patientName,this.diagnosis});
 
   factory SignUpModel.fromJson(Map<String, dynamic> json) {
     return SignUpModel(
@@ -12,6 +13,7 @@ class SignUpModel {
       emailId: json['emailId'],
       password: json['password'],
       patientName: json['patientName'],
+      diagnosis: json['diagnosis'],
     );
   }
 
@@ -21,6 +23,7 @@ class SignUpModel {
     data['emailId'] = this.emailId;
     data['password'] = this.password;
     data['patientName'] = this.patientName;
+    data['diagnosis'] = this.diagnosis;
     return data;
   }
 }
