@@ -139,7 +139,7 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
             padding:
             EdgeInsets.only(bottom: FontSize.size10, top: FontSize.size10),
             child: Text(
-              ConstantStrings.password,
+              ConstantStrings.pWord,
               style: TextStyle(
                   color: AppColor.black,
                   fontWeight: FontWeight.bold,
@@ -364,27 +364,18 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
 
   Widget signUpBtn() {
     return GestureDetector(
-      onTap: () async {
-        PainRecordModelResponse response = await _controller.signUp(context);
-        if (response != null && response.statusCode == 200) {
-          bool isSuccess =await _controller.loginClicked(
-              _controller.eMailController.text.trim(),
-              _controller.passwordController.text.trim(), context);
-          if(isSuccess){
-          Navigator.pop(context);
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => HomePage()));}
-          else{
-            Navigator.pop(context);
-            AppConfig.showToast(context, response.message);
+      onTap: (){
+        if(_controller.passwordController.text.trim().isNotEmpty&&
+        _controller.eMailController.text.trim().isNotEmpty&&
+        _controller.nameController.text.trim().isNotEmpty){
+          if(checkPassWord()&&checkMail()){
+       signUpClicked();
+          }else{
+            AppConfig.showToast(context, ConstantStrings.enterValidMailPwd);
           }
-          // otpPopUp();
-        } else if (response.statusCode == 204) {
-          Navigator.pop(context);
-          AppConfig.showToast(context, response.message);
-        } else {
-          Navigator.pop(context);
-          AppConfig.showToast(context, ConstantStrings.somethingWrong);
+        }
+        else{
+          AppConfig.showToast(context, ConstantStrings.enterMailNamePwd);
         }
       },
       child: Padding(
@@ -415,5 +406,41 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
   void otpPopUp() {
     Navigator.push(
         context, MaterialPageRoute(builder: (context) => OtpScreen()));
+  }
+
+  void signUpClicked()async{
+    PainRecordModelResponse response = await _controller.signUp(context);
+    if (response != null && response.statusCode == 200) {
+      bool isSuccess =await _controller.loginClicked(
+          _controller.eMailController.text.trim(),
+          _controller.passwordController.text.trim(), context);
+      if(isSuccess){
+        Navigator.pop(context);
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => HomePage()));}
+      else{
+        Navigator.pop(context);
+        AppConfig.showToast(context, response.message);
+      }
+      // otpPopUp();
+    } else if (response.statusCode == 204) {
+      Navigator.pop(context);
+      AppConfig.showToast(context, response.message);
+    } else {
+      Navigator.pop(context);
+      AppConfig.showToast(context, ConstantStrings.somethingWrong);
+    }
+  }
+
+  bool checkPassWord() {
+      String  pattern = r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$';
+      RegExp regExp = new RegExp(pattern);
+      return regExp.hasMatch(_controller.passwordController.text);
+  }
+
+  bool checkMail() {
+    return RegExp(
+        r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$')
+        .hasMatch(_controller.eMailController.text.trim());
   }
 }

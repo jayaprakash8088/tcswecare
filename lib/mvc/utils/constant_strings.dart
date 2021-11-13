@@ -12,7 +12,7 @@ class ConstantStrings {
   static String eMail = 'Email*';
   static String pWord='Password*';
   static String diagnosis = 'Diagnosis';
-  static String name = 'Name';
+  static String name = 'Name*';
   static String gender = 'Gender';
   static String age = 'Age';
   static String existingUser = 'An Existing User?';
@@ -64,4 +64,7 @@ class ConstantStrings {
   static String contentType = 'Content-Type';
   static String all = 'All';
   static String otpSent = 'OTP Sent to your Mail';
+  static String enterNamePwd='Please fill Username and Password';
+  static String enterValidMailPwd='Please enter Valid e-Mail and Password';
+  static String enterMailNamePwd='Please fill e-Mail,Username and Password';
 }

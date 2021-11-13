@@ -195,7 +195,7 @@ class _LoginScreenState extends StateMVC<LoginScreen> {
       }
     } else {
       Navigator.pop(context);
-      AppConfig.showToast(context, ConstantStrings.somethingWrong);
+      AppConfig.showToast(context, ConstantStrings.enterNamePwd);
     }
   }
 }
