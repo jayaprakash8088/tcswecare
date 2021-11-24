@@ -84,7 +84,7 @@ class _OtpScreenState extends StateMVC<OtpScreen> {
                             color: Colors.white)),
                   ),
                   onTap: () {
-                    print('pinnn' + _controller.otp);
+                    print('pin' + _controller.otp);
                   },
                 ),
                 SizedBox(

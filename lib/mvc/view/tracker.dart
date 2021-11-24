@@ -41,6 +41,7 @@ class _SymptomTrackerPageState extends StateMVC<SymptomTrackerPage> {
     _controller.dateTime = null;
     _controller.selectedTime = null;
     _controller.selectedDate = null;
+    setValueNull();
   }
 
   @override
@@ -429,5 +430,13 @@ class _SymptomTrackerPageState extends StateMVC<SymptomTrackerPage> {
         ),
       ],
     );
+  }
+
+  void setValueNull() {
+    AppConfig.anxietyValue=0;
+     AppConfig.breathValue=0;
+     AppConfig.drySkinValue=0;
+   AppConfig.constipationValue=0;
+     AppConfig.nauseaValue=0;
   }
 }

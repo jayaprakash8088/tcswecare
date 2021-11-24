@@ -35,87 +35,85 @@ class _InitialPageState extends State<InitialPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      child: Stack(
-        children: [
-          Container(
-            color: AppColor.bgWhite,
-            child: SvgPicture.asset(
-              Assets.bigRectangle,
-              width: MediaQuery.of(context).size.width,
-            ),
-            alignment: Alignment.topCenter,
+    return Stack(
+      children: [
+        Container(
+          color: AppColor.bgWhite,
+          child: SvgPicture.asset(
+            Assets.bigRectangle,
+            width: MediaQuery.of(context).size.width,
           ),
-          Padding(
-            padding: EdgeInsets.only(top: FontSize.size50),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Center(child: SvgPicture.asset(Assets.logo)),
-                Padding(
-                  padding: EdgeInsets.only(top: FontSize.size100),
-                  child: Center(child: SvgPicture.asset(Assets.astronaut)),
+          alignment: Alignment.topCenter,
+        ),
+        Padding(
+          padding: EdgeInsets.only(top: FontSize.size50),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Center(child: SvgPicture.asset(Assets.logo)),
+              Padding(
+                padding: EdgeInsets.only(top: FontSize.size100),
+                child: Center(child: SvgPicture.asset(Assets.astronaut)),
+              ),
+              GestureDetector(
+                onTap: () {
+                  moveToSignUp();
+                },
+                child: Padding(
+                  padding: EdgeInsets.only(top: FontSize.size180),
+                  child: Center(
+                    child: Container(
+                      height: FontSize.size40,
+                      width: FontSize.size160,
+                      decoration: BoxDecoration(
+                        gradient: AppConfig.gradient,
+                        borderRadius: BorderRadius.all(
+                            Radius.circular(FontSize.size20)),
+                      ),
+                      child: Center(
+                        child: Text(
+                          ConstantStrings.singUp,
+                          style: TextStyle(
+                              color: AppColor.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: FontSize.size14),
+                        ),
+                      ),
+                    ),
+                  ),
                 ),
-                GestureDetector(
-                  onTap: () {
-                    moveToSignUp();
-                  },
-                  child: Padding(
-                    padding: EdgeInsets.only(top: FontSize.size180),
-                    child: Center(
-                      child: Container(
-                        height: FontSize.size40,
-                        width: FontSize.size160,
-                        decoration: BoxDecoration(
-                          gradient: AppConfig.gradient,
+              ),
+              GestureDetector(
+                onTap: () {
+                  moveToLogin();
+                },
+                child: Padding(
+                  padding: EdgeInsets.only(top: FontSize.size20),
+                  child: Center(
+                    child: Container(
+                      height: FontSize.size40,
+                      width: FontSize.size160,
+                      decoration: BoxDecoration(
+                          border: Border.all(color: AppColor.bg1),
                           borderRadius: BorderRadius.all(
-                              Radius.circular(FontSize.size20)),
-                        ),
-                        child: Center(
-                          child: Text(
-                            ConstantStrings.singUp,
-                            style: TextStyle(
-                                color: AppColor.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: FontSize.size14),
-                          ),
+                              Radius.circular(FontSize.size20))),
+                      child: Center(
+                        child: Text(
+                          ConstantStrings.login,
+                          style: TextStyle(
+                              color: AppColor.black,
+                              fontWeight: FontWeight.bold,
+                              fontSize: FontSize.size14),
                         ),
                       ),
                     ),
                   ),
                 ),
-                GestureDetector(
-                  onTap: () {
-                    moveToLogin();
-                  },
-                  child: Padding(
-                    padding: EdgeInsets.only(top: FontSize.size20),
-                    child: Center(
-                      child: Container(
-                        height: FontSize.size40,
-                        width: FontSize.size160,
-                        decoration: BoxDecoration(
-                            border: Border.all(color: AppColor.bg1),
-                            borderRadius: BorderRadius.all(
-                                Radius.circular(FontSize.size20))),
-                        child: Center(
-                          child: Text(
-                            ConstantStrings.login,
-                            style: TextStyle(
-                                color: AppColor.black,
-                                fontWeight: FontWeight.bold,
-                                fontSize: FontSize.size14),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                )
-              ],
-            ),
+              )
+            ],
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 
