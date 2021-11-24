@@ -156,6 +156,7 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
             ),
             child: TextField(
                 controller: _controller.passwordController,
+                obscureText: true, enableSuggestions: false,
                 decoration: InputDecoration(
                     fillColor: AppColor.black,
                     border: InputBorder.none,
@@ -164,6 +165,7 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
                       BorderRadius.all(Radius.circular(FontSize.size10)),
                     ))),
           ),
+          Text(AppConfig.passwordCondition,style: TextStyle(color:AppColor.red),),
           Padding(
             padding:
                 EdgeInsets.only(bottom: FontSize.size10, top: FontSize.size10),

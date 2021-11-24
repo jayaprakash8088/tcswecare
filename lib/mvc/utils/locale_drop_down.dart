@@ -58,13 +58,12 @@ class _LocaleDropDownState extends State<LocaleDropDown> {
           items: AppConfig.languageList.map((Map map) {
             return new DropdownMenuItem<String>(
               value: map["id"].toString(),
-              // value: _mySelection,
               child: Row(
                 children: <Widget>[
-                  Image.asset(
-                    map["image"],
-                    width: FontSize.size25,
-                  ),
+                  // Image.asset(
+                  //   map["image"],
+                  //   width: FontSize.size25,
+                  // ),
                   Container(
                       margin: EdgeInsets.only(left: FontSize.size10),
                       child: Text(map["name"])),

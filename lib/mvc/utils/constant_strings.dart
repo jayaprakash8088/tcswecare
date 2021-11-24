@@ -18,6 +18,7 @@ class ConstantStrings {
   static String existingUser = 'An Existing User?';
   static String english = 'English';
   static String malay = 'Malay';
+  static String tamil = 'Tamil';
   static String homePageText =
       'Use the menu below to log your \nsymptoms or view history';
   static String card2Text = 'Record Your\nSymptoms';

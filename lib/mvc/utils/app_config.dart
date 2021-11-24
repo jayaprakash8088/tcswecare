@@ -79,7 +79,8 @@ class AppConfig {
       colors: <Color>[AppColor.blueGradient2, AppColor.white]);
   static List<Map> languageList = [
     {"id": 0, 'image': Assets.englishFlag, 'name': ConstantStrings.english},
-    {'id': 1, 'image': Assets.malayFlag, 'name': ConstantStrings.malay}
+    {'id': 1, 'image': Assets.malayFlag, 'name': ConstantStrings.malay},
+    {'id': 2, 'image': Assets.malayFlag, 'name': ConstantStrings.malay},
   ];
   static List<Map> monthList = [
     {'id': 0, 'month': 'January'},
@@ -339,4 +340,8 @@ class AppConfig {
       r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$';
   static String mailPattern =
       r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+
+
+  static String passwordCondition='*Password should contains at least 8 character including '
+      '1 upper case letter,1 lower case letter,1 number and 1 special character';
 }
