@@ -433,14 +433,12 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
   }
 
   bool checkPassWord() {
-      String  pattern = r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$';
-      RegExp regExp = new RegExp(pattern);
+      RegExp regExp = new RegExp(AppConfig.passwordPattern);
       return regExp.hasMatch(_controller.passwordController.text);
   }
 
   bool checkMail() {
-    return RegExp(
-        r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$')
+    return RegExp(AppConfig.mailPattern)
         .hasMatch(_controller.eMailController.text.trim());
   }
 }

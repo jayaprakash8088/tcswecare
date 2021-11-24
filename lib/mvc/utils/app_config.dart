@@ -14,9 +14,11 @@ class AppConfig {
   // font family
   static String roboto = 'Roboto';
   static String montserrat = 'Montserrat';
+
   //font style
   static FontStyle normal = FontStyle.normal;
   static FontStyle italic = FontStyle.italic;
+
   // spinner value
   static double spinnerValue = 0.0;
   static double anxietyValue = 0.0;
@@ -165,6 +167,7 @@ class AppConfig {
       fontFamily: AppConfig.montserrat,
       fontStyle: AppConfig.normal,
       color: AppColor.black);
+
   //center text
   static TextStyle centerText = TextStyle(
       fontSize: FontSize.size25,
@@ -178,6 +181,7 @@ class AppConfig {
       fontFamily: AppConfig.montserrat,
       fontStyle: AppConfig.normal,
       color: AppColor.black);
+
   //call function
   static Future<dynamic> urlLauncher(String url) async {
     try {
@@ -189,6 +193,7 @@ class AppConfig {
   static var timeFormat = DateFormat().add_jm();
   static DateTime now = DateTime.now();
   static var date = DateFormat.d();
+
   static Widget submitBtn() {
     return Center(
       child: Container(
@@ -254,6 +259,7 @@ class AppConfig {
       fontFamily: AppConfig.roboto,
       fontStyle: AppConfig.normal,
       fontSize: FontSize.size14);
+
   //no internet pop up
   static dynamic noInternetPopUp(BuildContext context) {
     showDialog(
@@ -327,4 +333,10 @@ class AppConfig {
     'Hurts\nWhole Lots',
     'Hurts\nWorst'
   ];
+
+  //password patter
+  static String passwordPattern =
+      r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$';
+  static String mailPattern =
+      r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
 }
