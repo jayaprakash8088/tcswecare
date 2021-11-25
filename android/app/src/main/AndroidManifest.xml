@@ -2,7 +2,7 @@
     package="com.tcswecare.tcswecare">
     <uses-permission android:name="android.permission.INTERNET"/>
    <application
-        android:label="TCS We Care"
+        android:label="We Care"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

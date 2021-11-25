@@ -58,4 +58,10 @@ class Repository {
     dynamic response=await _apiClient.dioPost(url,signUpModel, context,'');
     return PainRecordModelResponse.fromJson(response.data);
   }
+  Future<dynamic>logOutApi(BuildContext context,String token)async{
+    dynamic response=await _apiClient.logOut(context,token);
+    if(response!=null&&response.statusCode==200){
+      return true;
+    }else return false;
+  }
 }

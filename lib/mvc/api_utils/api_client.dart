@@ -54,7 +54,7 @@ class ApiClient {
     }
   }
 
-  ///login_api
+  //login_api
   Future<dynamic> login(dynamic formData, BuildContext context) async {
     ConnectivityResult result;
     result = await Connectivity().checkConnectivity();
@@ -66,6 +66,29 @@ class ApiClient {
         dynamic response = await _dio.post(
           AppConfig.token,
           data: formData,
+          options: Options(
+            contentType: "application/x-www-form-urlencoded",
+          ),
+        );
+        return response;
+      } catch (e) {}
+    } else if (!AppConfig.isShowingDialog) {
+      AppConfig.noInternetPopUp(context);
+    }
+  }
+  //log out api
+  Future<dynamic> logOut(BuildContext context,String token) async {
+    ConnectivityResult result;
+    result = await Connectivity().checkConnectivity();
+    if (result != null &&
+        (result == ConnectivityResult.wifi ||
+            result == ConnectivityResult.mobile)) {
+      _dio.options.baseUrl = AppConfig.baseUrl;
+      _dio.options.headers[ConstantStrings.authorization] =
+          AppConfig.bearer + token;
+      try {
+        dynamic response = await _dio.post(
+          AppConfig.logOut,
           options: Options(
             contentType: "application/x-www-form-urlencoded",
           ),

@@ -38,6 +38,7 @@ class AppConfig {
   static String getPatientInfo = 'getPatientInfo';
   static String getPatientSymptomInfo = 'getPatientSymptomInfo';
   static String signUp = 'api/Account/register';
+  static String logOut = 'api/Account/Logout';
   static String resendOtp = 'api/Account/resendOtp';
   static String verifyOtp = 'api/Account/verifyOtp?otp=';
   static String forgotPassword = 'api/Account/forgotPassword';

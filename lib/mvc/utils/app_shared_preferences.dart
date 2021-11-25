@@ -25,6 +25,7 @@ class AppSharedPreferences {
   Future getToken() async {
     _sharedPreferences = await SharedPreferences.getInstance();
     dynamic token = _sharedPreferences.getString(accessToken);
+    print('token::: $token');
     return token;
   }
 
@@ -46,5 +47,9 @@ class AppSharedPreferences {
     _sharedPreferences = await SharedPreferences.getInstance();
     dynamic response = _sharedPreferences.getString(userId);
     return response;
+  }
+  Future clearAll()async{
+    _sharedPreferences=await SharedPreferences.getInstance();
+    await _sharedPreferences.clear();
   }
 }

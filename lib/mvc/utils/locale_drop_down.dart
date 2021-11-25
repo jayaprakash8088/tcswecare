@@ -1,11 +1,14 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:tcswecare/mvc/api_utils/repository.dart';
 import 'package:tcswecare/mvc/utils/app_color.dart';
 import 'package:tcswecare/mvc/utils/app_config.dart';
+import 'package:tcswecare/mvc/utils/app_shared_preferences.dart';
 import 'package:tcswecare/mvc/utils/assets.dart';
 import 'package:tcswecare/mvc/utils/constant_strings.dart';
 import 'package:tcswecare/mvc/utils/font_size.dart';
+import 'package:tcswecare/mvc/view/initial_page.dart';
 
 class LocaleDropDown extends StatefulWidget {
   LocaleDropDown({Key key}) : super(key: key);
@@ -17,6 +20,8 @@ class LocaleDropDown extends StatefulWidget {
 }
 
 class _LocaleDropDownState extends State<LocaleDropDown> {
+  Repository repository=Repository();
+  AppSharedPreferences _sharedPreferences=AppSharedPreferences();
   @override
   void initState() {
     super.initState();
@@ -113,32 +118,59 @@ class _LocaleDropDownState extends State<LocaleDropDown> {
         builder: (BuildContext context) {
           return AlertDialog(
             content:Container(
-              height: 170.0,
+              height: FontSize.size100,
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Text(ConstantStrings.logOutText,
-                  style: TextStyle(fontSize: FontSize.size15,
-                  color: AppColor.black,fontFamily:AppConfig.montserrat),),
+                  Padding(
+                    padding:  EdgeInsets.only(top: FontSize.size10,
+                    bottom: FontSize.size30),
+                    child: Text(ConstantStrings.logOutText,
+                    style: TextStyle(fontSize: FontSize.size15,
+                    color: AppColor.black,fontFamily:AppConfig.montserrat),),
+                  ),
                   Divider(
                     height: FontSize.size2,color: AppColor.grey,
                   ),
-                  Container(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Center(
-                          child: Text(ConstantStrings.cancel,
-                            style: TextStyle(fontSize: FontSize.size15,
-                                color: AppColor.black,fontFamily:AppConfig.montserrat),),
-                        ),
-                        Container(color: AppColor.grey,width: 2,),
-                        Center(
-                          child: Text(ConstantStrings.logOut,
-                            style: TextStyle(fontSize: FontSize.size15,
-                                color: AppColor.black,fontFamily:AppConfig.montserrat),),
-                        ),
-                      ],
+                  Padding(
+                    padding:  EdgeInsets.only(top:FontSize.size10),
+                    child: Container(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          GestureDetector(
+                            onTap: (){
+                              Navigator.pop(context);
+                            },
+                            child: Center(
+                              child: Text(ConstantStrings.cancel,
+                                style: TextStyle(fontSize: FontSize.size15,
+                                    color: AppColor.black,fontFamily:AppConfig.montserrat),),
+                            ),
+                          ),
+                          Container(color: AppColor.grey,width:1,
+                          height: 20.0,),
+                          GestureDetector(
+                            onTap: ()async{
+                              String token=await _sharedPreferences.getToken();
+                            var response=await repository.logOutApi(context,token);
+                            if(response){
+                             await _sharedPreferences.clearAll();
+                              Navigator.pushAndRemoveUntil(context,
+                                  MaterialPageRoute(builder:(context)=> InitialPage()), (route) => false);
+                            }else{
+                              Navigator.pop(context);
+                              AppConfig.showToast(context, ConstantStrings.somethingWrong);
+                            }
+                            },
+                            child: Center(
+                              child: Text(ConstantStrings.logOut,
+                                style: TextStyle(fontSize: FontSize.size15,
+                                    color: AppColor.black,fontFamily:AppConfig.montserrat),),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   )
                 ],
