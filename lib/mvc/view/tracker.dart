@@ -69,11 +69,11 @@ class _SymptomTrackerPageState extends StateMVC<SymptomTrackerPage> {
               ),
             ),
             Positioned(
-                top: FontSize.size10,
+                top: FontSize.size20,
                 right: FontSize.size20,
                 child: Container(
                     height: FontSize.size100,
-                    width: FontSize.size140,
+                    width: FontSize.size160,
                     child: Center(child: LocaleDropDown()))),
             Padding(
               padding: EdgeInsets.only(

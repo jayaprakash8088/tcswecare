@@ -43,12 +43,15 @@ class _TransmittingMessageState extends StateMVC<TransmittingMessage> {
       backgroundColor: AppColor.bgBlue,
       body: Column(
         children: [
-          Align(
-            alignment: Alignment.centerRight,
-            child: Container(
-                height: FontSize.size100,
-                width: FontSize.size140,
-                child: LocaleDropDown()),
+          Padding(
+            padding: EdgeInsets.only( top:FontSize.size20),
+            child: Align(
+              alignment: Alignment.centerRight,
+              child: Container(
+                  height: FontSize.size100,
+                  width: FontSize.size160,
+                  child: LocaleDropDown()),
+            ),
           ),
           buildUI(),
         ],
@@ -74,7 +77,7 @@ class _TransmittingMessageState extends StateMVC<TransmittingMessage> {
         Padding(
           padding:
               EdgeInsets.only(top: FontSize.size40, bottom: FontSize.size70),
-          child: SvgPicture.asset(Assets.frameWorld),
+          child: Image.asset(Assets.image1),
         ),
         SvgPicture.asset(
           _painIndicatorController.getImage(i),

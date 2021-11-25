@@ -42,4 +42,6 @@ class Assets {
   static String range3Selected = 'images/range3_selected.svg';
   static String range4Selected = 'images/range4_selected.svg';
   static String range5Selected = 'images/range5_selected.svg';
+  static String image1='images/image.png';
+  static String logOut='images/logout.svg';
 }

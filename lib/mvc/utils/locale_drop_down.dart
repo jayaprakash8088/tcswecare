@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tcswecare/mvc/utils/app_color.dart';
 import 'package:tcswecare/mvc/utils/app_config.dart';
 import 'package:tcswecare/mvc/utils/assets.dart';
@@ -30,9 +31,10 @@ class _LocaleDropDownState extends State<LocaleDropDown> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColor.transparent,
-      body: Column(
+      body: Row(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: [getLanguageDropdown()],
+        children: [getLanguageDropdown(),
+        logout()],
       ),
     );
   }
@@ -90,6 +92,15 @@ class _LocaleDropDownState extends State<LocaleDropDown> {
               style: TextStyle(color: AppColor.black),
             )),
       ],
+    );
+  }
+
+  Widget logout() {
+    return GestureDetector(
+      onTap: (){},
+      child: SvgPicture.asset(
+        Assets.logOut,
+      ),
     );
   }
 }

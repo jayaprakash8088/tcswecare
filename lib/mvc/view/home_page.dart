@@ -78,7 +78,7 @@ class _HomePageState extends StateMVC<HomePage> {
       elevation: FontSize.size0,
       actions: [
         Container(
-            width: FontSize.size150, child: Center(child: LocaleDropDown()))
+            width: FontSize.size160, child: Center(child: LocaleDropDown()))
       ],
       leading: Image.asset(Assets.hamburgerIcon),
       centerTitle: false,
