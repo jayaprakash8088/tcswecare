@@ -68,4 +68,6 @@ class ConstantStrings {
   static String enterNamePwd='Please fill Username and Password';
   static String enterValidMailPwd='Please enter Valid e-Mail and Password';
   static String enterMailNamePwd='Please fill e-Mail,Username and Password';
+  static String logOutText='Are you sure want to LogOut ?';
+  static String logOut='LogOut';
 }

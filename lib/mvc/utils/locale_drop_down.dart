@@ -97,10 +97,54 @@ class _LocaleDropDownState extends State<LocaleDropDown> {
 
   Widget logout() {
     return GestureDetector(
-      onTap: (){},
+      onTap: (){
+        _logOutPopUp();
+      },
       child: SvgPicture.asset(
         Assets.logOut,
       ),
     );
+  }
+
+  void _logOutPopUp() {
+    showDialog(
+        context: context,
+        barrierDismissible: true,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            content:Container(
+              height: 170.0,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(ConstantStrings.logOutText,
+                  style: TextStyle(fontSize: FontSize.size15,
+                  color: AppColor.black,fontFamily:AppConfig.montserrat),),
+                  Divider(
+                    height: FontSize.size2,color: AppColor.grey,
+                  ),
+                  Container(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Center(
+                          child: Text(ConstantStrings.cancel,
+                            style: TextStyle(fontSize: FontSize.size15,
+                                color: AppColor.black,fontFamily:AppConfig.montserrat),),
+                        ),
+                        Container(color: AppColor.grey,width: 2,),
+                        Center(
+                          child: Text(ConstantStrings.logOut,
+                            style: TextStyle(fontSize: FontSize.size15,
+                                color: AppColor.black,fontFamily:AppConfig.montserrat),),
+                        ),
+                      ],
+                    ),
+                  )
+                ],
+              ),
+            ),
+          );
+        });
   }
 }
