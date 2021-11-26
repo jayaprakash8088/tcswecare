@@ -10,6 +10,7 @@ class ConstantStrings {
   static String startText =
       "Hey there! Let’s \n Get You Registered \n and Started!";
   static String eMail = 'Email*';
+  static String doctorEMail = 'Doctor Email*';
   static String pWord='Password*';
   static String diagnosis = 'Diagnosis';
   static String name = 'Name*';

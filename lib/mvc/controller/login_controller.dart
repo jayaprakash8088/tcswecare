@@ -28,6 +28,8 @@ class LoginController extends ControllerMVC {
   TextEditingController patientIdController = TextEditingController();
   // email
   TextEditingController eMailController = TextEditingController();
+  //doctor mail id
+  TextEditingController doctorMailController = TextEditingController();
   // diagnosis controller
   TextEditingController diagnosisController = TextEditingController();
   //age value
@@ -66,7 +68,8 @@ class LoginController extends ControllerMVC {
         age: ageValue,
         emailId: eMailController.text.trim(),
         password: passwordController.text.trim(),
-        patientName: nameController.text.trim(), diagnosis:diagnosisController.text.trim());
+        patientName: nameController.text.trim(), diagnosis:diagnosisController.text.trim(),
+    doctorEmailId: doctorMailController.text.trim());
     AppConfig.pleaseWait(context);
     PainRecordModelResponse response =
         await repository.signUp(AppConfig.signUp, context, model);

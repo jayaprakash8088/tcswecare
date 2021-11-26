@@ -108,6 +108,35 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
         children: [
           Padding(
             padding:
+            EdgeInsets.only(bottom: FontSize.size10, top: FontSize.size10),
+            child: Text(
+              ConstantStrings.doctorEMail,
+              style: TextStyle(
+                  color: AppColor.black,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: AppConfig.montserrat,
+                  fontStyle: AppConfig.normal,
+                  fontSize: FontSize.size16),
+            ),
+          ),
+          Container(
+            height: FontSize.size40,
+            decoration: BoxDecoration(
+              color: AppColor.bgText,
+              borderRadius: BorderRadius.all(Radius.circular(FontSize.size10)),
+            ),
+            child: TextField(
+                controller: _controller.doctorMailController,
+                decoration: InputDecoration(
+                    fillColor: AppColor.black,
+                    border: InputBorder.none,
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius:
+                      BorderRadius.all(Radius.circular(FontSize.size10)),
+                    ))),
+          ),
+          Padding(
+            padding:
                 EdgeInsets.only(bottom: FontSize.size10, top: FontSize.size10),
             child: Text(
               ConstantStrings.eMail,
@@ -369,6 +398,7 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
       onTap: (){
         if(_controller.passwordController.text.trim().isNotEmpty&&
         _controller.eMailController.text.trim().isNotEmpty&&
+            _controller.doctorMailController.text.trim().isNotEmpty&&
         _controller.nameController.text.trim().isNotEmpty){
           if(checkPassWord()&&checkMail()){
        signUpClicked();

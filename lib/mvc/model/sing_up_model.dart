@@ -4,8 +4,8 @@ class SignUpModel {
   String password;
   String patientName;
   String diagnosis;
-
-  SignUpModel({this.age, this.emailId, this.password, this.patientName,this.diagnosis});
+  String doctorEmailId;
+  SignUpModel({this.age, this.emailId, this.password, this.patientName,this.diagnosis,this.doctorEmailId});
 
   factory SignUpModel.fromJson(Map<String, dynamic> json) {
     return SignUpModel(
@@ -14,6 +14,7 @@ class SignUpModel {
       password: json['password'],
       patientName: json['patientName'],
       diagnosis: json['diagnosis'],
+      doctorEmailId: json['doctorEmailId'],
     );
   }
 
@@ -24,6 +25,7 @@ class SignUpModel {
     data['password'] = this.password;
     data['patientName'] = this.patientName;
     data['diagnosis'] = this.diagnosis;
+    data['doctorEmailId'] = this.doctorEmailId;
     return data;
   }
 }
