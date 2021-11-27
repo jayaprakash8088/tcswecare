@@ -58,6 +58,7 @@ class LoginController extends ControllerMVC {
     PatientInfoResponseModel response =
         await repository.getPatientInfo(context, token);
     if (response != null) {
+      print(response.result.toString());
       await sharedPreferences.setUserId(response?.result?.userId ?? '');
     }
     return null;

@@ -165,6 +165,7 @@ class _LoginScreenState extends StateMVC<LoginScreen> {
             child: TextField(
                 controller: _controller.passwordController,
                 obscureText: true,
+                maxLength: 12,
                 enableSuggestions: false,
                 decoration: InputDecoration(
                     fillColor: AppColor.black,

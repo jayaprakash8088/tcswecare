@@ -186,6 +186,7 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
             child: TextField(
                 controller: _controller.passwordController,
                 obscureText: true, enableSuggestions: false,
+                maxLength: 12,
                 decoration: InputDecoration(
                     fillColor: AppColor.black,
                     border: InputBorder.none,
