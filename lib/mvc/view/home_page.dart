@@ -77,12 +77,13 @@ class _HomePageState extends StateMVC<HomePage> {
       backgroundColor: AppColor.transparent,
       elevation: FontSize.size0,
       actions: [
-        Container(
-            width: FontSize.size160, child: Center(child: LocaleDropDown()))
+        Padding(
+          padding:  EdgeInsets.only(top:FontSize.size20),
+          child: Container(
+              width: FontSize.size160, child: Center(child: LocaleDropDown())),
+        )
       ],
-      leading: Image.asset(Assets.hamburgerIcon),
       centerTitle: false,
-      leadingWidth: FontSize.size30,
       title: SvgPicture.asset(
         Assets.logo,
         height: FontSize.size22,

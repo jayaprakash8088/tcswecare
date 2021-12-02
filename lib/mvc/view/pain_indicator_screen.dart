@@ -32,6 +32,7 @@ class _PainIndicatorScreenState extends StateMVC<PainIndicatorScreen> {
 
   @override
   void initState() {
+    AppConfig.spinnerValue=0.0;
     super.initState();
   }
 

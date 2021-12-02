@@ -37,6 +37,7 @@ class AppConfig {
   static String savePatientSymptomInfo = 'savePatientSymptomInfo';
   static String getPatientInfo = 'getPatientInfo';
   static String getPatientSymptomInfo = 'getPatientSymptomInfo';
+  static String getPatientPainInfo = 'getPatientPainInfo';
   static String signUp = 'api/Account/register';
   static String logOut = 'api/Account/Logout';
   static String resendOtp = 'api/Account/resendOtp';
@@ -78,10 +79,14 @@ class AppConfig {
       begin: Alignment.topCenter,
       end: Alignment.bottomCenter,
       colors: <Color>[AppColor.blueGradient2, AppColor.white]);
+  static LinearGradient painGradient = LinearGradient(
+      begin: Alignment.topCenter,
+      end: Alignment.bottomCenter,
+      colors: <Color>[AppColor.painGradient1, AppColor.white]);
   static List<Map> languageList = [
     {"id": 0, 'image': Assets.englishFlag, 'name': ConstantStrings.english},
     {'id': 1, 'image': Assets.malayFlag, 'name': ConstantStrings.malay},
-    {'id': 2, 'image': Assets.malayFlag, 'name': ConstantStrings.malay},
+    {'id': 2, 'image': Assets.malayFlag, 'name': ConstantStrings.tamil},
   ];
   static List<Map> monthList = [
     {'id': 0, 'month': 'January'},
@@ -117,7 +122,8 @@ class AppConfig {
     {'id': 2, 'name': 'Constipation'},
     {'id': 3, 'name': 'Nausea'},
     {'id': 4, 'name': 'Itchy/Dry Skin'},
-    {'id': 5, 'name': 'Shortness of Breath'}
+    {'id': 5, 'name': 'Shortness of Breath'},
+    {'id': 6, 'name': 'Pain'},
   ];
   static List<String> yValue = [
     'None',
@@ -151,7 +157,8 @@ class AppConfig {
     '9',
     '10',
     '11',
-    '12'
+    '12',
+    '13',
   ];
   static bool isShowingDialog = false;
   static String selected;

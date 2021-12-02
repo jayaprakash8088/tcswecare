@@ -34,4 +34,6 @@ class AppColor {
   static Color redGradient2 = Color.fromRGBO(238, 42, 124, 1);
   static Color blueGradient1 = Color.fromRGBO(180, 186, 234, 1);
   static Color blueGradient2 = Color.fromRGBO(38, 59, 245, 1);
+  static Color painGradient1 = Color.fromRGBO(255, 34, 97, 1);
+
 }

@@ -5,6 +5,7 @@ import 'package:mvc_pattern/mvc_pattern.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:tcswecare/mvc/api_utils/repository.dart';
 import 'package:tcswecare/mvc/model/history_model.dart';
+import 'package:tcswecare/mvc/model/pain_response_model.dart';
 import 'package:tcswecare/mvc/model/symptoms_response_model.dart';
 import 'package:tcswecare/mvc/utils/app_config.dart';
 import 'package:tcswecare/mvc/utils/app_shared_preferences.dart';
@@ -25,6 +26,7 @@ class HisToryController extends ControllerMVC {
   List<Data> nausea = [];
   List<Data> drySkin = [];
   List<Data> shortnessOfBreath = [];
+  List<Data> pain = [];
   List<ChartSeries> allLists = [];
   // get symptoms////
 
@@ -35,6 +37,7 @@ class HisToryController extends ControllerMVC {
     SymptomsResponseModel response;
     try {
       var token = await _sharedPreferences.getToken();
+      print('token:$token');
       response = await repository.getSymptoms(context, token);
       if (response != null && response.statusCode == 200) {
         anxiety.clear();
@@ -62,7 +65,20 @@ class HisToryController extends ControllerMVC {
     } catch (e) {}
     return getSymptomsCon.add(response);
   }
-
+  void getPainInfo(BuildContext context) async{
+    PainResponseModel response;
+    try {
+      var token = await _sharedPreferences.getToken();
+      response = await repository.getPainsInfo(context, token);
+      if (response != null && response.statusCode == 200) {
+        pain.clear();
+        for (int i = 0; i < response.result.length; i++) {
+          pain.add(Data(response.result[i].painLevel,
+              getDate(response.result[i].painDate)));
+        }
+      }
+    } catch (e) {}
+  }
   String getDate(String date) {
     return AppConfig.date.format(DateTime.parse(date));
   }
@@ -91,6 +107,9 @@ class HisToryController extends ControllerMVC {
         break;
       case '5':
         return shortnessOfBreath;
+        break;
+      case '6':
+        return pain;
         break;
       default:
         return anxiety;
@@ -121,6 +140,9 @@ class HisToryController extends ControllerMVC {
       case '5':
         return AppConfig.shortnessOfBreathGradient;
         break;
+      case '6':
+        return AppConfig.painGradient;
+        break;
     }
   }
 
@@ -131,4 +153,6 @@ class HisToryController extends ControllerMVC {
       return AppConfig.now.toString();
     }
   }
+
+
 }

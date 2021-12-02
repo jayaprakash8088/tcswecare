@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
 import 'package:tcswecare/mvc/controller/login_controller.dart';
@@ -26,9 +27,11 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
   _SignUpScreenState() : super(LoginController()) {
     _controller = controller;
   }
+
   LoginController _controller;
   String ageValue = '1', genderValue = 'M';
   List genderList = ['M', 'F'];
+
   @override
   void initState() {
     super.initState();
@@ -108,7 +111,7 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
         children: [
           Padding(
             padding:
-            EdgeInsets.only(bottom: FontSize.size10, top: FontSize.size10),
+                EdgeInsets.only(bottom: FontSize.size10, top: FontSize.size10),
             child: Text(
               ConstantStrings.doctorEMail,
               style: TextStyle(
@@ -132,7 +135,7 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
                     border: InputBorder.none,
                     focusedBorder: OutlineInputBorder(
                       borderRadius:
-                      BorderRadius.all(Radius.circular(FontSize.size10)),
+                          BorderRadius.all(Radius.circular(FontSize.size10)),
                     ))),
           ),
           Padding(
@@ -166,7 +169,7 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
           ),
           Padding(
             padding:
-            EdgeInsets.only(bottom: FontSize.size10, top: FontSize.size10),
+                EdgeInsets.only(bottom: FontSize.size10, top: FontSize.size10),
             child: Text(
               ConstantStrings.pWord,
               style: TextStyle(
@@ -185,17 +188,24 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
             ),
             child: TextField(
                 controller: _controller.passwordController,
-                obscureText: true, enableSuggestions: false,
+                obscureText: true,
+                enableSuggestions: false,
+                buildCounter: (BuildContext context,
+                        {int currentLength, int maxLength, bool isFocused}) =>
+                    null,
                 maxLength: 12,
                 decoration: InputDecoration(
                     fillColor: AppColor.black,
                     border: InputBorder.none,
                     focusedBorder: OutlineInputBorder(
                       borderRadius:
-                      BorderRadius.all(Radius.circular(FontSize.size10)),
+                          BorderRadius.all(Radius.circular(FontSize.size10)),
                     ))),
           ),
-          Text(AppConfig.passwordCondition,style: TextStyle(color:AppColor.red),),
+          Text(
+            AppConfig.passwordCondition,
+            style: TextStyle(color: AppColor.red),
+          ),
           Padding(
             padding:
                 EdgeInsets.only(bottom: FontSize.size10, top: FontSize.size10),
@@ -287,25 +297,40 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
                     color: AppColor.bgText,
                     borderRadius:
                         BorderRadius.all(Radius.circular(FontSize.size10))),
-                child: DropdownButton(
-                  underline: SizedBox(),
-                  hint: Text(ageValue),
-                  icon: Icon(Icons.arrow_drop_down),
-                  iconSize: FontSize.size30,
-                  isExpanded: true,
-                  value: ageValue,
-                  onChanged: (newValue) {
-                    setState(() {
-                      ageValue = newValue;
-                      _controller.ageValue = num.parse(newValue);
-                    });
-                  },
-                  items: AppConfig.ageList.map((valueItem) {
-                    return DropdownMenuItem(
-                        value: valueItem,
-                        child: Center(child: Text(valueItem)));
-                  }).toList(),
-                ),
+                child:
+                    // DropdownButton(
+                    //   underline: SizedBox(),
+                    //   hint: Text(ageValue),
+                    //   icon: Icon(Icons.arrow_drop_down),
+                    //   iconSize: FontSize.size30,
+                    //   isExpanded: true,
+                    //   value: ageValue,
+                    //   onChanged: (newValue) {
+                    //     setState(() {
+                    //       ageValue = newValue;
+                    //       _controller.ageValue = num.parse(newValue);
+                    //     });
+                    //   },
+                    //   items: AppConfig.ageList.map((valueItem) {
+                    //     return DropdownMenuItem(
+                    //         value: valueItem,
+                    //         child: Center(child: Text(valueItem)));
+                    //   }).toList(),
+                    // ),
+                    TextField(
+                        controller: _controller.ageController,
+                        maxLength: 2,
+                        buildCounter: (BuildContext context,
+                            {int currentLength, int maxLength, bool isFocused}) =>
+                        null,
+                        keyboardType: TextInputType.number,
+                        decoration: InputDecoration(
+                            fillColor: AppColor.black,
+                            border: InputBorder.none,
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.all(
+                                  Radius.circular(FontSize.size10)),
+                            ))),
               )
             ],
           ),
@@ -396,18 +421,17 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
 
   Widget signUpBtn() {
     return GestureDetector(
-      onTap: (){
-        if(_controller.passwordController.text.trim().isNotEmpty&&
-        _controller.eMailController.text.trim().isNotEmpty&&
-            _controller.doctorMailController.text.trim().isNotEmpty&&
-        _controller.nameController.text.trim().isNotEmpty){
-          if(checkPassWord()&&checkMail()){
-       signUpClicked();
-          }else{
+      onTap: () {
+        if (_controller.passwordController.text.trim().isNotEmpty &&
+            _controller.eMailController.text.trim().isNotEmpty &&
+            _controller.doctorMailController.text.trim().isNotEmpty &&
+            _controller.nameController.text.trim().isNotEmpty) {
+          if (checkPassWord() && checkMail()) {
+            signUpClicked();
+          } else {
             AppConfig.showToast(context, ConstantStrings.enterValidMailPwd);
           }
-        }
-        else{
+        } else {
           AppConfig.showToast(context, ConstantStrings.enterMailNamePwd);
         }
       },
@@ -441,17 +465,18 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
         context, MaterialPageRoute(builder: (context) => OtpScreen()));
   }
 
-  void signUpClicked()async{
+  void signUpClicked() async {
     PainRecordModelResponse response = await _controller.signUp(context);
     if (response != null && response.statusCode == 200) {
-      bool isSuccess =await _controller.loginClicked(
+      bool isSuccess = await _controller.loginClicked(
           _controller.eMailController.text.trim(),
-          _controller.passwordController.text.trim(), context);
-      if(isSuccess){
+          _controller.passwordController.text.trim(),
+          context);
+      if (isSuccess) {
         Navigator.pop(context);
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => HomePage()));}
-      else{
+            context, MaterialPageRoute(builder: (context) => HomePage()));
+      } else {
         Navigator.pop(context);
         AppConfig.showToast(context, response.message);
       }
@@ -466,8 +491,8 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
   }
 
   bool checkPassWord() {
-      RegExp regExp = new RegExp(AppConfig.passwordPattern);
-      return regExp.hasMatch(_controller.passwordController.text);
+    RegExp regExp = new RegExp(AppConfig.passwordPattern);
+    return regExp.hasMatch(_controller.passwordController.text);
   }
 
   bool checkMail() {

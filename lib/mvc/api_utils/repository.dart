@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:tcswecare/mvc/api_utils/api_client.dart';
 import 'package:tcswecare/mvc/model/pain_level_model.dart';
 import 'package:tcswecare/mvc/model/pain_record_model.dart';
+import 'package:tcswecare/mvc/model/pain_response_model.dart';
 import 'package:tcswecare/mvc/model/patient_info_response_model.dart';
 import 'package:tcswecare/mvc/model/sing_up_model.dart';
 import 'package:tcswecare/mvc/model/symptom_record_model.dart';
@@ -51,6 +52,12 @@ class Repository {
     dynamic response = await _apiClient.dioGet(
         AppConfig.getPatientSymptomInfo, context, token);
     return SymptomsResponseModel.fromJson(response);
+  }
+  // get pain info
+  Future<PainResponseModel>getPainsInfo(BuildContext context,
+      String token)async{
+    dynamic response=await _apiClient.dioGet(AppConfig.getPatientPainInfo, context, token);
+    return PainResponseModel.fromJson(response);
   }
 
   Future<PainRecordModelResponse> signUp(

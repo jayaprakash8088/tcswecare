@@ -258,6 +258,7 @@ class _HistoryScreenState extends StateMVC<HistoryScreen> {
 
   Future callApi() async {
     _controller.getSymptomsInfo(context);
+    _controller.getPainInfo(context);
   }
 
   Widget getSelectedGraph() {
@@ -299,6 +300,11 @@ class _HistoryScreenState extends StateMVC<HistoryScreen> {
             SplineAreaSeries<Data, String>(
                 gradient: AppConfig.shortnessOfBreathGradient,
                 dataSource: _controller.shortnessOfBreath,
+                xValueMapper: (Data sales, _) => sales.date,
+                yValueMapper: (Data sales, _) => _controller.getY(sales.pain)),
+            SplineAreaSeries<Data, String>(
+                gradient: AppConfig.painGradient,
+                dataSource: _controller.pain,
                 xValueMapper: (Data sales, _) => sales.date,
                 yValueMapper: (Data sales, _) => _controller.getY(sales.pain))
           ]);

@@ -32,6 +32,8 @@ class LoginController extends ControllerMVC {
   TextEditingController doctorMailController = TextEditingController();
   // diagnosis controller
   TextEditingController diagnosisController = TextEditingController();
+  // age controller
+  TextEditingController ageController= TextEditingController();
   //age value
   int ageValue;
   String otp;

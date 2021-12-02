@@ -166,6 +166,7 @@ class _LoginScreenState extends StateMVC<LoginScreen> {
                 controller: _controller.passwordController,
                 obscureText: true,
                 maxLength: 12,
+                buildCounter: (BuildContext context, { int currentLength, int maxLength, bool isFocused }) => null,
                 enableSuggestions: false,
                 decoration: InputDecoration(
                     fillColor: AppColor.black,
