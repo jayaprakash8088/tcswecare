@@ -1,5 +1,20 @@
 {
   "gm":"Good Morning!",
   "ok": "Ok",
-  "cancel": "Cancel"
+  "cancel": "Cancel",
+  "email": "Email*",
+  "password":"Password",
+  "pWord":"Password*",
+  "login": "Login",
+  "name": "Name",
+  "singUp": "SIGN UP",
+  "existingUser": "An Existing User?",
+  "days": "Days",
+  "severity":"Severity",
+  "home":"HOME",
+  "feeling": "How are you feeling\ntoday?",
+  "noPain":"No Pain",
+  "tooPain":"Too Painful",
+  "symptoms": "When did this symptom happen?",
+  "submit" :"SUBMIT",
 }
