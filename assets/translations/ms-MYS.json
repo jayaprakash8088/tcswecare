@@ -1,5 +1,27 @@
 {
   "gm": "selamat Pagi!",
   "ok": "okey",
-  "cancel":"membatalkan"
+  "cancel":"membatalkan",
+  "email": "E-mel*",
+  "password":"Kata Laluan",
+  "pWord":"Kata Laluan*",
+  "login": "Log Masuk",
+  "name": "Nama",
+  "singUp": "Daftar",
+  "existingUser": "Pengguna Sedia Ada?",
+  "days": "Hari",
+  "severity":"Keterukkan",
+  "home":"Laman Utama",
+  "feeling": "Bagaimana perasaan anda \nhari ini?",
+  "noPain":"Tiada Kesakitan",
+  "tooPain":"Terlalu Menyakitkan",
+  "symptoms": "Bilakah gejala ini berlaku?",
+  "submit" :"HANTAR",
+  "symptomDiary":"Diari Gejala",
+  "trackDiary" :"Gunakan ini untuk mengesan gejala \nsetiap hari",
+  "logOutText":"Adakah anda pasti mahu log keluar ?",
+  "logOut":"Log Keluar",
+  "userName":"Nama Pengguna",
+  "gender": "Jantina",
+  "age":"Umur"
 }
