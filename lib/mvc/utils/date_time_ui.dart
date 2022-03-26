@@ -44,7 +44,7 @@ class _DateTimeUIState extends StateMVC<DateTimeUI> {
             padding: EdgeInsets.only(top: FontSize.size10),
             child: Center(
               child: Text(
-                ConstantStrings.symptoms,
+                'symptoms'.tr(),
                 textAlign: TextAlign.center,
                 style: AppConfig.blackText,
               ),
@@ -127,7 +127,7 @@ class _DateTimeUIState extends StateMVC<DateTimeUI> {
         ),
         child: Center(
           child: Text(
-            ConstantStrings.submit,
+            'submit'.tr(),
             style: TextStyle(
                 color: AppColor.white,
                 fontWeight: FontWeight.bold,

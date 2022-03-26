@@ -1,3 +1,4 @@
+import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
@@ -22,7 +23,9 @@ class _LoginScreenState extends StateMVC<LoginScreen> {
   _LoginScreenState() : super(LoginController()) {
     _controller = controller;
   }
+
   LoginController _controller;
+
   @override
   void initState() {
     super.initState();
@@ -88,7 +91,7 @@ class _LoginScreenState extends StateMVC<LoginScreen> {
                           ),
                           child: Center(
                             child: Text(
-                              ConstantStrings.login,
+                              'login'.tr(),
                               style: TextStyle(
                                   color: AppColor.white,
                                   fontWeight: FontWeight.bold,
@@ -118,7 +121,7 @@ class _LoginScreenState extends StateMVC<LoginScreen> {
           Padding(
             padding: EdgeInsets.only(bottom: FontSize.size10),
             child: Text(
-              ConstantStrings.userName,
+              'userName'.tr(),
               style: TextStyle(
                   color: AppColor.black,
                   fontWeight: FontWeight.bold,
@@ -147,7 +150,7 @@ class _LoginScreenState extends StateMVC<LoginScreen> {
             padding:
                 EdgeInsets.only(bottom: FontSize.size10, top: FontSize.size10),
             child: Text(
-              ConstantStrings.password,
+              'password'.tr(),
               style: TextStyle(
                   color: AppColor.black,
                   fontWeight: FontWeight.bold,
@@ -166,7 +169,9 @@ class _LoginScreenState extends StateMVC<LoginScreen> {
                 controller: _controller.passwordController,
                 obscureText: true,
                 maxLength: 12,
-                buildCounter: (BuildContext context, { int currentLength, int maxLength, bool isFocused }) => null,
+                buildCounter: (BuildContext context,
+                        {int currentLength, int maxLength, bool isFocused}) =>
+                    null,
                 enableSuggestions: false,
                 decoration: InputDecoration(
                     fillColor: AppColor.black,
@@ -182,24 +187,26 @@ class _LoginScreenState extends StateMVC<LoginScreen> {
   }
 
   void loginClicked() async {
-    if (_controller.userNameController.text.trim().isNotEmpty &&
-        _controller.passwordController.text.trim().isNotEmpty) {
-      AppConfig.pleaseWait(context);
-      bool isSuccess = await _controller.loginClicked(
-          _controller.userNameController.text.trim(),
-          _controller.passwordController.text.trim(),
-          context);
-      if (isSuccess) {
-        _controller.getPatientInfo(context);
-        _controller.userNameController.clear();
-       _controller.passwordController.clear();
-        Navigator.pop(context);
-        Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => HomePage()));
-      }
-    } else {
-      Navigator.pop(context);
-      AppConfig.showToast(context, ConstantStrings.enterNamePwd);
-    }
+//    if (_controller.userNameController.text.trim().isNotEmpty &&
+//        _controller.passwordController.text.trim().isNotEmpty) {
+//      AppConfig.pleaseWait(context);
+//      bool isSuccess = await _controller.loginClicked(
+//          _controller.userNameController.text.trim(),
+//          _controller.passwordController.text.trim(),
+//          context);
+//      if (isSuccess) {
+//        _controller.getPatientInfo(context);
+//        _controller.userNameController.clear();
+//        _controller.passwordController.clear();
+//        Navigator.pop(context);
+//        Navigator.pushReplacement(
+//            context, MaterialPageRoute(builder: (context) => HomePage()));
+//      }
+//    } else {
+////      Navigator.pop(context);
+//      AppConfig.showToast(context, ConstantStrings.enterNamePwd);
+//    }
+    Navigator.pushReplacement(
+        context, MaterialPageRoute(builder: (context) => HomePage()));
   }
 }

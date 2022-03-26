@@ -1,3 +1,4 @@
+import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tcswecare/mvc/utils/app_color.dart';
@@ -79,7 +80,7 @@ class _ContactDoctorState extends State<ContactDoctor> {
         ),
         Center(
           child: Text(
-            ConstantStrings.contactDoctorText,
+            'contactDoctorText'.tr(),
             textAlign: TextAlign.center,
             style: AppConfig.blackText,
           ),
@@ -87,7 +88,7 @@ class _ContactDoctorState extends State<ContactDoctor> {
         Center(child: cardsUI()),
         Center(
           child: Text(
-            'Contact Your Doctor',
+            'contactDoctor'.tr(),
             style: AppConfig.blackText,
           ),
         ),
@@ -149,7 +150,7 @@ class _ContactDoctorState extends State<ContactDoctor> {
                   ),
                   child: Center(
                     child: Text(
-                      ConstantStrings.home,
+                      'home'.tr(),
                       style: AppConfig.robotoText,
                     ),
                   ),
@@ -185,7 +186,7 @@ class _ContactDoctorState extends State<ContactDoctor> {
                         padding: EdgeInsets.only(
                             top: FontSize.size15, left: FontSize.size15),
                         child: Text(
-                          ConstantStrings.takeExtraDose,
+                            'takeExtraDose'.tr(),
                           style: TextStyle(
                               color: AppColor.white,
                               fontSize: FontSize.size18,
@@ -219,7 +220,7 @@ class _ContactDoctorState extends State<ContactDoctor> {
                         padding: EdgeInsets.only(
                             top: FontSize.size15, left: FontSize.size15),
                         child: Text(
-                          ConstantStrings.restWell,
+                          'restWell'.tr(),
                           style: TextStyle(
                               color: AppColor.white,
                               fontSize: FontSize.size18,

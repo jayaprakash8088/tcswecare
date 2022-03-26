@@ -10,7 +10,6 @@ import 'package:tcswecare/mvc/controller/home_controller.dart';
 import 'package:tcswecare/mvc/utils/app_color.dart';
 import 'package:tcswecare/mvc/utils/app_config.dart';
 import 'package:tcswecare/mvc/utils/assets.dart';
-import 'package:tcswecare/mvc/utils/constant_strings.dart';
 import 'package:tcswecare/mvc/utils/font_size.dart';
 import 'package:tcswecare/mvc/utils/locale_drop_down.dart';
 import 'package:tcswecare/mvc/view/contact_doctor.dart';
@@ -31,6 +30,7 @@ class _HomePageState extends StateMVC<HomePage> {
   _HomePageState() : super(HomePageController()) {
     _controller = controller;
   }
+
   HomePageController _controller;
 
   @override
@@ -78,7 +78,7 @@ class _HomePageState extends StateMVC<HomePage> {
       elevation: FontSize.size0,
       actions: [
         Padding(
-          padding:  EdgeInsets.only(top:FontSize.size20),
+          padding: EdgeInsets.only(top: FontSize.size20),
           child: Container(
               width: FontSize.size160, child: Center(child: LocaleDropDown())),
         )
@@ -118,7 +118,7 @@ class _HomePageState extends StateMVC<HomePage> {
             ),
           ),
           Text(
-            ConstantStrings.homePageText,
+            'homePageText'.tr(),
             textAlign: TextAlign.center,
             style: TextStyle(
                 fontSize: FontSize.size15,

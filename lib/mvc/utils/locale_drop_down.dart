@@ -125,7 +125,7 @@ class _LocaleDropDownState extends State<LocaleDropDown> {
                   Padding(
                     padding:  EdgeInsets.only(top: FontSize.size10,
                     bottom: FontSize.size30),
-                    child: Text(ConstantStrings.logOutText,
+                    child: Text('louOutText'.tr(),
                     style: TextStyle(fontSize: FontSize.size15,
                     color: AppColor.black,fontFamily:AppConfig.montserrat),),
                   ),
@@ -143,7 +143,7 @@ class _LocaleDropDownState extends State<LocaleDropDown> {
                               Navigator.pop(context);
                             },
                             child: Center(
-                              child: Text(ConstantStrings.cancel,
+                              child: Text( 'cancel'.tr(),
                                 style: TextStyle(fontSize: FontSize.size15,
                                     color: AppColor.black,fontFamily:AppConfig.montserrat),),
                             ),
@@ -164,7 +164,7 @@ class _LocaleDropDownState extends State<LocaleDropDown> {
                             }
                             },
                             child: Center(
-                              child: Text(ConstantStrings.logOut,
+                              child: Text('logOut'.tr(),
                                 style: TextStyle(fontSize: FontSize.size15,
                                     color: AppColor.black,fontFamily:AppConfig.montserrat),),
                             ),

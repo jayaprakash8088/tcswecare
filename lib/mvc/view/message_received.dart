@@ -1,3 +1,4 @@
+import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -88,7 +89,7 @@ class _MessageReceivedState extends StateMVC<MessageReceived> {
         ),
         Center(
           child: Text(
-            ConstantStrings.painPersists,
+            'painPersists'.tr(),
             textAlign: TextAlign.center,
             style: AppConfig.blackText,
           ),
@@ -115,7 +116,7 @@ class _MessageReceivedState extends StateMVC<MessageReceived> {
                   ),
                   child: Center(
                     child: Text(
-                      ConstantStrings.home,
+                      'home'.tr(),
                       style: AppConfig.robotoText,
                     ),
                   ),

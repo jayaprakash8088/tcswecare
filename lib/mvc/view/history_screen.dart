@@ -1,3 +1,4 @@
+import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
@@ -27,6 +28,7 @@ class _HistoryScreenState extends StateMVC<HistoryScreen> {
   _HistoryScreenState() : super(HisToryController()) {
     _controller = controller;
   }
+
   HisToryController _controller;
   ZoomPanBehavior _zoomPanBehavior;
 
@@ -103,7 +105,7 @@ class _HistoryScreenState extends StateMVC<HistoryScreen> {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Text(
-          ConstantStrings.history,
+          'history'.tr(),
           style: TextStyle(
               fontSize: FontSize.size25,
               fontWeight: FontWeight.w500,
@@ -115,7 +117,7 @@ class _HistoryScreenState extends StateMVC<HistoryScreen> {
           padding:
               EdgeInsets.only(top: FontSize.size150, bottom: FontSize.size20),
           child: Text(
-            ConstantStrings.symptomsOverTime,
+            'symptomsOverTime'.tr(),
             style: AppConfig.blackText,
           ),
         ),
@@ -128,14 +130,18 @@ class _HistoryScreenState extends StateMVC<HistoryScreen> {
             alignment: Alignment.topLeft,
             child: Padding(
               padding: EdgeInsets.only(left: FontSize.size10),
-              child: Text(ConstantStrings.severity),
+              child: Text(
+                'severity'.tr(),
+              ),
             )),
         Padding(
           padding: EdgeInsets.only(top: FontSize.size20),
           child: graph(),
         ),
         Center(
-          child: Text(ConstantStrings.days),
+          child: Text(
+            'days'.tr(),
+          ),
         ),
         Center(
           child: GestureDetector(
@@ -158,7 +164,7 @@ class _HistoryScreenState extends StateMVC<HistoryScreen> {
                   ),
                   child: Center(
                     child: Text(
-                      ConstantStrings.home,
+                      'home'.tr(),
                       style: AppConfig.robotoText,
                     ),
                   ),
@@ -225,7 +231,7 @@ class _HistoryScreenState extends StateMVC<HistoryScreen> {
             isDense: true,
             value: AppConfig.diagnosisSelected,
             hint: Text(
-              ConstantStrings.all,
+              'all'.tr(),
               style: AppConfig.robotoTextBlack,
             ),
             onChanged: (String newValue) {

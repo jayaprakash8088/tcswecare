@@ -23,5 +23,25 @@
   "logOut":"Log Keluar",
   "userName":"Nama Pengguna",
   "gender": "Jantina",
-  "age":"Umur"
+  "age":"Umur",
+  "homePageText":
+  "Gunakan menu dibawah untuk log gejala\n anda atau lihat sejarah pesakit",
+  "card2Text":"Rekodkan gejala\n anda",
+  "card1Text":
+  "Lihat sejarah\n anda",
+  "card3Text":"Rekodkan Kesakitan\n anda",
+  "card4Text":"Hubungi doktor\nanda",
+  "contactDoctor":"Hubungi doktor\n anda",
+  "contactDoctorText ":"Sekiranya kesakitan berterusan, cuba langkah-langkah Hubungi doktor anda \ndi bawah:",
+  "takeExtraDose":"Ambil\n dos tambahan",
+  "restWell":"Berehat dengan baik",
+  "symptomsOverTime":"Gejala dari semasa ke semasa",
+  "history":"Sejarah Pesakit",
+  "anxiety" :"Kebimbangan",
+  "msgTransmitted"
+  : "Mesej anda sedang\n dihantar...",
+  "collectingInfo":"Kumpul\n data",
+  "sendingMsg" :"Mesej sedang\n hantar",
+  "msgSent":"Mesej dah\nsampai",
+  "all":"Semua"
 }

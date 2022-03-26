@@ -1,3 +1,4 @@
+import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -92,7 +93,7 @@ class _PainIndicatorScreenState extends StateMVC<PainIndicatorScreen> {
         ),
         Center(
           child: Text(
-            ConstantStrings.feeling,
+            'feeling'.tr(),
             textAlign: TextAlign.center,
             style: AppConfig.text,
           ),

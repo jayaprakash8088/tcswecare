@@ -1,3 +1,4 @@
+import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -142,7 +143,7 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
             padding:
                 EdgeInsets.only(bottom: FontSize.size10, top: FontSize.size10),
             child: Text(
-              ConstantStrings.eMail,
+              'email'.tr(),
               style: TextStyle(
                   color: AppColor.black,
                   fontWeight: FontWeight.bold,
@@ -171,7 +172,7 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
             padding:
                 EdgeInsets.only(bottom: FontSize.size10, top: FontSize.size10),
             child: Text(
-              ConstantStrings.pWord,
+              'pWord'.tr(),
               style: TextStyle(
                   color: AppColor.black,
                   fontWeight: FontWeight.bold,
@@ -210,7 +211,7 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
             padding:
                 EdgeInsets.only(bottom: FontSize.size10, top: FontSize.size10),
             child: Text(
-              ConstantStrings.name,
+              'name'.tr(),
               style: TextStyle(
                   color: AppColor.black,
                   fontWeight: FontWeight.bold,
@@ -281,7 +282,7 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
                 padding: EdgeInsets.only(
                     bottom: FontSize.size10, top: FontSize.size10),
                 child: Text(
-                  ConstantStrings.age,
+                  'age'.tr(),
                   style: TextStyle(
                       color: AppColor.black,
                       fontWeight: FontWeight.bold,
@@ -342,7 +343,7 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
                     top: FontSize.size10,
                     right: FontSize.size50),
                 child: Text(
-                  ConstantStrings.gender,
+                  'gender'.tr(),
                   style: TextStyle(
                       color: AppColor.black,
                       fontWeight: FontWeight.bold,
@@ -392,7 +393,7 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
           Padding(
             padding: EdgeInsets.only(right: FontSize.size8),
             child: Text(
-              ConstantStrings.existingUser,
+              'existingUser'.tr(),
               style: TextStyle(
                 color: AppColor.black,
                 fontFamily: AppConfig.montserrat,
@@ -447,7 +448,7 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
             ),
             child: Center(
               child: Text(
-                ConstantStrings.singUp,
+                'singUp'.tr(),
                 style: TextStyle(
                     color: AppColor.white,
                     fontWeight: FontWeight.bold,

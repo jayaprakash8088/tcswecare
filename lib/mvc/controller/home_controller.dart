@@ -1,3 +1,4 @@
+import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
 import 'package:tcswecare/mvc/utils/app_color.dart';
@@ -35,16 +36,16 @@ class HomePageController extends ControllerMVC {
     String text = '';
     switch (index) {
       case 0:
-        text = ConstantStrings.card1Text;
+        text = 'card1Text'.tr();
         break;
       case 1:
-        text = ConstantStrings.card2Text;
+        text = 'card2Text'.tr();
         break;
       case 2:
-        text = ConstantStrings.card3Text;
+        text = 'card3Text'.tr();
         break;
       case 3:
-        text = ConstantStrings.card4Text;
+        text = 'card4Text'.tr();
         break;
     }
     return text;

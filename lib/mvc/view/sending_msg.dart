@@ -1,3 +1,4 @@
+import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -6,7 +7,6 @@ import 'package:tcswecare/mvc/controller/pain_indicator_controller.dart';
 import 'package:tcswecare/mvc/utils/app_color.dart';
 import 'package:tcswecare/mvc/utils/app_config.dart';
 import 'package:tcswecare/mvc/utils/assets.dart';
-import 'package:tcswecare/mvc/utils/constant_strings.dart';
 import 'package:tcswecare/mvc/utils/font_size.dart';
 import 'package:tcswecare/mvc/utils/locale_drop_down.dart';
 import 'package:tcswecare/mvc/view/home_page.dart';
@@ -22,9 +22,11 @@ class TransmittingMessage extends StatefulWidget {
 
 class _TransmittingMessageState extends StateMVC<TransmittingMessage> {
   PainIndicatorController _painIndicatorController;
+
   _TransmittingMessageState() : super(PainIndicatorController()) {
     _painIndicatorController = controller;
   }
+
   @override
   void initState() {
     super.initState();
@@ -37,6 +39,7 @@ class _TransmittingMessageState extends StateMVC<TransmittingMessage> {
   }
 
   int i = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,7 +47,7 @@ class _TransmittingMessageState extends StateMVC<TransmittingMessage> {
       body: Column(
         children: [
           Padding(
-            padding: EdgeInsets.only( top:FontSize.size20),
+            padding: EdgeInsets.only(top: FontSize.size20),
             child: Align(
               alignment: Alignment.centerRight,
               child: Container(
@@ -65,7 +68,7 @@ class _TransmittingMessageState extends StateMVC<TransmittingMessage> {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Text(
-          ConstantStrings.msgTransmitted,
+          'msgTransmitted'.tr(),
           textAlign: TextAlign.center,
           style: TextStyle(
               fontSize: FontSize.size25,
@@ -91,17 +94,17 @@ class _TransmittingMessageState extends StateMVC<TransmittingMessage> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Text(
-                  ConstantStrings.collectingInfo,
+                  'collectingInfo'.tr(),
                   textAlign: TextAlign.center,
                   style: AppConfig.normalText,
                 ),
                 Text(
-                  ConstantStrings.sendingMsg,
+                  'sendingMsg'.tr(),
                   textAlign: TextAlign.center,
                   style: AppConfig.normalText,
                 ),
                 Text(
-                  ConstantStrings.msgSent,
+                  'msgSent'.tr(),
                   textAlign: TextAlign.center,
                   style: _painIndicatorController.getStyle(i),
                 )
@@ -144,7 +147,7 @@ class _TransmittingMessageState extends StateMVC<TransmittingMessage> {
               ),
               child: Center(
                 child: Text(
-                  ConstantStrings.home,
+                  'home'.tr(),
                   style: AppConfig.robotoText,
                 ),
               ),

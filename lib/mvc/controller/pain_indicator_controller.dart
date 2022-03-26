@@ -1,3 +1,4 @@
+import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
 import 'package:tcswecare/mvc/api_utils/repository.dart';
@@ -35,13 +36,13 @@ class PainIndicatorController extends ControllerMVC {
     String text = '';
     switch (index) {
       case 0:
-        text = ConstantStrings.takeExtraDose;
+        text ='takeExtraDose'.tr();
         break;
       case 1:
-        text = ConstantStrings.contactDoctor;
+        text = 'contactDoctor'.tr();
         break;
       case 2:
-        text = ConstantStrings.restWell;
+        text = 'restWell'.tr();
         break;
     }
     return text;

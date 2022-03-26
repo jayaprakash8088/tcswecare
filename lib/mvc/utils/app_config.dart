@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -214,7 +215,7 @@ class AppConfig {
         ),
         child: Center(
           child: Text(
-            ConstantStrings.submit,
+            'submit'.tr(),
             style: TextStyle(
                 color: AppColor.white,
                 fontWeight: FontWeight.bold,
@@ -302,7 +303,7 @@ class AppConfig {
               height: FontSize.size50,
               width: double.infinity,
               child: Center(
-                  child: Text(ConstantStrings.ok,
+                  child: Text( 'ok'.tr(),
                       style: TextStyle(color: Colors.blueAccent))),
               decoration: BoxDecoration(
                   shape: BoxShape.rectangle,

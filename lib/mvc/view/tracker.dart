@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -91,7 +92,7 @@ class _SymptomTrackerPageState extends StateMVC<SymptomTrackerPage> {
       children: [
         Center(
           child: Text(
-            ConstantStrings.symptomDiary,
+            'symptomDiary'.tr(),
             textAlign: TextAlign.center,
             style: TextStyle(
                 color: AppColor.black,
@@ -104,7 +105,7 @@ class _SymptomTrackerPageState extends StateMVC<SymptomTrackerPage> {
           padding: EdgeInsets.only(top: FontSize.size10),
           child: Center(
             child: Text(
-              ConstantStrings.trackDiary,
+              'trackDiary'.tr(),
               textAlign: TextAlign.center,
               style: TextStyle(
                   color: AppColor.black,
