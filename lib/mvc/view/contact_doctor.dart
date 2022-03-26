@@ -4,7 +4,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tcswecare/mvc/utils/app_color.dart';
 import 'package:tcswecare/mvc/utils/app_config.dart';
 import 'package:tcswecare/mvc/utils/assets.dart';
-import 'package:tcswecare/mvc/utils/constant_strings.dart';
 import 'package:tcswecare/mvc/utils/font_size.dart';
 import 'package:tcswecare/mvc/utils/locale_drop_down.dart';
 import 'package:tcswecare/mvc/view/home_page.dart';
