@@ -239,7 +239,14 @@ class _HistoryScreenState extends StateMVC<HistoryScreen> {
                 AppConfig.diagnosisSelected = newValue;
               });
             },
-            items: AppConfig.diagnosisMap.map((Map map) {
+            items:AppConfig.selected=='0'? AppConfig.diagnosisMap.map((Map map) {
+              return new DropdownMenuItem<String>(
+                value: map["id"].toString(),
+                child: Container(
+                    margin: EdgeInsets.only(left: FontSize.size10),
+                    child: Text(map["name"])),
+              );
+            }).toList(): AppConfig.diagnosisMapMalay.map((Map map) {
               return new DropdownMenuItem<String>(
                 value: map["id"].toString(),
                 child: Container(

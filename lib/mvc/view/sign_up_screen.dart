@@ -203,8 +203,8 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
                           BorderRadius.all(Radius.circular(FontSize.size10)),
                     ))),
           ),
-          Text(
-            AppConfig.passwordCondition,
+          Text(AppConfig.selected=='0'?
+            AppConfig.passwordCondition:AppConfig.passwordConditionMalay,
             style: TextStyle(color: AppColor.red),
           ),
           Padding(

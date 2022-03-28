@@ -10,6 +10,7 @@ class AppSharedPreferences {
   String accessToken = ConstantStrings.accessToken;
   String loggedUser = ConstantStrings.loggedUser;
   String userId = ConstantStrings.userId;
+  String language=ConstantStrings.language;
   Future _init() async {
     _sharedPreferences = await SharedPreferences.getInstance();
   }
@@ -51,5 +52,15 @@ class AppSharedPreferences {
   Future clearAll()async{
     _sharedPreferences=await SharedPreferences.getInstance();
     await _sharedPreferences.clear();
+  }
+  // set lang
+Future setLanguage(String i)async{
+  _sharedPreferences = await SharedPreferences.getInstance();
+  await _sharedPreferences.setString(language, i);
+}
+  Future getLang() async {
+    _sharedPreferences = await SharedPreferences.getInstance();
+    dynamic response = _sharedPreferences.getString(language);
+    return response;
   }
 }

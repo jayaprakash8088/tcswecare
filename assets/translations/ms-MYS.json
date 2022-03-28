@@ -43,5 +43,9 @@
   "collectingInfo":"Kumpul\n data",
   "sendingMsg" :"Mesej sedang\n hantar",
   "msgSent":"Mesej dah\nsampai",
-  "all":"Semua"
+  "all":"Semua",
+  "positive" :"Positif",
+  "negative" :"Negatif",
+  "neutral" :"Neutral",
+  "mood" : "Mood anda"
 }

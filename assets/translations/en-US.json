@@ -43,5 +43,9 @@
   "collectingInfo":"Collecting\nInformation",
   "sendingMsg" :"Sending\nMessage",
   "msgSent":"Message\nSent",
-  "all":"All"
+  "all":"All",
+  "positive" :"Positive",
+  "negative" :"Negative",
+   "neutral" :"Neutral",
+  "mood" : "Mood"
 }

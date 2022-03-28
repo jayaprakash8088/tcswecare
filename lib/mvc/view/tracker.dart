@@ -158,13 +158,16 @@ class _SymptomTrackerPageState extends StateMVC<SymptomTrackerPage> {
         child: ListView.builder(
             physics: ScrollPhysics(parent: ScrollPhysics()),
             scrollDirection: Axis.horizontal,
-            itemCount: AppConfig.symptomLevels.length,
+            itemCount:
+            AppConfig.selected=='0'?AppConfig.symptomLevels.length:
+            AppConfig.symptomLevelsMalay.length,
             shrinkWrap: true,
             itemBuilder: (context, index) {
               return Padding(
                 padding: EdgeInsets.only(right: FontSize.size8),
                 child: Text(
-                  AppConfig.symptomLevels[index],
+                  AppConfig.selected=='0'?AppConfig.symptomLevels[index]:
+                  AppConfig.symptomLevelsMalay[index],
                   textAlign: TextAlign.center,
                   softWrap: true,
                   style: TextStyle(
@@ -182,7 +185,8 @@ class _SymptomTrackerPageState extends StateMVC<SymptomTrackerPage> {
   Widget diagnosisList() {
     return ListView.builder(
         shrinkWrap: true,
-        itemCount: AppConfig.diagnosisList.length,
+        itemCount: AppConfig.selected=='0'?AppConfig.diagnosisList.length:
+        AppConfig.diagnosisListMalay.length,
         scrollDirection: Axis.vertical,
         padding: EdgeInsets.all(FontSize.size0),
         physics: ScrollPhysics(parent: ScrollPhysics()),
@@ -196,7 +200,8 @@ class _SymptomTrackerPageState extends StateMVC<SymptomTrackerPage> {
                   Container(
                     width: FontSize.size80,
                     child: Text(
-                      AppConfig.diagnosisList[index],
+                      AppConfig.selected=='0'?AppConfig.diagnosisList[index]:
+                      AppConfig.diagnosisListMalay[index],
                       textAlign: TextAlign.end,
                       softWrap: true,
                       style: TextStyle(
@@ -296,7 +301,7 @@ class _SymptomTrackerPageState extends StateMVC<SymptomTrackerPage> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Text(
-              ConstantStrings.positive,
+              'positive'.tr(),
               textAlign: TextAlign.center,
               softWrap: true,
               style: TextStyle(
@@ -306,7 +311,7 @@ class _SymptomTrackerPageState extends StateMVC<SymptomTrackerPage> {
                   fontFamily: AppConfig.montserrat),
             ),
             Text(
-              ConstantStrings.neutral,
+              'neutral'.tr(),
               textAlign: TextAlign.center,
               softWrap: true,
               style: TextStyle(
@@ -316,7 +321,7 @@ class _SymptomTrackerPageState extends StateMVC<SymptomTrackerPage> {
                   fontFamily: AppConfig.montserrat),
             ),
             Text(
-              ConstantStrings.negative,
+              'negative'.tr(),
               textAlign: TextAlign.center,
               softWrap: true,
               style: TextStyle(
@@ -340,7 +345,7 @@ class _SymptomTrackerPageState extends StateMVC<SymptomTrackerPage> {
             Container(
               width: FontSize.size80,
               child: Text(
-                ConstantStrings.mood,
+                'mood'.tr(),
                 textAlign: TextAlign.end,
                 softWrap: true,
                 style: TextStyle(

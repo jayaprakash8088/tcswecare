@@ -253,8 +253,8 @@ class _PainIndicatorScreenState extends StateMVC<PainIndicatorScreen> {
   }
 
   Widget hurtRange(int index) {
-    return Text(
-      AppConfig.hurtList[index],
+    return Text(AppConfig.selected=='0'?
+      AppConfig.hurtList[index]:AppConfig.hurtListMalay[index],
       textAlign: TextAlign.center,
       style: TextStyle(
           fontSize: FontSize.size8,

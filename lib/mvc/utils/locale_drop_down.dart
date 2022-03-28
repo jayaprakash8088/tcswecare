@@ -24,6 +24,7 @@ class _LocaleDropDownState extends State<LocaleDropDown> {
   AppSharedPreferences _sharedPreferences=AppSharedPreferences();
   @override
   void initState() {
+  setValue();
     super.initState();
   }
 
@@ -52,13 +53,15 @@ class _LocaleDropDownState extends State<LocaleDropDown> {
           isDense: true,
           hint: getFlagAndCountryName(),
           value: AppConfig.selected,
-          onChanged: (String newValue) {
+          onChanged: (String newValue) async{
             setState(() {
               AppConfig.selected = newValue;
               if (newValue == '0') {
                 context.setLocale(Locale('en', 'US'));
+                _sharedPreferences.setLanguage('0');
               } else {
                 context.setLocale(Locale('ms', 'MYS'));
+                _sharedPreferences.setLanguage('1');
               }
             });
           },
@@ -179,4 +182,10 @@ class _LocaleDropDownState extends State<LocaleDropDown> {
           );
         });
   }
+
+  Future setValue()async {
+    String value=await _sharedPreferences.getLang();
+    AppConfig.selected=value??'0';
+  }
+
 }

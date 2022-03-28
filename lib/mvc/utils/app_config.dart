@@ -110,12 +110,26 @@ class AppConfig {
     'Severe',
     'Unbearable'
   ];
+  static List symptomLevelsMalay = [
+    'Tiada',
+    'Ringan',
+    'Sederhana',
+    'Teruk',
+    'Tak tertanggung'
+  ];
   static List diagnosisList = [
     'Anxiety',
     'Shortness of\nBreath',
     'Itchy/Dry Skin',
     'Constipation',
     'Nausea'
+  ];
+  static List diagnosisListMalay = [
+    'Kebimbangan',
+    'Sesak nafas',
+    'Kulit gatal/kering',
+    'Sembelit',
+    'Loya'
   ];
   static List<Map> diagnosisMap = [
     {'id': 0, 'name': 'All'},
@@ -126,26 +140,30 @@ class AppConfig {
     {'id': 5, 'name': 'Shortness of Breath'},
     {'id': 6, 'name': 'Pain'},
   ];
-  static List<String> yValue = [
-    'None',
-    'Mild',
-    'Moderate',
-    'Severe',
-    'Unbearable'
+  static List<Map> diagnosisMapMalay = [
+    {'id': 0, 'name': 'Semua'},
+    {'id': 1, 'name': 'Kebimbangan'},
+    {'id': 2, 'name': 'Sembelit'},
+    {'id': 3, 'name': 'Loya'},
+    {'id': 4, 'name': 'Kulit gatal/kering'},
+    {'id': 5, 'name': 'Sesak nafas'},
+    {'id': 6, 'name': 'Kesakitan'},
   ];
-  static List<String> xValue = [
-    '1',
-    '3',
-    '6',
-    '9',
-    '12',
-    '15',
-    '18',
-    '21',
-    '24',
-    '27',
-    '30'
-  ];
+//  static List<String> yValue = symptomLevels;
+  static List<String> yValueMalay = symptomLevelsMalay;
+//  static List<String> xValue = [
+//    '1',
+//    '3',
+//    '6',
+//    '9',
+//    '12',
+//    '15',
+//    '18',
+//    '21',
+//    '24',
+//    '27',
+//    '30'
+//  ];
   static List ageList = [
     '1',
     '2',
@@ -343,6 +361,14 @@ class AppConfig {
     'Hurts\nWhole Lots',
     'Hurts\nWorst'
   ];
+  static List hurtListMalay = [
+    'Tiada\n Sakit',
+    'Sakit\n Sedikit',
+    'Sakit\n Sedikit Lagi',
+    'Sakit\n Lebih',
+    'Sakit\n Lebih Banyak',
+    'Sakit\n Paling Teruk'
+  ];
 
   //password patter
   static String passwordPattern =
@@ -353,4 +379,5 @@ class AppConfig {
 
   static String passwordCondition='*Password should contains at least 8 character including '
       '1 upper case letter,1 lower case letter,1 number and 1 special character';
+  static String passwordConditionMalay='*Kata laluan hendaklah mengandungi sekurang-kurangnya 8 aksara termasuk 1 huruf besar, 1 huruf kecil, 1 nombor dan 1 aksara khas';
 }
