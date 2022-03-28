@@ -47,5 +47,8 @@
   "positive" :"Positif",
   "negative" :"Negatif",
   "neutral" :"Neutral",
-  "mood" : "Mood anda"
+  "mood" : "Mood anda",
+  "enterNamePwd":"Sila isi nama pengguna dan kata laluan",
+  "enterValidMailPwd":"Sila masukkan e-mel dan Kata Laluan yang Sah",
+  "enterMailNamePwd":"Sila isi e-mel, Nama Pengguna dan Kata Laluan"
 }

@@ -47,5 +47,8 @@
   "positive" :"Positive",
   "negative" :"Negative",
    "neutral" :"Neutral",
-  "mood" : "Mood"
+  "mood" : "Mood",
+  "enterNamePwd":"Please fill Username and Password",
+  "enterValidMailPwd":"Please enter Valid e-Mail and Password",
+ "enterMailNamePwd":"Please fill e-Mail,Username and Password"
 }

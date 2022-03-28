@@ -430,10 +430,10 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
           if (checkPassWord() && checkMail()) {
             signUpClicked();
           } else {
-            AppConfig.showToast(context, ConstantStrings.enterValidMailPwd);
+            AppConfig.showToast(context, 'enterValidMailPwd'.tr());
           }
         } else {
-          AppConfig.showToast(context, ConstantStrings.enterMailNamePwd);
+          AppConfig.showToast(context, 'enterMailNamePwd'.tr());
         }
       },
       child: Padding(
