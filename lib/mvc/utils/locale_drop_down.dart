@@ -128,7 +128,7 @@ class _LocaleDropDownState extends State<LocaleDropDown> {
                   Padding(
                     padding:  EdgeInsets.only(top: FontSize.size10,
                     bottom: FontSize.size30),
-                    child: Text('louOutText'.tr(),
+                    child: Text('logOutText'.tr(),
                     style: TextStyle(fontSize: FontSize.size15,
                     color: AppColor.black,fontFamily:AppConfig.montserrat),),
                   ),
