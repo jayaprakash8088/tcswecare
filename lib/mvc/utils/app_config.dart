@@ -87,7 +87,7 @@ class AppConfig {
   static List<Map> languageList = [
     {"id": 0, 'image': Assets.englishFlag, 'name': ConstantStrings.english},
     {'id': 1, 'image': Assets.malayFlag, 'name': ConstantStrings.malay},
-    {'id': 2, 'image': Assets.malayFlag, 'name': ConstantStrings.tamil},
+//    {'id': 2, 'image': Assets.malayFlag, 'name': ConstantStrings.tamil},
   ];
   static List<Map> monthList = [
     {'id': 0, 'month': 'January'},
@@ -360,12 +360,12 @@ class AppConfig {
     'Hurts\nWorst'
   ];
   static List hurtListMalay = [
-    'Tiada\n Sakit',
-    'Sakit\n Sedikit',
-    'Sakit\n Sedikit Lagi',
-    'Sakit\n Lebih',
-    'Sakit\n Lebih Banyak',
-    'Sakit\n Paling Teruk'
+    'Tiada\nSakit',
+    'Sakit\nSedikit',
+    'Sakit\nSedikit Lagi',
+    'Sakit\nLebih',
+    'Sakit\nLebih Banyak',
+    'Sakit\nPaling Teruk'
   ];
 
   //password patter
