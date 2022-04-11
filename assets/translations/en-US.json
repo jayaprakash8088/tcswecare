@@ -32,7 +32,7 @@
   "card3Text":"Record Your\nPain",
   "card4Text":"Contact Your\nDoctor",
   "contactDoctor":"Contact\nDoctor",
-  "contactDoctorText ":"If pain persists, try the below\nsteps:",
+  "contactDoctorText":"If pain persists, try the below\nsteps:",
   "takeExtraDose":"Take an\nextra dose",
   "restWell":"Rest Well",
   "symptomsOverTime":"Symptoms over time",
@@ -50,5 +50,7 @@
   "mood" : "Mood",
   "enterNamePwd":"Please fill Username and Password",
   "enterValidMailPwd":"Please enter Valid e-Mail and Password",
- "enterMailNamePwd":"Please fill e-Mail,Username and Password"
+ "enterMailNamePwd":"Please fill e-Mail,Username and Password",
+  "otherComments": "Other Comments",
+  "typeHere": "Taip disini"
 }

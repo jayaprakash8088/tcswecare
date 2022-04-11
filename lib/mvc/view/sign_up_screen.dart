@@ -203,8 +203,8 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
                           BorderRadius.all(Radius.circular(FontSize.size10)),
                     ))),
           ),
-          Text(AppConfig.selected=='0'?
-            AppConfig.passwordCondition:AppConfig.passwordConditionMalay,
+          Text(
+            AppConfig.passwordCondition,
             style: TextStyle(color: AppColor.red),
           ),
           Padding(
@@ -430,10 +430,10 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
           if (checkPassWord() && checkMail()) {
             signUpClicked();
           } else {
-            AppConfig.showToast(context, 'enterValidMailPwd'.tr());
+            AppConfig.showToast(context, ConstantStrings.enterMailNamePwd);
           }
         } else {
-          AppConfig.showToast(context, 'enterMailNamePwd'.tr());
+          AppConfig.showToast(context,ConstantStrings.enterMailNamePwd);
         }
       },
       child: Padding(

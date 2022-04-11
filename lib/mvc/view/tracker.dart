@@ -121,6 +121,7 @@ class _SymptomTrackerPageState extends StateMVC<SymptomTrackerPage> {
               Container(height: FontSize.size100, child: DateTimeUI(context)),
         ),
         symptomsList(),
+        numberList(),
         diagnosisList(),
         moodList(),
         moodSlider(),
@@ -392,7 +393,7 @@ class _SymptomTrackerPageState extends StateMVC<SymptomTrackerPage> {
             left: FontSize.size30,
           ),
           child: Text(
-            ConstantStrings.otherComments,
+            'otherComments'.tr(),
             textAlign: TextAlign.end,
             softWrap: true,
             style: TextStyle(
@@ -444,5 +445,28 @@ class _SymptomTrackerPageState extends StateMVC<SymptomTrackerPage> {
      AppConfig.drySkinValue=0;
    AppConfig.constipationValue=0;
      AppConfig.nauseaValue=0;
+  }
+
+  numberList() {
+    return Padding(
+      padding: EdgeInsets.only(left: 100),
+      child: Container(
+        height: FontSize.size20,
+        child: ListView.builder(
+            scrollDirection: Axis.horizontal,
+            physics: const ScrollPhysics(),
+            shrinkWrap: true,
+            itemCount: 11,
+            itemBuilder: (context,index){
+              return Padding(
+                padding: const EdgeInsets.only(left:8.0,right:8.0),
+                child: Text(index.toString(),style:TextStyle(   fontWeight: FontWeight.w500,
+                    fontStyle: FontStyle.normal,
+                    fontSize: FontSize.size14,
+                    fontFamily: AppConfig.montserrat) ,),
+              );
+            }),
+      ),
+    );
   }
 }

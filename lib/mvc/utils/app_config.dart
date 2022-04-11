@@ -108,14 +108,12 @@ class AppConfig {
     'Mild',
     'Moderate',
     'Severe',
-    'Unbearable'
   ];
   static List symptomLevelsMalay = [
     'Tiada',
     'Ringan',
     'Sederhana',
     'Teruk',
-    'Tak tertanggung'
   ];
   static List diagnosisList = [
     'Anxiety',
@@ -379,5 +377,4 @@ class AppConfig {
 
   static String passwordCondition='*Password should contains at least 8 character including '
       '1 upper case letter,1 lower case letter,1 number and 1 special character';
-  static String passwordConditionMalay='*Kata laluan hendaklah mengandungi sekurang-kurangnya 8 aksara termasuk 1 huruf besar, 1 huruf kecil, 1 nombor dan 1 aksara khas';
 }

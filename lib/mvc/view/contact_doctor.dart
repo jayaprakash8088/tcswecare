@@ -80,7 +80,7 @@ class _ContactDoctorState extends State<ContactDoctor> {
         ),
         Center(
           child: Text(
-            'contactDoctorText'.tr(),
+            'card4Text'.tr(),
             textAlign: TextAlign.center,
             style: AppConfig.blackText,
           ),
@@ -88,7 +88,7 @@ class _ContactDoctorState extends State<ContactDoctor> {
         Center(child: cardsUI()),
         Center(
           child: Text(
-            'contactDoctor'.tr(),
+            'contactDoctor'.tr(), textAlign: TextAlign.center,
             style: AppConfig.blackText,
           ),
         ),
