@@ -261,7 +261,7 @@ class AppConfig {
                       padding: EdgeInsets.only(
                           left: FontSize.size15, right: FontSize.size15),
                       child: Text(
-                        ConstantStrings.pleaseWait,
+                        "pleaseWait".tr(),
                         overflow: TextOverflow.clip,
                       ),
                     ),

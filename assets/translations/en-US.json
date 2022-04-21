@@ -52,5 +52,6 @@
   "enterValidMailPwd":"Please enter Valid e-Mail and Password",
  "enterMailNamePwd":"Please fill e-Mail,Username and Password",
   "otherComments": "Other Comments",
-  "typeHere": "Type here"
+  "typeHere": "Type here",
+  "pleaseWait": "Please wait a moment"
 }

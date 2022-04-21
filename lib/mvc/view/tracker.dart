@@ -208,7 +208,7 @@ class _SymptomTrackerPageState extends StateMVC<SymptomTrackerPage> {
                       style: TextStyle(
                           color: AppColor.black,
                           fontWeight: FontWeight.w500,
-                          fontSize: FontSize.size12,
+                          fontSize: FontSize.size10,
                           fontFamily: AppConfig.montserrat),
                     ),
                   ),

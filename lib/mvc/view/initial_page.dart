@@ -6,6 +6,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tcswecare/mvc/utils/app_color.dart';
 import 'package:tcswecare/mvc/utils/app_config.dart';
 import 'package:tcswecare/mvc/utils/assets.dart';
+import 'package:tcswecare/mvc/utils/constant_strings.dart';
 import 'package:tcswecare/mvc/utils/font_size.dart';
 import 'package:tcswecare/mvc/view/login_screen.dart';
 import 'package:tcswecare/mvc/view/sign_up_screen.dart';
@@ -74,7 +75,7 @@ class _InitialPageState extends State<InitialPage> {
                           ),
                           child: Center(
                             child: Text(
-                              'singUp'.tr(),
+                              ConstantStrings.singUp,
                               style: TextStyle(
                                   color: AppColor.white,
                                   fontWeight: FontWeight.bold,
@@ -101,7 +102,7 @@ class _InitialPageState extends State<InitialPage> {
                                   Radius.circular(FontSize.size20))),
                           child: Center(
                             child: Text(
-                              'login'.tr(),
+                              ConstantStrings.login,
                               style: TextStyle(
                                   color: AppColor.black,
                                   fontWeight: FontWeight.bold,
