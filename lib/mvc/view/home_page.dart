@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:tcswecare/mvc/controller/home_controller.dart';
 import 'package:tcswecare/mvc/utils/app_color.dart';
 import 'package:tcswecare/mvc/utils/app_config.dart';
@@ -39,6 +40,7 @@ class _HomePageState extends StateMVC<HomePage> {
     // visible both status bar and bottom nav buttons
     SystemChrome.setEnabledSystemUIOverlays(
         [SystemUiOverlay.top, SystemUiOverlay.bottom]);
+    reqSmsPermission();
   }
 
   @override
@@ -234,5 +236,9 @@ class _HomePageState extends StateMVC<HomePage> {
   void history() {
     Navigator.push(
         context, MaterialPageRoute(builder: (context) => HistoryScreen()));
+  }
+
+  void reqSmsPermission() {
+    Permission.sms.request();
   }
 }

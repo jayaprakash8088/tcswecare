@@ -9,7 +9,7 @@ import 'package:tcswecare/mvc/utils/assets.dart';
 import 'package:tcswecare/mvc/utils/constant_strings.dart';
 import 'package:tcswecare/mvc/utils/font_size.dart';
 import 'package:tcswecare/mvc/view/home_page.dart';
-
+import 'package:background_sms/background_sms.dart';
 class LoginScreen extends StatefulWidget {
   LoginScreen({Key key}) : super(key: key);
 
@@ -187,26 +187,27 @@ class _LoginScreenState extends StateMVC<LoginScreen> {
   }
 
   void loginClicked() async {
-//    if (_controller.userNameController.text.trim().isNotEmpty &&
-//        _controller.passwordController.text.trim().isNotEmpty) {
-//      AppConfig.pleaseWait(context);
-//      bool isSuccess = await _controller.loginClicked(
-//          _controller.userNameController.text.trim(),
-//          _controller.passwordController.text.trim(),
-//          context);
-//      if (isSuccess) {
-//        _controller.getPatientInfo(context);
-//        _controller.userNameController.clear();
-//        _controller.passwordController.clear();
-//        Navigator.pop(context);
-//        Navigator.pushReplacement(
-//            context, MaterialPageRoute(builder: (context) => HomePage()));
-//      }
-//    } else {
-////      Navigator.pop(context);
-//      AppConfig.showToast(context, ConstantStrings.enterNamePwd);
-//    }
+    if (_controller.userNameController.text.trim().isNotEmpty &&
+        _controller.passwordController.text.trim().isNotEmpty) {
+      AppConfig.pleaseWait(context);
+      bool isSuccess = await _controller.loginClicked(
+          _controller.userNameController.text.trim(),
+          _controller.passwordController.text.trim(),
+          context);
+      if (isSuccess) {
+        _controller.getPatientInfo(context);
+        _controller.userNameController.clear();
+        _controller.passwordController.clear();
+        Navigator.pop(context);
+        Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (context) => HomePage()));
+      }
+    } else {
+//      Navigator.pop(context);
+      AppConfig.showToast(context, ConstantStrings.enterNamePwd);
+    }
     Navigator.pushReplacement(
         context, MaterialPageRoute(builder: (context) => HomePage()));
+
   }
 }

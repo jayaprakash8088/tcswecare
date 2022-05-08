@@ -1,3 +1,4 @@
+import 'package:background_sms/background_sms.dart';
 import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -135,20 +136,21 @@ class _PainIndicatorScreenState extends StateMVC<PainIndicatorScreen> {
         ),
         GestureDetector(
             onTap: () async {
-              AppConfig.pleaseWait(context);
-              PainRecordModelResponse response =
-                  await _controller.submit(context);
-              if (response != null && response.statusCode == 200) {
+//              AppConfig.pleaseWait(context);
+//              PainRecordModelResponse response =
+//                  await _controller.submit(context);
+//              if (response != null && response.statusCode == 200) {
+               if( AppConfig.spinnerValue>8){sendSms();}
                 Navigator.pop(context);
                 Navigator.pushAndRemoveUntil(
                     context,
                     MaterialPageRoute(
                         builder: (context) => TransmittingMessage()),
                     (route) => false);
-              } else {
-                Navigator.pop(context);
-                AppConfig.showToast(context, ConstantStrings.somethingWrong);
-              }
+//              } else {
+//                Navigator.pop(context);
+//                AppConfig.showToast(context, ConstantStrings.somethingWrong);
+//              }
             },
             child: AppConfig.submitBtn())
       ],
@@ -263,5 +265,9 @@ class _PainIndicatorScreenState extends StateMVC<PainIndicatorScreen> {
           fontStyle: AppConfig.normal,
           color: AppColor.black),
     );
+  }
+  sendSms()async{
+    dynamic result = (await BackgroundSms.sendMessage(
+    phoneNumber: "8667439401", message: "Message333")) ;
   }
 }
