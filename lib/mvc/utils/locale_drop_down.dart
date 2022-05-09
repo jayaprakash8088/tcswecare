@@ -1,3 +1,5 @@
+// ignore_for_file: unrelated_type_equality_checks
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -20,11 +22,12 @@ class LocaleDropDown extends StatefulWidget {
 }
 
 class _LocaleDropDownState extends State<LocaleDropDown> {
-  Repository repository=Repository();
-  AppSharedPreferences _sharedPreferences=AppSharedPreferences();
+  Repository repository = Repository();
+  AppSharedPreferences _sharedPreferences = AppSharedPreferences();
+
   @override
-  void initState() {
-  setValue();
+  void initState()  {
+     setValue();
     super.initState();
   }
 
@@ -39,8 +42,7 @@ class _LocaleDropDownState extends State<LocaleDropDown> {
       backgroundColor: AppColor.transparent,
       body: Row(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: [getLanguageDropdown(),
-        logout()],
+        children: [getLanguageDropdown(), logout()],
       ),
     );
   }
@@ -53,7 +55,7 @@ class _LocaleDropDownState extends State<LocaleDropDown> {
           isDense: true,
           hint: getFlagAndCountryName(),
           value: AppConfig.selected,
-          onChanged: (String newValue) async{
+          onChanged: (String newValue) async {
             setState(() {
               AppConfig.selected = newValue;
               if (newValue == '0') {
@@ -96,7 +98,7 @@ class _LocaleDropDownState extends State<LocaleDropDown> {
         Container(
             margin: EdgeInsets.only(left: FontSize.size10),
             child: Text(
-              ConstantStrings.english,
+             AppConfig.selected==0? ConstantStrings.english:ConstantStrings.malay,
               style: TextStyle(color: AppColor.black),
             )),
       ],
@@ -105,7 +107,7 @@ class _LocaleDropDownState extends State<LocaleDropDown> {
 
   Widget logout() {
     return GestureDetector(
-      onTap: (){
+      onTap: () {
         _logOutPopUp();
       },
       child: SvgPicture.asset(
@@ -120,56 +122,78 @@ class _LocaleDropDownState extends State<LocaleDropDown> {
         barrierDismissible: true,
         builder: (BuildContext context) {
           return AlertDialog(
-            content:Container(
+            content: Container(
               height: FontSize.size100,
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Padding(
-                    padding:  EdgeInsets.only(top: FontSize.size10,
-                    bottom: FontSize.size30),
-                    child: Text('logOutText'.tr(),
-                    style: TextStyle(fontSize: FontSize.size15,
-                    color: AppColor.black,fontFamily:AppConfig.montserrat),),
+                    padding: EdgeInsets.only(
+                        top: FontSize.size10, bottom: FontSize.size30),
+                    child: Text(
+                      'logOutText'.tr(),
+                      style: TextStyle(
+                          fontSize: FontSize.size15,
+                          color: AppColor.black,
+                          fontFamily: AppConfig.montserrat),
+                    ),
                   ),
                   Divider(
-                    height: FontSize.size2,color: AppColor.grey,
+                    height: FontSize.size2,
+                    color: AppColor.grey,
                   ),
                   Padding(
-                    padding:  EdgeInsets.only(top:FontSize.size10),
+                    padding: EdgeInsets.only(top: FontSize.size10),
                     child: Container(
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           GestureDetector(
-                            onTap: (){
+                            onTap: () {
                               Navigator.pop(context);
                             },
                             child: Center(
-                              child: Text( 'cancel'.tr(),
-                                style: TextStyle(fontSize: FontSize.size15,
-                                    color: AppColor.black,fontFamily:AppConfig.montserrat),),
+                              child: Text(
+                                'cancel'.tr(),
+                                style: TextStyle(
+                                    fontSize: FontSize.size15,
+                                    color: AppColor.black,
+                                    fontFamily: AppConfig.montserrat),
+                              ),
                             ),
                           ),
-                          Container(color: AppColor.grey,width:1,
-                          height: 20.0,),
+                          Container(
+                            color: AppColor.grey,
+                            width: 1,
+                            height: 20.0,
+                          ),
                           GestureDetector(
-                            onTap: ()async{
-                              String token=await _sharedPreferences.getToken();
-                            var response=await repository.logOutApi(context,token);
-                            if(response){
-                             await _sharedPreferences.clearAll();
-                              Navigator.pushAndRemoveUntil(context,
-                                  MaterialPageRoute(builder:(context)=> InitialPage()), (route) => false);
-                            }else{
-                              Navigator.pop(context);
-                              AppConfig.showToast(context, ConstantStrings.somethingWrong);
-                            }
+                            onTap: () async {
+                              String token =
+                                  await _sharedPreferences.getToken();
+                              var response =
+                                  await repository.logOutApi(context, token);
+                              if (response) {
+                                await _sharedPreferences.clearAll();
+                                Navigator.pushAndRemoveUntil(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => InitialPage()),
+                                    (route) => false);
+                              } else {
+                                Navigator.pop(context);
+                                AppConfig.showToast(
+                                    context, ConstantStrings.somethingWrong);
+                              }
                             },
                             child: Center(
-                              child: Text('logOut'.tr(),
-                                style: TextStyle(fontSize: FontSize.size15,
-                                    color: AppColor.black,fontFamily:AppConfig.montserrat),),
+                              child: Text(
+                                'logOut'.tr(),
+                                style: TextStyle(
+                                    fontSize: FontSize.size15,
+                                    color: AppColor.black,
+                                    fontFamily: AppConfig.montserrat),
+                              ),
                             ),
                           ),
                         ],
@@ -183,9 +207,8 @@ class _LocaleDropDownState extends State<LocaleDropDown> {
         });
   }
 
-  Future setValue()async {
-    String value=await _sharedPreferences.getLang();
-    AppConfig.selected=value??'0';
+   setValue() async {
+    String value = await _sharedPreferences.getLang();
+    AppConfig.selected = value ?? '0';
   }
-
 }

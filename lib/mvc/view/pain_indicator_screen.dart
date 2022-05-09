@@ -1,3 +1,5 @@
+// ignore_for_file: implementation_imports
+
 import 'package:background_sms/background_sms.dart';
 import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/cupertino.dart';
@@ -5,11 +7,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
 import 'package:tcswecare/mvc/controller/pain_indicator_controller.dart';
-import 'package:tcswecare/mvc/model/pain_record_model.dart';
 import 'package:tcswecare/mvc/utils/app_color.dart';
 import 'package:tcswecare/mvc/utils/app_config.dart';
 import 'package:tcswecare/mvc/utils/assets.dart';
-import 'package:tcswecare/mvc/utils/constant_strings.dart';
 import 'package:tcswecare/mvc/utils/date_time_ui.dart';
 import 'package:tcswecare/mvc/utils/font_size.dart';
 import 'package:tcswecare/mvc/utils/locale_drop_down.dart';
@@ -100,7 +100,7 @@ class _PainIndicatorScreenState extends StateMVC<PainIndicatorScreen> {
           ),
         ),
         Padding(
-          padding: EdgeInsets.only(top: 10.0),
+          padding: EdgeInsets.only(top:FontSize.size10),
           child: Container(height: FontSize.size80, child: imageList()),
         ),
         Padding(
@@ -140,7 +140,7 @@ class _PainIndicatorScreenState extends StateMVC<PainIndicatorScreen> {
 //              PainRecordModelResponse response =
 //                  await _controller.submit(context);
 //              if (response != null && response.statusCode == 200) {
-               if( AppConfig.spinnerValue>8){sendSms();}
+               if( AppConfig.spinnerValue>=9){sendSms();}
                 Navigator.pop(context);
                 Navigator.pushAndRemoveUntil(
                     context,
@@ -186,9 +186,9 @@ class _PainIndicatorScreenState extends StateMVC<PainIndicatorScreen> {
             children: [
               Padding(
                 padding: EdgeInsets.only(
-                  left: 10.0,
-                  right: 10.0,
-                  bottom: 10.0,
+                  left:FontSize.size10,
+                  right:FontSize.size10,
+                  bottom:FontSize.size10,
                 ),
                 child: SvgPicture.asset(
                   loadImages(index),
@@ -197,7 +197,7 @@ class _PainIndicatorScreenState extends StateMVC<PainIndicatorScreen> {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.only(left: 10.0, right: 10.0),
+                padding: EdgeInsets.only(left:FontSize.size10, right:FontSize.size10),
                 child: hurtRange(index),
               ),
             ],
@@ -268,7 +268,7 @@ class _PainIndicatorScreenState extends StateMVC<PainIndicatorScreen> {
   }
   sendSms()async{
     await BackgroundSms.sendMessage(
-    phoneNumber: "8667439401", message: "Hi Doctor,"
+    phoneNumber: "0166766852", message: "Hi Doctor,"
         "The pain is above 8");
   }
 }
