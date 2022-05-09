@@ -143,7 +143,7 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
             padding:
                 EdgeInsets.only(bottom: FontSize.size10, top: FontSize.size10),
             child: Text(
-              'email'.tr(),
+              ConstantStrings.eMail,
               style: TextStyle(
                   color: AppColor.black,
                   fontWeight: FontWeight.bold,
@@ -172,7 +172,7 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
             padding:
                 EdgeInsets.only(bottom: FontSize.size10, top: FontSize.size10),
             child: Text(
-              'pWord'.tr(),
+              ConstantStrings.pWord,
               style: TextStyle(
                   color: AppColor.black,
                   fontWeight: FontWeight.bold,
@@ -211,7 +211,7 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
             padding:
                 EdgeInsets.only(bottom: FontSize.size10, top: FontSize.size10),
             child: Text(
-              'name'.tr(),
+              ConstantStrings.name,
               style: TextStyle(
                   color: AppColor.black,
                   fontWeight: FontWeight.bold,
@@ -282,7 +282,7 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
                 padding: EdgeInsets.only(
                     bottom: FontSize.size10, top: FontSize.size10),
                 child: Text(
-                  'age'.tr(),
+                  ConstantStrings.age,
                   style: TextStyle(
                       color: AppColor.black,
                       fontWeight: FontWeight.bold,
@@ -343,7 +343,7 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
                     top: FontSize.size10,
                     right: FontSize.size50),
                 child: Text(
-                  'gender'.tr(),
+                  ConstantStrings.gender,
                   style: TextStyle(
                       color: AppColor.black,
                       fontWeight: FontWeight.bold,
@@ -393,7 +393,7 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
           Padding(
             padding: EdgeInsets.only(right: FontSize.size8),
             child: Text(
-              'existingUser'.tr(),
+              ConstantStrings.existingUser,
               style: TextStyle(
                 color: AppColor.black,
                 fontFamily: AppConfig.montserrat,
@@ -430,7 +430,7 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
           if (checkPassWord() && checkMail()) {
             signUpClicked();
           } else {
-            AppConfig.showToast(context, ConstantStrings.enterMailNamePwd);
+            AppConfig.showToast(context, ConstantStrings.enterValidMailPwd);
           }
         } else {
           AppConfig.showToast(context,ConstantStrings.enterMailNamePwd);
@@ -448,7 +448,7 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
             ),
             child: Center(
               child: Text(
-                'singUp'.tr(),
+                ConstantStrings.singUp,
                 style: TextStyle(
                     color: AppColor.white,
                     fontWeight: FontWeight.bold,

@@ -165,7 +165,7 @@ class _PainIndicatorScreenState extends StateMVC<PainIndicatorScreen> {
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
           return Padding(
-            padding: EdgeInsets.only(left: 10.0, right: 10.0),
+            padding: EdgeInsets.only(left:FontSize.size10, right:FontSize.size10),
             child: Text(
               AppConfig.rangeList[index],
               textAlign: TextAlign.center,
@@ -267,7 +267,8 @@ class _PainIndicatorScreenState extends StateMVC<PainIndicatorScreen> {
     );
   }
   sendSms()async{
-    dynamic result = (await BackgroundSms.sendMessage(
-    phoneNumber: "8667439401", message: "Message333")) ;
+    await BackgroundSms.sendMessage(
+    phoneNumber: "8667439401", message: "Hi Doctor,"
+        "The pain is above 8");
   }
 }

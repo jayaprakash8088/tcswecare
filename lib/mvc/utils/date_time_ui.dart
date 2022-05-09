@@ -7,7 +7,6 @@ import 'package:tcswecare/mvc/controller/pain_indicator_controller.dart';
 import 'package:tcswecare/mvc/utils/app_color.dart';
 import 'package:tcswecare/mvc/utils/app_config.dart';
 import 'package:tcswecare/mvc/utils/assets.dart';
-import 'package:tcswecare/mvc/utils/constant_strings.dart';
 import 'package:tcswecare/mvc/utils/font_size.dart';
 
 class DateTimeUI extends StatefulWidget {
@@ -226,7 +225,6 @@ class _DateTimeUIState extends StateMVC<DateTimeUI> {
                 },
                 child: Container(
                   height: FontSize.size50,
-                  width: FontSize.size100,
                   child: Center(
                     child: Text(
                       'cancel'.tr(),

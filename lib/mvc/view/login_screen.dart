@@ -91,7 +91,7 @@ class _LoginScreenState extends StateMVC<LoginScreen> {
                           ),
                           child: Center(
                             child: Text(
-                              'login'.tr(),
+                              ConstantStrings.login,
                               style: TextStyle(
                                   color: AppColor.white,
                                   fontWeight: FontWeight.bold,
@@ -121,7 +121,7 @@ class _LoginScreenState extends StateMVC<LoginScreen> {
           Padding(
             padding: EdgeInsets.only(bottom: FontSize.size10),
             child: Text(
-              'userName'.tr(),
+              ConstantStrings.userName,
               style: TextStyle(
                   color: AppColor.black,
                   fontWeight: FontWeight.bold,
@@ -150,7 +150,7 @@ class _LoginScreenState extends StateMVC<LoginScreen> {
             padding:
                 EdgeInsets.only(bottom: FontSize.size10, top: FontSize.size10),
             child: Text(
-              'password'.tr(),
+              ConstantStrings.password,
               style: TextStyle(
                   color: AppColor.black,
                   fontWeight: FontWeight.bold,

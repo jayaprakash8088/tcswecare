@@ -419,7 +419,7 @@ class _SymptomTrackerPageState extends StateMVC<SymptomTrackerPage> {
               child: TextField(
                   controller: _controller.comments,
                   decoration: InputDecoration(
-                    hintText: ConstantStrings.typeHere,
+                    hintText: 'typeHere'.tr(),
                     contentPadding: EdgeInsets.all(FontSize.size8),
                     hintStyle: TextStyle(
                         color: AppColor.hintText,
