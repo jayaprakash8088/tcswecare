@@ -41,7 +41,6 @@ class _InitialPageState extends State<InitialPage> {
         child: Stack(
           children: [
             Container(
-              color: AppColor.bgWhite,
               child: SvgPicture.asset(
                 Assets.bigRectangle,
                 width: MediaQuery.of(context).size.width,
