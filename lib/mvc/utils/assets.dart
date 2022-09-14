@@ -3,7 +3,7 @@ class Assets {
   static String bigRectanglePng = 'images/big_rectangle1.png';
   static String smallRectangle = 'images/small_rectangle1.svg';
   static String logo = 'images/logo.svg';
-  static String supportLogo = 'images/support_logo.svg';
+  static String supportLogo = 'images/can_support_logo.svg';
   static String manFace = 'images/man_face.svg';
   static String graph = 'images/graph.svg';
   static String contactDoctor = 'images/stethoscope.svg';

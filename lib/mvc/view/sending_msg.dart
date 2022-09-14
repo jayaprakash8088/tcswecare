@@ -44,20 +44,24 @@ class _TransmittingMessageState extends StateMVC<TransmittingMessage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColor.bgBlue,
-      body: Column(
-        children: [
-          Padding(
-            padding: EdgeInsets.only(top: FontSize.size20),
-            child: Align(
-              alignment: Alignment.centerRight,
-              child: Container(
-                  height: FontSize.size100,
-                  width: FontSize.size160,
-                  child: LocaleDropDown()),
+      body: SingleChildScrollView(
+        physics: AlwaysScrollableScrollPhysics(),
+        scrollDirection: Axis.vertical,
+        child: Column(
+          children: [
+            Padding(
+              padding: EdgeInsets.only(top: FontSize.size20),
+              child: Align(
+                alignment: Alignment.centerRight,
+                child: Container(
+                    height: FontSize.size100,
+                    width: FontSize.size160,
+                    child: LocaleDropDown()),
+              ),
             ),
-          ),
-          buildUI(),
-        ],
+            buildUI(),
+          ],
+        ),
       ),
     );
   }

@@ -68,6 +68,7 @@ class _ContactDoctorState extends State<ContactDoctor> {
 
   Widget buildUI() {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Center(
           child: Padding(
@@ -78,19 +79,18 @@ class _ContactDoctorState extends State<ContactDoctor> {
             child: Image.asset(Assets.framePng),
           ),
         ),
-        Center(
-          child: Text(
-            'card4Text'.tr(),
-            textAlign: TextAlign.center,
-            style: AppConfig.blackText,
-          ),
-        ),
-        Center(child: cardsUI()),
-        Center(
-          child: Text(
-            'contactDoctor'.tr(), textAlign: TextAlign.center,
-            style: AppConfig.blackText,
-          ),
+        // Center(
+        //   child: Text(
+        //     'card4Text'.tr(),
+        //     textAlign: TextAlign.center,
+        //     style: AppConfig.blackText,
+        //   ),
+        // ),
+        // Center(child: cardsUI()),
+        Text(
+          'card4Text'.tr(),
+          textAlign: TextAlign.center,
+          style: AppConfig.blackText,
         ),
         GestureDetector(
           onTap: () {
@@ -130,29 +130,28 @@ class _ContactDoctorState extends State<ContactDoctor> {
             ),
           ),
         ),
-        Center(
-          child: GestureDetector(
-            onTap: () {
-              Navigator.pushAndRemoveUntil(
-                  context,
-                  MaterialPageRoute(builder: (context) => HomePage()),
-                  (route) => false);
-            },
-            child: Padding(
-              padding: EdgeInsets.only(top: FontSize.size25),
-              child: Center(
-                child: Container(
-                  height: FontSize.size40,
-                  width: FontSize.size200,
-                  decoration: BoxDecoration(
-                    gradient: AppConfig.gradient,
-                    borderRadius: BorderRadius.all(Radius.circular(20.0)),
-                  ),
-                  child: Center(
-                    child: Text(
-                      'home'.tr(),
-                      style: AppConfig.robotoText,
-                    ),
+        SizedBox(height: MediaQuery.of(context).size.height*0.15,),
+        GestureDetector(
+          onTap: () {
+            Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(builder: (context) => HomePage()),
+                (route) => false);
+          },
+          child: Padding(
+            padding: EdgeInsets.only(top: FontSize.size25),
+            child: Center(
+              child: Container(
+                height: FontSize.size40,
+                width: FontSize.size200,
+                decoration: BoxDecoration(
+                  gradient: AppConfig.gradient,
+                  borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                ),
+                child: Center(
+                  child: Text(
+                    'home'.tr(),
+                    style: AppConfig.robotoText,
                   ),
                 ),
               ),
