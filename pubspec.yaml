@@ -111,6 +111,7 @@ flutter:
      - images/range5_selected.svg
      - images/image.png
      - images/logout.svg
+     - images/support_logo.svg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

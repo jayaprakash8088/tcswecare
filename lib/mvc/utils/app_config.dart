@@ -22,12 +22,17 @@ class AppConfig {
 
   // spinner value
   static double spinnerValue = 0.0;
+  static double discomfortValue = 0.0;
   static double anxietyValue = 0.0;
-  static double moodValue = 0.0;
-  static double breathValue = 0.0;
-  static double drySkinValue = 0.0;
   static double constipationValue = 0.0;
+  static double coughValue = 0.0;
+  static double diarrheaValue = 0.0;
+  static double fatigueValue = 0.0;
+  static double drySkinValue = 0.0;
+  static double appetiteValue=0.0;
   static double nauseaValue = 0.0;
+  static double breathValue = 0.0;
+  static double moodValue = 0.0;
 
   ///api///////////////
   static String baseUrl = 'http://34.126.104.146/';
@@ -50,7 +55,24 @@ class AppConfig {
   static LinearGradient gradient = LinearGradient(
       begin: Alignment.centerLeft,
       end: Alignment.centerRight,
-      colors: <Color>[AppColor.bg1, AppColor.bg2]);
+      colors: <Color>[AppColor.bg1,
+        AppColor.bg2]);
+  static LinearGradient sliderGradient = LinearGradient(
+      begin: Alignment.topLeft,
+      end: Alignment.centerRight,
+      colors: <Color>[
+        AppColor.slider0,
+        AppColor.slider1,
+        AppColor.slider2,
+        AppColor.slider3,
+        AppColor.slider4,
+        AppColor.slider5,
+        AppColor.slider6,
+        AppColor.slider7,
+        AppColor.slider8,
+        AppColor.slider9,
+        AppColor.slider10,
+      ]);
   static Color divider = Color.fromRGBO(231, 231, 231, 1);
   static LinearGradient blueGradient = LinearGradient(
       begin: Alignment.topLeft,
@@ -116,17 +138,27 @@ class AppConfig {
     'Teruk',
   ];
   static List diagnosisList = [
+    'Abdominal pain/ discomfort',
     'Anxiety',
+    'Constipation',
+    'Cough',
+    'Diarrhea',
+    'Fatigue',
     'Shortness of\nBreath',
     'Itchy/Dry Skin',
-    'Constipation',
+    'Loss of appetite',
     'Nausea'
   ];
   static List diagnosisListMalay = [
+    'Sakit perut/ ketidakselesaan',
     'Kebimbangan',
+    'Sembelit',
+    'batuk',
+    'Cirit-birit',
+    'Keletihan',
     'Sesak nafas',
     'Kulit gatal/kering',
-    'Sembelit',
+    'Hilang selera makan'
     'Loya'
   ];
   static List<Map> diagnosisMap = [
@@ -147,36 +179,7 @@ class AppConfig {
     {'id': 5, 'name': 'Sesak nafas'},
     {'id': 6, 'name': 'Kesakitan'},
   ];
-//  static List<String> yValue = symptomLevels;
   static List<String> yValueMalay = symptomLevelsMalay;
-//  static List<String> xValue = [
-//    '1',
-//    '3',
-//    '6',
-//    '9',
-//    '12',
-//    '15',
-//    '18',
-//    '21',
-//    '24',
-//    '27',
-//    '30'
-//  ];
-  static List ageList = [
-    '1',
-    '2',
-    '3',
-    '4',
-    '5',
-    '6',
-    '7',
-    '8',
-    '9',
-    '10',
-    '11',
-    '12',
-    '13',
-  ];
   static bool isShowingDialog = false;
   static String selected;
   static String monthSelected;

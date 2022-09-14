@@ -130,20 +130,20 @@ class _SymptomTrackerPageState extends StateMVC<SymptomTrackerPage> {
           padding: EdgeInsets.only(top: FontSize.size20),
           child: GestureDetector(
               onTap: () async {
-                AppConfig.pleaseWait(context);
-                PainRecordModelResponse response =
-                    await _controller.submitSymptoms(context);
-                if (response != null && response.statusCode == 200) {
-                  Navigator.pop(context);
-                  Navigator.pushAndRemoveUntil(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => TransmittingMessage()),
-                      (route) => false);
-                } else {
-                  Navigator.pop(context);
-                  AppConfig.showToast(context, ConstantStrings.somethingWrong);
-                }
+                // AppConfig.pleaseWait(context);
+                // PainRecordModelResponse response =
+                //     await _controller.submitSymptoms(context);
+                // if (response != null && response.statusCode == 200) {
+                //   Navigator.pop(context);
+                //   Navigator.pushAndRemoveUntil(
+                //       context,
+                //       MaterialPageRoute(
+                //           builder: (context) => TransmittingMessage()),
+                //       (route) => false);
+                // } else {
+                //   Navigator.pop(context);
+                //   AppConfig.showToast(context, ConstantStrings.somethingWrong);
+                // }
               },
               child: AppConfig.submitBtn()),
         )
@@ -162,21 +162,18 @@ class _SymptomTrackerPageState extends StateMVC<SymptomTrackerPage> {
             itemCount:
             AppConfig.selected=='0'?AppConfig.symptomLevels.length:
             AppConfig.symptomLevelsMalay.length,
-            shrinkWrap: true,
+            itemExtent: 70,
             itemBuilder: (context, index) {
-              return Padding(
-                padding: EdgeInsets.only(right: FontSize.size8),
-                child: Text(
-                  AppConfig.selected=='0'?AppConfig.symptomLevels[index]:
-                  AppConfig.symptomLevelsMalay[index],
-                  textAlign: TextAlign.center,
-                  softWrap: true,
-                  style: TextStyle(
-                      color: AppColor.black,
-                      fontWeight: FontWeight.w500,
-                      fontSize: FontSize.size12,
-                      fontFamily: AppConfig.montserrat),
-                ),
+              return Text(
+                AppConfig.selected=='0'?AppConfig.symptomLevels[index]:
+                AppConfig.symptomLevelsMalay[index],
+                textAlign: TextAlign.center,
+                softWrap: true,
+                style: TextStyle(
+                    color: AppColor.black,
+                    fontWeight: FontWeight.w500,
+                    fontSize: FontSize.size12,
+                    fontFamily: AppConfig.montserrat),
               );
             }),
       ),
@@ -218,13 +215,14 @@ class _SymptomTrackerPageState extends StateMVC<SymptomTrackerPage> {
                       child: SliderTheme(
                         data: SliderTheme.of(context).copyWith(
                             trackShape: GradientRectSliderTrackShape(
-                                gradient: AppConfig.gradient,
+                                gradient: AppConfig.sliderGradient,
                                 darkenInactive: true),
                             overlayShape: RoundSliderOverlayShape(
                                 overlayRadius: FontSize.size0),
                             trackHeight: FontSize.size10),
                         child: Slider(
                             activeColor: AppColor.white,
+                          thumbColor: AppColor.white,
                             value: getValue(index),
                             min: FontSize.size0,
                             max: FontSize.size10,
@@ -251,19 +249,34 @@ class _SymptomTrackerPageState extends StateMVC<SymptomTrackerPage> {
     double value;
     switch (index) {
       case 0:
-        value = AppConfig.anxietyValue;
+        value = AppConfig.discomfortValue;
         break;
       case 1:
-        value = AppConfig.breathValue;
+        value = AppConfig.anxietyValue;
         break;
       case 2:
-        value = AppConfig.drySkinValue;
-        break;
-      case 3:
         value = AppConfig.constipationValue;
         break;
+      case 3:
+        value = AppConfig.coughValue;
+        break;
       case 4:
+        value = AppConfig.diarrheaValue;
+        break;
+      case 5:
+        value = AppConfig.fatigueValue;
+        break;
+      case 6:
+        value = AppConfig.drySkinValue;
+        break;
+      case 7:
+        value = AppConfig.appetiteValue;
+        break;
+      case 8:
         value = AppConfig.nauseaValue;
+        break;
+      case 9:
+        value = AppConfig.breathValue;
         break;
     }
     return value;
@@ -272,21 +285,36 @@ class _SymptomTrackerPageState extends StateMVC<SymptomTrackerPage> {
   void setValue(int index, double selectedValue) {
     switch (index) {
       case 0:
-        AppConfig.anxietyValue = selectedValue;
+        AppConfig.discomfortValue = selectedValue;
         break;
       case 1:
-        AppConfig.breathValue = selectedValue;
+        AppConfig.anxietyValue = selectedValue;
         break;
       case 2:
-        AppConfig.drySkinValue = selectedValue;
-        break;
-      case 3:
         AppConfig.constipationValue = selectedValue;
         break;
+      case 3:
+        AppConfig.coughValue = selectedValue;
+        break;
       case 4:
-        AppConfig.nauseaValue = selectedValue;
+        AppConfig.diarrheaValue = selectedValue;
         break;
       case 5:
+        AppConfig.fatigueValue = selectedValue;
+        break;
+      case 6:
+        AppConfig.drySkinValue = selectedValue;
+        break;
+      case 7:
+        AppConfig.appetiteValue = selectedValue;
+        break;
+      case 8:
+        AppConfig.nauseaValue = selectedValue;
+        break;
+      case 9:
+        AppConfig.breathValue = selectedValue;
+        break;
+      case 10:
         AppConfig.moodValue = selectedValue;
         break;
     }
@@ -362,7 +390,7 @@ class _SymptomTrackerPageState extends StateMVC<SymptomTrackerPage> {
                 child: SliderTheme(
                   data: SliderTheme.of(context).copyWith(
                       trackShape: GradientRectSliderTrackShape(
-                          gradient: AppConfig.gradient, darkenInactive: true),
+                          gradient: AppConfig.sliderGradient, darkenInactive: true),
                       overlayShape: RoundSliderOverlayShape(
                           overlayRadius: FontSize.size0),
                       trackHeight: FontSize.size10),

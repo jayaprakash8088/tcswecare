@@ -87,7 +87,7 @@ class _HomePageState extends StateMVC<HomePage> {
       ],
       centerTitle: false,
       title: SvgPicture.asset(
-        Assets.logo,
+        Assets.supportLogo,
         height: FontSize.size22,
         width: FontSize.size120,
       ),

@@ -63,7 +63,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 fit: BoxFit.fitWidth,
               ),
               SvgPicture.asset(
-                Assets.logo,
+                Assets.supportLogo,
                 alignment: Alignment.topCenter,
                 fit: BoxFit.fitWidth,
               ),

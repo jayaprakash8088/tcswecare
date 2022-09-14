@@ -7,19 +7,18 @@ import 'package:tcswecare/mvc/utils/app_config.dart';
 import 'package:tcswecare/mvc/utils/assets.dart';
 import 'package:tcswecare/mvc/utils/constant_strings.dart';
 import 'package:tcswecare/mvc/utils/font_size.dart';
-import 'package:tcswecare/mvc/view/forgot_password.dart';
 import 'package:tcswecare/mvc/view/home_page.dart';
-class LoginScreen extends StatefulWidget {
-  LoginScreen({Key key}) : super(key: key);
+class ForgotPasswordScreen extends StatefulWidget {
+  ForgotPasswordScreen({Key key}) : super(key: key);
 
   @override
-  _LoginScreenState createState() {
-    return _LoginScreenState();
+  _ForgotPasswordScreenState createState() {
+    return _ForgotPasswordScreenState();
   }
 }
 
-class _LoginScreenState extends StateMVC<LoginScreen> {
-  _LoginScreenState() : super(LoginController()) {
+class _ForgotPasswordScreenState extends StateMVC<ForgotPasswordScreen> {
+  _ForgotPasswordScreenState() : super(LoginController()) {
     _controller = controller;
   }
 
@@ -75,7 +74,7 @@ class _LoginScreenState extends StateMVC<LoginScreen> {
                   userDetailUI(_controller),
                   GestureDetector(
                     onTap: () {
-                      loginClicked();
+                      sendClicked();
                     },
                     child: Padding(
                       padding: EdgeInsets.only(top: FontSize.size50),
@@ -90,7 +89,7 @@ class _LoginScreenState extends StateMVC<LoginScreen> {
                           ),
                           child: Center(
                             child: Text(
-                              ConstantStrings.login,
+                              ConstantStrings.sendCode,
                               style: TextStyle(
                                   color: AppColor.white,
                                   fontWeight: FontWeight.bold,
@@ -120,7 +119,7 @@ class _LoginScreenState extends StateMVC<LoginScreen> {
           Padding(
             padding: EdgeInsets.only(bottom: FontSize.size10),
             child: Text(
-              ConstantStrings.userName,
+              ConstantStrings.eMailId,
               style: TextStyle(
                   color: AppColor.black,
                   fontWeight: FontWeight.bold,
@@ -136,66 +135,26 @@ class _LoginScreenState extends StateMVC<LoginScreen> {
               borderRadius: BorderRadius.all(Radius.circular(FontSize.size10)),
             ),
             child: TextField(
-                controller: _controller.userNameController,
+                controller: _controller.eMailController,
                 decoration: InputDecoration(
                     fillColor: AppColor.black,
                     border: InputBorder.none,
                     focusedBorder: OutlineInputBorder(
                       borderRadius:
-                          BorderRadius.all(Radius.circular(FontSize.size10)),
+                      BorderRadius.all(Radius.circular(FontSize.size10)),
                     ))),
           ),
           Padding(
             padding:
-                EdgeInsets.only(bottom: FontSize.size10, top: FontSize.size10),
+            EdgeInsets.only(bottom: FontSize.size10, top: FontSize.size10),
             child: Text(
-              ConstantStrings.password,
+              ConstantStrings.resetPassword,
               style: TextStyle(
                   color: AppColor.black,
-                  fontWeight: FontWeight.bold,
+                  fontWeight: FontWeight.w500,
                   fontFamily: AppConfig.montserrat,
                   fontStyle: AppConfig.normal,
-                  fontSize: FontSize.size16),
-            ),
-          ),
-          Container(
-            height: FontSize.size40,
-            decoration: BoxDecoration(
-              color: AppColor.bgText,
-              borderRadius: BorderRadius.all(Radius.circular(FontSize.size10)),
-            ),
-            child: TextField(
-                controller: _controller.passwordController,
-                obscureText: true,
-                maxLength: 12,
-                buildCounter: (BuildContext context,
-                        {int currentLength, int maxLength, bool isFocused}) =>
-                    null,
-                enableSuggestions: false,
-                decoration: InputDecoration(
-                    fillColor: AppColor.black,
-                    border: InputBorder.none,
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius:
-                          BorderRadius.all(Radius.circular(FontSize.size10)),
-                    ))),
-          ),
-          GestureDetector(
-            onTap: (){
-              moveToForgotPassword();
-            },
-            child: Padding(
-              padding:
-              EdgeInsets.only(bottom: FontSize.size10, top: FontSize.size10),
-              child: Text(
-                ConstantStrings.forgotPassword,
-                style: TextStyle(
-                    color: AppColor.black,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: AppConfig.montserrat,
-                    fontStyle: AppConfig.normal,
-                    fontSize: FontSize.size16),
-              ),
+                  fontSize: FontSize.size14),
             ),
           ),
         ],
@@ -203,33 +162,12 @@ class _LoginScreenState extends StateMVC<LoginScreen> {
     );
   }
 
-  void loginClicked() async {
-    if (_controller.userNameController.text.trim().isNotEmpty &&
-        _controller.passwordController.text.trim().isNotEmpty) {
+  void sendClicked() async {
+    if (_controller.eMailController.text.trim().isNotEmpty &&
+        _controller.eMailController.text.trim().isNotEmpty) {
       AppConfig.pleaseWait(context);
-      bool isSuccess = await _controller.loginClicked(
-          _controller.userNameController.text.trim(),
-          _controller.passwordController.text.trim(),
-          context);
-      if (isSuccess) {
-        _controller.getPatientInfo(context);
-        _controller.userNameController.clear();
-        _controller.passwordController.clear();
-        Navigator.pop(context);
-        Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => HomePage()));
-      }
     } else {
-//      Navigator.pop(context);
-      AppConfig.showToast(context, ConstantStrings.enterNamePwd);
+      AppConfig.showToast(context, ConstantStrings.enterMail);
     }
-    Navigator.pushReplacement(
-        context, MaterialPageRoute(builder: (context) => HomePage()));
-
-  }
-
-  void moveToForgotPassword() {
-    dynamic route=MaterialPageRoute(builder: (context) => ForgotPasswordScreen());
-    Navigator.push(context, route);
   }
 }

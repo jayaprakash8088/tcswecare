@@ -52,7 +52,7 @@ class _InitialPageState extends State<InitialPage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Center(child: SvgPicture.asset(Assets.logo)),
+                  Center(child: SvgPicture.asset(Assets.supportLogo)),
                   Padding(
                     padding: EdgeInsets.only(top: FontSize.size100),
                     child: Center(child: SvgPicture.asset(Assets.astronaut)),

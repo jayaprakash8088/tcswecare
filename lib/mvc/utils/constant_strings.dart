@@ -3,13 +3,17 @@ class ConstantStrings {
   static String singUp = 'SIGN UP';
   static String login = 'LOGIN';
   static String login1 = 'Login';
+  static String sendCode = 'SEND CODE';
   static String userName = 'User Name';
   static String password = 'Password';
+  static String forgotPassword = 'Forgot Password?';
   static String home = 'HOME';
   static String noInternet = 'No Internet';
   static String startText =
       "Hey there! Let’s \n Get You Registered \n and Started!";
+  static String resetPassword='We will send you a link to reset your password';
   static String eMail = 'Email*';
+  static String eMailId = 'Email ID';
   static String doctorEMail = 'Doctor Email*';
   static String pWord='Password*';
   static String diagnosis = 'Diagnosis';
@@ -69,7 +73,9 @@ class ConstantStrings {
   static String enterNamePwd='Please fill Username and Password';
   static String enterValidMailPwd='Please enter Valid e-Mail and Password';
   static String enterMailNamePwd='Please fill e-Mail,Username and Password';
+  static String enterMail='Please enter e-Mail ID';
   static String logOutText='Are you sure want to LogOut ?';
   static String logOut='LogOut';
   static String language='language';
+  static String getStarted='Let’s get Started';
 }

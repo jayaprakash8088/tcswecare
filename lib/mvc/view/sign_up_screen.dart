@@ -66,7 +66,7 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Center(child: SvgPicture.asset(Assets.logo)),
+                  Center(child: SvgPicture.asset(Assets.supportLogo)),
                   Padding(
                     padding: EdgeInsets.only(top: FontSize.size30),
                     child: Text(

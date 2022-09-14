@@ -35,5 +35,16 @@ class AppColor {
   static Color blueGradient1 = Color.fromRGBO(180, 186, 234, 1);
   static Color blueGradient2 = Color.fromRGBO(38, 59, 245, 1);
   static Color painGradient1 = Color.fromRGBO(255, 34, 97, 1);
+  static Color slider0 = Color.fromRGBO(51, 85, 51, 1);
+  static Color slider1 = Color.fromRGBO(14, 119, 14, 1);
+  static Color slider2 = Color.fromRGBO(54, 153, 54, 1);
+  static Color slider3 = Color.fromRGBO(71,191,71,1);
+  static Color slider4 = Color.fromRGBO(71, 194, 142, 1);
+  static Color slider5 = Color.fromRGBO(255, 194, 37, 0.8);
+  static Color slider6 = Color.fromRGBO(224, 177, 92, 1);
+  static Color slider7 = Color.fromRGBO(255, 165, 0, 1);
+  static Color slider8 = Color.fromRGBO(241, 114, 21, 1);
+  static Color slider9 = Color.fromRGBO(237, 27, 36, 1);
+  static Color slider10 = Color.fromRGBO(249, 35, 35, 1);
 
 }

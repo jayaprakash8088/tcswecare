@@ -110,7 +110,7 @@ class _PainIndicatorScreenState extends StateMVC<PainIndicatorScreen> {
             child: SliderTheme(
               data: SliderTheme.of(context).copyWith(
                   trackShape: GradientRectSliderTrackShape(
-                      gradient: AppConfig.gradient, darkenInactive: true),
+                      gradient: AppConfig.sliderGradient, darkenInactive: true),
                   overlayShape:
                       RoundSliderOverlayShape(overlayRadius: FontSize.size0),
                   trackHeight: FontSize.size10),
