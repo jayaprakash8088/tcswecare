@@ -6,6 +6,7 @@ import 'package:tcswecare/mvc/model/patient_info_response_model.dart';
 import 'package:tcswecare/mvc/model/sing_up_model.dart';
 import 'package:tcswecare/mvc/utils/app_config.dart';
 import 'package:tcswecare/mvc/utils/app_shared_preferences.dart';
+import 'package:tcswecare/mvc/utils/constant_strings.dart';
 
 class LoginController extends ControllerMVC {
   factory LoginController() {
@@ -37,6 +38,12 @@ class LoginController extends ControllerMVC {
   //age value
   int ageValue;
   String otp;
+//after update//
+  TextEditingController childNameController = TextEditingController();
+  TextEditingController parentNameController = TextEditingController();
+  TextEditingController parentEmailController = TextEditingController();
+  TextEditingController parentMobileController = TextEditingController();
+  DateTime selectedDate;
 
   Future<dynamic> loginClicked(
       String userName, String password, BuildContext context) async {
@@ -90,5 +97,25 @@ class LoginController extends ControllerMVC {
     PainRecordModelResponse response =
         await repository.signUp(AppConfig.resendOtp, context, model);
     return response;
+  }
+
+  String getTitle(int pos) {
+    String title;
+    switch(pos){
+      case 1:title=ConstantStrings.hospitalName;break;
+      case 2:title=ConstantStrings.hospitalNumber;break;
+      case 3:title=ConstantStrings.doctorName;break;
+    }
+    return title;
+  }
+
+  getHint(int pos) {
+    String title;
+    switch(pos){
+      case 1:title='Hospital Name';break;
+      case 2:title='Hospital Number';break;
+      case 3:title='Doctor Name';break;
+    }
+    return title;
   }
 }

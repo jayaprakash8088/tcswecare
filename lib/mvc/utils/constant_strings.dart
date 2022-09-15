@@ -10,7 +10,7 @@ class ConstantStrings {
   static String home = 'HOME';
   static String noInternet = 'No Internet';
   static String startText =
-      "Hey there! Let’s \n Get You Registered \n and Started!";
+      "Let’s get \nStarted!";
   static String resetPassword='We will send you a link to reset your password';
   static String eMail = 'Email*';
   static String eMailId = 'Email ID';
@@ -78,4 +78,13 @@ class ConstantStrings {
   static String logOut='LogOut';
   static String language='language';
   static String getStarted='Let’s get Started';
+  static String dob='Date of Birth';
+  static String childName='Child Name*';
+  static String parentName='Parent Name*';
+  static String parentMail='Parent Email*';
+  static String parentMobile='Parent Mobile*';
+  static String hospitalName='Hospital Name*';
+  static String hospitalNumber='Hospital Contact Number*';
+  static String doctorName='Name of Doctor/Specialist*';
+  static String dobFormat='DD/MM/YYYY';
 }

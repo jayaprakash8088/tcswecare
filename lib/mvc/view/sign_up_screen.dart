@@ -1,4 +1,3 @@
-import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -30,8 +29,13 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
   }
 
   LoginController _controller;
-  String ageValue = '1', genderValue = 'M';
+  String ageValue = '1', genderValue = 'M',hospital='Sultan Ismail Hospital',
+  hospitalNumber='+60 55 8888',doctor='Dr Sai';
   List genderList = ['M', 'F'];
+  List hospitalList = ['Sultan Ismail Hospital', 'Sultan Ismail Hospital 1',
+  'Sultan Ismail Hospital 2','Sultan Ismail Hospital 3'];
+  List hospitalNumberList = ['+60 55 8888', '+65 884 84848','+60 8484 8484'];
+  List doctorsList = ['Dr Sai', 'Dr Test','Dr Test1'];
 
   @override
   void initState() {
@@ -72,7 +76,7 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
                     child: Text(
                       ConstantStrings.startText,
                       textAlign: TextAlign.center,
-                      style: AppConfig.robotoText,
+                      style: AppConfig.startText,
                     ),
                   ),
                   buildUI(),
@@ -110,161 +114,145 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Padding(
-            padding:
-                EdgeInsets.only(bottom: FontSize.size10, top: FontSize.size10),
-            child: Text(
-              ConstantStrings.doctorEMail,
-              style: TextStyle(
-                  color: AppColor.black,
-                  fontWeight: FontWeight.bold,
-                  fontFamily: AppConfig.montserrat,
-                  fontStyle: AppConfig.normal,
-                  fontSize: FontSize.size16),
-            ),
-          ),
-          Container(
-            height: FontSize.size40,
-            decoration: BoxDecoration(
-              color: AppColor.bgText,
-              borderRadius: BorderRadius.all(Radius.circular(FontSize.size10)),
-            ),
-            child: TextField(
-                controller: _controller.doctorMailController,
-                decoration: InputDecoration(
-                    fillColor: AppColor.black,
-                    border: InputBorder.none,
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius:
-                          BorderRadius.all(Radius.circular(FontSize.size10)),
-                    ))),
-          ),
-          Padding(
-            padding:
-                EdgeInsets.only(bottom: FontSize.size10, top: FontSize.size10),
-            child: Text(
-              ConstantStrings.eMail,
-              style: TextStyle(
-                  color: AppColor.black,
-                  fontWeight: FontWeight.bold,
-                  fontFamily: AppConfig.montserrat,
-                  fontStyle: AppConfig.normal,
-                  fontSize: FontSize.size16),
-            ),
-          ),
-          Container(
-            height: FontSize.size40,
-            decoration: BoxDecoration(
-              color: AppColor.bgText,
-              borderRadius: BorderRadius.all(Radius.circular(FontSize.size10)),
-            ),
-            child: TextField(
-                controller: _controller.eMailController,
-                decoration: InputDecoration(
-                    fillColor: AppColor.black,
-                    border: InputBorder.none,
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius:
-                          BorderRadius.all(Radius.circular(FontSize.size10)),
-                    ))),
-          ),
-          Padding(
-            padding:
-                EdgeInsets.only(bottom: FontSize.size10, top: FontSize.size10),
-            child: Text(
-              ConstantStrings.pWord,
-              style: TextStyle(
-                  color: AppColor.black,
-                  fontWeight: FontWeight.bold,
-                  fontFamily: AppConfig.montserrat,
-                  fontStyle: AppConfig.normal,
-                  fontSize: FontSize.size16),
-            ),
-          ),
-          Container(
-            height: FontSize.size40,
-            decoration: BoxDecoration(
-              color: AppColor.bgText,
-              borderRadius: BorderRadius.all(Radius.circular(FontSize.size10)),
-            ),
-            child: TextField(
-                controller: _controller.passwordController,
-                obscureText: true,
-                enableSuggestions: false,
-                buildCounter: (BuildContext context,
-                        {int currentLength, int maxLength, bool isFocused}) =>
-                    null,
-                maxLength: 12,
-                decoration: InputDecoration(
-                    fillColor: AppColor.black,
-                    border: InputBorder.none,
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius:
-                          BorderRadius.all(Radius.circular(FontSize.size10)),
-                    ))),
-          ),
-          Text(
-            AppConfig.passwordCondition,
-            style: TextStyle(color: AppColor.red),
-          ),
-          Padding(
-            padding:
-                EdgeInsets.only(bottom: FontSize.size10, top: FontSize.size10),
-            child: Text(
-              ConstantStrings.name,
-              style: TextStyle(
-                  color: AppColor.black,
-                  fontWeight: FontWeight.bold,
-                  fontFamily: AppConfig.montserrat,
-                  fontStyle: AppConfig.normal,
-                  fontSize: FontSize.size16),
-            ),
-          ),
-          Container(
-            height: FontSize.size40,
-            decoration: BoxDecoration(
-              color: AppColor.bgText,
-              borderRadius: BorderRadius.all(Radius.circular(FontSize.size10)),
-            ),
-            child: TextField(
-                controller: _controller.nameController,
-                decoration: InputDecoration(
-                    fillColor: AppColor.black,
-                    border: InputBorder.none,
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius:
-                          BorderRadius.all(Radius.circular(FontSize.size10)),
-                    ))),
-          ),
+          // Padding(
+          //   padding:
+          //       EdgeInsets.only(bottom: FontSize.size10, top: FontSize.size10),
+          //   child: Text(
+          //     ConstantStrings.doctorEMail,
+          //     style: TextStyle(
+          //         color: AppColor.black,
+          //         fontWeight: FontWeight.bold,
+          //         fontFamily: AppConfig.montserrat,
+          //         fontStyle: AppConfig.normal,
+          //         fontSize: FontSize.size16),
+          //   ),
+          // ),
+          // Container(
+          //   height: FontSize.size40,
+          //   decoration: BoxDecoration(
+          //     color: AppColor.bgText,
+          //     borderRadius: BorderRadius.all(Radius.circular(FontSize.size10)),
+          //   ),
+          //   child: TextField(
+          //       controller: _controller.doctorMailController,
+          //       decoration: InputDecoration(
+          //           fillColor: AppColor.black,
+          //           border: InputBorder.none,
+          //           focusedBorder: OutlineInputBorder(
+          //             borderRadius:
+          //                 BorderRadius.all(Radius.circular(FontSize.size10)),
+          //           ))),
+          // ),
+          // Padding(
+          //   padding:
+          //       EdgeInsets.only(bottom: FontSize.size10, top: FontSize.size10),
+          //   child: Text(
+          //     ConstantStrings.eMail,
+          //     style: TextStyle(
+          //         color: AppColor.black,
+          //         fontWeight: FontWeight.bold,
+          //         fontFamily: AppConfig.montserrat,
+          //         fontStyle: AppConfig.normal,
+          //         fontSize: FontSize.size16),
+          //   ),
+          // ),
+          // Container(
+          //   height: FontSize.size40,
+          //   decoration: BoxDecoration(
+          //     color: AppColor.bgText,
+          //     borderRadius: BorderRadius.all(Radius.circular(FontSize.size10)),
+          //   ),
+          //   child: TextField(
+          //       controller: _controller.eMailController,
+          //       decoration: InputDecoration(
+          //           fillColor: AppColor.black,
+          //           border: InputBorder.none,
+          //           focusedBorder: OutlineInputBorder(
+          //             borderRadius:
+          //                 BorderRadius.all(Radius.circular(FontSize.size10)),
+          //           ))),
+          // ),
+          // Padding(
+          //   padding:
+          //       EdgeInsets.only(bottom: FontSize.size10, top: FontSize.size10),
+          //   child: Text(
+          //     ConstantStrings.pWord,
+          //     style: TextStyle(
+          //         color: AppColor.black,
+          //         fontWeight: FontWeight.bold,
+          //         fontFamily: AppConfig.montserrat,
+          //         fontStyle: AppConfig.normal,
+          //         fontSize: FontSize.size16),
+          //   ),
+          // ),
+          // Container(
+          //   height: FontSize.size40,
+          //   decoration: BoxDecoration(
+          //     color: AppColor.bgText,
+          //     borderRadius: BorderRadius.all(Radius.circular(FontSize.size10)),
+          //   ),
+          //   child: TextField(
+          //       controller: _controller.passwordController,
+          //       obscureText: true,
+          //       enableSuggestions: false,
+          //       buildCounter: (BuildContext context,
+          //               {int currentLength, int maxLength, bool isFocused}) =>
+          //           null,
+          //       maxLength: 12,
+          //       decoration: InputDecoration(
+          //           fillColor: AppColor.black,
+          //           border: InputBorder.none,
+          //           focusedBorder: OutlineInputBorder(
+          //             borderRadius:
+          //                 BorderRadius.all(Radius.circular(FontSize.size10)),
+          //           ))),
+          // ),
+          // Text(
+          //   AppConfig.passwordCondition,
+          //   style: TextStyle(color: AppColor.red),
+          // ),
+          // Padding(
+          //   padding:
+          //       EdgeInsets.only(bottom: FontSize.size10, top: FontSize.size10),
+          //   child: Text(
+          //     ConstantStrings.name,
+          //     style: TextStyle(
+          //         color: AppColor.black,
+          //         fontWeight: FontWeight.bold,
+          //         fontFamily: AppConfig.montserrat,
+          //         fontStyle: AppConfig.normal,
+          //         fontSize: FontSize.size16),
+          //   ),
+          // ),
+          // Container(
+          //   height: FontSize.size40,
+          //   decoration: BoxDecoration(
+          //     color: AppColor.bgText,
+          //     borderRadius: BorderRadius.all(Radius.circular(FontSize.size10)),
+          //   ),
+          //   child: TextField(
+          //       controller: _controller.nameController,
+          //       decoration: InputDecoration(
+          //           fillColor: AppColor.black,
+          //           border: InputBorder.none,
+          //           focusedBorder: OutlineInputBorder(
+          //             borderRadius:
+          //                 BorderRadius.all(Radius.circular(FontSize.size10)),
+          //           ))),
+          // ),
+
+          getFieldTitle(ConstantStrings.childName),
+          getField(_controller.childNameController),
           ageGenderUI(),
-          Padding(
-            padding: EdgeInsets.only(bottom: FontSize.size10),
-            child: Text(
-              ConstantStrings.diagnosis,
-              style: TextStyle(
-                  color: AppColor.black,
-                  fontWeight: FontWeight.bold,
-                  fontFamily: AppConfig.montserrat,
-                  fontStyle: AppConfig.normal,
-                  fontSize: FontSize.size16),
-            ),
-          ),
-          Container(
-            height: FontSize.size40,
-            decoration: BoxDecoration(
-              color: AppColor.bgText,
-              borderRadius: BorderRadius.all(Radius.circular(FontSize.size10)),
-            ),
-            child: TextField(
-                controller: _controller.diagnosisController,
-                decoration: InputDecoration(
-                    fillColor: AppColor.black,
-                    border: InputBorder.none,
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius:
-                          BorderRadius.all(Radius.circular(FontSize.size10)),
-                    ))),
-          ),
+          getFieldTitle(ConstantStrings.parentName),
+          getField(_controller.parentNameController),
+          getFieldTitle(ConstantStrings.parentMail),
+          getField(_controller.parentEmailController),
+          getFieldTitle(ConstantStrings.parentMobile),
+          getField(_controller.parentMobileController),
+          getDropDown(1),
+          getDropDown(2),
+          getDropDown(3),
         ],
       ),
     );
@@ -278,60 +266,30 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Padding(
-                padding: EdgeInsets.only(
-                    bottom: FontSize.size10, top: FontSize.size10),
-                child: Text(
-                  ConstantStrings.age,
-                  style: TextStyle(
-                      color: AppColor.black,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: AppConfig.montserrat,
-                      fontStyle: AppConfig.normal,
-                      fontSize: FontSize.size16),
+             getFieldTitle(ConstantStrings.dob),
+              GestureDetector(
+                onTap: (){
+                  _selectDate(context);
+                },
+                child: Container(
+                  height: FontSize.size40,
+                  width:MediaQuery.of(context).size.width*0.5,
+                  decoration: BoxDecoration(
+                      color: AppColor.bgText,
+                      borderRadius:
+                          BorderRadius.all(Radius.circular(FontSize.size10))),
+                  child: Center(
+                    child: Text(
+                      _controller.selectedDate!=null?
+                      AppConfig.dateFormat.format(_controller.selectedDate):ConstantStrings.dobFormat,
+                      textAlign: TextAlign.start,
+                      style: TextStyle(
+                          color:    _controller.selectedDate!=null?AppColor.black:AppColor.grey,
+                          fontWeight: FontWeight.w600,
+                          fontSize: FontSize.size16,
+                          fontFamily: AppConfig.montserrat),
                 ),
-              ),
-              Container(
-                height: FontSize.size40,
-                width: FontSize.size106,
-                decoration: BoxDecoration(
-                    color: AppColor.bgText,
-                    borderRadius:
-                        BorderRadius.all(Radius.circular(FontSize.size10))),
-                child:
-                    // DropdownButton(
-                    //   underline: SizedBox(),
-                    //   hint: Text(ageValue),
-                    //   icon: Icon(Icons.arrow_drop_down),
-                    //   iconSize: FontSize.size30,
-                    //   isExpanded: true,
-                    //   value: ageValue,
-                    //   onChanged: (newValue) {
-                    //     setState(() {
-                    //       ageValue = newValue;
-                    //       _controller.ageValue = num.parse(newValue);
-                    //     });
-                    //   },
-                    //   items: AppConfig.ageList.map((valueItem) {
-                    //     return DropdownMenuItem(
-                    //         value: valueItem,
-                    //         child: Center(child: Text(valueItem)));
-                    //   }).toList(),
-                    // ),
-                    TextField(
-                        controller: _controller.ageController,
-                        maxLength: 2,
-                        buildCounter: (BuildContext context,
-                            {int currentLength, int maxLength, bool isFocused}) =>
-                        null,
-                        keyboardType: TextInputType.number,
-                        decoration: InputDecoration(
-                            fillColor: AppColor.black,
-                            border: InputBorder.none,
-                            focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.all(
-                                  Radius.circular(FontSize.size10)),
-                            ))),
+                  ),)
               )
             ],
           ),
@@ -499,5 +457,130 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
   bool checkMail() {
     return RegExp(AppConfig.mailPattern)
         .hasMatch(_controller.eMailController.text.trim());
+  }
+  getDropDown(int pos){
+    return  Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: EdgeInsets.only(
+              bottom: FontSize.size10,
+              top: FontSize.size10,
+              right: FontSize.size50),
+          child: Text(
+            _controller.getTitle(pos),
+            style: TextStyle(
+                color: AppColor.black,
+                fontWeight: FontWeight.bold,
+                fontFamily: AppConfig.montserrat,
+                fontStyle: AppConfig.normal,
+                fontSize: FontSize.size16),
+          ),
+        ),
+        Container(
+          height: FontSize.size40,
+          width: MediaQuery.of(context).size.width*0.8,
+          decoration: BoxDecoration(
+              color: AppColor.bgText,
+              borderRadius:
+              BorderRadius.all(Radius.circular(FontSize.size10))),
+          child: DropdownButton(
+            underline: SizedBox(),
+            // hint: Text(_controller.getHint(pos)),
+            icon: Icon(Icons.arrow_drop_down),
+            iconSize: FontSize.size30,
+            isExpanded: true,
+            value: getValue(pos),
+            onChanged: (newValue) {
+              setState(() {
+                pos==1?hospital = newValue:pos==2?hospitalNumber=newValue:doctor=newValue;
+              });
+            },
+            items: pos==1?
+                hospitalList.map((valueItem) {
+                  return DropdownMenuItem(
+                      value: valueItem,
+                      child: Text(valueItem));
+                }).toList():pos==2?
+            hospitalNumberList.map((valueItem) {
+              return DropdownMenuItem(
+                  value: valueItem,
+                  child: Text(valueItem));
+            }).toList():doctorsList.map((valueItem) {
+              return DropdownMenuItem(
+                  value: valueItem,
+                  child: Text(valueItem));
+            }).toList(),
+          ),
+        )
+      ],
+    );
+  }
+
+  getList(int pos) {
+    List list;
+    switch(pos){
+      case 1:list=hospitalList;break;
+      case 2:list=hospitalNumberList;break;
+      case 3:list=doctorsList;break;
+    }
+    return list;
+  }
+
+  getValue(int pos) {
+    String text;
+    switch(pos){
+      case 1:text=hospital;break;
+      case 2:text=hospitalNumber;break;
+      case 3:text=doctor;break;
+    }
+    return text;
+  }
+
+  getFieldTitle(String title){
+    return  Padding(
+      padding:
+      EdgeInsets.only(bottom: FontSize.size10, top: FontSize.size15),
+      child: Text(
+        title,
+        style: TextStyle(
+            color: AppColor.black,
+            fontWeight: FontWeight.bold,
+            fontFamily: AppConfig.montserrat,
+            fontStyle: AppConfig.normal,
+            fontSize: FontSize.size16),
+      ),
+    );
+  }
+  getField(TextEditingController editingController){
+    return   Container(
+      height: FontSize.size40,
+      decoration: BoxDecoration(
+        color: AppColor.bgText,
+        borderRadius: BorderRadius.all(Radius.circular(FontSize.size10)),
+      ),
+      child: TextField(
+          controller: editingController,
+          decoration: InputDecoration(
+              fillColor: AppColor.black,
+              border: InputBorder.none,
+              focusedBorder: OutlineInputBorder(
+                borderRadius:
+                BorderRadius.all(Radius.circular(FontSize.size10)),
+              ))),
+    );
+  }
+  Future<void> _selectDate(BuildContext context) async {
+    final DateTime picked = await showDatePicker(
+        context: context,
+        initialDate: _controller.selectedDate,
+        firstDate: DateTime(1980),
+        lastDate: DateTime(2101));
+    if (picked != null && picked != _controller.selectedDate) {
+      setState(() {
+        _controller.selectedDate = picked;
+      });
+    }
   }
 }

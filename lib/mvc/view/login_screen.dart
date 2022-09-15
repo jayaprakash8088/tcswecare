@@ -71,7 +71,14 @@ class _LoginScreenState extends StateMVC<LoginScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Center(child: SvgPicture.asset(Assets.supportLogo)),
+                  Center(child: SvgPicture.asset(Assets.supportLogo)),  Padding(
+                    padding: EdgeInsets.only(top: FontSize.size30),
+                    child: Text(
+                      ConstantStrings.startText,
+                      textAlign: TextAlign.center,
+                      style: AppConfig.startText,
+                    ),
+                  ),
                   userDetailUI(_controller),
                   GestureDetector(
                     onTap: () {

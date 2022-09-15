@@ -288,7 +288,13 @@ class AppConfig {
       fontFamily: AppConfig.roboto,
       fontStyle: AppConfig.normal,
       fontSize: FontSize.size14);
-
+static TextStyle startText=TextStyle(
+    color: AppColor.black,
+    fontFamily: AppConfig.roboto,
+    fontStyle: AppConfig.normal,
+    fontWeight: FontWeight.w600,
+    fontSize: FontSize.size24
+);
   //no internet pop up
   static dynamic noInternetPopUp(BuildContext context) {
     showDialog(
