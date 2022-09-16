@@ -37,7 +37,6 @@ class HisToryController extends ControllerMVC {
     SymptomsResponseModel response;
     try {
       var token = await _sharedPreferences.getToken();
-      print('token:$token');
       response = await repository.getSymptoms(context, token);
       if (response != null && response.statusCode == 200) {
         anxiety.clear();
