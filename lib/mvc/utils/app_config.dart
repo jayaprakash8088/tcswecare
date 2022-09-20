@@ -29,7 +29,7 @@ class AppConfig {
   static double diarrheaValue = 0.0;
   static double fatigueValue = 0.0;
   static double drySkinValue = 0.0;
-  static double appetiteValue=0.0;
+  static double appetiteValue = 0.0;
   static double nauseaValue = 0.0;
   static double breathValue = 0.0;
   static double moodValue = 0.0;
@@ -55,8 +55,7 @@ class AppConfig {
   static LinearGradient gradient = LinearGradient(
       begin: Alignment.centerLeft,
       end: Alignment.centerRight,
-      colors: <Color>[AppColor.bg1,
-        AppColor.bg2]);
+      colors: <Color>[AppColor.bg1, AppColor.bg2]);
   static LinearGradient sliderGradient = LinearGradient(
       begin: Alignment.topLeft,
       end: Alignment.centerRight,
@@ -159,25 +158,36 @@ class AppConfig {
     'Sesak nafas',
     'Kulit gatal/kering',
     'Hilang selera makan'
-    'Loya'
+        'Loya'
   ];
   static List<Map> diagnosisMap = [
     {'id': 0, 'name': 'All'},
-    {'id': 1, 'name': 'Anxiety'},
-    {'id': 2, 'name': 'Constipation'},
-    {'id': 3, 'name': 'Nausea'},
-    {'id': 4, 'name': 'Itchy/Dry Skin'},
-    {'id': 5, 'name': 'Shortness of Breath'},
-    {'id': 6, 'name': 'Pain'},
+    {'id': 1, 'name': 'Abdominal pain/ discomfort'},
+    {'id': 2, 'name': 'Anxiety'},
+    {'id': 3, 'name': 'Constipation'},
+    {'id': 4, 'name': 'Cough'},
+    {'id': 5, 'name': 'Diarrhea'},
+    {'id': 6, 'name': 'Fatigue'},
+    {'id': 7, 'name': 'Itchy/Dry Skin'},
+    {'id': 8, 'name': 'Loss of appetite'},
+    {'id': 9, 'name': 'Nausea'},
+    {'id': 10, 'name': 'Pain'},
+    {'id': 11, 'name': 'Shortness of Breath'},
+
   ];
   static List<Map> diagnosisMapMalay = [
     {'id': 0, 'name': 'Semua'},
-    {'id': 1, 'name': 'Kebimbangan'},
-    {'id': 2, 'name': 'Sembelit'},
-    {'id': 3, 'name': 'Loya'},
-    {'id': 4, 'name': 'Kulit gatal/kering'},
-    {'id': 5, 'name': 'Sesak nafas'},
-    {'id': 6, 'name': 'Kesakitan'},
+    {'id': 1, 'name': 'Sakit perut/ ketidakselesaan'},
+    {'id': 2, 'name': 'Kebimbangan'},
+    {'id': 3, 'name': 'Sembelit'},
+    {'id': 4, 'name': 'batuk'},
+    {'id': 5, 'name': 'Cirit-birit'},
+    {'id': 6, 'name': 'Keletihan'},
+    {'id': 7, 'name': 'Kulit Gatal/Kering'},
+    {'id': 8, 'name': 'Hilang selera makan'},
+    {'id': 9, 'name': 'Loya'},
+    {'id': 10, 'name': 'sakit'},
+    {'id': 11, 'name': 'Sesak nafas'},
   ];
   static List<String> yValueMalay = symptomLevelsMalay;
   static bool isShowingDialog = false;
@@ -288,13 +298,13 @@ class AppConfig {
       fontFamily: AppConfig.roboto,
       fontStyle: AppConfig.normal,
       fontSize: FontSize.size14);
-static TextStyle startText=TextStyle(
-    color: AppColor.black,
-    fontFamily: AppConfig.roboto,
-    fontStyle: AppConfig.normal,
-    fontWeight: FontWeight.w600,
-    fontSize: FontSize.size24
-);
+  static TextStyle startText = TextStyle(
+      color: AppColor.black,
+      fontFamily: AppConfig.roboto,
+      fontStyle: AppConfig.normal,
+      fontWeight: FontWeight.w600,
+      fontSize: FontSize.size24);
+
   //no internet pop up
   static dynamic noInternetPopUp(BuildContext context) {
     showDialog(
@@ -328,7 +338,7 @@ static TextStyle startText=TextStyle(
               height: FontSize.size50,
               width: double.infinity,
               child: Center(
-                  child: Text( 'ok'.tr(),
+                  child: Text('ok'.tr(),
                       style: TextStyle(color: Colors.blueAccent))),
               decoration: BoxDecoration(
                   shape: BoxShape.rectangle,
@@ -383,7 +393,7 @@ static TextStyle startText=TextStyle(
   static String mailPattern =
       r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
 
-
-  static String passwordCondition='*Password should contains at least 8 character including '
+  static String passwordCondition =
+      '*Password should contains at least 8 character including '
       '1 upper case letter,1 lower case letter,1 number and 1 special character';
 }

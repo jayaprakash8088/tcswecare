@@ -27,6 +27,11 @@ class HisToryController extends ControllerMVC {
   List<Data> drySkin = [];
   List<Data> shortnessOfBreath = [];
   List<Data> pain = [];
+  List<Data> discomfort = [];
+  List<Data> diarrhea = [];
+  List<Data> fatigue = [];
+  List<Data> cough = [];
+  List<Data> appetite = [];
   List<ChartSeries> allLists = [];
   // get symptoms////
 
