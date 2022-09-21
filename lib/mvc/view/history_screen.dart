@@ -83,13 +83,14 @@ class _HistoryScreenState extends StateMVC<HistoryScreen> {
                   if (snapshot.hasData != null &&
                       !snapshot.hasError &&
                       snapshot.hasData) {
-                    return buildUI(snapshot.data);
+                    return buildUI();
                   } else {
-                    return Padding(
-                      padding: EdgeInsets.only(
-                          top: MediaQuery.of(context).size.height * 0.4),
-                      child: GraphShimmer(),
-                    );
+                    return buildUI();
+                    // return Padding(
+                    //   padding: EdgeInsets.only(
+                    //       top: MediaQuery.of(context).size.height * 0.4),
+                    //   child: GraphShimmer(),
+                    // );
                   }
                 },
               ),
@@ -100,7 +101,7 @@ class _HistoryScreenState extends StateMVC<HistoryScreen> {
     );
   }
 
-  Widget buildUI(SymptomsResponseModel data) {
+  Widget buildUI() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
@@ -270,8 +271,9 @@ class _HistoryScreenState extends StateMVC<HistoryScreen> {
   }
 
   Future callApi() async {
-    _controller.getSymptomsInfo(context);
-    _controller.getPainInfo(context);
+    // _controller.getSymptomsInfo(context);
+    // _controller.getPainInfo(context);
+    _controller.addData();
   }
 
   Widget getSelectedGraph() {
@@ -290,33 +292,59 @@ class _HistoryScreenState extends StateMVC<HistoryScreen> {
           primaryYAxis: NumericAxis(maximum: FontSize.size10),
           primaryXAxis: CategoryAxis(),
           series: <ChartSeries>[
-            SplineAreaSeries<Data, String>(
-                gradient: AppConfig.anxietyGradient,
+            SplineSeries<Data, String>(
+                color: AppColor.discomfortLine,
+                dataSource: _controller.discomfort,
+                xValueMapper: (Data sales, _) => sales.date,
+                yValueMapper: (Data sales, _) => _controller.getY(sales.pain)),
+            SplineSeries<Data, String>(
+                color: AppColor.anxietyLine,
                 dataSource: _controller.anxiety,
                 xValueMapper: (Data sales, _) => sales.date,
                 yValueMapper: (Data sales, _) => _controller.getY(sales.pain)),
-            SplineAreaSeries<Data, String>(
-                gradient: AppConfig.constipationGradient,
-                dataSource: _controller.constipation,
-                xValueMapper: (Data sales, _) => sales.date,
-                yValueMapper: (Data sales, _) => _controller.getY(sales.pain)),
-            SplineAreaSeries<Data, String>(
-                gradient: AppConfig.nauseaGradient,
+            SplineSeries<Data, String>(
+                color: AppColor.constipationLine,
                 dataSource: _controller.nausea,
                 xValueMapper: (Data sales, _) => sales.date,
                 yValueMapper: (Data sales, _) => _controller.getY(sales.pain)),
-            SplineAreaSeries<Data, String>(
-                gradient: AppConfig.drySkinGradient,
+            SplineSeries<Data, String>(
+                color: AppColor.coughLine,
                 dataSource: _controller.drySkin,
                 xValueMapper: (Data sales, _) => sales.date,
                 yValueMapper: (Data sales, _) => _controller.getY(sales.pain)),
-            SplineAreaSeries<Data, String>(
-                gradient: AppConfig.shortnessOfBreathGradient,
+            SplineSeries<Data, String>(
+                color: AppColor.diarrheaLine,
                 dataSource: _controller.shortnessOfBreath,
                 xValueMapper: (Data sales, _) => sales.date,
                 yValueMapper: (Data sales, _) => _controller.getY(sales.pain)),
-            SplineAreaSeries<Data, String>(
-                gradient: AppConfig.painGradient,
+            SplineSeries<Data, String>(
+                color: AppColor.fatigueLine,
+                dataSource: _controller.shortnessOfBreath,
+                xValueMapper: (Data sales, _) => sales.date,
+                yValueMapper: (Data sales, _) => _controller.getY(sales.pain)),
+            SplineSeries<Data, String>(
+                color: AppColor.drySkinLine,
+                dataSource: _controller.shortnessOfBreath,
+                xValueMapper: (Data sales, _) => sales.date,
+                yValueMapper: (Data sales, _) => _controller.getY(sales.pain)),
+            SplineSeries<Data, String>(
+                color: AppColor.appetiteLine,
+                dataSource: _controller.shortnessOfBreath,
+                xValueMapper: (Data sales, _) => sales.date,
+                yValueMapper: (Data sales, _) => _controller.getY(sales.pain)),
+            SplineSeries<Data, String>(
+                color: AppColor.nauseaLine,
+                dataSource: _controller.shortnessOfBreath,
+                xValueMapper: (Data sales, _) => sales.date,
+                yValueMapper: (Data sales, _) => _controller.getY(sales.pain)),
+
+            SplineSeries<Data, String>(
+                color: AppColor.painLine,
+                dataSource: _controller.pain,
+                xValueMapper: (Data sales, _) => sales.date,
+                yValueMapper: (Data sales, _) => _controller.getY(sales.pain)),
+            SplineSeries<Data, String>(
+                color: AppColor.sobLine,
                 dataSource: _controller.pain,
                 xValueMapper: (Data sales, _) => sales.date,
                 yValueMapper: (Data sales, _) => _controller.getY(sales.pain))

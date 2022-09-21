@@ -7,6 +7,7 @@ import 'package:tcswecare/mvc/api_utils/repository.dart';
 import 'package:tcswecare/mvc/model/history_model.dart';
 import 'package:tcswecare/mvc/model/pain_response_model.dart';
 import 'package:tcswecare/mvc/model/symptoms_response_model.dart';
+import 'package:tcswecare/mvc/utils/app_color.dart';
 import 'package:tcswecare/mvc/utils/app_config.dart';
 import 'package:tcswecare/mvc/utils/app_shared_preferences.dart';
 
@@ -14,10 +15,14 @@ class HisToryController extends ControllerMVC {
   factory HisToryController() {
     return _this ??= HisToryController._();
   }
+
   static HisToryController _this;
+
   HisToryController._();
+
   static HisToryController get con => _this;
   HistoryModel _historyModel = HistoryModel();
+
   List<Data> get data => _historyModel.data3;
   AppSharedPreferences _sharedPreferences = AppSharedPreferences();
   Repository repository = Repository();
@@ -33,11 +38,17 @@ class HisToryController extends ControllerMVC {
   List<Data> cough = [];
   List<Data> appetite = [];
   List<ChartSeries> allLists = [];
+
+
+  // static data
+
   // get symptoms////
 
   StreamController<SymptomsResponseModel> getSymptomsCon =
       StreamController<SymptomsResponseModel>.broadcast();
+
   StreamController<SymptomsResponseModel> get getSymptomsList => getSymptomsCon;
+
   Future<dynamic> getSymptomsInfo(BuildContext context) async {
     SymptomsResponseModel response;
     try {
@@ -69,7 +80,8 @@ class HisToryController extends ControllerMVC {
     } catch (e) {}
     return getSymptomsCon.add(response);
   }
-  void getPainInfo(BuildContext context) async{
+
+  void getPainInfo(BuildContext context) async {
     PainResponseModel response;
     try {
       var token = await _sharedPreferences.getToken();
@@ -83,14 +95,16 @@ class HisToryController extends ControllerMVC {
       }
     } catch (e) {}
   }
+
   String getDate(String date) {
     return AppConfig.date.format(DateTime.parse(date));
   }
 
   getSeries() {
-    return SplineAreaSeries<Data, String>(
-        gradient: getGradient(),
+    return SplineSeries<Data, String>(
+        color: getGradient(),
         dataSource: getList(),
+
         xValueMapper: (Data sales, _) => sales.date,
         yValueMapper: (Data sales, _) => getY(sales.pain));
   }
@@ -98,23 +112,39 @@ class HisToryController extends ControllerMVC {
   getList() {
     switch (AppConfig.diagnosisSelected) {
       case '1':
-        return anxiety;
+        return discomfort;
         break;
       case '2':
-        return constipation;
+        return anxiety;
         break;
       case '3':
-        return nausea;
+        return constipation;
         break;
       case '4':
-        return drySkin;
+        return cough;
         break;
       case '5':
-        return shortnessOfBreath;
+        return diarrhea;
         break;
       case '6':
+        return fatigue;
+        break;
+      case '7':
+        return drySkin;
+        break;
+      case '8':
+        return appetite;
+        break;
+      case '9':
+        return nausea;
+        break;
+      case '10':
         return pain;
         break;
+      case '11':
+        return shortnessOfBreath;
+        break;
+
       default:
         return anxiety;
     }
@@ -130,23 +160,41 @@ class HisToryController extends ControllerMVC {
   getGradient() {
     switch (AppConfig.diagnosisSelected) {
       case '1':
-        return AppConfig.anxietyGradient;
+        return AppColor.discomfortLine;
         break;
       case '2':
-        return AppConfig.constipationGradient;
+        return AppColor.anxietyLine;
         break;
       case '3':
-        return AppConfig.nauseaGradient;
+        return AppColor.constipationLine;
         break;
       case '4':
-        return AppConfig.drySkinGradient;
+        return AppColor.coughLine;
         break;
       case '5':
-        return AppConfig.shortnessOfBreathGradient;
+        return AppColor.diarrheaLine;
         break;
       case '6':
-        return AppConfig.painGradient;
+        return AppColor.fatigueLine;
         break;
+      case '7':
+        return AppColor.drySkinLine;
+        break;
+      case '8':
+        return AppColor.appetiteLine;
+        break;
+      case '9':
+        return AppColor.nauseaLine;
+        break;
+      case '10':
+        return AppColor.painLine;
+        break;
+      case '11':
+        return AppColor.sobLine;
+        break;
+
+      default:
+        return AppColor.painLine;
     }
   }
 
@@ -158,5 +206,18 @@ class HisToryController extends ControllerMVC {
     }
   }
 
-
+  void addData() {
+    discomfort.addAll(_historyModel.data);
+    anxiety.addAll(_historyModel.data);
+    constipation.addAll(_historyModel.data);
+    cough.addAll(_historyModel.data);
+    diarrhea.addAll(_historyModel.data);
+    fatigue.addAll(_historyModel.data);
+    drySkin.addAll(_historyModel.data);
+    appetite.addAll(_historyModel.data);
+    nausea.addAll(_historyModel.data);
+    pain.addAll(_historyModel.data);
+    shortnessOfBreath.addAll(_historyModel.data);
+    setState(() { });
+  }
 }

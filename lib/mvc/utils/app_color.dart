@@ -47,4 +47,17 @@ class AppColor {
   static Color slider9 = Color.fromRGBO(237, 27, 36, 1);
   static Color slider10 = Color.fromRGBO(249, 35, 35, 1);
 
+  //// line color
+ static Color discomfortLine=Color.fromRGBO(54,160,44,1);
+ static Color anxietyLine=Color.fromRGBO(253,191,111,1);
+ static Color constipationLine=Color.fromRGBO(160,61,154,1);
+ static Color nauseaLine=Color.fromRGBO(166,206,227,1);
+ static Color coughLine=Color.fromRGBO(255,255,153,1);
+ static Color diarrheaLine=Color.fromRGBO(178,223,138,1);
+ static Color fatigueLine=Color.fromRGBO(202,178,214,1);
+ static Color drySkinLine=Color.fromRGBO(251,154,153,1);
+ static Color appetiteLine=Color.fromRGBO(31,120,180,1);
+ static Color sobLine=Color.fromRGBO(229,60,132,1);
+ static Color painLine=Color.fromRGBO(227,26,28,1);
+
 }
