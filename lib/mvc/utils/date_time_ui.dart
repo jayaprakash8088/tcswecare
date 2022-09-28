@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -115,94 +117,46 @@ class _DateTimeUIState extends StateMVC<DateTimeUI> {
     );
   }
 
-  Widget submitBtn() {
-    return Center(
-      child: Container(
-        height: FontSize.size40,
-        width: FontSize.size250,
-        decoration: BoxDecoration(
-          gradient: AppConfig.gradient,
-          borderRadius: BorderRadius.all(Radius.circular(FontSize.size20)),
-        ),
-        child: Center(
-          child: Text(
-            'submit'.tr(),
-            style: TextStyle(
-                color: AppColor.white,
-                fontWeight: FontWeight.bold,
-                fontSize: FontSize.size14),
-          ),
-        ),
-      ),
-    );
+
+   callDatePicker()async {
+     final time=AppConfig.now;
+ var date= await showDatePicker(initialDate:time,
+ firstDate:DateTime(2020),lastDate: DateTime(2050),context: context);
+ _dateChanged(date);
   }
 
-  void callDatePicker() {
-    showModalBottomSheet(
-        context: widget.context,
-        builder: (BuildContext context) {
-          return Container(
-            height: MediaQuery.of(widget.context).size.height * 0.35,
-            child: Column(
-              children: [
-                okCancelUI(1),
-                Container(
-                  height: MediaQuery.of(widget.context).size.height * 0.3,
-                  child: CupertinoDatePicker(
-                      initialDateTime: _controller.getDate(),
-                      maximumDate: DateTime(2050, 12, 31),
-                      mode: CupertinoDatePickerMode.date,
-                      onDateTimeChanged: _dateChanged),
-                ),
-              ],
-            ),
-          );
-        });
+   callTimePicker() async{
+    final time=TimeOfDay.now();
+  TimeOfDay selectedTime=await
+  showTimePicker(context: context, initialTime:time,
+  cancelText: cancelClicked()
+     );
+  var t=DateTime(AppConfig.now.year,AppConfig.now.month,AppConfig.now.day,selectedTime.hour,selectedTime.minute);
+  _timeChanged(t);
   }
 
-  void callTimePicker() {
-    showModalBottomSheet(
-        context: widget.context,
-        builder: (context) {
-          return Container(
-            height: MediaQuery.of(context).size.height * 0.35,
-            child: Column(
-              children: [
-                okCancelUI(2),
-                Container(
-                  height: MediaQuery.of(context).size.height * 0.3,
-                  child: CupertinoDatePicker(
-                      initialDateTime: _controller.getTime(),
-                      maximumDate: DateTime(2050, 12, 31),
-                      mode: CupertinoDatePickerMode.time,
-                      onDateTimeChanged: _timeChanged),
-                ),
-              ],
-            ),
-          );
-        });
-  }
-
-  void _dateChanged(DateTime value) {
+   _dateChanged(DateTime value) {
     _controller.selectedDate = value;
+    changeDate();
   }
 
   void _timeChanged(DateTime value) {
     _controller.selectedTime = value;
+  changeTime();
   }
 
   void changeDate() {
     setState(() {
       _controller.dateTime = _controller.selectedDate;
     });
-    Navigator.pop(widget.context);
+    // Navigator.pop(widget.context);
   }
 
   void changeTime() {
     setState(() {
       _controller.time = _controller.selectedTime;
     });
-    Navigator.pop(widget.context);
+    // Navigator.pop(widget.context);
   }
 
   cancelClicked() {
@@ -210,49 +164,6 @@ class _DateTimeUIState extends StateMVC<DateTimeUI> {
       _controller.time = _controller.time1;
       _controller.dateTime = _controller.date1;
     });
-    Navigator.pop(widget.context);
   }
 
-  okCancelUI(int i) {
-    return Container(
-      child: Expanded(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            GestureDetector(
-                onTap: () {
-                  cancelClicked();
-                },
-                child: Container(
-                  height: FontSize.size50,
-                  child: Center(
-                    child: Text(
-                      'cancel'.tr(),
-                      style: AppConfig.blackText,
-                    ),
-                  ),
-                )),
-            GestureDetector(
-                onTap: () {
-                  if (i == 1) {
-                    changeDate();
-                  } else {
-                    changeTime();
-                  }
-                },
-                child: Container(
-                  height: FontSize.size50,
-                  width: FontSize.size100,
-                  child: Center(
-                    child: Text(
-                      'ok'.tr(),
-                      style: AppConfig.blackText,
-                    ),
-                  ),
-                )),
-          ],
-        ),
-      ),
-    );
-  }
 }
