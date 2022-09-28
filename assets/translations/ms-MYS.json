@@ -30,7 +30,7 @@
   "card1Text":
   "Lihat sejarah\nanda",
   "card3Text":"Rekodkan Kesakitan\nanda",
-  "card4Text":"Hubungi doktor\nanda",
+  "card4Text":"hubungi wad\nanda",
   "contactDoctor":"Hubungi doktor\nanda",
   "contactDoctorText":"Sekiranya kesakitan berterusan, cuba langkah-langkah Hubungi doktor anda\ndi bawah:",
   "takeExtraDose":"Ambil\ndos tambahan",
@@ -53,5 +53,8 @@
   "enterMailNamePwd":"Sila isi e-mel, Nama Pengguna dan Kata Laluan",
   "otherComments": "Komen Lain",
   "typeHere": "Taip disini",
-  "pleaseWait": "sila tunggu sebentar"
+  "pleaseWait": "sila tunggu sebentar",
+  "mainContact": "kenalan utama",
+  "backupContact1": "kenalan sandaran1",
+  "backupContact2": "kenalan sandaran2"
 }

@@ -17,6 +17,7 @@ class AppColor {
   static Color unSelectedColor = Color.fromRGBO(196, 196, 196, 1);
   static Color grey = Colors.grey;
   static Color hintText = Color.fromRGBO(0, 0, 0, 0.5);
+  static Color yellow = Color.fromRGBO(255, 173, 43,1);
   // static Color bgWhite = Color.fromRGBO(255, 255, 255, 1);
   static Color bgWhite = Color.fromRGBO(250, 240, 240, 1);
   static Color greenCard = Color.fromRGBO(19, 194, 121, 1);

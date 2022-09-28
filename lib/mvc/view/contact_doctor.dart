@@ -79,58 +79,15 @@ class _ContactDoctorState extends State<ContactDoctor> {
             child: Image.asset(Assets.framePng),
           ),
         ),
-        // Center(
-        //   child: Text(
-        //     'card4Text'.tr(),
-        //     textAlign: TextAlign.center,
-        //     style: AppConfig.blackText,
-        //   ),
-        // ),
-        // Center(child: cardsUI()),
         Text(
           'card4Text'.tr(),
           textAlign: TextAlign.center,
           style: AppConfig.blackText,
         ),
-        GestureDetector(
-          onTap: () {
-            AppConfig.urlLauncher('+60 123456789');
-          },
-          child: Padding(
-            padding: EdgeInsets.only(
-                left: FontSize.size30,
-                right: FontSize.size30,
-                top: FontSize.size10),
-            child: Container(
-              height: FontSize.size75,
-              decoration: BoxDecoration(
-                  borderRadius:
-                      BorderRadius.all(Radius.circular(FontSize.size15)),
-                  color: AppColor.lightBlue),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Text(
-                    '+601234567',
-                    style: TextStyle(
-                        color: AppColor.white,
-                        fontFamily: AppConfig.montserrat,
-                        fontStyle: AppConfig.normal,
-                        fontSize: FontSize.size24,
-                        fontWeight: FontWeight.w600),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(bottom: FontSize.size20),
-                    child: Align(
-                        alignment: Alignment.bottomRight,
-                        child: SvgPicture.asset(Assets.contactDoctor)),
-                  )
-                ],
-              ),
-            ),
-          ),
-        ),
-        SizedBox(height: MediaQuery.of(context).size.height*0.15,),
+       contactDoctorList(1),
+       contactDoctorList(2),
+       contactDoctorList(3),
+        SizedBox(height: FontSize.size20,),
         GestureDetector(
           onTap: () {
             Navigator.pushAndRemoveUntil(
@@ -162,85 +119,56 @@ class _ContactDoctorState extends State<ContactDoctor> {
     );
   }
 
-  Widget cardsUI() {
-    return Container(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
+  contactDoctorList(int pos) {
+    return Padding(
+      padding:  EdgeInsets.only(left:FontSize.size10,
+      right: FontSize.size10),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          GestureDetector(
-              onTap: () {},
-              child: Padding(
-                padding: EdgeInsets.all(FontSize.size8),
-                child: Container(
-                  decoration: BoxDecoration(
-                      borderRadius:
-                          BorderRadius.all(Radius.circular(FontSize.size20)),
-                      color: AppColor.purple),
-                  height: FontSize.size150,
-                  width: FontSize.size150,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.only(
-                            top: FontSize.size15, left: FontSize.size15),
-                        child: Text(
-                            'takeExtraDose'.tr(),
-                          style: TextStyle(
-                              color: AppColor.white,
-                              fontSize: FontSize.size18,
-                              fontWeight: FontWeight.w600),
-                        ),
-                      ),
-                      Expanded(
-                        child: Align(
-                            alignment: Alignment.bottomRight,
-                            child: SvgPicture.asset(Assets.medicine)),
-                      )
-                    ],
-                  ),
-                ),
-              )),
-          GestureDetector(
-              onTap: () {},
-              child: Padding(
-                padding: EdgeInsets.all(FontSize.size8),
-                child: Container(
-                  decoration: BoxDecoration(
-                      borderRadius:
-                          BorderRadius.all(Radius.circular(FontSize.size20)),
-                      color: AppColor.lightGreen),
-                  height: FontSize.size150,
-                  width: FontSize.size150,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.only(
-                            top: FontSize.size15, left: FontSize.size15),
-                        child: Text(
-                          'restWell'.tr(),
-                          style: TextStyle(
-                              color: AppColor.white,
-                              fontSize: FontSize.size18,
-                              fontWeight: FontWeight.w600),
-                        ),
-                      ),
-                      Expanded(
-                        child: Padding(
-                          padding: EdgeInsets.only(
-                              right: FontSize.size20, bottom: FontSize.size20),
-                          child: Align(
-                              alignment: Alignment.bottomRight,
-                              child: SvgPicture.asset(Assets.sleep)),
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-              ))
+          SizedBox(height: FontSize.size5,),
+          Text(pos==1?'mainContact'.tr():pos==2?'backupContact1'.tr():'backupContact2'.tr(),
+            textAlign: TextAlign.start,
+            style: AppConfig.blackText,),
+          SizedBox(height: FontSize.size5,),
+          contact(pos)
         ],
       ),
     );
   }
+ contact(int  pos){
+    return  GestureDetector(
+      onTap: () {
+        AppConfig.urlLauncher('+60 123456789');
+      },
+      child: Container(
+        height: FontSize.size75,
+        decoration: BoxDecoration(
+            borderRadius:
+            BorderRadius.all(Radius.circular(FontSize.size15)),
+            color: pos==1?AppColor.red:
+            pos==2?AppColor.yellow:AppColor.lightBlue),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            Text(
+              '+601234567',
+              style: TextStyle(
+                  color: AppColor.white,
+                  fontFamily: AppConfig.montserrat,
+                  fontStyle: AppConfig.normal,
+                  fontSize: FontSize.size24,
+                  fontWeight: FontWeight.w600),
+            ),
+            Padding(
+              padding: EdgeInsets.only(bottom: FontSize.size20),
+              child: Align(
+                  alignment: Alignment.bottomRight,
+                  child: SvgPicture.asset(Assets.contactDoctor)),
+            )
+          ],
+        ),
+      ),
+    );
+ }
 }

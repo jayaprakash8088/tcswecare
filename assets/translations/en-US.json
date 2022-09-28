@@ -30,7 +30,7 @@
   "card1Text":
   "View Your\nHistory",
   "card3Text":"Record Your\nPain",
-  "card4Text":"Contact Your Doctor",
+  "card4Text":"Contact Your Ward",
   "contactDoctor":"Contact Your Doctor",
   "contactDoctorText":"If pain persists, try the below\nsteps:",
   "takeExtraDose":"Take an\nextra dose",
@@ -53,5 +53,8 @@
  "enterMailNamePwd":"Please fill e-Mail,Username and Password",
   "otherComments": "Other Comments",
   "typeHere": "Type here",
-  "pleaseWait": "Please wait a moment"
+  "pleaseWait": "Please wait a moment",
+  "mainContact": "Main Contact",
+  "backupContact1": "Backup Contact1",
+  "backupContact2": "Backup Contact2"
 }
