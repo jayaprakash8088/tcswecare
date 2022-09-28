@@ -1,3 +1,4 @@
+import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -242,17 +243,18 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
           // ),
 
           getFieldTitle(ConstantStrings.childName),
-          getField(_controller.childNameController),
+          getField(_controller.childNameController,1,false),
           ageGenderUI(),
           getFieldTitle(ConstantStrings.parentName),
-          getField(_controller.parentNameController),
+          getField(_controller.parentNameController,2,false),
           getFieldTitle(ConstantStrings.parentMail),
-          getField(_controller.parentEmailController),
+          getField(_controller.parentEmailController,3,false),
           getFieldTitle(ConstantStrings.parentMobile),
-          getField(_controller.parentMobileController),
-          getDropDown(1),
-          getDropDown(2),
-          getDropDown(3),
+          getField(_controller.parentMobileController,4,false),
+          getDropDown(1,false),
+          contactUI(1),
+          contactUI(2),
+          contactUI(3),
         ],
       ),
     );
@@ -284,7 +286,7 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
                       AppConfig.dateFormat.format(_controller.selectedDate):ConstantStrings.dobFormat,
                       textAlign: TextAlign.start,
                       style: TextStyle(
-                          color:    _controller.selectedDate!=null?AppColor.black:AppColor.grey,
+                          color:_controller.selectedDate!=null?AppColor.black:AppColor.grey,
                           fontWeight: FontWeight.w600,
                           fontSize: FontSize.size16,
                           fontFamily: AppConfig.montserrat),
@@ -458,7 +460,7 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
     return RegExp(AppConfig.mailPattern)
         .hasMatch(_controller.eMailController.text.trim());
   }
-  getDropDown(int pos){
+  getDropDown(int pos,bool isTrans){
     return  Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -482,7 +484,7 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
           height: FontSize.size40,
           width: MediaQuery.of(context).size.width*0.8,
           decoration: BoxDecoration(
-              color: AppColor.bgText,
+              color:isTrans?AppColor.transparent: AppColor.bgText,
               borderRadius:
               BorderRadius.all(Radius.circular(FontSize.size10))),
           child: DropdownButton(
@@ -494,7 +496,7 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
             value: getValue(pos),
             onChanged: (newValue) {
               setState(() {
-                pos==1?hospital = newValue:pos==2?hospitalNumber=newValue:doctor=newValue;
+                pos==1?hospital = newValue:pos==4?hospitalNumber=newValue:doctor=newValue;
               });
             },
             items: pos==1?
@@ -502,12 +504,14 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
                   return DropdownMenuItem(
                       value: valueItem,
                       child: Text(valueItem));
-                }).toList():pos==2?
+                }).toList():
+            pos==4?
             hospitalNumberList.map((valueItem) {
               return DropdownMenuItem(
                   value: valueItem,
                   child: Text(valueItem));
-            }).toList():doctorsList.map((valueItem) {
+            }).toList():
+            doctorsList.map((valueItem) {
               return DropdownMenuItem(
                   value: valueItem,
                   child: Text(valueItem));
@@ -534,6 +538,8 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
       case 1:text=hospital;break;
       case 2:text=hospitalNumber;break;
       case 3:text=doctor;break;
+      case 4:text=hospitalNumber;break;
+      case 5:text=doctor;break;
     }
     return text;
   }
@@ -553,17 +559,18 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
       ),
     );
   }
-  getField(TextEditingController editingController){
+  getField(TextEditingController editingController,int pos,bool isTrans){
     return   Container(
       height: FontSize.size40,
       decoration: BoxDecoration(
-        color: AppColor.bgText,
+        color:isTrans?AppColor.transparent: AppColor.bgText,
         borderRadius: BorderRadius.all(Radius.circular(FontSize.size10)),
       ),
       child: TextField(
           controller: editingController,
           decoration: InputDecoration(
               fillColor: AppColor.black,
+              hintText:_controller.getHint(pos),
               border: InputBorder.none,
               focusedBorder: OutlineInputBorder(
                 borderRadius:
@@ -574,7 +581,8 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
   Future<void> _selectDate(BuildContext context) async {
     final DateTime picked = await showDatePicker(
         context: context,
-        initialDate: _controller.selectedDate,
+        initialDate: _controller.selectedDate!=null?
+        _controller.selectedDate:AppConfig.now,
         firstDate: DateTime(1980),
         lastDate: DateTime(2101));
     if (picked != null && picked != _controller.selectedDate) {
@@ -582,5 +590,39 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
         _controller.selectedDate = picked;
       });
     }
+  }
+
+  contactUI(int pos) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        SizedBox(height: FontSize.size5,),
+        Text(pos==1?'mainContact'.tr():pos==2?'backupContact1'.tr():'backupContact2'.tr(),
+          textAlign: TextAlign.start,
+          style: AppConfig.blackText,),
+        SizedBox(height: FontSize.size5,),
+        Container(
+          decoration: BoxDecoration(
+            color: AppColor.bgText,
+            borderRadius: BorderRadius.all(Radius.circular(FontSize.size10)),
+          ),
+          child: Column( crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+             pos==1?getDropDown(4,true):Column(
+               crossAxisAlignment: CrossAxisAlignment.start,
+               children: [
+                 getFieldTitle(ConstantStrings.wardName),
+                 getField(_controller.childNameController,5,true),
+               ],
+             ),
+              getFieldTitle(ConstantStrings.wardNumber),
+              getField(_controller.childNameController,5,true),
+              SizedBox(height: FontSize.size5,),
+              getDropDown(5,true)
+            ],
+          ),
+        )
+      ],
+    );
   }
 }

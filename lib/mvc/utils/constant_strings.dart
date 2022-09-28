@@ -87,4 +87,6 @@ class ConstantStrings {
   static String hospitalNumber='Hospital Contact Number*';
   static String doctorName='Name of Doctor/Specialist*';
   static String dobFormat='DD/MM/YYYY';
+  static String wardName='Ward Name/Number*';
+  static String wardNumber='Ward Contact Number*';
 }

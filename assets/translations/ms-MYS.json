@@ -56,5 +56,9 @@
   "pleaseWait": "sila tunggu sebentar",
   "mainContact": "kenalan utama",
   "backupContact1": "kenalan sandaran1",
-  "backupContact2": "kenalan sandaran2"
+  "backupContact2": "kenalan sandaran2",
+  "wardName": "nama/nombor wad*",
+  "wardNumber": "nombor telefon wad*",
+  "doctorName": "Nama Doktor/Pakar*"
+
 }

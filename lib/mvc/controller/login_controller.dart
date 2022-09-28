@@ -105,6 +105,8 @@ class LoginController extends ControllerMVC {
       case 1:title=ConstantStrings.hospitalName;break;
       case 2:title=ConstantStrings.hospitalNumber;break;
       case 3:title=ConstantStrings.doctorName;break;
+      case 4:title=ConstantStrings.wardName;break;
+      case 5:title=ConstantStrings.doctorName;break;
     }
     return title;
   }
@@ -115,6 +117,8 @@ class LoginController extends ControllerMVC {
       case 1:title='Hospital Name';break;
       case 2:title='Hospital Number';break;
       case 3:title='Doctor Name';break;
+      case 4:title=ConstantStrings.wardName;break;
+      case 5:title=ConstantStrings.doctorName;break;
     }
     return title;
   }
