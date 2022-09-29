@@ -278,6 +278,9 @@ class _SymptomTrackerPageState extends StateMVC<SymptomTrackerPage> {
       case 9:
         value = AppConfig.breathValue;
         break;
+      case 10:
+        value = AppConfig.moodValue;
+        break;
     }
     return value;
   }
@@ -400,7 +403,7 @@ class _SymptomTrackerPageState extends StateMVC<SymptomTrackerPage> {
                       min: FontSize.size0,
                       max: FontSize.size3,
                       onChanged: (values) {
-                        _onChanged(values, 5);
+                        _onChanged(values, 10);
                       }),
                 ),
               ),

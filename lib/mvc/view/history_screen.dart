@@ -5,14 +5,12 @@ import 'package:mvc_pattern/mvc_pattern.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:tcswecare/mvc/controller/history_controller.dart';
 import 'package:tcswecare/mvc/model/history_model.dart';
-import 'package:tcswecare/mvc/model/symptoms_response_model.dart';
 import 'package:tcswecare/mvc/utils/app_color.dart';
 import 'package:tcswecare/mvc/utils/app_config.dart';
 import 'package:tcswecare/mvc/utils/assets.dart';
 import 'package:tcswecare/mvc/utils/constant_strings.dart';
 import 'package:tcswecare/mvc/utils/font_size.dart';
 import 'package:tcswecare/mvc/utils/locale_drop_down.dart';
-import 'package:tcswecare/mvc/utils/shimmer.dart';
 import 'package:tcswecare/mvc/view/home_page.dart';
 
 class HistoryScreen extends StatefulWidget {
@@ -240,21 +238,23 @@ class _HistoryScreenState extends StateMVC<HistoryScreen> {
                 AppConfig.diagnosisSelected = newValue;
               });
             },
-            items:AppConfig.selected=='0'? AppConfig.diagnosisMap.map((Map map) {
-              return new DropdownMenuItem<String>(
-                value: map["id"].toString(),
-                child: Container(
-                    margin: EdgeInsets.only(left: FontSize.size10),
-                    child: Text(map["name"])),
-              );
-            }).toList(): AppConfig.diagnosisMapMalay.map((Map map) {
-              return new DropdownMenuItem<String>(
-                value: map["id"].toString(),
-                child: Container(
-                    margin: EdgeInsets.only(left: FontSize.size10),
-                    child: Text(map["name"])),
-              );
-            }).toList(),
+            items: AppConfig.selected == '0'
+                ? AppConfig.diagnosisMap.map((Map map) {
+                    return new DropdownMenuItem<String>(
+                      value: map["id"].toString(),
+                      child: Container(
+                          margin: EdgeInsets.only(left: FontSize.size10),
+                          child: Text(map["name"])),
+                    );
+                  }).toList()
+                : AppConfig.diagnosisMapMalay.map((Map map) {
+                    return new DropdownMenuItem<String>(
+                      value: map["id"].toString(),
+                      child: Container(
+                          margin: EdgeInsets.only(left: FontSize.size10),
+                          child: Text(map["name"])),
+                    );
+                  }).toList(),
           ),
         ),
       ),
@@ -285,7 +285,7 @@ class _HistoryScreenState extends StateMVC<HistoryScreen> {
           primaryYAxis: NumericAxis(maximum: FontSize.size10),
           primaryXAxis: CategoryAxis(),
           series: <ChartSeries>[_controller.getSeries()]);
-    } else {
+    } else  {
       return SfCartesianChart(
           enableMultiSelection: true,
           zoomPanBehavior: _zoomPanBehavior,
@@ -294,61 +294,72 @@ class _HistoryScreenState extends StateMVC<HistoryScreen> {
           series: <ChartSeries>[
             SplineSeries<Data, String>(
                 color: AppColor.discomfortLine,
+                yAxisName: ConstantStrings.severity,
                 dataSource: _controller.discomfort,
                 xValueMapper: (Data sales, _) => sales.date,
                 yValueMapper: (Data sales, _) => _controller.getY(sales.pain)),
             SplineSeries<Data, String>(
                 color: AppColor.anxietyLine,
                 dataSource: _controller.anxiety,
+                yAxisName: ConstantStrings.severity,
                 xValueMapper: (Data sales, _) => sales.date,
                 yValueMapper: (Data sales, _) => _controller.getY(sales.pain)),
             SplineSeries<Data, String>(
                 color: AppColor.constipationLine,
                 dataSource: _controller.nausea,
                 xValueMapper: (Data sales, _) => sales.date,
+                yAxisName: ConstantStrings.severity,
                 yValueMapper: (Data sales, _) => _controller.getY(sales.pain)),
             SplineSeries<Data, String>(
                 color: AppColor.coughLine,
                 dataSource: _controller.drySkin,
                 xValueMapper: (Data sales, _) => sales.date,
+                yAxisName: ConstantStrings.severity,
                 yValueMapper: (Data sales, _) => _controller.getY(sales.pain)),
             SplineSeries<Data, String>(
                 color: AppColor.diarrheaLine,
                 dataSource: _controller.shortnessOfBreath,
                 xValueMapper: (Data sales, _) => sales.date,
+                yAxisName: ConstantStrings.severity,
                 yValueMapper: (Data sales, _) => _controller.getY(sales.pain)),
             SplineSeries<Data, String>(
                 color: AppColor.fatigueLine,
                 dataSource: _controller.shortnessOfBreath,
+                yAxisName: ConstantStrings.severity,
                 xValueMapper: (Data sales, _) => sales.date,
                 yValueMapper: (Data sales, _) => _controller.getY(sales.pain)),
             SplineSeries<Data, String>(
                 color: AppColor.drySkinLine,
                 dataSource: _controller.shortnessOfBreath,
+                yAxisName: ConstantStrings.severity,
                 xValueMapper: (Data sales, _) => sales.date,
                 yValueMapper: (Data sales, _) => _controller.getY(sales.pain)),
             SplineSeries<Data, String>(
                 color: AppColor.appetiteLine,
                 dataSource: _controller.shortnessOfBreath,
+                yAxisName: ConstantStrings.severity,
                 xValueMapper: (Data sales, _) => sales.date,
                 yValueMapper: (Data sales, _) => _controller.getY(sales.pain)),
             SplineSeries<Data, String>(
                 color: AppColor.nauseaLine,
                 dataSource: _controller.shortnessOfBreath,
+                yAxisName: ConstantStrings.severity,
                 xValueMapper: (Data sales, _) => sales.date,
                 yValueMapper: (Data sales, _) => _controller.getY(sales.pain)),
-
             SplineSeries<Data, String>(
                 color: AppColor.painLine,
                 dataSource: _controller.pain,
+                yAxisName: ConstantStrings.severity,
                 xValueMapper: (Data sales, _) => sales.date,
                 yValueMapper: (Data sales, _) => _controller.getY(sales.pain)),
             SplineSeries<Data, String>(
                 color: AppColor.sobLine,
-                dataSource: _controller.pain,
+                dataSource: _controller.shortnessOfBreath,
+                yAxisName: ConstantStrings.severity,
                 xValueMapper: (Data sales, _) => sales.date,
                 yValueMapper: (Data sales, _) => _controller.getY(sales.pain))
           ]);
     }
   }
+
 }

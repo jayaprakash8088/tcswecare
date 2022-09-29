@@ -606,20 +606,23 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
             color: AppColor.bgText,
             borderRadius: BorderRadius.all(Radius.circular(FontSize.size10)),
           ),
-          child: Column( crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-             pos==1?getDropDown(4,true):Column(
-               crossAxisAlignment: CrossAxisAlignment.start,
-               children: [
-                 getFieldTitle(ConstantStrings.wardName),
-                 getField(_controller.childNameController,5,true),
-               ],
-             ),
-              getFieldTitle(ConstantStrings.wardNumber),
-              getField(_controller.childNameController,5,true),
-              SizedBox(height: FontSize.size5,),
-              getDropDown(5,true)
-            ],
+          child: Padding(
+            padding:  EdgeInsets.all(FontSize.size5),
+            child: Column( crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+               pos==1?getDropDown(4,true):Column(
+                 crossAxisAlignment: CrossAxisAlignment.start,
+                 children: [
+                   getFieldTitle(ConstantStrings.wardName),
+                   getField(_controller.childNameController,5,true),
+                 ],
+               ),
+                getFieldTitle(ConstantStrings.wardNumber),
+                getField(_controller.childNameController,5,true),
+                SizedBox(height: FontSize.size5,),
+                getDropDown(5,true)
+              ],
+            ),
           ),
         )
       ],

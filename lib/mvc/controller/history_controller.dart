@@ -23,7 +23,6 @@ class HisToryController extends ControllerMVC {
   static HisToryController get con => _this;
   HistoryModel _historyModel = HistoryModel();
 
-  List<Data> get data => _historyModel.data3;
   AppSharedPreferences _sharedPreferences = AppSharedPreferences();
   Repository repository = Repository();
   List<Data> anxiety = [];
@@ -157,6 +156,12 @@ class HisToryController extends ControllerMVC {
     return num.parse(pain);
   }
 
+  dynamic getYforPain(String pain){
+    var t=num.parse(pain);
+    return t;
+  }
+
+
   getGradient() {
     switch (AppConfig.diagnosisSelected) {
       case '1':
@@ -208,16 +213,16 @@ class HisToryController extends ControllerMVC {
 
   void addData() {
     discomfort.addAll(_historyModel.data);
-    anxiety.addAll(_historyModel.data);
-    constipation.addAll(_historyModel.data);
-    cough.addAll(_historyModel.data);
-    diarrhea.addAll(_historyModel.data);
-    fatigue.addAll(_historyModel.data);
-    drySkin.addAll(_historyModel.data);
-    appetite.addAll(_historyModel.data);
-    nausea.addAll(_historyModel.data);
-    pain.addAll(_historyModel.data);
-    shortnessOfBreath.addAll(_historyModel.data);
+    anxiety.addAll(_historyModel.data1);
+    constipation.addAll(_historyModel.data2);
+    cough.addAll(_historyModel.data3);
+    diarrhea.addAll(_historyModel.data4);
+    fatigue.addAll(_historyModel.data5);
+    drySkin.addAll(_historyModel.data6);
+    appetite.addAll(_historyModel.data7);
+    nausea.addAll(_historyModel.data8);
+    pain.addAll(_historyModel.data9);
+    shortnessOfBreath.addAll(_historyModel.data10);
     setState(() { });
   }
 }
