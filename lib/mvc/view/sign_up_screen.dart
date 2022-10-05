@@ -37,6 +37,10 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
   'Sultan Ismail Hospital 2','Sultan Ismail Hospital 3'];
   List hospitalNumberList = ['+60 55 8888', '+65 884 84848','+60 8484 8484'];
   List doctorsList = ['Dr Sai', 'Dr Test','Dr Test1'];
+  List wardName = ['Sunflower', 'Orchid','Tulip'];
+  String ward1='Sunflower';
+  String ward2='Orchid';
+  String ward3='Tulip';
 
   @override
   void initState() {
@@ -250,7 +254,7 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
           getFieldTitle(ConstantStrings.parentMail),
           getField(_controller.parentEmailController,3,false),
           getFieldTitle(ConstantStrings.parentMobile),
-          getField(_controller.parentMobileController,4,false),
+          getField(_controller.parentMobileController,7,false),
           getDropDown(1,false),
           contactUI(1),
           contactUI(2),
@@ -496,7 +500,7 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
             value: getValue(pos),
             onChanged: (newValue) {
               setState(() {
-                pos==1?hospital = newValue:pos==4?hospitalNumber=newValue:doctor=newValue;
+                pos==1?hospital = newValue:pos==4?wardName=newValue:doctor=newValue;
               });
             },
             items: pos==1?
@@ -506,7 +510,7 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
                       child: Text(valueItem));
                 }).toList():
             pos==4?
-            hospitalNumberList.map((valueItem) {
+            wardName.map((valueItem) {
               return DropdownMenuItem(
                   value: valueItem,
                   child: Text(valueItem));
@@ -538,7 +542,7 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
       case 1:text=hospital;break;
       case 2:text=hospitalNumber;break;
       case 3:text=doctor;break;
-      case 4:text=hospitalNumber;break;
+      case 4:text=ward1;break;
       case 5:text=doctor;break;
     }
     return text;
@@ -568,6 +572,7 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
       ),
       child: TextField(
           controller: editingController,
+          keyboardType: pos==5||pos==7?TextInputType.number:TextInputType.text,
           decoration: InputDecoration(
               fillColor: AppColor.black,
               hintText:_controller.getHint(pos),
@@ -614,11 +619,12 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
                  crossAxisAlignment: CrossAxisAlignment.start,
                  children: [
                    getFieldTitle(ConstantStrings.wardName),
-                   getField(_controller.childNameController,5,true),
+                   getField(pos==2?_controller.wardNameController1:_controller.wardNameController2,4,true),
                  ],
                ),
                 getFieldTitle(ConstantStrings.wardNumber),
-                getField(_controller.childNameController,5,true),
+                getField(pos==1?_controller.wardNumberController1:
+                    pos==2?_controller.wardNumberController2:_controller.wardNumberController3,5,true),
                 SizedBox(height: FontSize.size5,),
                 getDropDown(5,true)
               ],

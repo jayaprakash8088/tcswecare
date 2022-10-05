@@ -45,6 +45,12 @@ class LoginController extends ControllerMVC {
   TextEditingController parentMobileController = TextEditingController();
   DateTime selectedDate;
 
+  TextEditingController wardNumberController1 = TextEditingController();
+  TextEditingController wardNumberController2 = TextEditingController();
+  TextEditingController wardNumberController3 = TextEditingController();
+  TextEditingController wardNameController1 = TextEditingController();
+  TextEditingController wardNameController2 = TextEditingController();
+
   Future<dynamic> loginClicked(
       String userName, String password, BuildContext context) async {
     Map<String, String> body = {
@@ -117,8 +123,9 @@ class LoginController extends ControllerMVC {
       case 1:title='Child Name';break;
       case 2:title='Patient Name';break;
       case 3:title='Patient Email';break;
-      case 4:title=ConstantStrings.wardName;break;
-      case 5:title=ConstantStrings.doctorName;break;
+      case 4:title=ConstantStrings.enterWardName;break;
+      case 5:title=ConstantStrings.enterWardNumber;break;
+      case 7:title='Patient Mobile Number';break;
     }
     return title;
   }
