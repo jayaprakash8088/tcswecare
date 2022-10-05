@@ -31,7 +31,7 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
 
   LoginController _controller;
   String ageValue = '1', genderValue = 'M',hospital='Sultan Ismail Hospital',
-  hospitalNumber='+60 55 8888',doctor='Dr Sai';
+  hospitalNumber='+60 55 8888',doctor='Dr Sai',doctor1='Dr Sai',doctor2='Dr Sai';
   List genderList = ['M', 'F'];
   List hospitalList = ['Sultan Ismail Hospital', 'Sultan Ismail Hospital 1',
   'Sultan Ismail Hospital 2','Sultan Ismail Hospital 3'];
@@ -500,11 +500,19 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
             value: getValue(pos),
             onChanged: (newValue) {
               setState(() {
-                pos==1?hospital = newValue:pos==4?wardName=newValue:doctor=newValue;
+                pos==1?hospital = newValue:pos==3?
+                doctor2=newValue:pos==4?ward1=newValue:
+                pos==5?doctor=newValue:doctor1=newValue;
               });
             },
             items: pos==1?
                 hospitalList.map((valueItem) {
+                  return DropdownMenuItem(
+                      value: valueItem,
+                      child: Text(valueItem));
+                }).toList():
+                pos==3?
+                doctorsList.map((valueItem) {
                   return DropdownMenuItem(
                       value: valueItem,
                       child: Text(valueItem));
@@ -526,24 +534,16 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
     );
   }
 
-  getList(int pos) {
-    List list;
-    switch(pos){
-      case 1:list=hospitalList;break;
-      case 2:list=hospitalNumberList;break;
-      case 3:list=doctorsList;break;
-    }
-    return list;
-  }
 
   getValue(int pos) {
     String text;
     switch(pos){
       case 1:text=hospital;break;
       case 2:text=hospitalNumber;break;
-      case 3:text=doctor;break;
+      case 3:text=doctor2;break;
       case 4:text=ward1;break;
       case 5:text=doctor;break;
+      case 6:text=doctor1;break;
     }
     return text;
   }
@@ -626,7 +626,7 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
                 getField(pos==1?_controller.wardNumberController1:
                     pos==2?_controller.wardNumberController2:_controller.wardNumberController3,5,true),
                 SizedBox(height: FontSize.size5,),
-                getDropDown(5,true)
+                getDropDown(pos==1?3:pos==2?5:6,true)
               ],
             ),
           ),
