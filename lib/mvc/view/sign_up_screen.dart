@@ -502,7 +502,8 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
               setState(() {
                 pos==1?hospital = newValue:pos==3?
                 doctor2=newValue:pos==4?ward1=newValue:
-                pos==5?doctor=newValue:doctor1=newValue;
+                pos==5?doctor=newValue:pos==6?doctor1=newValue:
+                pos==7?ward2=newValue:ward3=newValue;
               });
             },
             items: pos==1?
@@ -517,7 +518,7 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
                       value: valueItem,
                       child: Text(valueItem));
                 }).toList():
-            pos==4?
+            pos==4||pos==7||pos==8?
             wardName.map((valueItem) {
               return DropdownMenuItem(
                   value: valueItem,
@@ -544,6 +545,8 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
       case 4:text=ward1;break;
       case 5:text=doctor;break;
       case 6:text=doctor1;break;
+      case 7:text=ward2;break;
+      case 8:text=ward3;break;
     }
     return text;
   }
@@ -615,13 +618,15 @@ class _SignUpScreenState extends StateMVC<SignUpScreen> {
             padding:  EdgeInsets.all(FontSize.size5),
             child: Column( crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-               pos==1?getDropDown(4,true):Column(
-                 crossAxisAlignment: CrossAxisAlignment.start,
-                 children: [
-                   getFieldTitle(ConstantStrings.wardName),
-                   getField(pos==2?_controller.wardNameController1:_controller.wardNameController2,4,true),
-                 ],
-               ),
+               // pos==1?
+               getDropDown(pos==1?4:pos==2?7:8,true),
+               //     :Column(
+               //   crossAxisAlignment: CrossAxisAlignment.start,
+               //   children: [
+               //     getFieldTitle(ConstantStrings.wardName),
+               //     getField(pos==2?_controller.wardNameController1:_controller.wardNameController2,4,true),
+               //   ],
+               // ),
                 getFieldTitle(ConstantStrings.wardNumber),
                 getField(pos==1?_controller.wardNumberController1:
                     pos==2?_controller.wardNumberController2:_controller.wardNumberController3,5,true),
