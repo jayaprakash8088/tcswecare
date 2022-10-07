@@ -121,12 +121,12 @@ class LoginController extends ControllerMVC {
   getHint(int pos) {
     String title;
     switch(pos){
-      case 1:title='Child Name';break;
-      case 2:title='Patient Name';break;
-      case 3:title='Patient Email';break;
+      case 1:title='Enter Child Name';break;
+      case 2:title='Enter Parent Name';break;
+      case 3:title='Enter Parent Email';break;
       case 4:title=ConstantStrings.enterWardName;break;
       case 5:title=ConstantStrings.enterWardNumber;break;
-      case 7:title='Patient Mobile Number';break;
+      case 7:title='Enter Parent Mobile Number';break;
     }
     return title;
   }
