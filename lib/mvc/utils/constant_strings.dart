@@ -89,6 +89,6 @@ class ConstantStrings {
   static String dobFormat='DD/MM/YYYY';
   static String wardName='Ward Name/Number*';
   static String wardNumber='Ward Contact Number*';
-  static String enterWardNumber='Enter Ward Contact Number';
+  static String enterWardNumber='+60 22-333 6789';
   static String enterWardName='Enter Ward Name';
 }
