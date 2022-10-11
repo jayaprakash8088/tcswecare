@@ -152,7 +152,7 @@ class _ContactDoctorState extends State<ContactDoctor> {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             Text(
-              '+601234567',
+              '+60 123456789',
               style: TextStyle(
                   color: AppColor.white,
                   fontFamily: AppConfig.montserrat,

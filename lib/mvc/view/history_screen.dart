@@ -122,7 +122,7 @@ class _HistoryScreenState extends StateMVC<HistoryScreen> {
         ),
         Padding(
           padding:
-              EdgeInsets.only(bottom: FontSize.size20, right: FontSize.size20),
+              EdgeInsets.only(bottom: FontSize.size20, right: FontSize.size6),
           child: dropDownBox(),
         ),
         Align(
@@ -179,8 +179,11 @@ class _HistoryScreenState extends StateMVC<HistoryScreen> {
   Widget dropDownBox() {
     return Container(
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [diagnosisDropDown()],
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          monthDropDown(),
+          SizedBox(width: 10,),
+          diagnosisDropDown()],
       ),
     );
   }
@@ -210,7 +213,7 @@ class _HistoryScreenState extends StateMVC<HistoryScreen> {
                 value: map["id"].toString(),
                 // value: _mySelection,
                 child: Container(
-                    margin: EdgeInsets.only(left: FontSize.size10),
+                    // margin: EdgeInsets.only(left: FontSize.size10),
                     child: Text(map["month"])),
               );
             }).toList(),
@@ -243,7 +246,7 @@ class _HistoryScreenState extends StateMVC<HistoryScreen> {
                     return new DropdownMenuItem<String>(
                       value: map["id"].toString(),
                       child: Container(
-                          margin: EdgeInsets.only(left: FontSize.size10),
+                          // margin: EdgeInsets.only(left: FontSize.size10),
                           child: Text(map["name"])),
                     );
                   }).toList()
@@ -251,7 +254,7 @@ class _HistoryScreenState extends StateMVC<HistoryScreen> {
                     return new DropdownMenuItem<String>(
                       value: map["id"].toString(),
                       child: Container(
-                          margin: EdgeInsets.only(left: FontSize.size10),
+                          // margin: EdgeInsets.only(left: FontSize.size10),
                           child: Text(map["name"])),
                     );
                   }).toList(),
